@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LyctRides | Sovereign Curator of Mobility</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans+SC:wght@300;400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#465f88",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#aec7f6",
+                        "on-primary-container": "#708ab5",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d7dadc",
+                        "surface-container": "#ebeef0",
+                        "primary-fixed": "#d6e3ff",
+                        "secondary-container": "#d1e1f4",
+                        "on-surface": "#181c1e",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d4e4f6",
+                        "on-secondary-container": "#556474",
+                        "on-secondary-fixed": "#0d1d2a",
+                        "on-primary-fixed": "#001b3d",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "outline": "#74777f",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-tertiary-container": "#b97958",
+                        "surface-container-low": "#f1f4f6",
+                        "on-secondary-fixed-variant": "#394857",
+                        "tertiary-container": "#3d1500",
+                        "primary": "#000a1e",
+                        "primary-container": "#002147",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7fafc",
+                        "on-tertiary-fixed": "#341100",
+                        "on-background": "#181c1e",
+                        "background": "#f7fafc",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e5e9eb",
+                        "on-surface-variant": "#44474e",
+                        "secondary": "#50606f",
+                        "tertiary": "#180500",
+                        "secondary-fixed-dim": "#b8c8da",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7fafc",
+                        "inverse-primary": "#aec7f6",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-tertiary-fixed-variant": "#6c391d",
+                        "inverse-surface": "#2d3133"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
+        h1, h2, h3, .nav-brand { font-family: 'Manrope', 'Noto Sans SC', sans-serif; font-weight: 700; }
+        .glass-nav { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        html[lang="en"] .lang-cn { display: none; }
+        html[lang="cn"] .lang-en { display: none; }
+        .text-balance { text-wrap: balance; }
+        .tracking-ultra { letter-spacing: -0.04em; }
+        /* Hero typography refinements */
+        .hero-title-en {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+        }
+        .hero-title-cn {
+            font-family: 'Noto Serif SC', 'Manrope', serif;
+            font-size: clamp(1.875rem, 4vw, 3.25rem);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.3;
+        }
+        .hero-tagline-en {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            font-weight: 300;
+            letter-spacing: 0.01em;
+            line-height: 1.6;
+        }
+        .hero-tagline-cn {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            line-height: 1.75;
+        }
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.4em;
+            font-weight: 600;
+        }
+        /* Subtle scroll cue */
+        @keyframes scrollCue { 0%,100%{transform:translateY(0);opacity:.4} 50%{transform:translateY(8px);opacity:.9} }
+        .scroll-cue { animation: scrollCue 2.4s ease-in-out infinite; }
+        /* Fade-in on scroll */
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up { animation: fadeUp .8s ease-out both; }
+        /* Stat counter style */
+        .stat-num { font-feature-settings: "tnum"; }
+        /* Enhanced button hover effects */
+        button:hover { transform: scale(1.02); transition: transform 0.2s ease; }
+        /* Image hover effects */
+        img:hover { transform: scale(1.05); transition: transform 0.3s ease; }
+        /* Link hover effects */
+        a:hover { transform: translateY(-1px); transition: transform 0.2s ease; }
+        /* Service card refinements */
+        .service-card { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease; }
+        .service-card:hover { transform: translateY(-6px); }
+        /* Coverage pill */
+        .coverage-pill { transition: all .3s ease; }
+        .coverage-pill:hover { background: #002147; color: white; transform: scale(1.05); }
+        /* Subtle gold accent */
+        .gold-accent { color: #c8a44a; }
+        /* Ken Burns slow zoom for hero image */
+        @keyframes kenBurns { 0%{transform:scale(1)} 100%{transform:scale(1.08)} }
+        .ken-burns { animation: kenBurns 20s ease-out forwards; }
+        .fade-up { animation: fadeUp .8s ease-out both; }
+        .appear-visible { opacity: 1; transform: translateY(0); }
+        .fleet-card { transition: transform .45s ease, box-shadow .45s ease, border-color .35s ease; }
+        .fleet-card:hover { transform: translateY(-10px); box-shadow: 0 28px 80px rgba(0,0,0,0.16); }
+        .hero-deco { animation: pulse 4s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{opacity:.92;transform:scale(1)} 50%{opacity:1;transform:scale(1.02)} }
+        .modal-backdrop { background: rgba(8, 15, 37, 0.86); }
+        .fleet-modal { opacity: 0; transform: translateY(32px); transition: transform .35s ease, opacity .35s ease; }
+        .fleet-modal.show { opacity: 1; transform: translateY(0); }
+        .fleet-thumbnail { transition: opacity .25s ease, transform .25s ease; }
+        .fleet-thumbnail:hover { opacity: 0.85; transform: scale(1.02); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f7fafc]/85 dark:bg-[#000a1e]/85 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center px-12 py-5 max-w-[1440px] mx-auto">
+<a href="#" class="flex items-center gap-2 text-2xl font-extrabold tracking-tighter text-[#000a1e] dark:text-[#ffffff] font-headline">
+<span class="w-2 h-2 bg-[#c8a44a] rounded-full"></span>
+LyctRides
+</a>
+<div class="hidden md:flex items-center space-x-8 font-headline font-semibold text-xs tracking-[0.15em] uppercase">
+<a class="text-[#002147] dark:text-white relative pb-1 transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#c8a44a]" href="#">
+<span class="lang-en">Home</span><span class="lang-cn">首页</span>
+</a>
+<a class="text-[#50606f] dark:text-[#d1e1f4] hover:text-[#002147] dark:hover:text-white transition-all duration-300 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#c8a44a] after:transition-all hover:after:w-full" href="#about">
+<span class="lang-en">About</span><span class="lang-cn">关于</span>
+</a>
+<a class="text-[#50606f] dark:text-[#d1e1f4] hover:text-[#002147] dark:hover:text-white transition-all duration-300 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#c8a44a] after:transition-all hover:after:w-full" href="#services">
+<span class="lang-en">Services</span><span class="lang-cn">服务</span>
+</a>
+<a class="text-[#50606f] dark:text-[#d1e1f4] hover:text-[#002147] dark:hover:text-white transition-all duration-300 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#c8a44a] after:transition-all hover:after:w-full" href="#cities">
+<span class="lang-en">Cities</span><span class="lang-cn">城市</span>
+</a>
+<a class="text-[#50606f] dark:text-[#d1e1f4] hover:text-[#002147] dark:hover:text-white transition-all duration-300 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#c8a44a] after:transition-all hover:after:w-full" href="#fleet">
+<span class="lang-en">Fleet</span><span class="lang-cn">车队</span>
+</a>
+<a class="text-[#50606f] dark:text-[#d1e1f4] hover:text-[#002147] dark:hover:text-white transition-all duration-300 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#c8a44a] after:transition-all hover:after:w-full" href="#concierge">
+<span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span>
+</a>
+<a class="text-[#50606f] dark:text-[#d1e1f4] hover:text-[#002147] dark:hover:text-white transition-all duration-300 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#c8a44a] after:transition-all hover:after:w-full" href="#contact">
+<span class="lang-en">Contact</span><span class="lang-cn">联系</span>
+</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#002147] dark:text-[#f7fafc] font-headline font-bold text-[11px] tracking-[0.2em] cursor-pointer transition-all duration-300 hover:opacity-70" onclick="document.documentElement.lang = document.documentElement.lang === 'en' ? 'cn' : 'en'">
+<span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
+</button>
+<a href="#contact" class="hidden md:inline-block bg-primary text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#c8a44a] transition-all duration-300">
+<span class="lang-en">Book Now</span><span class="lang-cn">立即预订</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section (Reverted to SCREEN_3 style) -->
+<section class="relative h-screen flex items-center pt-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover ken-burns" data-alt="Luxurious chauffeur sedan traversing a metropolitan skyline at dusk" src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1920&q=80" />
+<div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
+</div>
+<div class="relative z-10 px-12 md:px-24 w-full max-w-7xl mx-auto">
+<div class="max-w-3xl space-y-8">
+<div class="flex items-center gap-3 text-[#c8a44a] hero-eyebrow uppercase">
+<span class="w-8 h-px bg-[#c8a44a]"></span>
+<span class="lang-en">Premium Chauffeur &middot; Greater China</span>
+<span class="lang-cn">高端礼宾出行 &middot; 大中华区</span>
+</div>
+<div class="space-y-6">
+<h1 class="text-white text-balance">
+<span class="lang-en hero-title-en block">Premium chauffeur service across Greater China.</span>
+<span class="lang-cn hero-title-cn block">覆盖大中华区的<br/>高端礼宾出行服务</span>
+</h1>
+<p class="text-white/75 max-w-xl">
+<span class="lang-en hero-tagline-en">Trusted by 10,000+ corporate clients and international executives traveling across mainland China, Hong Kong, Macau, and Taiwan.</span>
+<span class="lang-cn hero-tagline-cn">服务于逾万家企业客户及在华外籍高管，业务覆盖中国大陆、香港、澳门及台湾地区。</span>
+</p>
+</div>
+<div class="flex flex-wrap gap-3 pt-2">
+<div class="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-white/90 text-[11px] font-semibold tracking-[0.15em] uppercase">
+<span class="material-symbols-outlined text-[#c8a44a] text-base" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="lang-en">EHL-Certified</span><span class="lang-cn">洛桑认证</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-white/90 text-[11px] font-semibold tracking-[0.15em] uppercase">
+<span class="material-symbols-outlined text-[#c8a44a] text-base" style="font-variation-settings: 'FILL' 1;">public</span>
+<span class="lang-en">300+ Cities</span><span class="lang-cn">300+ 城市</span>
+</div>
+<div class="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-white/90 text-[11px] font-semibold tracking-[0.15em] uppercase">
+<span class="material-symbols-outlined text-[#c8a44a] text-base" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<span class="lang-en">24/7 Support</span><span class="lang-cn">7&times;24 服务</span>
+</div>
+</div>
+<div class="pt-6 flex flex-wrap items-center gap-6">
+<a href="#contact" class="bg-white text-primary font-semibold px-8 py-4 rounded-md hover:bg-[#c8a44a] hover:text-white transition-all duration-300 flex items-center gap-3 text-[12px] tracking-[0.2em] uppercase shadow-lg">
+<span class="lang-en">Request a Consultation</span><span class="lang-cn">预约咨询</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+<a href="#services" class="text-white/80 font-semibold px-2 py-4 border-b border-white/30 hover:border-[#c8a44a] hover:text-[#c8a44a] transition-all duration-300 text-[12px] tracking-[0.2em] uppercase">
+<span class="lang-en">Explore Services</span><span class="lang-cn">了解服务</span>
+</a>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 scroll-cue text-white/50 text-[10px] font-semibold tracking-[0.35em] uppercase flex flex-col items-center gap-1.5">
+<span class="lang-en">Scroll</span><span class="lang-cn">向下滚动</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</div>
+</section>
+<!-- TRUST METRICS BAR (NEW) -->
+<section class="bg-primary text-white py-16 px-12 md:px-24 border-y border-white/5">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+<div class="text-center md:text-left space-y-2 md:border-r md:border-white/10 md:pr-8">
+<p class="text-5xl md:text-6xl font-extrabold tracking-tight stat-num gold-accent">10,000<span class="text-3xl align-top">+</span></p>
+<p class="text-xs uppercase tracking-[0.25em] text-on-primary-container/80 font-semibold">
+<span class="lang-en">Corporate Clients</span><span class="lang-cn">企业客户</span>
+</p>
+</div>
+<div class="text-center md:text-left space-y-2 md:border-r md:border-white/10 md:pr-8">
+<p class="text-5xl md:text-6xl font-extrabold tracking-tight stat-num gold-accent">300<span class="text-3xl align-top">+</span></p>
+<p class="text-xs uppercase tracking-[0.25em] text-on-primary-container/80 font-semibold">
+<span class="lang-en">Cities Covered</span><span class="lang-cn">覆盖城市</span>
+</p>
+</div>
+<div class="text-center md:text-left space-y-2 md:border-r md:border-white/10 md:pr-8">
+<p class="text-5xl md:text-6xl font-extrabold tracking-tight stat-num gold-accent">15<span class="text-3xl align-top">+</span></p>
+<p class="text-xs uppercase tracking-[0.25em] text-on-primary-container/80 font-semibold">
+<span class="lang-en">Years of Service</span><span class="lang-cn">服务年限</span>
+</p>
+</div>
+<div class="text-center md:text-left space-y-2">
+<p class="text-5xl md:text-6xl font-extrabold tracking-tight stat-num gold-accent">24/7</p>
+<p class="text-xs uppercase tracking-[0.25em] text-on-primary-container/80 font-semibold">
+<span class="lang-en">Concierge Support</span><span class="lang-cn">礼宾服务</span>
+</p>
+</div>
+</div>
+</section>
+<!-- About Section (Reverted to SCREEN_3 style) -->
+<section class="py-32 px-12 md:px-24 bg-surface max-w-7xl mx-auto grid md:grid-cols-12 gap-20 items-center" id="about">
+<div class="md:col-span-7 space-y-10">
+<div class="w-16 h-1 bg-primary"></div>
+<h2 class="text-primary text-4xl md:text-5xl font-extrabold tracking-tight">
+<span class="lang-en">Professional Mobility Across Greater China</span>
+<span class="lang-cn">专业出行服务，覆盖大中华区全境</span>
+</h2>
+<div class="text-secondary text-lg leading-relaxed space-y-6 font-light">
+<p>
+<span class="lang-en">LyctRides provides professional chauffeur and concierge mobility services across mainland China, Hong Kong, Macau, and Taiwan. We specialize in serving expatriates and international businesses operating in China, with a track record of over 10,000 corporate clients served.</span>
+<span class="lang-cn">光年出行为企业客户及在华外籍人士提供覆盖中国大陆、香港、澳门及台湾地区的专业礼宾出行服务，累计服务企业客户逾万家。</span>
+</p>
+<p>
+<span class="lang-en">Beyond day-to-day executive travel, we offer end-to-end ground transportation solutions for large-scale events &mdash; including trade shows, exhibitions, fashion weeks, and corporate summits &mdash; managing everything from fleet coordination to on-site logistics.</span>
+<span class="lang-cn">除日常商务出行外，我们亦为大型展会、时装周、企业峰会等活动提供一站式地面出行解决方案，统筹车队调度与现场执行的全流程管理。</span>
+</p>
+</div>
+<div class="pt-4">
+<p class="text-xs font-bold uppercase tracking-[0.25em] text-secondary mb-4">
+<span class="lang-en">Service Coverage</span><span class="lang-cn">服务覆盖</span>
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="coverage-pill px-4 py-2 border border-primary/20 text-primary text-xs font-semibold tracking-wider uppercase rounded-full"><span class="lang-en">Mainland China</span><span class="lang-cn">中国大陆</span></span>
+<span class="coverage-pill px-4 py-2 border border-primary/20 text-primary text-xs font-semibold tracking-wider uppercase rounded-full"><span class="lang-en">Hong Kong</span><span class="lang-cn">香港</span></span>
+<span class="coverage-pill px-4 py-2 border border-primary/20 text-primary text-xs font-semibold tracking-wider uppercase rounded-full"><span class="lang-en">Macau</span><span class="lang-cn">澳门</span></span>
+<span class="coverage-pill px-4 py-2 border border-primary/20 text-primary text-xs font-semibold tracking-wider uppercase rounded-full"><span class="lang-en">Taiwan</span><span class="lang-cn">台湾</span></span>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 relative">
+<div class="aspect-[4/5] shadow-2xl overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover" data-alt="Detail shot of a professional chauffeur in a crisp suit opening a luxury car door with white gloved hand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEfVNC7pnYWd2_eXhdzYz_e7ckI-xvyq6a9mK07MNoRAAKj7fiRmUUEOk3_S60cDdvygPhe1breDOavVow4Z_dv0FrqL-qO0bTIlRxqdRY78upbQZK3Ebl_I9e-oq_YdgTuJi3baxW7Ppf3___1xY3H_4vxq2t7nWt-z_WqJYCAHTW4ecrBnNS9OHVQWF51IbzHckmh85bK9EOJb27HGhg-7x1fMxiy2opVZma8uixbn3G47IorxtIjBHQ-rMymfvo8wbufZhLwoY"/>
+</div>
+<div class="absolute -bottom-10 -left-10 p-10 bg-primary text-white max-w-[320px] hidden lg:block shadow-2xl border-l-4 border-[#c8a44a]">
+<p class="text-xs font-bold uppercase tracking-[0.3em] text-[#c8a44a] mb-4">
+<span class="lang-en">Established 2010</span><span class="lang-cn">成立于 2010</span>
+</p>
+<p class="text-sm font-light leading-relaxed">
+<span class="lang-en">Built on a foundation of operational excellence, security, and bilingual hospitality across Greater China.</span>
+<span class="lang-cn">以卓越运营、安全保障与双语礼宾服务为基石，深耕大中华区。</span>
+</p>
+</div>
+</div>
+</section>
+<!-- Service Offerings (Reverted to SCREEN_3 layout) -->
+<section class="py-32 px-12 md:px-24 bg-surface-container-low" id="services">
+<div class="max-w-7xl mx-auto">
+<div class="mb-24 max-w-3xl mx-auto text-center space-y-6">
+<div class="flex items-center justify-center gap-3">
+<span class="w-12 h-px bg-[#c8a44a]"></span>
+<p class="uppercase tracking-[0.4em] text-[#c8a44a] font-bold text-xs">
+<span class="lang-en">Our Services</span><span class="lang-cn">我们的服务</span>
+</p>
+<span class="w-12 h-px bg-[#c8a44a]"></span>
+</div>
+<h2 class="text-4xl md:text-6xl font-extrabold text-primary tracking-ultra">
+<span class="lang-en">A LyctAI-Powered end to end Mobility Solution</span><span class="lang-cn">光年AI大模型赋能全能型出行解决方案</span>
+</h2>
+<p class="text-secondary text-lg font-light leading-relaxed">
+<span class="lang-en">From airport pickup to multi-city corporate programs and full-scale event transportation &mdash; we operate as a single point of contact for all your ground transportation needs.</span>
+<span class="lang-cn">从单次机场接送到多城市企业出行项目，再到大型活动地面出行——我们为您提供一站式的出行服务。</span>
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Airport Transfer -->
+<div class="service-card group bg-white p-12 hover:shadow-2xl relative flex flex-col justify-between overflow-hidden h-[450px] border-t-2 border-transparent hover:border-[#c8a44a]">
+<div class="absolute top-0 right-0 p-10 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
+<span class="material-symbols-outlined text-[12rem]">flight_land</span>
+</div>
+<div class="space-y-6 relative z-10">
+<div class="w-12 h-12 bg-primary/5 flex items-center justify-center rounded-md group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-primary group-hover:text-white">flight_land</span>
+</div>
+<h3 class="text-2xl font-bold text-primary">
+<span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span>
+</h3>
+<p class="text-secondary leading-relaxed font-light">
+<span class="lang-en">Real-time flight tracking: your chauffeur waits even if flights delay. Meet-and-greet at all major Chinese international airports.</span>
+<span class="lang-cn">实时航班追踪，航班延误司机照样守候。覆盖中国各大国际机场的接送机及举牌服务。</span>
+</p>
+</div>
+<button class="text-primary font-bold text-xs tracking-widest uppercase flex items-center gap-3 group-hover:gap-5 transition-all">
+<span class="lang-en">Explore Service</span><span class="lang-cn">探索服务</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Hourly Hire -->
+<div class="service-card group bg-primary-container p-12 hover:shadow-2xl relative flex flex-col justify-between h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
+<div class="absolute top-0 right-0 p-10 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
+<span class="material-symbols-outlined text-[12rem] text-white">schedule</span>
+</div>
+<div class="space-y-6 relative z-10">
+<div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-md group-hover:bg-[#c8a44a] transition-all">
+<span class="material-symbols-outlined text-white">schedule</span>
+</div>
+<h3 class="text-2xl font-bold text-white">
+<span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn">时租与日租</span>
+</h3>
+<p class="text-on-primary-container/80 leading-relaxed font-light">
+<span class="lang-en">Custom routes, dedicated chauffeur, on your schedule. Perfect for packed business days across a city.</span>
+<span class="lang-cn">自定义路线、专属司机、灵活时间。完美匹配紧凑的商务行程。</span>
+</p>
+</div>
+<button class="text-white font-bold text-xs tracking-widest uppercase flex items-center gap-3 group-hover:gap-5 transition-all relative z-10">
+<span class="lang-en">Customize Schedule</span><span class="lang-cn">定制行程</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- City to City -->
+<div class="service-card group bg-white p-12 hover:shadow-2xl relative flex flex-col justify-between h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
+<div class="absolute top-0 right-0 p-10 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
+<span class="material-symbols-outlined text-[12rem]">route</span>
+</div>
+<div class="space-y-6 relative z-10">
+<div class="w-12 h-12 bg-primary/5 flex items-center justify-center rounded-md group-hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-primary group-hover:text-white">route</span>
+</div>
+<h3 class="text-2xl font-bold text-primary">
+<span class="lang-en">City-to-City Rides</span><span class="lang-cn">城际通行</span>
+</h3>
+<p class="text-secondary leading-relaxed font-light">
+<span class="lang-en">Seamless intercity journeys &mdash; Shenzhen to Hong Kong, Shanghai to Hangzhou, and 50+ popular routes. Stress-free, chauffeur-driven.</span>
+<span class="lang-cn">无缝城际通行——深圳至香港、上海至杭州等 50+ 热门路线。专属司机，一路无忧。</span>
+</p>
+</div>
+<button class="text-primary font-bold text-xs tracking-widest uppercase flex items-center gap-3 group-hover:gap-5 transition-all relative z-10">
+<span class="lang-en">Book Transfer</span><span class="lang-cn">预订接送</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Business Events (Large span) - FEATURED -->
+<div class="service-card group md:col-span-2 bg-primary p-12 hover:shadow-2xl relative flex items-center gap-10 overflow-hidden h-[450px] border-t-2 border-[#c8a44a]">
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-[#c8a44a]/5 rounded-full"></div>
+<div class="w-1/2 space-y-6 relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-[#c8a44a]/15 flex items-center justify-center rounded-md">
+<span class="material-symbols-outlined text-[#c8a44a]">groups</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c8a44a]">
+<span class="lang-en">Featured Service</span><span class="lang-cn">特色服务</span>
+</span>
+</div>
+<h3 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+<span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span>
+</h3>
+<p class="text-on-primary-container/85 leading-relaxed font-light text-base">
+<span class="lang-en">End-to-end ground transportation for trade shows, exhibitions, fashion weeks, and corporate summits &mdash; from fleet coordination to on-site logistics.</span>
+<span class="lang-cn">为大型展会、时装周、企业峰会等活动提供一站式地面出行解决方案，统筹车队调度与现场执行的全流程管理。</span>
+</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="text-[10px] font-semibold uppercase tracking-wider px-3 py-1 bg-white/5 text-white/80 rounded-full border border-white/10"><span class="lang-en">Trade Shows</span><span class="lang-cn">展会</span></span>
+<span class="text-[10px] font-semibold uppercase tracking-wider px-3 py-1 bg-white/5 text-white/80 rounded-full border border-white/10"><span class="lang-en">Exhibitions</span><span class="lang-cn">展览</span></span>
+<span class="text-[10px] font-semibold uppercase tracking-wider px-3 py-1 bg-white/5 text-white/80 rounded-full border border-white/10"><span class="lang-en">Summits</span><span class="lang-cn">峰会</span></span>
+<span class="text-[10px] font-semibold uppercase tracking-wider px-3 py-1 bg-white/5 text-white/80 rounded-full border border-white/10"><span class="lang-en">Fashion Weeks</span><span class="lang-cn">时装周</span></span>
+</div>
+<button class="text-[#c8a44a] font-bold text-xs tracking-widest uppercase flex items-center gap-3 group-hover:gap-5 transition-all pt-6">
+<span class="lang-en">Event Consultation</span><span class="lang-cn">活动咨询</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="w-1/2 h-full">
+<img class="w-full h-full object-cover rounded-lg" data-alt="Row of identical premium black vans lined up outside a grand convention center during a sunny day" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB1a0KtQ8CWdYs0Cz31gx6lpmzdcT9UHtoX9xZ9-Wn5RgacRC1dBFMeyan2ZOvx8q7-dw3NfTHUmfzOg7JC7qDDUvfK4_2TuGkWjH2gSCePsXSpMO4kfRWrzefg18zCzT2Jucll7Y1EHGrUcxtWxgkcSJGz6EXfI6D82IF6TGx5eMU38szJiZxtOFIXRQ5PCkRHgD1cUOIMPsbb5jxu0Y4t97NfQFoRVXhN7I2qYYQjfOWux1OMQDWAttyj1CD08ve55BFeRg8z-8"/>
+</div>
+</div>
+<!-- Private Jet -->
+<div class="service-card group bg-surface-container p-12 hover:shadow-2xl relative flex flex-col justify-between h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
+<div class="absolute top-0 right-0 p-10 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
+<span class="material-symbols-outlined text-[12rem]">flight</span>
+</div>
+<div class="space-y-6 relative z-10">
+<div class="w-12 h-12 bg-primary/5 flex items-center justify-center rounded-md group-hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-primary group-hover:text-white">flight</span>
+</div>
+<h3 class="text-2xl font-bold text-primary">
+<span class="lang-en">Private Jet Booking</span><span class="lang-cn">公务机预订</span>
+</h3>
+<p class="text-secondary leading-relaxed font-light">
+<span class="lang-en">Private jets, luxury hotels, airport VIP terminals, high-speed rail booking &mdash; your personal concierge for any journey.</span>
+<span class="lang-cn">公务机、豪华酒店、机场 VIP 通道、高铁预订——您的专属旅行管家。</span>
+</p>
+</div>
+<button class="text-primary font-bold text-xs tracking-widest uppercase flex items-center gap-3 group-hover:gap-5 transition-all relative z-10">
+<span class="lang-en">Inquire Now</span><span class="lang-cn">立即询价</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Concierge Service (New Required Section) -->
+<section class="py-32 px-12 md:px-24 bg-primary text-white overflow-hidden relative" id="concierge">
+<div class="absolute inset-0 opacity-5 pointer-events-none">
+<div class="absolute top-20 right-20"><span class="material-symbols-outlined text-[30rem]">support_agent</span></div>
+</div>
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="max-w-3xl mb-24 space-y-6">
+<p class="uppercase tracking-[0.4em] text-tertiary-fixed-dim font-bold text-xs"><span class="lang-en">Exemplary Support</span><span class="lang-cn">卓越支持</span></p>
+<h2 class="text-4xl md:text-6xl font-extrabold tracking-ultra"><span class="lang-en">Concierge Service: Beyond Transportation</span><span class="lang-cn">礼宾服务：超越出行</span></h2>
+<p class="text-on-primary-container text-xl font-light leading-relaxed"><span class="lang-en">Our concierge desk acts as your personal operational center in China, bridging language and cultural gaps with precision and care.</span><span class="lang-cn">我们的礼宾台作为您在中国大陆的个人运营中心，以精准和关怀弥合语言和文化差异。</span></p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6 group">
+<div class="w-12 h-1 bg-tertiary-fixed-dim transition-all group-hover:w-full"></div>
+<h3 class="text-xl font-bold">
+<span class="lang-en">24/7 Bilingual Support</span>
+<span class="lang-cn">7×24小时双语服务</span>
+</h3>
+<p class="text-on-primary-container/70 text-sm leading-relaxed font-light"><span class="lang-en">Round-the-clock assistance in English and Chinese to handle itinerary changes or local inquiries in real-time.</span><span class="lang-cn">全天候提供英语和中文协助，实时处理行程变更或本地查询。</span></p>
+</div>
+<div class="space-y-6 group">
+<div class="w-12 h-1 bg-tertiary-fixed-dim transition-all group-hover:w-full"></div>
+<h3 class="text-xl font-bold">
+<span class="lang-en">Meet &amp; Greet Service</span>
+<span class="lang-cn">接机举牌服务</span>
+</h3>
+<p class="text-on-primary-container/70 text-sm leading-relaxed font-light"><span class="lang-en">Professional airport reception with customized signage, escort to the vehicle, and dedicated luggage coordination.</span><span class="lang-cn">专业机场接待，提供定制标牌、护送到车辆，并专属行李协调。</span></p>
+</div>
+<div class="space-y-6 group">
+<div class="w-12 h-1 bg-tertiary-fixed-dim transition-all group-hover:w-full"></div>
+<h3 class="text-xl font-bold">
+<span class="lang-en">Corporate Payment</span>
+<span class="lang-cn">企业支付方案</span>
+</h3>
+<p class="text-on-primary-container/70 text-sm leading-relaxed font-light"><span class="lang-en">Centralized billing, detailed expense reporting, and flexible payment terms designed for global procurement systems.</span><span class="lang-cn">集中计费、详细费用报告，以及为全球采购系统设计的灵活支付条款。</span></p>
+</div>
+<div class="space-y-6 group">
+<div class="w-12 h-1 bg-tertiary-fixed-dim transition-all group-hover:w-full"></div>
+<h3 class="text-xl font-bold">
+<span class="lang-en">Customized Travel</span>
+<span class="lang-cn">出行服务定制</span>
+</h3>
+<p class="text-on-primary-container/70 text-sm leading-relaxed font-light"><span class="lang-en">Bespoke itineraries, multi-vehicle coordination for executive groups, and specialized route planning for site visits.</span><span class="lang-cn">定制行程、高管团队多车协调，以及专属路线规划用于参观。</span></p>
+</div>
+</div>
+</div>
+</section>
+<!-- OPERATING CITIES SECTION (NEW) -->
+<section class="py-32 px-12 md:px-24 bg-surface-container-low" id="cities">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="w-12 h-px bg-[#c8a44a]"></span>
+<p class="uppercase tracking-[0.4em] text-[#c8a44a] font-bold text-xs">
+<span class="lang-en">Operating Cities</span><span class="lang-cn">服务城市</span>
+</p>
+</div>
+<h2 class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight max-w-2xl">
+<span class="lang-en">Seamless coverage across 300+ cities</span>
+<span class="lang-cn">覆盖 300+ 城市，畅行无缝</span>
+</h2>
+</div>
+<p class="text-secondary text-sm md:text-base font-light leading-relaxed max-w-md">
+<span class="lang-en">From metropolitan hubs to emerging business centers &mdash; consistent service standards, wherever you travel.</span>
+<span class="lang-cn">从一线都市到新兴商务中心——无论您身在何处，服务标准始终如一。</span>
+</p>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M20,180 L40,175 L40,160 L60,158 L60,145 L85,143 L85,160 L110,158 L110,130 L135,128 L135,155 L160,153 L160,140 L180,138 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<path d="M65,143 L65,100 L75,100 L75,143 Z" fill="#c8a44a" opacity="0.5"/>
+<circle cx="70" cy="95" r="4" fill="#c8a44a" opacity="0.7"/>
+<path d="M120,128 L120,85 L130,85 L130,128 Z" fill="#c8a44a" opacity="0.5"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">Capital</span><span class="lang-cn">首都</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Beijing</span><span class="lang-cn">北京</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">PEK &middot; PKX</span><span class="lang-cn">首都 &middot; 大兴</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M10,180 L25,175 L30,150 L40,148 L45,170 L60,168 L65,120 L80,118 L85,140 L100,138 L105,90 L115,88 L120,130 L135,128 L140,110 L155,108 L160,145 L180,143 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<circle cx="110" cy="60" r="3" fill="#c8a44a"/>
+<rect x="108" y="60" width="4" height="40" fill="#c8a44a" opacity="0.5"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">Financial Hub</span><span class="lang-cn">金融中心</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Shanghai</span><span class="lang-cn">上海</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">PVG &middot; SHA</span><span class="lang-cn">浦东 &middot; 虹桥</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M15,180 L30,175 L35,140 L50,138 L55,155 L70,153 L75,100 L90,98 L95,125 L110,123 L115,80 L130,78 L135,115 L150,113 L155,130 L170,128 L175,145 L180,143 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<rect x="125" y="40" width="3" height="38" fill="#c8a44a"/>
+<rect x="123" y="40" width="8" height="4" fill="#c8a44a"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">SAR</span><span class="lang-cn">特别行政区</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Hong Kong</span><span class="lang-cn">香港</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">HKG</span><span class="lang-cn">赤鱲角</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M20,180 L40,178 L45,160 L60,158 L65,130 L80,128 L85,155 L105,153 L110,100 L125,98 L130,135 L150,133 L155,115 L170,113 L180,150 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<path d="M115,98 Q110,88 115,75 Q120,88 115,98" fill="#c8a44a" opacity="0.6"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">Tech Hub</span><span class="lang-cn">科技中心</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Shenzhen</span><span class="lang-cn">深圳</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">SZX</span><span class="lang-cn">宝安</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M10,180 L25,178 L30,165 L50,163 L55,135 L75,133 L80,150 L95,148 L100,110 L120,108 L125,130 L145,128 L150,155 L175,153 L180,175 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<path d="M60,133 Q58,115 68,110 Q78,115 76,133" fill="#c8a44a" opacity="0.5"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">South</span><span class="lang-cn">华南</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Guangzhou</span><span class="lang-cn">广州</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">CAN</span><span class="lang-cn">白云</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M15,180 L35,178 L40,155 L60,153 L65,170 L85,168 L90,125 L110,123 L115,150 L135,148 L140,105 L160,103 L170,145 L180,143 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<path d="M60,160 Q55,150 60,148 Q65,150 60,160" fill="#c8a44a" opacity="0.5"/>
+<path d="M150,100 L145,85 L155,85 Z" fill="#c8a44a" opacity="0.7"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">SAR</span><span class="lang-cn">特别行政区</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Macau</span><span class="lang-cn">澳门</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">MFM</span><span class="lang-cn">氹仔</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M0,180 Q40,160 60,170 Q80,180 100,175 Q120,168 140,172 Q160,178 180,175 L180,180 Z" fill="#c8a44a" opacity="0.4"/>
+<path d="M30,175 L35,150 L55,148 L60,165 L80,163 L85,130 L105,128 L110,155 L130,153 L135,140 L155,138 L160,160 L175,158 L180,175 Z" fill="#c8a44a" opacity="0.25"/>
+<circle cx="90" cy="75" r="4" fill="#c8a44a" opacity="0.8"/>
+<path d="M88,79 Q85,90 88,100 L92,100 Q95,90 92,79 Z" fill="#c8a44a" opacity="0.5"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">West Lake</span><span class="lang-cn">西湖</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Hangzhou</span><span class="lang-cn">杭州</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">HGH</span><span class="lang-cn">萧山</span></p>
+</div>
+</div>
+
+<div class="group relative overflow-hidden rounded-lg bg-primary aspect-[4/5] cursor-pointer">
+<svg class="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice">
+<rect width="200" height="250" fill="#0a1628"/>
+<path d="M10,180 L30,178 L35,155 L55,153 L60,135 L80,133 L85,155 L105,153 L110,120 L130,118 L135,140 L155,138 L160,155 L180,153 L180,180 Z" fill="#c8a44a" opacity="0.3"/>
+<circle cx="110" cy="110" r="6" fill="#c8a44a" opacity="0.6"/>
+<path d="M104,110 L116,110 M110,104 L110,116" stroke="#c8a44a" stroke-width="1.5" opacity="0.8"/>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8a44a] mb-1"><span class="lang-en">West</span><span class="lang-cn">西部</span></p>
+<h3 class="text-2xl font-bold mb-1"><span class="lang-en">Chengdu</span><span class="lang-cn">成都</span></h3>
+<p class="text-xs text-white/70"><span class="lang-en">CTU &middot; TFU</span><span class="lang-cn">双流 &middot; 天府</span></p>
+</div>
+</div>
+</div>
+
+<div class="mt-12 text-center">
+<p class="text-sm text-secondary font-light">
+<span class="lang-en">Plus 290+ additional cities across Greater China and select international hubs.</span>
+<span class="lang-cn">以及大中华区与全球重点枢纽共 290+ 其他城市。</span>
+</p>
+</div>
+</div>
+</section>
+
+<!-- TOP ROUTES SECTION (NEW) -->
+<section class="py-24 px-12 md:px-24 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="mb-12 text-center space-y-4">
+<div class="flex items-center justify-center gap-3">
+<span class="w-12 h-px bg-[#c8a44a]"></span>
+<p class="uppercase tracking-[0.4em] text-[#c8a44a] font-bold text-xs">
+<span class="lang-en">Popular Routes</span><span class="lang-cn">热门城际路线</span>
+</p>
+<span class="w-12 h-px bg-[#c8a44a]"></span>
+</div>
+<h2 class="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
+<span class="lang-en">Top city-to-city routes</span>
+<span class="lang-cn">热门城际通行</span>
+</h2>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Shenzhen</span><span class="lang-cn">深圳</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Hong Kong</span><span class="lang-cn">香港</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1h 30m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 55 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Shanghai</span><span class="lang-cn">上海</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Hangzhou</span><span class="lang-cn">杭州</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1h 40m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 180 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Beijing</span><span class="lang-cn">北京</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Tianjin</span><span class="lang-cn">天津</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1h 15m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 120 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Zhuhai</span><span class="lang-cn">珠海</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Macau</span><span class="lang-cn">澳门</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 40m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 15 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Guangzhou</span><span class="lang-cn">广州</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Shenzhen</span><span class="lang-cn">深圳</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1h 30m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 130 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Shanghai</span><span class="lang-cn">上海</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Suzhou</span><span class="lang-cn">苏州</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 50m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 100 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Guangzhou</span><span class="lang-cn">广州</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Hong Kong</span><span class="lang-cn">香港</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 2h 30m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 180 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+
+<a href="#contact" class="group bg-white border border-outline-variant/20 rounded-lg p-6 hover:border-[#c8a44a] hover:shadow-lg transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-primary"><span class="lang-en">Chengdu</span><span class="lang-cn">成都</span></span>
+<span class="material-symbols-outlined text-[#c8a44a] text-base">arrow_forward</span>
+<span class="text-sm font-bold text-primary"><span class="lang-en">Chongqing</span><span class="lang-cn">重庆</span></span>
+</div>
+<div class="flex items-center gap-3 text-xs text-secondary font-light">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 2h 30m</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">route</span> 300 km</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[#c8a44a] mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="lang-en">Book now &rarr;</span><span class="lang-cn">立即预订 &rarr;</span>
+</p>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Fleet Section (Reverted to SCREEN_3 style) -->
+<section class="py-32 px-12 md:px-24 bg-surface max-w-7xl mx-auto" id="fleet">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-10">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-px bg-primary"></div>
+<span class="text-xs font-bold uppercase tracking-[0.4em] text-secondary">
+<span class="lang-en">The Fleet</span><span class="lang-cn">车队概览</span>
+</span>
+</div>
+<h2 class="text-5xl font-extrabold text-primary tracking-ultra">
+<span class="lang-en">A Fleet of Distinction</span><span class="lang-cn">卓越车队阵容</span>
+</h2>
+</div>
+<div class="max-w-md text-secondary text-right font-light leading-relaxed">
+<span class="lang-en">Our vehicles are impeccably maintained, featuring the latest in comfort and technology for a serene travel experience.</span>
+<span class="lang-cn">我们的车辆保养精良，配备最先进的舒适性功能与科技，确保宁静顺畅的出行。</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- S-Class -->
+<button type="button" class="fleet-card group relative overflow-hidden bg-surface-container-low rounded-lg p-10 text-left fade-up" data-model="Mercedes-Benz S-Class" data-desc="The pinnacle of luxury sedan mobility, ideal for executive transfers and VIP arrival." data-desc-cn="豪华轿车出行的巅峰之作，专为高管接送和VIP抵达而设计。" data-gallery="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80" data-volume="520L" data-capacity="3 passengers, 2 large suitcases" data-capacity-cn="3 名乘客，2 个大行李箱" aria-label="Open Mercedes-Benz S-Class details">
+<div class="relative z-10 space-y-3">
+<h3 class="text-2xl font-bold text-primary">Mercedes-Benz S-Class</h3>
+<p class="text-secondary text-sm font-light">
+<span class="lang-en">The pinnacle of luxury sedan mobility.</span>
+<span class="lang-cn">豪华轿车出行的巅峰之作。</span>
+</p>
+</div>
+<img class="w-full h-72 object-cover mt-10 group-hover:scale-105 transition-transform duration-1000 rounded-xl" data-alt="Profile view of a Mercedes-Benz S-Class" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"/>
+<div class="mt-10 flex flex-col gap-3 border-t border-outline-variant/30 pt-8">
+<div class="flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-secondary">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">person</span> 3</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">luggage</span> 2</span>
+</div>
+<div class="text-xs text-secondary/80">
+<p class="font-semibold"><span class="lang-en">Trunk Volume</span><span class="lang-cn">后备箱容积</span>: 520L</p>
+</div>
+</div>
+</button>
+<!-- V-Class -->
+<button type="button" class="fleet-card group relative overflow-hidden bg-surface-container-low rounded-lg p-10 text-left fade-up" data-model="Mercedes-Benz V-Class" data-desc="Spacious, premium mobility for teams and families with generous interior volume." data-desc-cn="为团队和家庭提供宽敞、高端的出行体验，内部空间宽敞。" data-gallery="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f8d7?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80" data-volume="720L" data-capacity="6 passengers, 4 large suitcases" data-capacity-cn="6 名乘客，4 个大行李箱" aria-label="Open Mercedes-Benz V-Class details">
+  <div class="relative z-10 space-y-3">
+    <h3 class="text-2xl font-bold text-primary">Mercedes-Benz V-Class</h3>
+    <p class="text-secondary text-sm font-light">
+      <span class="lang-en">Spacious, premium mobility for teams.</span>
+      <span class="lang-cn">为团队提供宽敞、高端的出行体验。</span>
+    </p>
+  </div>
+  <img class="w-full h-72 object-cover rounded-xl mt-10 group-hover:scale-105 transition-transform duration-1000" data-alt="Mercedes-Benz V-Class luxury MPV" src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f8d7?auto=format&fit=crop&w=1200&q=80" />
+  <div class="mt-10 flex flex-col gap-3 border-t border-outline-variant/30 pt-8">
+    <div class="flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-secondary">
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">person</span> 6</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">luggage</span> 4</span>
+    </div>
+    <div class="text-xs text-secondary/80">
+      <p class="font-semibold"><span class="lang-en">Trunk Volume</span><span class="lang-cn">后备箱容积</span>: 720L</p>
+    </div>
+  </div>
+</button>
+<!-- Zeekr 009 -->
+<button type="button" class="fleet-card group relative overflow-hidden bg-surface-container-low rounded-lg p-10 text-left fade-up" data-model="ZEEKR 009" data-desc="The future of sustainable luxury MPVs with a modern electric drive and spacious cabin." data-desc-cn="可持续豪华 MPV 的未来之选，配备现代电动驱动和宽敞车舱。" data-gallery="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1511300966694-2ac4a517e09d?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80" data-volume="680L" data-capacity="6 passengers, 4 large suitcases" data-capacity-cn="6 名乘客，4 个大行李箱" aria-label="Open ZEEKR 009 details">
+  <div class="relative z-10 space-y-3">
+    <h3 class="text-2xl font-bold text-primary">ZEEKR 009</h3>
+    <p class="text-secondary text-sm font-light">
+      <span class="lang-en">The future of sustainable luxury MPVs.</span>
+      <span class="lang-cn">可持续豪华 MPV 的未来之选。</span>
+    </p>
+  </div>
+  <img class="w-full h-72 object-cover rounded-xl mt-10 group-hover:scale-105 transition-transform duration-1000" data-alt="White ZEEKR 009 electric MPV" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80" />
+  <div class="mt-10 flex flex-col gap-3 border-t border-outline-variant/30 pt-8">
+    <div class="flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-secondary">
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">person</span> 6</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">luggage</span> 4</span>
+    </div>
+    <div class="text-xs text-secondary/80">
+      <p class="font-semibold"><span class="lang-en">Trunk Volume</span><span class="lang-cn">后备箱容积</span>: 680L</p>
+    </div>
+  </div>
+</button>
+<!-- E-Class -->
+<button type="button" class="fleet-card group relative overflow-hidden bg-surface-container-low rounded-lg p-10 text-left fade-up" data-model="Mercedes-Benz E-Class" data-desc="Executive elegance for daily business travel with refined comfort and sophisticated presence." data-desc-cn="日常商务出行的行政级优雅，配备精致舒适和优雅外观。" data-gallery="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80|https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80" data-volume="500L" data-capacity="3 passengers, 2 large suitcases" data-capacity-cn="3 名乘客，2 个大行李箱" aria-label="Open Mercedes-Benz E-Class details">
+  <div class="relative z-10 space-y-3">
+    <h3 class="text-2xl font-bold text-primary">Mercedes-Benz E-Class</h3>
+    <p class="text-secondary text-sm font-light">
+      <span class="lang-en">Executive elegance for daily business.</span>
+      <span class="lang-cn">日常商务出行的行政级优雅。</span>
+    </p>
+  </div>
+  <img class="w-full h-72 object-cover rounded-xl mt-10 group-hover:scale-105 transition-transform duration-1000" data-alt="Silver Mercedes-Benz E-Class sedan" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80" />
+  <div class="mt-10 flex flex-col gap-3 border-t border-outline-variant/30 pt-8">
+    <div class="flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-secondary">
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">person</span> 3</span>
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">luggage</span> 2</span>
+    </div>
+    <div class="text-xs text-secondary/80">
+      <p class="font-semibold"><span class="lang-en">Trunk Volume</span><span class="lang-cn">后备箱容积</span>: 500L</p>
+    </div>
+  </div>
+</button>
+</section>
+<!-- Why Choose Us (Reverted to SCREEN_3 style) -->
+<section class="py-32 px-12 md:px-24 bg-primary-container text-white">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24">
+<div class="space-y-12">
+<h2 class="text-5xl font-extrabold tracking-ultra">
+<span class="lang-en">Uncompromising Standards</span><span class="lang-cn">毫不妥协的标准</span>
+</h2>
+<div class="space-y-12">
+<!-- Standard Item -->
+<div class="flex gap-8">
+<div class="flex-shrink-0 w-14 h-14 bg-white/5 flex items-center justify-center rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-3xl">verified_user</span>
+</div>
+<div class="space-y-3">
+<h4 class="text-xl font-bold">
+<span class="lang-en">EHL-Certified Standards</span><span class="lang-cn">EHL 认证标准</span>
+</h4>
+<p class="text-on-primary-container/70 text-sm font-light leading-relaxed">
+<span class="lang-en">Our chauffeurs are trained to the prestigious Swiss hospitality standards for world-class service.</span>
+<span class="lang-cn">我们的司机均接受过久负盛名的瑞士酒店管理标准培训，提供世界级服务。</span>
+</p>
+</div>
+</div>
+<!-- Standard Item -->
+<div class="flex gap-8 border-l-4 border-tertiary-fixed-dim pl-8">
+<div class="flex-shrink-0 w-14 h-14 bg-white/5 flex items-center justify-center rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-3xl">lock</span>
+</div>
+<div class="space-y-3">
+<h4 class="text-xl font-bold">
+<span class="lang-en">Full Compliance</span><span class="lang-cn">全面合规</span>
+</h4>
+<p class="text-on-primary-container/70 text-sm font-light leading-relaxed">
+<span class="lang-en">Licensed, insured, and legally compliant across all 300+ operation cities in China.</span>
+<span class="lang-cn">在所有 300 多个运营城市均具备许可、保险且符合法律规定。</span>
+</p>
+</div>
+</div>
+<!-- Standard Item -->
+<div class="flex gap-8">
+<div class="flex-shrink-0 w-14 h-14 bg-white/5 flex items-center justify-center rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-3xl">analytics</span>
+</div>
+<div class="space-y-3">
+<h4 class="text-xl font-bold">
+<span class="lang-en">Intelligent Reconciliation</span><span class="lang-cn">智能结算系统</span>
+</h4>
+<p class="text-on-primary-container/70 text-sm font-light leading-relaxed">
+<span class="lang-en">Automated, transparent billing and reporting for clear corporate financial auditing.</span>
+<span class="lang-cn">为企业提供自动化、透明的计费与报告，确保财务清晰。</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/5 p-16 rounded-lg border border-white/10 flex flex-col justify-center relative shadow-2xl">
+<div class="space-y-10">
+<p class="text-3xl font-light italic leading-relaxed text-balance">
+<span class="lang-en">"The level of service provided by LyctRides during our annual summit in Shanghai was beyond expectations. Truly the gold standard for mobility in China."</span>
+<span class="lang-cn">“光年出行在我们在上海举行的年度峰会期间提供的服务水平超出了预期。确实是中国出行的黄金标准。”</span>
+</p>
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest overflow-hidden border border-white/20">
+<img class="w-full h-full object-cover" data-alt="Portrait of a sophisticated female business executive with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJwcwLbgktFtLB4n_Hjflu-83PSf_LV84a0Di6mMBg1Dp06NTeQpMAReeaMUmVeO-28uoefgNzU96f7JJk4vtJBgYF4mu0KtksuyRUTCGB3M1f_VJbPdT-QCh4ubanuAlQ7Sft7uARY5UpuaOYKGEnsPldBhKutV0HzdB8zbxYCmYXqdogRi6Cz3E8gtZa5DvZEyKIZCIy6GZPi-aXOZ5Y6qVo7Q7oaVc0sGiKcdb251ZOpzrLLcfihLLBORd_iRi6WyF_g258nd8"/>
+</div>
+<div>
+<p class="font-bold text-lg">Director of Global Logistics</p>
+<p class="text-xs text-on-primary-container font-medium tracking-widest uppercase mt-1">Fortune 500 Tech Firm</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Who We Serve (replaces logo strip) -->
+<section class="py-24 px-12 md:px-24 bg-surface border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 space-y-3">
+<p class="text-xs font-bold tracking-[0.4em] uppercase text-secondary">
+<span class="lang-en">Who We Serve</span><span class="lang-cn">服务对象</span>
+</p>
+<h2 class="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
+<span class="lang-en">Trusted by global travelers in China</span>
+<span class="lang-cn">服务于在华全球商旅人士</span>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center p-10 bg-white rounded-lg border border-outline-variant/10 hover:shadow-lg transition-shadow">
+<div class="w-14 h-14 mx-auto bg-primary/5 flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-primary">person_pin_circle</span>
+</div>
+<h3 class="text-lg font-bold text-primary mb-3">
+<span class="lang-en">Expatriates in China</span><span class="lang-cn">在华外籍人士</span>
+</h3>
+<p class="text-secondary text-sm font-light leading-relaxed">
+<span class="lang-en">Bilingual chauffeurs and 24/7 concierge support for foreign professionals living and working across Greater China.</span>
+<span class="lang-cn">为在大中华区生活和工作的外籍专业人士提供双语司机及 24/7 礼宾支持。</span>
+</p>
+</div>
+<div class="text-center p-10 bg-primary text-white rounded-lg hover:shadow-lg transition-shadow">
+<div class="w-14 h-14 mx-auto bg-[#c8a44a]/15 flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-[#c8a44a]">business_center</span>
+</div>
+<h3 class="text-lg font-bold mb-3">
+<span class="lang-en">Multinational Companies</span><span class="lang-cn">跨国企业</span>
+</h3>
+<p class="text-on-primary-container/85 text-sm font-light leading-relaxed">
+<span class="lang-en">Corporate accounts with consolidated billing, dedicated account managers, and SLA-backed reliability for executive travel programs.</span>
+<span class="lang-cn">企业账户提供统一对账、专属客户经理及 SLA 保障，服务高管出行项目。</span>
+</p>
+</div>
+<div class="text-center p-10 bg-white rounded-lg border border-outline-variant/10 hover:shadow-lg transition-shadow">
+<div class="w-14 h-14 mx-auto bg-primary/5 flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-primary">event</span>
+</div>
+<h3 class="text-lg font-bold text-primary mb-3">
+<span class="lang-en">Event Organizers</span><span class="lang-cn">活动主办方</span>
+</h3>
+<p class="text-secondary text-sm font-light leading-relaxed">
+<span class="lang-en">End-to-end ground transportation for trade shows, exhibitions, fashion weeks, and large-scale corporate summits.</span>
+<span class="lang-cn">为大型展会、时装周及企业峰会提供一站式地面出行解决方案。</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA & Contact Section -->
+<section class="py-32 px-12 md:px-24 bg-surface max-w-7xl mx-auto" id="contact">
+<div class="bg-surface-container-low p-16 md:p-24 rounded-lg flex flex-col md:flex-row gap-20 shadow-sm">
+<div class="md:w-1/2 space-y-10">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+<span class="lang-en">24/7 Available</span><span class="lang-cn">7&times;24 在线</span>
+</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-extrabold text-primary tracking-ultra">
+<span class="lang-en">Let&rsquo;s plan your next journey in China.</span>
+<span class="lang-cn">为您的下一段中国旅程做好准备。</span>
+</h2>
+<p class="text-secondary text-lg font-light leading-relaxed">
+<span class="lang-en">Whether it&rsquo;s a single airport pickup or a multi-city corporate program, our team will respond within one business hour.</span>
+<span class="lang-cn">无论是单次机场接送还是多城市企业出行项目，我们的团队将在一个工作小时内回复您。</span>
+</p>
+<div class="space-y-5 pt-4 border-t border-primary/10">
+<div class="flex items-center gap-5 text-primary group cursor-pointer">
+<div class="w-12 h-12 bg-primary/5 group-hover:bg-primary group-hover:text-white flex items-center justify-center rounded-md transition-all">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-[0.25em] text-secondary"><span class="lang-en">Phone</span><span class="lang-cn">电话</span></p>
+<p class="text-lg font-bold">+86 (400) 123-4567</p>
+</div>
+</div>
+<a href="mailto:concierge@lyctrides.com?subject=LyctRides%20Inquiry" class="flex items-center gap-5 text-primary group cursor-pointer no-underline">
+<div class="w-12 h-12 bg-primary/5 group-hover:bg-primary group-hover:text-white flex items-center justify-center rounded-md transition-all">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-[0.25em] text-secondary"><span class="lang-en">Email</span><span class="lang-cn">邮箱</span></p>
+<p class="text-lg font-bold">concierge@lyctrides.com</p>
+</div>
+</a>
+<div class="flex items-center gap-5 text-primary group cursor-pointer">
+<div class="w-12 h-12 bg-primary/5 group-hover:bg-primary group-hover:text-white flex items-center justify-center rounded-md transition-all">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-[0.25em] text-secondary"><span class="lang-en">WeChat</span><span class="lang-cn">微信</span></p>
+<p class="text-lg font-bold">LyctRides_VIP</p>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 bg-white p-12 shadow-2xl rounded-sm">
+<form class="space-y-8">
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+<span class="lang-en">Full Name</span><span class="lang-cn">姓名</span>
+</label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+<span class="lang-en">Work Email</span><span class="lang-cn">企业邮箱</span>
+</label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium" placeholder="john@company.com" type="email"/>
+</div>
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+<span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span>
+</label>
+<select class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium appearance-none">
+<option>Corporate Account / 企业账户</option>
+<option>One-time VIP Transfer / 单次 VIP 接送</option>
+<option>Event Logistics / 活动物流</option>
+</select>
+</div>
+<button class="w-full bg-primary text-white font-bold py-6 rounded-md hover:bg-[#c8a44a] transition-all text-sm tracking-widest uppercase mt-4 flex items-center justify-center gap-3 group">
+<span class="lang-en">Send Inquiry</span><span class="lang-cn">提交咨询</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-[11px] text-secondary text-center pt-2 font-light leading-relaxed">
+<span class="lang-en">By submitting, you agree to our privacy policy. Response within 1 business hour.</span>
+<span class="lang-cn">提交即表示您同意我们的隐私政策。1 个工作小时内回复。</span>
+</p>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer (Reverted to SCREEN_3 style) -->
+<footer class="w-full py-20 px-12 bg-[#0a1628] text-white">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+<div class="md:col-span-5 space-y-6">
+<div class="flex items-center gap-2 font-headline font-extrabold text-2xl tracking-tighter">
+<span class="w-2 h-2 bg-[#c8a44a] rounded-full"></span>
+LyctRides
+</div>
+<p class="font-body text-sm leading-relaxed text-white/60 font-light max-w-md">
+<span class="lang-en">Professional chauffeur and concierge mobility services across mainland China, Hong Kong, Macau, and Taiwan.</span>
+<span class="lang-cn">提供覆盖中国大陆、香港、澳门及台湾地区的专业礼宾出行服务。</span>
+</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-white/5 rounded-full border border-white/10 text-white/70">
+<span class="lang-en">EHL Certified</span><span class="lang-cn">EHL 认证</span>
+</span>
+<span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-white/5 rounded-full border border-white/10 text-white/70">
+<span class="lang-en">ISO 9001</span><span class="lang-cn">ISO 9001</span>
+</span>
+</div>
+</div>
+<div class="md:col-span-2 space-y-5">
+<p class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c8a44a]">
+<span class="lang-en">Services</span><span class="lang-cn">服务</span>
+</p>
+<div class="flex flex-col gap-3 font-body text-xs text-white/70">
+<a class="hover:text-[#c8a44a] transition-colors" href="#services"><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></a>
+<a class="hover:text-[#c8a44a] transition-colors" href="#services"><span class="lang-en">Hourly Hire</span><span class="lang-cn">时租</span></a>
+<a class="hover:text-[#c8a44a] transition-colors" href="#services"><span class="lang-en">Events</span><span class="lang-cn">活动出行</span></a>
+<a class="hover:text-[#c8a44a] transition-colors" href="#services"><span class="lang-en">Private Jet</span><span class="lang-cn">公务机</span></a>
+</div>
+</div>
+<div class="md:col-span-2 space-y-5">
+<p class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c8a44a]">
+<span class="lang-en">Company</span><span class="lang-cn">公司</span>
+</p>
+<div class="flex flex-col gap-3 font-body text-xs text-white/70">
+<a class="hover:text-[#c8a44a] transition-colors" href="#about"><span class="lang-en">About Us</span><span class="lang-cn">关于我们</span></a>
+<a class="hover:text-[#c8a44a] transition-colors" href="#fleet"><span class="lang-en">Our Fleet</span><span class="lang-cn">车队</span></a>
+<a class="hover:text-[#c8a44a] transition-colors" href="#"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+<a class="hover:text-[#c8a44a] transition-colors" href="#"><span class="lang-en">Newsroom</span><span class="lang-cn">新闻中心</span></a>
+</div>
+</div>
+<div class="md:col-span-3 space-y-5">
+<p class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c8a44a]">
+<span class="lang-en">24/7 Concierge</span><span class="lang-cn">7&times;24 礼宾</span>
+</p>
+<div class="space-y-3 text-xs text-white/70 font-light">
+<p class="flex items-center gap-3"><span class="material-symbols-outlined text-base text-[#c8a44a]">call</span> +86 (400) 123-4567</p>
+<p class="flex items-center gap-3"><span class="material-symbols-outlined text-base text-[#c8a44a]">mail</span> <a href="mailto:concierge@lyctrides.com?subject=LyctRides%20Inquiry" class="text-white/70 hover:text-white transition-colors">concierge@lyctrides.com</a></p>
+<p class="flex items-center gap-3"><span class="material-symbols-outlined text-base text-[#c8a44a]">chat</span> WeChat: LyctRides_VIP</p>
+</div>
+</div>
+</div>
+<div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-medium tracking-wider text-white/40">
+<p>&copy; 2024 LyctRides. <span class="lang-en">All rights reserved.</span><span class="lang-cn">保留所有权利。</span></p>
+<div class="flex gap-6 uppercase">
+<a href="#" class="hover:text-white transition-colors"><span class="lang-en">Privacy</span><span class="lang-cn">隐私</span></a>
+<a href="#" class="hover:text-white transition-colors"><span class="lang-en">Terms</span><span class="lang-cn">条款</span></a>
+<a href="#" class="hover:text-white transition-colors"><span class="lang-en">Cookies</span><span class="lang-cn">Cookie</span></a>
+</div>
+</div>
+</div>
+</footer>
+<div id="fleet-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-6 backdrop-blur-sm">
+  <div class="relative w-full max-w-5xl overflow-hidden rounded-[32px] border border-white/10 bg-surface shadow-2xl">
+    <button id="fleet-modal-close" class="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-xl text-white/90 transition hover:bg-white/20">×</button>
+    <div class="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] p-8">
+      <div class="space-y-6">
+        <div class="space-y-3">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-secondary"><span class="lang-en">Fleet details</span><span class="lang-cn">车队详情</span></p>
+          <h3 id="fleet-modal-title" class="text-4xl font-extrabold text-primary"></h3>
+          <p id="fleet-modal-desc" class="text-sm leading-relaxed text-secondary"></p>
+        </div>
+        <div id="fleet-modal-gallery" class="grid grid-cols-1 gap-4"></div>
+      </div>
+      <div class="space-y-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div class="space-y-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-secondary"><span class="lang-en">Specifications</span><span class="lang-cn">规格参数</span></p>
+          <div class="space-y-3 text-sm text-secondary">
+            <p><span class="font-semibold text-white"><span class="lang-en">Capacity:</span><span class="lang-cn">载客量：</span></span> <span id="fleet-modal-capacity"></span></p>
+            <p><span class="font-semibold text-white"><span class="lang-en">Trunk Volume:</span><span class="lang-cn">后备箱容积：</span></span> <span id="fleet-modal-volume"></span></p>
+          </div>
+        </div>
+        <a href="mailto:concierge@lyctrides.com?subject=LyctRides%20Fleet%20Inquiry" class="inline-flex w-full items-center justify-center rounded-full bg-[#c8a44a] px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-[#c8a44a]/10 transition hover:bg-[#e5c16f]"><span class="lang-en">Request this vehicle</span><span class="lang-cn">申请此车辆</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const fleetModal = document.getElementById('fleet-modal');
+  const fleetModalClose = document.getElementById('fleet-modal-close');
+  const fleetModalTitle = document.getElementById('fleet-modal-title');
+  const fleetModalDesc = document.getElementById('fleet-modal-desc');
+  const fleetModalCapacity = document.getElementById('fleet-modal-capacity');
+  const fleetModalVolume = document.getElementById('fleet-modal-volume');
+  const fleetModalGallery = document.getElementById('fleet-modal-gallery');
+  document.querySelectorAll('.fleet-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const gallery = card.dataset.gallery ? card.dataset.gallery.split('|') : [];
+      const isCn = document.documentElement.lang === 'cn';
+      fleetModalTitle.textContent = card.dataset.model || '';
+      fleetModalDesc.textContent = (isCn ? card.dataset.descCn : card.dataset.desc) || '';
+      fleetModalCapacity.textContent = (isCn ? card.dataset.capacityCn : card.dataset.capacity) || '';
+      fleetModalVolume.textContent = card.dataset.volume || '';
+      fleetModalGallery.innerHTML = gallery.map(src => `
+        <div class="overflow-hidden rounded-3xl border border-white/10 bg-surface-container-high">
+          <img src="${src.trim()}" alt="${card.dataset.model} gallery image" class="h-52 w-full object-cover transition duration-500 hover:scale-105" />
+        </div>
+      `).join('');
+      fleetModal.classList.remove('hidden');
+      fleetModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  const closeFleetModal = () => {
+    fleetModal.classList.add('hidden');
+    fleetModal.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+  fleetModalClose.addEventListener('click', closeFleetModal);
+  fleetModal.addEventListener('click', event => {
+    if (event.target === fleetModal) closeFleetModal();
+  });
+</script>
+<!-- Scroll Animation Script -->
+<script>
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections except hero
+  document.querySelectorAll('section:not(#hero)').forEach(section => {
+    observer.observe(section);
+  });
+
+  // Observe fleet cards with stagger
+  document.querySelectorAll('.fleet-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+    observer.observe(card);
+  });
+
+  // Observe service cards
+  document.querySelectorAll('.service-card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+</body></html>
