@@ -1268,24 +1268,24 @@ LyctRides
 </div>
 </div>
 <div class="md:w-1/2 bg-white p-12 shadow-2xl rounded-sm">
-<form class="space-y-8">
+<form class="space-y-8" name="contact" method="POST" netlify>
 <div class="space-y-3">
 <label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
 <span class="lang-en">Full Name</span><span class="lang-cn">姓名</span>
 </label>
-<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium" placeholder="John Doe" type="text"/>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium" placeholder="John Doe" type="text" name="name" required/>
 </div>
 <div class="space-y-3">
 <label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
 <span class="lang-en">Work Email</span><span class="lang-cn">企业邮箱</span>
 </label>
-<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium" placeholder="john@company.com" type="email"/>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium" placeholder="john@company.com" type="email" name="email" required/>
 </div>
 <div class="space-y-3">
 <label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
 <span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span>
 </label>
-<select class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium appearance-none">
+<select class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant/30 focus:ring-0 focus:border-primary transition-all p-4 text-sm font-medium appearance-none" name="service-interest" required>
 <option>Corporate Account / 企业账户</option>
 <option>One-time VIP Transfer / 单次 VIP 接送</option>
 <option>Event Logistics / 活动物流</option>
