@@ -160,7 +160,7 @@
 <body class="bg-background text-on-surface">
 <!-- Top Navigation Bar -->
 <nav id="main-nav" class="fixed top-0 w-full z-50 bg-[#f7fafc]/85 dark:bg-[#000a1e]/85 backdrop-blur-xl border-b border-outline-variant/10 transition-all duration-500">
-<div class="flex justify-between items-center px-12 py-5 max-w-[1440px] mx-auto">
+<div class="flex justify-between items-center px-4 md:px-12 py-4 md:py-5 max-w-[1440px] mx-auto">
 <a href="#" class="flex items-center gap-2 text-2xl font-extrabold tracking-tighter text-[#000a1e] dark:text-[#ffffff] font-headline">
 <span class="w-2 h-2 bg-[#c8a44a] rounded-full"></span>
 LyctRides
@@ -195,16 +195,30 @@ LyctRides
 <a href="#contact" class="hidden md:inline-block bg-primary text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#c8a44a] transition-all duration-300">
 <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
 </a>
+<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary" aria-label="Open menu">
+<span class="material-symbols-outlined text-2xl" id="mobile-menu-icon">menu</span>
+</button>
 </div>
 </div>
 </nav>
+<!-- Mobile Navigation Drawer -->
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden bg-[#f7fafc] border-b border-outline-variant/20 shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+<a href="#" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-primary border-b border-outline-variant/10"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+<a href="#about" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-outline-variant/10"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+<a href="#services" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-outline-variant/10"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+<a href="#cities" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-outline-variant/10"><span class="lang-en">Cities</span><span class="lang-cn">城市</span></a>
+<a href="#fleet" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-outline-variant/10"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+<a href="#concierge" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-outline-variant/10"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+<a href="#contact" onclick="closeMobileMenu()" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-outline-variant/10"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+<a href="#contact" onclick="closeMobileMenu()" class="mt-3 block text-center bg-primary text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-3 rounded-md hover:bg-[#c8a44a] transition-all"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+</div>
 <!-- Hero Section (Reverted to SCREEN_3 style) -->
 <section id="hero-section" class="relative h-screen flex items-center pt-24 overflow-hidden">
 <div class="absolute inset-0 z-0">
 <img id="hero-bg-img" class="w-full h-full object-cover ken-burns" data-alt="Luxurious chauffeur sedan traversing a metropolitan skyline at dusk" src="https://raw.githubusercontent.com/jessemaronly/LyctRides-Company-Website/main/images/hero.jpg" />
 <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
 </div>
-<div id="hero-content" class="relative z-10 px-12 md:px-24 w-full max-w-7xl mx-auto">
+<div id="hero-content" class="relative z-10 px-5 md:px-24 w-full max-w-7xl mx-auto">
 <div class="max-w-3xl space-y-8">
 <div class="flex items-center gap-3 text-[#c8a44a] hero-eyebrow uppercase">
 <span class="w-8 h-px bg-[#c8a44a]"></span>
@@ -252,8 +266,8 @@ LyctRides
 </div>
 </section>
 <!-- TRUST METRICS BAR (NEW) -->
-<section class="bg-primary text-white py-16 px-12 md:px-24 border-y border-white/5">
-<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+<section class="bg-primary text-white py-10 md:py-16 px-5 md:px-24 border-y border-white/5">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 <div class="text-center md:text-left space-y-2 md:border-r md:border-white/10 md:pr-8">
 <p class="text-5xl md:text-6xl font-extrabold tracking-tight stat-num gold-accent">10,000<span class="text-3xl align-top">+</span></p>
 <p class="text-xs uppercase tracking-[0.25em] text-on-primary-container/80 font-semibold">
@@ -281,7 +295,7 @@ LyctRides
 </div>
 </section>
 <!-- About Section (Reverted to SCREEN_3 style) -->
-<section class="py-32 px-12 md:px-24 bg-surface max-w-7xl mx-auto grid md:grid-cols-12 gap-20 items-center" id="about">
+<section class="py-16 md:py-32 px-5 md:px-24 bg-surface max-w-7xl mx-auto grid md:grid-cols-12 gap-10 md:gap-20 items-center" id="about">
 <div class="md:col-span-7 space-y-10">
 <div class="w-16 h-1 bg-primary"></div>
 <h2 class="text-primary text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -326,9 +340,9 @@ LyctRides
 </div>
 </section>
 <!-- Service Offerings (Reverted to SCREEN_3 layout) -->
-<section class="py-32 px-12 md:px-24 bg-surface-container-low" id="services">
+<section class="py-16 md:py-32 px-5 md:px-24 bg-surface-container-low" id="services">
 <div class="max-w-7xl mx-auto">
-<div class="mb-24 max-w-3xl mx-auto text-center space-y-6">
+<div class="mb-12 md:mb-24 max-w-3xl mx-auto text-center space-y-6">
 <div class="flex items-center justify-center gap-3">
 <span class="w-12 h-px bg-[#c8a44a]"></span>
 <p class="uppercase tracking-[0.4em] text-[#c8a44a] font-bold text-xs">
@@ -346,7 +360,7 @@ LyctRides
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Airport Transfer -->
-<div class="service-card group bg-white p-12 hover:shadow-2xl relative flex flex-col justify-between overflow-hidden h-[450px] border-t-2 border-transparent hover:border-[#c8a44a]">
+<div class="service-card group bg-white p-8 md:p-12 hover:shadow-2xl relative flex flex-col justify-between overflow-hidden h-auto min-h-[320px] md:h-[450px] border-t-2 border-transparent hover:border-[#c8a44a]">
 <div class="absolute top-0 right-0 p-10 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
 <span class="material-symbols-outlined text-[12rem]">flight_land</span>
 </div>
@@ -368,7 +382,7 @@ LyctRides
 </button>
 </div>
 <!-- Hourly Hire -->
-<div class="service-card group bg-primary-container p-12 hover:shadow-2xl relative flex flex-col justify-between h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
+<div class="service-card group bg-primary-container p-8 md:p-12 hover:shadow-2xl relative flex flex-col justify-between h-auto min-h-[320px] md:h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
 <div class="absolute top-0 right-0 p-10 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
 <span class="material-symbols-outlined text-[12rem] text-white">schedule</span>
 </div>
@@ -390,7 +404,7 @@ LyctRides
 </button>
 </div>
 <!-- City to City -->
-<div class="service-card group bg-white p-12 hover:shadow-2xl relative flex flex-col justify-between h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
+<div class="service-card group bg-white p-8 md:p-12 hover:shadow-2xl relative flex flex-col justify-between h-auto min-h-[320px] md:h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
 <div class="absolute top-0 right-0 p-10 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
 <span class="material-symbols-outlined text-[12rem]">route</span>
 </div>
@@ -412,9 +426,9 @@ LyctRides
 </button>
 </div>
 <!-- Business Events (Large span) - FEATURED -->
-<div class="service-card group md:col-span-2 bg-primary p-12 hover:shadow-2xl relative flex items-center gap-10 overflow-hidden h-[450px] border-t-2 border-[#c8a44a]">
+<div class="service-card group md:col-span-2 bg-primary p-8 md:p-12 hover:shadow-2xl relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 overflow-hidden h-auto md:h-[450px] border-t-2 border-[#c8a44a]">
 <div class="absolute -top-20 -right-20 w-96 h-96 bg-[#c8a44a]/5 rounded-full"></div>
-<div class="w-1/2 space-y-6 relative z-10">
+<div class="w-full md:w-1/2 space-y-6 relative z-10">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 bg-[#c8a44a]/15 flex items-center justify-center rounded-md">
 <span class="material-symbols-outlined text-[#c8a44a]">groups</span>
@@ -441,12 +455,12 @@ LyctRides
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
 </div>
-<div class="w-1/2 h-full">
+<div class="w-full md:w-1/2 h-48 md:h-full">
 <img class="w-full h-full object-cover rounded-lg" data-alt="Row of identical premium black vans lined up outside a grand convention center during a sunny day" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB1a0KtQ8CWdYs0Cz31gx6lpmzdcT9UHtoX9xZ9-Wn5RgacRC1dBFMeyan2ZOvx8q7-dw3NfTHUmfzOg7JC7qDDUvfK4_2TuGkWjH2gSCePsXSpMO4kfRWrzefg18zCzT2Jucll7Y1EHGrUcxtWxgkcSJGz6EXfI6D82IF6TGx5eMU38szJiZxtOFIXRQ5PCkRHgD1cUOIMPsbb5jxu0Y4t97NfQFoRVXhN7I2qYYQjfOWux1OMQDWAttyj1CD08ve55BFeRg8z-8"/>
 </div>
 </div>
 <!-- Private Jet -->
-<div class="service-card group bg-surface-container p-12 hover:shadow-2xl relative flex flex-col justify-between h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
+<div class="service-card group bg-surface-container p-8 md:p-12 hover:shadow-2xl relative flex flex-col justify-between h-auto min-h-[320px] md:h-[450px] border-t-2 border-transparent hover:border-[#c8a44a] overflow-hidden">
 <div class="absolute top-0 right-0 p-10 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity">
 <span class="material-symbols-outlined text-[12rem]">flight</span>
 </div>
@@ -471,17 +485,17 @@ LyctRides
 </div>
 </section>
 <!-- Concierge Service (New Required Section) -->
-<section class="py-32 px-12 md:px-24 bg-primary text-white overflow-hidden relative" id="concierge">
+<section class="py-16 md:py-32 px-5 md:px-24 bg-primary text-white overflow-hidden relative" id="concierge">
 <div class="absolute inset-0 opacity-5 pointer-events-none">
 <div class="absolute top-20 right-20"><span class="material-symbols-outlined text-[30rem]">support_agent</span></div>
 </div>
 <div class="max-w-7xl mx-auto relative z-10">
-<div class="max-w-3xl mb-24 space-y-6">
+<div class="max-w-3xl mb-12 md:mb-24 space-y-6">
 <p class="uppercase tracking-[0.4em] text-tertiary-fixed-dim font-bold text-xs"><span class="lang-en">Around the clock, around China</span><span class="lang-cn">卓越支持</span></p>
 <h2 class="text-4xl md:text-6xl font-extrabold tracking-ultra"><span class="lang-en">Your personal operations team in China.</span><span class="lang-cn">礼宾服务：超越出行</span></h2>
 <p class="text-on-primary-container text-xl font-light leading-relaxed"><span class="lang-en">Navigating China as an international executive can be complex. Our concierge team handles the logistics, language, and local knowledge — so you don't have to.</span><span class="lang-cn">我们的礼宾台作为您在中国大陆的个人运营中心，以精准和关怀弥合语言和文化差异。</span></p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
 <div class="space-y-6 group">
 <div class="w-12 h-1 bg-tertiary-fixed-dim transition-all group-hover:w-full"></div>
 <h3 class="text-xl font-bold">
@@ -518,7 +532,7 @@ LyctRides
 </div>
 </section>
 <!-- OPERATING CITIES SECTION (NEW) -->
-<section class="py-32 px-12 md:px-24 bg-surface-container-low" id="cities">
+<section class="py-16 md:py-32 px-5 md:px-24 bg-surface-container-low" id="cities">
 <div class="max-w-7xl mx-auto">
 <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
 <div class="space-y-4">
@@ -671,7 +685,7 @@ LyctRides
 </section>
 
 <!-- TOP ROUTES SECTION (NEW) -->
-<section class="py-24 px-12 md:px-24 bg-surface">
+<section class="py-14 md:py-24 px-5 md:px-24 bg-surface">
 <div class="max-w-7xl mx-auto">
 <div class="mb-12 text-center space-y-4">
 <div class="flex items-center justify-center gap-3">
@@ -820,8 +834,8 @@ LyctRides
 </section>
 
 <!-- Fleet Section (Reverted to SCREEN_3 style) -->
-<section class="py-32 px-12 md:px-24 bg-surface max-w-7xl mx-auto" id="fleet">
-<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-10">
+<section class="py-16 md:py-32 px-5 md:px-24 bg-surface max-w-7xl mx-auto" id="fleet">
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-24 gap-6 md:gap-10">
 <div class="space-y-6">
 <div class="flex items-center gap-4">
 <div class="w-12 h-px bg-primary"></div>
@@ -961,11 +975,11 @@ LyctRides
 </button>
 </section>
 <!-- CHAUFFEUR & IN-CAR STANDARDS (REPLACES "Why Choose Us") -->
-<section class="py-24 bg-[#f7fafc]" id="chauffeur">
-<div class="max-w-7xl mx-auto px-12 md:px-24">
+<section class="py-14 md:py-24 bg-[#f7fafc]" id="chauffeur">
+<div class="max-w-7xl mx-auto px-5 md:px-24">
 
 <!-- Section header -->
-<div class="text-center mb-20 space-y-5">
+<div class="text-center mb-10 md:mb-20 space-y-5">
 <div class="flex items-center justify-center gap-3">
 <span class="w-12 h-px bg-[#c8a44a]"></span>
 <p class="uppercase tracking-[0.4em] text-[#c8a44a] font-bold text-xs">
@@ -988,7 +1002,7 @@ LyctRides
 <div class="grid md:grid-cols-2 gap-0">
 
 <!-- Left: image -->
-<div class="relative bg-[#f1f4f6] flex items-center justify-center p-10 md:p-16 min-h-[420px]">
+<div class="relative bg-[#f1f4f6] flex items-center justify-center p-6 md:p-16 min-h-[300px] md:min-h-[420px]">
 <div class="chauffeur-carousel relative max-h-[400px] w-auto overflow-hidden rounded-xl" style="aspect-ratio: 3/4; max-width: 320px; margin: 0 auto;">
 <div class="chauffeur-track flex h-full w-full transition-transform duration-500 ease-out" style="will-change: transform;">
 <img src="https://raw.githubusercontent.com/jessemaronly/LyctRides-Company-Website/main/images/chauffeur.jpg" alt="LyctRides chauffeur — front view" class="chauffeur-slide h-full w-full flex-shrink-0 object-cover" draggable="false"/>
@@ -1010,7 +1024,7 @@ LyctRides
 </div>
 
 <!-- Right: text -->
-<div class="p-12 md:p-16 flex flex-col justify-center space-y-8">
+<div class="p-8 md:p-16 flex flex-col justify-center space-y-8">
 <div class="space-y-2">
 <p class="text-xs font-bold uppercase tracking-[0.3em] text-[#c8a44a]">
 <span class="lang-en">01 — Presentation</span><span class="lang-cn">01 — 仪表着装</span>
@@ -1059,7 +1073,7 @@ LyctRides
 <div class="grid md:grid-cols-2 gap-0">
 
 <!-- Left: text -->
-<div class="p-12 md:p-16 flex flex-col justify-center space-y-8">
+<div class="p-8 md:p-16 flex flex-col justify-center space-y-8">
 <div class="space-y-2">
 <p class="text-xs font-bold uppercase tracking-[0.3em] text-[#c8a44a]">
 <span class="lang-en">02 — In-Car Experience</span><span class="lang-cn">02 — 车内体验</span>
@@ -1220,8 +1234,8 @@ LyctRides
 </div>
 </section>
 <!-- CTA & Contact Section -->
-<section class="py-32 px-12 md:px-24 bg-surface max-w-7xl mx-auto" id="contact">
-<div class="bg-surface-container-low p-16 md:p-24 rounded-lg flex flex-col md:flex-row gap-20 shadow-sm">
+<section class="py-16 md:py-32 px-5 md:px-24 bg-surface max-w-7xl mx-auto" id="contact">
+<div class="bg-surface-container-low p-6 md:p-24 rounded-lg flex flex-col md:flex-row gap-10 md:gap-20 shadow-sm">
 <div class="md:w-1/2 space-y-10">
 <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/10 rounded-full">
 <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -1276,7 +1290,7 @@ LyctRides
 </div>
 </div>
 </div>
-<div class="md:w-1/2 bg-white p-12 shadow-2xl rounded-sm">
+<div class="md:w-1/2 bg-white p-6 md:p-12 shadow-2xl rounded-sm">
 <form class="space-y-8" name="contact" method="POST" netlify>
 <div class="space-y-3">
 <label class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
@@ -1313,7 +1327,7 @@ LyctRides
 </div>
 </section>
 <!-- Footer (Reverted to SCREEN_3 style) -->
-<footer class="w-full py-20 px-12 bg-[#0a1628] text-white">
+<footer class="w-full py-12 md:py-20 px-5 md:px-12 bg-[#0a1628] text-white">
 <div class="max-w-[1440px] mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
 <div class="md:col-span-5 space-y-6">
@@ -1378,9 +1392,9 @@ LyctRides
 </div>
 </footer>
 <div id="fleet-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-6 backdrop-blur-sm">
-  <div class="relative w-full max-w-5xl overflow-hidden rounded-[32px] border border-white/10 bg-surface shadow-2xl">
+  <div class="relative w-full max-w-5xl overflow-y-auto max-h-[90vh] rounded-2xl md:rounded-[32px] border border-white/10 bg-surface shadow-2xl">
     <button id="fleet-modal-close" class="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-xl text-white/90 transition hover:bg-white/20">×</button>
-    <div class="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] p-8">
+    <div class="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] p-4 md:p-8">
       <div class="space-y-6">
         <div class="space-y-3">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-secondary"><span class="lang-en">Fleet details</span><span class="lang-cn">车队详情</span></p>
@@ -1403,6 +1417,30 @@ LyctRides
   </div>
 </div>
 <script>
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    mobileMenuIcon.textContent = 'menu';
+    document.body.style.overflow = '';
+  }
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+        mobileMenuIcon.textContent = 'close';
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  }
+
   const fleetModal = document.getElementById('fleet-modal');
   const fleetModalClose = document.getElementById('fleet-modal-close');
   const fleetModalTitle = document.getElementById('fleet-modal-title');
