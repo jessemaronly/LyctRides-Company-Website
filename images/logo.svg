@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 380" width="1700" height="380">
+  <title>LyctRides — Web Header Lockup (v3)</title>
+  <desc>Horizontal lockup for website headers. Crimson Pro Bold L + Albert Sans Medium "LyctRides".</desc>
+  <g transform="translate(200, 190)">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#0A0A0A" stroke-width="6"/>
+    <text x="0" y="0"
+          font-family="'Crimson Pro', 'Times New Roman', serif"
+          font-weight="700"
+          font-size="180"
+          text-anchor="middle"
+          dominant-baseline="central"
+          fill="#0A0A0A">L</text>
+  </g>
+  <line x1="380" y1="120" x2="380" y2="260" stroke="#0A0A0A" stroke-width="2" opacity="0.6"/>
+  <text x="430" y="190"
+        font-family="'Albert Sans', 'Cambria', 'Helvetica Neue', sans-serif"
+        font-weight="500"
+        font-size="200"
+        letter-spacing="-8"
+        dominant-baseline="central"
+        fill="#0A0A0A">LyctRides</text>
+</svg>

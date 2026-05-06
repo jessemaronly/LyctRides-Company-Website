@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>News & Insights | LyctRides</title>
+<meta name="description" content="Company announcements, awards, and industry updates from LyctRides — executive chauffeur service across Greater China."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#0A0A0A",
+        surface: "#FAFAF7",
+        secondary: "#50606f"
+      },
+      fontFamily: {
+        headline: ["Albert Sans"],
+        body: ["Albert Sans"],
+        mono: ["JetBrains Mono"]
+      }
+    }
+  }
+}
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; background: #FAFAF7; }
+  h1, h2, h3 { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
+  html[lang="en"] .lang-cn { display: none; }
+  html[lang="cn"] .lang-en { display: none; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .fade-up { animation: fadeUp .6s ease-out both; }
+  .news-card { transition: transform .3s ease, box-shadow .3s ease, border-color .25s ease; }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+  .filter-chip { transition: all .2s ease; }
+</style>
+</head>
+<body class="text-[#0A0A0A]">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#FAFAF7]/90 backdrop-blur-xl border-b border-black/8 transition-all duration-300">
+  <div class="flex justify-between items-center px-4 md:px-12 py-4 max-w-[1440px] mx-auto">
+    <a href="/" class="flex items-center">
+      <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
+    </a>
+    <div class="hidden md:flex items-center space-x-7 font-headline font-semibold text-xs tracking-[0.15em] uppercase">
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#about"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#services"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#fleet"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#concierge"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+      <a class="text-[#0A0A0A] font-bold relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#0A0A0A]" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#contact"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="text-[#0A0A0A] font-bold text-[11px] tracking-[0.2em] cursor-pointer hover:opacity-60 transition-opacity" onclick="document.documentElement.lang = document.documentElement.lang === 'en' ? 'cn' : 'en'">
+        <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
+      </button>
+      <a href="/#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
+        <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden bg-[#FAFAF7] border-b border-black/10 shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+  <a href="/#about" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+  <a href="/#services" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+  <a href="/#fleet" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+  <a href="/#concierge" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-primary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+  <a href="/#contact" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+  <a href="/#contact" class="mt-3 block text-center bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-3 rounded-md"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+</div>
+
+<!-- Hero -->
+<section class="bg-[#FAFAF7] pt-28 pb-12 px-5 md:px-24 border-b border-black/8">
+  <div class="max-w-7xl mx-auto">
+    <p class="font-mono text-[#0A0A0A]/40 text-[11px] tracking-[0.3em] uppercase mb-4">
+      <span class="lang-en">Home → News</span><span class="lang-cn">首页 → 动态</span>
+    </p>
+    <h1 class="text-[#0A0A0A] text-4xl md:text-5xl font-bold tracking-tight mb-4">
+      <span class="lang-en">News & Insights</span>
+      <span class="lang-cn">公司动态</span>
+    </h1>
+    <p class="text-[#50606f] text-base max-w-xl leading-relaxed">
+      <span class="lang-en">Company announcements, awards, and updates from LyctRides.</span>
+      <span class="lang-cn">光年的公司公告、荣誉奖项与最新动态。</span>
+    </p>
+  </div>
+</section>
+
+<!-- Content -->
+<main class="max-w-7xl mx-auto px-5 md:px-12 py-12">
+
+  <!-- Filters -->
+  <div id="filters" class="flex flex-wrap gap-2 mb-10">
+    <button class="filter-chip active-filter font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full border border-[#0A0A0A] bg-[#0A0A0A] text-white" data-cat="all">
+      <span class="lang-en">All</span><span class="lang-cn">全部</span>
+    </button>
+    <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-cat="Company Update">
+      <span class="lang-en">Company</span><span class="lang-cn">公司动态</span>
+    </button>
+    <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-cat="Awards">
+      <span class="lang-en">Awards</span><span class="lang-cn">荣誉奖项</span>
+    </button>
+    <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-cat="Partnership">
+      <span class="lang-en">Partnership</span><span class="lang-cn">战略合作</span>
+    </button>
+    <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-cat="Fleet">
+      <span class="lang-en">Fleet</span><span class="lang-cn">车队资讯</span>
+    </button>
+  </div>
+
+  <!-- Grid -->
+  <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Populated by JS -->
+  </div>
+
+  <p id="no-results" class="hidden text-center py-16 text-[#50606f] text-sm">
+    <span class="lang-en">No articles found for this category.</span>
+    <span class="lang-cn">该分类暂无文章。</span>
+  </p>
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-12 px-5 md:px-12 bg-[#0A0A0A] text-white mt-16">
+  <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <img src="/images/logo.svg" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
+      <p class="text-white/45 text-xs max-w-xs leading-relaxed">
+        <span class="lang-en">Executive chauffeur service across Greater China. Available 24/7.</span>
+        <span class="lang-cn">大中华区专业礼宾出行服务，全天候 24/7。</span>
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-x-8 gap-y-3 text-xs text-white/45 font-mono tracking-widest uppercase">
+      <a href="/" class="hover:text-white transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a href="/#services" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a href="/#fleet" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a href="/news.html" class="text-white"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a href="/careers.html" class="hover:text-white transition-colors"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a href="/#contact" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <p class="text-white/25 text-[10px] font-mono">© 2025 LyctRides · 光年</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  const lang = () => document.documentElement.lang || 'en';
+  let allArticles = [];
+  let activeCategory = 'all';
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    if (lang() === 'cn') {
+      return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long' });
+    }
+    return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
+  }
+
+  function renderFeatured(a) {
+    return `
+      <a href="/article.html?id=${a.id}" class="news-card md:col-span-2 bg-white border border-black/10 border-l-4 border-l-[#0A0A0A] rounded-lg overflow-hidden flex flex-col md:flex-row fade-up hover:shadow-md transition-shadow">
+        <div class="md:w-56 flex-shrink-0 bg-[#f0ede8] flex items-center justify-center text-5xl p-10">
+          ${a.emoji}
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+          <p class="font-mono text-[#0A0A0A]/40 text-[10px] tracking-[0.25em] uppercase mb-3 flex items-center gap-2">
+            <span class="inline-block w-5 h-px bg-[#0A0A0A]/20"></span>
+            <span class="lang-en">${a.category.en}</span><span class="lang-cn">${a.category.cn}</span>
+          </p>
+          <h2 class="text-[#0A0A0A] text-xl md:text-2xl font-bold leading-snug mb-4">
+            <span class="lang-en">${a.title.en}</span><span class="lang-cn">${a.title.cn}</span>
+          </h2>
+          <p class="text-[#50606f] text-sm leading-relaxed mb-6">
+            <span class="lang-en">${a.summary.en}</span><span class="lang-cn">${a.summary.cn}</span>
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[#50606f] text-[11px]">${formatDate(a.date)}</span>
+            <span class="text-[#0A0A0A] text-xs font-bold tracking-wider flex items-center gap-2">
+              <span class="lang-en">Read story</span><span class="lang-cn">阅读全文</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </span>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function renderCard(a) {
+    return `
+      <a href="/article.html?id=${a.id}" class="news-card bg-white rounded-lg overflow-hidden border border-black/8 hover:border-[#0A0A0A] fade-up">
+        <div class="h-36 bg-[#f0ede8] flex items-center justify-center text-4xl relative">
+          ${a.emoji}
+          <span class="absolute bottom-3 left-4 font-mono text-[9px] tracking-[0.2em] uppercase text-[#0A0A0A]/40">
+            <span class="lang-en">${a.category.en}</span><span class="lang-cn">${a.category.cn}</span>
+          </span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-[#0A0A0A] font-bold text-base leading-snug mb-3">
+            <span class="lang-en">${a.title.en}</span><span class="lang-cn">${a.title.cn}</span>
+          </h3>
+          <p class="text-[#50606f] text-sm leading-relaxed mb-5 line-clamp-2">
+            <span class="lang-en">${a.summary.en}</span><span class="lang-cn">${a.summary.cn}</span>
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[#50606f] text-[11px]">${formatDate(a.date)}</span>
+            <span class="text-[#0A0A0A] text-xs font-semibold">
+              <span class="lang-en">Read more →</span><span class="lang-cn">阅读全文 →</span>
+            </span>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function render(articles) {
+    const grid = document.getElementById('news-grid');
+    const noResults = document.getElementById('no-results');
+    const filtered = activeCategory === 'all'
+      ? articles
+      : articles.filter(a => a.category.en === activeCategory);
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      noResults.classList.remove('hidden');
+      return;
+    }
+    noResults.classList.add('hidden');
+
+    grid.innerHTML = filtered.map((a, i) =>
+      (i === 0 && a.featured && activeCategory === 'all') ? renderFeatured(a) : renderCard(a)
+    ).join('');
+
+    // Re-apply lang hiding after render
+    const l = lang();
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = l === 'en' ? '' : 'none');
+    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'cn' ? '' : 'none');
+  }
+
+  // Filter buttons
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('[data-cat]');
+    if (!btn) return;
+    activeCategory = btn.dataset.cat;
+    document.querySelectorAll('.filter-chip').forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('active-filter', active);
+      b.classList.toggle('bg-[#0A0A0A]', active);
+      b.classList.toggle('text-white', active);
+      b.classList.toggle('border-[#0A0A0A]', active);
+      b.classList.toggle('text-[#50606f]', !active);
+      b.classList.toggle('bg-white', !active);
+    });
+    render(allArticles);
+  });
+
+  // Language toggle observer
+  const observer = new MutationObserver(() => render(allArticles));
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+  // Load data
+  fetch('/data/news.json')
+    .then(r => r.json())
+    .then(data => {
+      allArticles = data;
+      render(allArticles);
+    })
+    .catch(() => {
+      document.getElementById('news-grid').innerHTML =
+        '<p class="col-span-2 text-center py-16 text-[#50606f]">Unable to load articles.</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

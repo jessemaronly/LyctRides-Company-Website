@@ -1,0 +1,50 @@
+[
+  {
+    "id": "senior-chauffeur-shanghai",
+    "title": { "en": "Senior Chauffeur — Shanghai", "cn": "高级司机 — 上海" },
+    "type": { "en": "Full-time", "cn": "全职" },
+    "location": { "en": "On-site · Shanghai", "cn": "上海驻场" },
+    "department": "chauffeur",
+    "tags": [
+      { "en": "VIP Service", "cn": "贵宾服务" },
+      { "en": "EHL Trained", "cn": "EHL认证" },
+      { "en": "Mandarin + English", "cn": "中英双语" }
+    ],
+    "description": {
+      "en": "We are looking for an experienced senior chauffeur to join our Shanghai team. You will be responsible for providing world-class executive ground transportation to our corporate clients, adhering to LyctRides' EHL-certified service standards at all times.\n\nKey responsibilities include safe and punctual driving, impeccable personal presentation, proactive client communication, and vehicle maintenance to the highest standard. A minimum of 3 years of professional chauffeur experience and a clean driving record are required.",
+      "cn": "我们正在寻找一位经验丰富的高级司机加入我们的上海团队。您将负责为企业客户提供世界级的高管地面出行服务，严格遵守光年的EHL认证服务标准。\n\n主要职责包括安全准时驾驶、无可挑剔的个人形象、主动的客户沟通以及保持车辆最高标准的状态。要求至少3年专业司机经验及良好驾驶记录。"
+    }
+  },
+  {
+    "id": "corporate-account-manager",
+    "title": { "en": "Corporate Account Manager", "cn": "企业客户经理" },
+    "type": { "en": "Full-time", "cn": "全职" },
+    "location": { "en": "Guangzhou / Remote", "cn": "广州 / 远程" },
+    "department": "corporate",
+    "tags": [
+      { "en": "B2B Sales", "cn": "企业销售" },
+      { "en": "English Required", "cn": "英语要求" },
+      { "en": "Corporate Travel", "cn": "企业出行" }
+    ],
+    "description": {
+      "en": "LyctRides is seeking a Corporate Account Manager to develop and manage relationships with multinational and Fortune 500 clients across Greater China. You will be the primary point of contact for your client portfolio, ensuring service excellence and identifying opportunities for account growth.\n\nThe ideal candidate has 3–5 years of B2B sales or account management experience, excellent communication skills in both English and Mandarin, and a passion for premium service. Experience in corporate travel, hospitality, or mobility is a plus.",
+      "cn": "光年正在寻找一位企业客户经理，负责开发和维护大中华区跨国企业及世界500强客户关系。您将是客户组合的主要联系人，确保服务卓越并发现账户增长机会。\n\n理想候选人具备3-5年B2B销售或客户管理经验，中英文沟通能力出色，热爱高端服务。有企业出行、酒店或出行行业经验者优先。"
+    }
+  },
+  {
+    "id": "operations-coordinator",
+    "title": { "en": "Operations Coordinator", "cn": "运营协调专员" },
+    "type": { "en": "Full-time", "cn": "全职" },
+    "location": { "en": "On-site · Guangzhou", "cn": "广州驻场" },
+    "department": "operations",
+    "tags": [
+      { "en": "Logistics", "cn": "调度管理" },
+      { "en": "CRM Systems", "cn": "CRM系统" },
+      { "en": "24/7 Shifts", "cn": "轮班制" }
+    ],
+    "description": {
+      "en": "We are looking for a detail-oriented Operations Coordinator to support our dispatch and logistics team in Guangzhou. You will be responsible for coordinating bookings, managing chauffeur schedules, liaising with clients on journey details, and ensuring every trip runs smoothly from confirmation to completion.\n\nStrong organisational skills, proficiency in CRM or dispatch software, and the ability to work in a fast-paced, 24/7 environment are essential. Prior experience in ground transportation, logistics, or hospitality operations is preferred.",
+      "cn": "我们正在寻找一位注重细节的运营协调专员，加入我们的广州调度与物流团队。您将负责协调预订、管理司机排班、与客户沟通行程细节，并确保每次行程从确认到完成顺利进行。\n\n需要具备较强的组织能力、熟练使用CRM或调度软件，以及在全天候快节奏环境中工作的能力。有地面出行、物流或酒店运营经验者优先。"
+    }
+  }
+]
