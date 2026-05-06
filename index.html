@@ -3,7 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>[Preview A] LyctRides | Executive Chauffeur Service Across Greater China</title>
+<title>LyctRides｜Premium Chauffeur China · Travel with Measure · Service with Manner</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -1501,6 +1501,20 @@
   carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
   carousel.addEventListener('mouseleave', () => { autoplay = setInterval(next, 5000); });
 
+})();
+</script>
+
+<script>
+(function() {
+  const TITLES = {
+    en: 'LyctRides｜Premium Chauffeur China · Travel with Measure · Service with Manner',
+    cn: '光年出行｜行有度，礼有节'
+  };
+  function updateTitle() {
+    document.title = TITLES[document.documentElement.lang] || TITLES.en;
+  }
+  new MutationObserver(updateTitle).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  updateTitle();
 })();
 </script>
 
