@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Careers | LyctRides</title>
+<meta name="description" content="Join LyctRides — the leading executive chauffeur service across Greater China. View open positions and apply today."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#0A0A0A",
+        surface: "#FAFAF7",
+        secondary: "#50606f"
+      },
+      fontFamily: {
+        headline: ["Albert Sans"],
+        body: ["Albert Sans"],
+        mono: ["JetBrains Mono"]
+      }
+    }
+  }
+}
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; background: #FAFAF7; }
+  h1, h2, h3 { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
+  html[lang="en"] .lang-cn { display: none; }
+  html[lang="cn"] .lang-en { display: none; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .fade-up { animation: fadeUp .6s ease-out both; }
+  .job-card { transition: border-color .2s ease; }
+  .filter-chip { transition: all .2s ease; }
+  .apply-form { transition: max-height .4s ease, opacity .3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  .apply-form.open { max-height: 700px; opacity: 1; }
+  input[type="file"]::file-selector-button {
+    background: #0A0A0A; color: white; border: none; padding: 6px 14px;
+    border-radius: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; margin-right: 10px; font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body class="text-[#0A0A0A]">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#FAFAF7]/90 backdrop-blur-xl border-b border-black/8 transition-all duration-300">
+  <div class="flex justify-between items-center px-4 md:px-12 py-4 max-w-[1440px] mx-auto">
+    <a href="/" class="flex items-center">
+      <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
+    </a>
+    <div class="hidden md:flex items-center space-x-7 font-headline font-semibold text-xs tracking-[0.15em] uppercase">
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#about"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#services"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#fleet"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#concierge"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a class="text-[#0A0A0A] font-bold relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#0A0A0A]" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#contact"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="text-[#0A0A0A] font-bold text-[11px] tracking-[0.2em] cursor-pointer hover:opacity-60 transition-opacity" onclick="document.documentElement.lang = document.documentElement.lang === 'en' ? 'cn' : 'en'">
+        <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
+      </button>
+      <a href="/#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
+        <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden bg-[#FAFAF7] border-b border-black/10 shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+  <a href="/#about" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+  <a href="/#services" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+  <a href="/#fleet" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+  <a href="/#concierge" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-primary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+  <a href="/#contact" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+  <a href="/#contact" class="mt-3 block text-center bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-3 rounded-md"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+</div>
+
+<!-- Hero -->
+<section class="bg-[#FAFAF7] pt-28 pb-12 px-5 md:px-24 border-b border-black/8">
+  <div class="max-w-7xl mx-auto">
+    <p class="font-mono text-[#0A0A0A]/40 text-[11px] tracking-[0.3em] uppercase mb-4">
+      <span class="lang-en">Home → Careers</span><span class="lang-cn">首页 → 招聘</span>
+    </p>
+    <h1 class="text-[#0A0A0A] text-4xl md:text-5xl font-bold tracking-tight mb-4">
+      <span class="lang-en">Careers at LyctRides</span>
+      <span class="lang-cn">加入光年</span>
+    </h1>
+    <p class="text-[#50606f] text-base max-w-xl leading-relaxed">
+      <span class="lang-en">Build a career delivering world-class service to the executives who move the world.</span>
+      <span class="lang-cn">加入我们，为驱动世界的企业领袖提供世界级礼宾出行服务。</span>
+    </p>
+  </div>
+</section>
+
+<!-- Main Content: Split Layout -->
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[70vh]">
+
+  <!-- Left: Culture Panel -->
+  <aside class="lg:w-[300px] flex-shrink-0 bg-[#0A0A0A] text-white px-7 md:px-10 py-12 lg:py-16 fade-up">
+    <p class="font-mono text-white/35 text-[10px] tracking-[0.35em] uppercase mb-5">
+      <span class="lang-en">Why LyctRides</span><span class="lang-cn">为什么选择光年</span>
+    </p>
+    <h2 class="text-2xl md:text-3xl font-bold leading-tight mb-6">
+      <span class="lang-en">Serve the Best.<br>Be the Best.</span>
+      <span class="lang-cn">服务最卓越的人。<br>成为最卓越的人。</span>
+    </h2>
+    <p class="text-white/55 text-sm leading-relaxed mb-10">
+      <span class="lang-en">LyctRides is the trusted ground transportation partner for multinational corporations and Fortune 500 executives across Greater China. Every role here — from chauffeur to account management — demands and develops the highest professional standards.</span>
+      <span class="lang-cn">光年是大中华区众多跨国企业和世界500强高管信赖的地面出行合作伙伴。在这里，每一个岗位——无论是司机还是客户经理——都要求并培养最高的职业标准。</span>
+    </p>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-2 gap-px bg-white/8 rounded-lg overflow-hidden mb-10">
+      <div class="bg-[#111] px-5 py-5">
+        <p class="font-mono text-white text-2xl font-bold mb-1">15+</p>
+        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
+          <span class="lang-en">Years</span><span class="lang-cn">年经验</span>
+        </p>
+      </div>
+      <div class="bg-[#111] px-5 py-5">
+        <p class="font-mono text-white text-2xl font-bold mb-1">300+</p>
+        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
+          <span class="lang-en">Cities</span><span class="lang-cn">覆盖城市</span>
+        </p>
+      </div>
+      <div class="bg-[#111] px-5 py-5">
+        <p class="font-mono text-white text-2xl font-bold mb-1">10K+</p>
+        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
+          <span class="lang-en">Clients</span><span class="lang-cn">服务客户</span>
+        </p>
+      </div>
+      <div class="bg-[#111] px-5 py-5">
+        <p class="font-mono text-white text-2xl font-bold mb-1">EHL</p>
+        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
+          <span class="lang-en">Certified</span><span class="lang-cn">认证标准</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Culture pillars -->
+    <div class="space-y-5">
+      <div class="flex items-start gap-4">
+        <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-sm text-white/60">workspace_premium</span>
+        </div>
+        <div>
+          <p class="text-white text-sm font-semibold mb-1">
+            <span class="lang-en">Excellence Culture</span><span class="lang-cn">卓越文化</span>
+          </p>
+          <p class="text-white/45 text-xs leading-relaxed">
+            <span class="lang-en">EHL-certified training, 200+ hours per chauffeur. Standards that actually mean something.</span>
+            <span class="lang-cn">EHL认证培训，每位司机逾200学时。这里的标准，货真价实。</span>
+          </p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-sm text-white/60">public</span>
+        </div>
+        <div>
+          <p class="text-white text-sm font-semibold mb-1">
+            <span class="lang-en">Global Exposure</span><span class="lang-cn">国际视野</span>
+          </p>
+          <p class="text-white/45 text-xs leading-relaxed">
+            <span class="lang-en">Work with Fortune 500 executives and multinational clients across 300+ cities.</span>
+            <span class="lang-cn">服务遍及300余城的世界500强高管与跨国企业客户。</span>
+          </p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-sm text-white/60">trending_up</span>
+        </div>
+        <div>
+          <p class="text-white text-sm font-semibold mb-1">
+            <span class="lang-en">Clear Career Path</span><span class="lang-cn">清晰成长路径</span>
+          </p>
+          <p class="text-white/45 text-xs leading-relaxed">
+            <span class="lang-en">Structured progression from junior to senior roles, with mentorship at every stage.</span>
+            <span class="lang-cn">从初级到高级的结构化晋升通道，每个阶段均有导师陪伴成长。</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Right: Job Listings -->
+  <div class="flex-1 px-5 md:px-10 lg:px-12 py-12 lg:py-16">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-xl font-bold">
+          <span class="lang-en">Open Positions</span><span class="lang-cn">招聘职位</span>
+        </h2>
+        <p id="job-count" class="font-mono text-[#50606f] text-[11px] mt-1"></p>
+      </div>
+      <!-- Dept filters -->
+      <div id="dept-filters" class="flex flex-wrap gap-2">
+        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-[#0A0A0A] bg-[#0A0A0A] text-white" data-dept="all">
+          <span class="lang-en">All</span><span class="lang-cn">全部</span>
+        </button>
+        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-dept="chauffeur">
+          <span class="lang-en">Chauffeur</span><span class="lang-cn">司机</span>
+        </button>
+        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-dept="corporate">
+          <span class="lang-en">Corporate</span><span class="lang-cn">企业</span>
+        </button>
+        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-dept="operations">
+          <span class="lang-en">Operations</span><span class="lang-cn">运营</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Job list -->
+    <div id="job-list" class="space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <p id="no-jobs" class="hidden text-center py-16 text-[#50606f] text-sm">
+      <span class="lang-en">No open positions in this department right now.</span>
+      <span class="lang-cn">该部门暂无招聘职位。</span>
+    </p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w-full py-12 px-5 md:px-12 bg-[#0A0A0A] text-white">
+  <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <img src="/images/logo.svg" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
+      <p class="text-white/45 text-xs max-w-xs leading-relaxed">
+        <span class="lang-en">Executive chauffeur service across Greater China. Available 24/7.</span>
+        <span class="lang-cn">大中华区专业礼宾出行服务，全天候 24/7。</span>
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-x-8 gap-y-3 text-xs text-white/45 font-mono tracking-widest uppercase">
+      <a href="/" class="hover:text-white transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a href="/#services" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a href="/#fleet" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a href="/news.html" class="hover:text-white transition-colors"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a href="/careers.html" class="text-white"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a href="/#contact" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <p class="text-white/25 text-[10px] font-mono">© 2025 LyctRides · 光年</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  const lang = () => document.documentElement.lang || 'en';
+  let allJobs = [];
+  let activeDept = 'all';
+
+  function applyLang() {
+    const l = lang();
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = l === 'en' ? '' : 'none');
+    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'cn' ? '' : 'none');
+  }
+
+  function renderJob(job) {
+    const tagsHtml = job.tags.map(t =>
+      `<span class="inline-block font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 bg-[#f0ede8] text-[#50606f] rounded">
+        <span class="lang-en">${t.en}</span><span class="lang-cn">${t.cn}</span>
+      </span>`
+    ).join('');
+
+    return `
+    <div class="job-card border border-black/10 rounded-lg overflow-hidden bg-white hover:border-black/30" data-dept="${job.department}" data-id="${job.id}">
+      <div class="p-6">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-1">
+              <span class="lang-en">${job.title.en}</span><span class="lang-cn">${job.title.cn}</span>
+            </h3>
+            <div class="flex flex-wrap items-center gap-2 text-[#50606f] font-mono text-[11px]">
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">location_on</span>
+                <span class="lang-en">${job.location.en}</span><span class="lang-cn">${job.location.cn}</span>
+              </span>
+              <span class="text-black/20">·</span>
+              <span class="lang-en">${job.type.en}</span><span class="lang-cn">${job.type.cn}</span>
+            </div>
+          </div>
+          <button
+            class="apply-toggle flex-shrink-0 bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
+            data-job-id="${job.id}"
+          >
+            <span class="lang-en apply-label-open">Apply →</span>
+            <span class="lang-cn apply-label-open">申请职位 →</span>
+            <span class="lang-en apply-label-close hidden">Close ✕</span>
+            <span class="lang-cn apply-label-close hidden">关闭 ✕</span>
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mb-4">${tagsHtml}</div>
+        <p class="text-sm text-[#50606f] leading-relaxed">
+          <span class="lang-en">${job.description.en.split('\n\n')[0]}</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${job.description.cn.split('\n\n')[0]}</span>
+        </p>
+      </div>
+
+      <!-- Netlify Apply Form -->
+      <div class="apply-form" id="form-${job.id}">
+        <div class="border-t border-black/8 bg-[#FAFAF7] px-6 py-7">
+          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#50606f] mb-5">
+            <span class="lang-en">Application — ${job.title.en}</span>
+            <span class="lang-cn">申请职位 — ${job.title.cn}</span>
+          </p>
+          <form
+            name="job-application"
+            method="POST"
+            data-netlify="true"
+            enctype="multipart/form-data"
+            class="space-y-4"
+            onsubmit="handleSubmit(event, '${job.id}')"
+          >
+            <input type="hidden" name="form-name" value="job-application"/>
+            <input type="hidden" name="position" value="${job.title.en}"/>
+            <input type="hidden" name="position-id" value="${job.id}"/>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                  <span class="lang-en">Full Name *</span><span class="lang-cn">姓名 *</span>
+                </label>
+                <input type="text" name="name" required
+                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors"
+                  placeholder=""/>
+              </div>
+              <div>
+                <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                  <span class="lang-en">Phone *</span><span class="lang-cn">电话 *</span>
+                </label>
+                <input type="tel" name="phone" required
+                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors"
+                  placeholder=""/>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                  <span class="lang-en">Email *</span><span class="lang-cn">邮箱 *</span>
+                </label>
+                <input type="email" name="email" required
+                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors"
+                  placeholder=""/>
+              </div>
+              <div>
+                <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                  <span class="lang-en">Years of Experience</span><span class="lang-cn">工作年限</span>
+                </label>
+                <select name="experience"
+                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors text-[#50606f]">
+                  <option value="" disabled selected></option>
+                  <option value="0-1">0 – 1</option>
+                  <option value="1-3">1 – 3</option>
+                  <option value="3-5">3 – 5</option>
+                  <option value="5-10">5 – 10</option>
+                  <option value="10+">10+</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                <span class="lang-en">Cover Message</span><span class="lang-cn">求职信息</span>
+              </label>
+              <textarea name="message" rows="3"
+                class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors resize-none"
+                placeholder=""></textarea>
+            </div>
+
+            <div>
+              <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                <span class="lang-en">Résumé / CV</span><span class="lang-cn">简历</span>
+              </label>
+              <input type="file" name="resume" accept=".pdf,.doc,.docx"
+                class="w-full text-sm text-[#50606f] file:mr-3"/>
+              <p class="text-[10px] text-[#50606f]/60 mt-1 font-mono">PDF / DOC / DOCX</p>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <p id="success-${job.id}" class="hidden text-xs font-mono text-green-700">
+                <span class="lang-en">✓ Application submitted — we'll be in touch.</span>
+                <span class="lang-cn">✓ 申请已提交，我们将尽快联系您。</span>
+              </p>
+              <button type="submit"
+                class="ml-auto bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-2.5 rounded-md hover:bg-[#333] transition-colors">
+                <span class="lang-en">Submit Application</span><span class="lang-cn">提交申请</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function render(jobs) {
+    const list = document.getElementById('job-list');
+    const noJobs = document.getElementById('no-jobs');
+    const countEl = document.getElementById('job-count');
+
+    const filtered = activeDept === 'all' ? jobs : jobs.filter(j => j.department === activeDept);
+
+    if (filtered.length === 0) {
+      list.innerHTML = '';
+      noJobs.classList.remove('hidden');
+      countEl.textContent = '';
+    } else {
+      noJobs.classList.add('hidden');
+      list.innerHTML = filtered.map(renderJob).join('');
+      const l = lang();
+      countEl.textContent = l === 'cn'
+        ? `${filtered.length} 个开放职位`
+        : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`;
+
+      // Re-bind toggle buttons
+      list.querySelectorAll('.apply-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const jobId = btn.dataset.jobId;
+          const form = document.getElementById(`form-${jobId}`);
+          const isOpen = form.classList.contains('open');
+          // Close all first
+          document.querySelectorAll('.apply-form').forEach(f => f.classList.remove('open'));
+          document.querySelectorAll('.apply-toggle').forEach(b => {
+            b.querySelectorAll('.apply-label-open').forEach(el => el.classList.remove('hidden'));
+            b.querySelectorAll('.apply-label-close').forEach(el => el.classList.add('hidden'));
+          });
+          if (!isOpen) {
+            form.classList.add('open');
+            btn.querySelectorAll('.apply-label-open').forEach(el => el.classList.add('hidden'));
+            btn.querySelectorAll('.apply-label-close').forEach(el => el.classList.remove('hidden'));
+            setTimeout(() => form.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+          }
+        });
+      });
+    }
+
+    applyLang();
+  }
+
+  // Dept filter clicks
+  document.getElementById('dept-filters').addEventListener('click', e => {
+    const btn = e.target.closest('[data-dept]');
+    if (!btn) return;
+    activeDept = btn.dataset.dept;
+    document.querySelectorAll('.filter-chip').forEach(b => {
+      const active = b === btn;
+      b.classList.toggle('bg-[#0A0A0A]', active);
+      b.classList.toggle('text-white', active);
+      b.classList.toggle('border-[#0A0A0A]', active);
+      b.classList.toggle('text-[#50606f]', !active);
+      b.classList.toggle('bg-white', !active);
+    });
+    render(allJobs);
+  });
+
+  // Lang observer
+  const observer = new MutationObserver(() => {
+    applyLang();
+    // Update job count text
+    const filtered = activeDept === 'all' ? allJobs : allJobs.filter(j => j.department === activeDept);
+    const l = lang();
+    document.getElementById('job-count').textContent = filtered.length > 0
+      ? (l === 'cn' ? `${filtered.length} 个开放职位` : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`)
+      : '';
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+  // Load data
+  fetch('/data/careers.json')
+    .then(r => r.json())
+    .then(jobs => {
+      allJobs = jobs;
+      render(allJobs);
+    })
+    .catch(() => {
+      document.getElementById('job-list').innerHTML =
+        '<p class="text-center py-16 text-[#50606f] text-sm">Unable to load positions.</p>';
+    });
+})();
+
+function handleSubmit(e, jobId) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  fetch('/', { method: 'POST', body: data })
+    .then(() => {
+      form.reset();
+      const success = document.getElementById(`success-${jobId}`);
+      if (success) {
+        success.classList.remove('hidden');
+        setTimeout(() => success.classList.add('hidden'), 6000);
+      }
+    })
+    .catch(() => alert('Submission failed. Please try again.'));
+}
+</script>
+
+</body>
+</html>
