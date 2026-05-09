@@ -291,15 +291,14 @@ tailwind.config = {
     return;
   }
 
-  fetch('/data/news.json')
-    .then(r => r.json())
-    .then(articles => {
-      const article = articles.find(a => a.id === id);
-      if (!article) {
-        document.getElementById('article-content').classList.add('hidden');
-        document.getElementById('article-error').classList.remove('hidden');
-        return;
-      }
+  // 拉单篇详情（含 body）+ 列表（用作"其他文章"侧栏）
+  Promise.all([
+    fetch('https://lyctrides.com/api/public/news/' + encodeURIComponent(id))
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('not found'))),
+    fetch('https://lyctrides.com/api/public/news')
+      .then(r => r.ok ? r.json() : []),
+  ])
+    .then(([article, articles]) => {
       window.__currentArticle = article;
       renderArticle(article, articles);
     })

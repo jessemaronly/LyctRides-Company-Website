@@ -271,7 +271,7 @@ tailwind.config = {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   // Load data
-  fetch('/data/news.json')
+  fetch('https://lyctrides.com/api/public/news')
     .then(r => r.json())
     .then(data => {
       allArticles = data;

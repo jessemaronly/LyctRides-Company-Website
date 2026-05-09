@@ -1,5 +1,30 @@
 [
   {
+    "id": "canton-fair-2026-spring",
+    "category": { "en": "Events", "cn": "活动保障" },
+    "title": { "en": "Mission Accomplished: LyctRides Delivers Ground Transport for the 139th Canton Fair", "cn": "圆满交付：光年完美保障第 139 届广交会海外采购商出行" },
+    "summary": { "en": "From mid-April through early May, our Guangzhou team handled airport-to-fair logistics for international buyers and exhibitors at the world's largest trade fair — every pickup on time, every chauffeur briefed, every itinerary held.", "cn": "4 月中至 5 月初，光年广州团队为第 139 届广交会海外采购商与参展商提供机场至会场的全程地面出行 — 每一程准时、每一位司机训练有素、每一段行程稳如磐石。" },
+    "body": {
+      "en": [
+        "On May 5, the 139th China Import and Export Fair (Canton Fair) officially concluded at the Guangzhou Pazhou Complex after three back-to-back phases over three weeks. Across the entire run, LyctRides served as a primary ground transportation partner for select multinational delegations, Fortune-Global-500 buying offices, and several pavilion organisers — and we are proud to report not a single missed pickup.",
+        "The operation involved over thirty bilingual chauffeurs running shuttle and door-to-door routes between Guangzhou Baiyun International Airport (CAN), Hong Kong International (HKG), and the Pazhou Complex, alongside ad-hoc evening services to receptions, business dinners, and offsite meetings. Our on-site dispatch desks at four major Pazhou-area hotels operated 18 hours a day across each phase.",
+        "For our international clients, the value was direct and tangible: real-time flight tracking absorbed the inevitable schedule shifts; name-board greeters at arrivals removed any local-language coordination burden; and a single concierge contact handled every last-minute change without escalation. We logged over 1,800 individual journeys across the three phases.",
+        "Our thanks go to every chauffeur, dispatcher, and account manager who held the standard. As one client wrote in a brief mid-fair note: \"You ran our entire week here. We didn't think about transport once.\" That is the entire point.",
+        "Preparations for the 140th Canton Fair (October–November 2026) are already underway. Returning clients, please reach out via your dedicated account manager. New enquiries can reach our Guangzhou desk directly through the WhatsApp, WeChat, or email channels on this site."
+      ],
+      "cn": [
+        "5 月 5 日，第 139 届中国进出口商品交易会（广交会）在广州琶洲展馆完成连续三期、为期近三周的全部展期。整个会期内，光年作为多家跨国代表团、世界 500 强采购办公室及多家展馆组织方的主要地面出行合作伙伴 — 全程零遗漏、零失误。",
+        "本次保障调度逾三十位双语司机，往返于广州白云国际机场（CAN）、香港国际机场（HKG）与琶洲展馆之间，承担班车与门到门接送，并随时承接晚宴、客户接待、场外会议等弹性需求。光年在琶洲核心区四家主接待酒店设立的现场调度台，每期保持每日 18 小时持续运转。",
+        "对国际客户而言，价值是直接可感的：航班实时追踪自动同步行程变更，到达大厅举牌接车免去本地语言沟通障碍，单一礼宾对接人处理所有临时调整无需层层升级。三期展会累计完成逾 1,800 次单程接送任务。",
+        "感谢每一位坚守标准的司机、调度员与客户经理。一位客户在会期中段简短留言：「你们撑起了我们整周的行程，我们一次都没有为交通操过心。」 这正是我们工作的全部意义。",
+        "第 140 届广交会（2026 年 10–11 月）的筹备工作已启动。老客户请通过您的专属客户经理联系我们；新客户可通过本页底部的 WhatsApp、微信或邮件直接对接广州接待台。"
+      ]
+    },
+    "date": "2026-05-07",
+    "featured": true,
+    "emoji": "🌐"
+  },
+  {
     "id": "gba-expansion-2025",
     "category": { "en": "Company Update", "cn": "公司动态" },
     "title": { "en": "LyctRides Expands to 10 New Cities Across the Greater Bay Area", "cn": "光年拓展至大湾区10座新城市" },
@@ -21,7 +46,7 @@
       ]
     },
     "date": "2025-05-01",
-    "featured": true,
+    "featured": false,
     "emoji": "🏙️"
   },
   {

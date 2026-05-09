@@ -483,7 +483,7 @@ tailwind.config = {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   // Load data
-  fetch('/data/careers.json')
+  fetch('https://lyctrides.com/api/public/careers')
     .then(r => r.json())
     .then(jobs => {
       allJobs = jobs;
@@ -498,8 +498,25 @@ tailwind.config = {
 function handleSubmit(e, jobId) {
   e.preventDefault();
   const form = e.target;
-  const data = new FormData(form);
-  fetch('/', { method: 'POST', body: data })
+  const fd = new FormData(form);
+  // 后端 DTO 字段：name / email / phone / position / experience? / message?
+  const payload = {
+    name: (fd.get('name') || '').toString().trim(),
+    email: (fd.get('email') || '').toString().trim(),
+    phone: (fd.get('phone') || '').toString().trim(),
+    position: (fd.get('position') || jobId || '').toString().trim(),
+    experience: (fd.get('experience') || '').toString().trim() || undefined,
+    message: (fd.get('message') || fd.get('cover_letter') || '').toString().trim() || undefined,
+  };
+  fetch('https://lyctrides.com/api/public/careers/apply', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+    .then(res => {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
     .then(() => {
       form.reset();
       const success = document.getElementById(`success-${jobId}`);
@@ -508,7 +525,7 @@ function handleSubmit(e, jobId) {
         setTimeout(() => success.classList.add('hidden'), 6000);
       }
     })
-    .catch(() => alert('Submission failed. Please try again.'));
+    .catch(() => alert('Submission failed. Please try again or email bd@lyctai.com.'));
 }
 </script>
 
