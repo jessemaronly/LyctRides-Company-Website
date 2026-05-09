@@ -483,7 +483,7 @@ tailwind.config = {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   // Load data
-  fetch('https://lyctrides.com/api/public/careers')
+  fetch('https://www.lyctrides.com/api/public/careers')
     .then(r => r.json())
     .then(jobs => {
       allJobs = jobs;
@@ -508,7 +508,7 @@ function handleSubmit(e, jobId) {
     experience: (fd.get('experience') || '').toString().trim() || undefined,
     message: (fd.get('message') || fd.get('cover_letter') || '').toString().trim() || undefined,
   };
-  fetch('https://lyctrides.com/api/public/careers/apply', {
+  fetch('https://www.lyctrides.com/api/public/careers/apply', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

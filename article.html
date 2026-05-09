@@ -293,9 +293,9 @@ tailwind.config = {
 
   // 拉单篇详情（含 body）+ 列表（用作"其他文章"侧栏）
   Promise.all([
-    fetch('https://lyctrides.com/api/public/news/' + encodeURIComponent(id))
+    fetch('https://www.lyctrides.com/api/public/news/' + encodeURIComponent(id))
       .then(r => r.ok ? r.json() : Promise.reject(new Error('not found'))),
-    fetch('https://lyctrides.com/api/public/news')
+    fetch('https://www.lyctrides.com/api/public/news')
       .then(r => r.ok ? r.json() : []),
   ])
     .then(([article, articles]) => {
