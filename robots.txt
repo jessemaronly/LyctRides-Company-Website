@@ -1,0 +1,30 @@
+# LyctRides robots policy
+# Allow all reputable bots; block known scrapers + AI training crawlers we don't consent to.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Block AI training crawlers we haven't licensed
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Sitemap
+Sitemap: https://www.lyctai.com/sitemap.xml
+Sitemap: https://www.lyctrides.com/api/public/sitemap.xml
