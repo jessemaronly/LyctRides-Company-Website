@@ -36,12 +36,43 @@ tailwind.config = {
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   .fade-up { animation: fadeUp .6s ease-out both; }
   .article-body p { margin-bottom: 1.5rem; line-height: 1.85; color: #1a1a1a; }
-  .article-body p:first-child {
+  .article-body > .lang-en > p:first-child,
+  .article-body > .lang-cn > p:first-child {
     border-left: 3px solid #0A0A0A;
     padding-left: 1.25rem;
     font-size: 1.0625rem;
     color: #0A0A0A;
     font-weight: 500;
+  }
+  /* 富文本嵌入元素 */
+  .article-body h2 { font-size: 1.5rem; font-weight: 700; margin: 2.25rem 0 0.75rem; line-height: 1.3; color: #0A0A0A; }
+  .article-body h3 { font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 0.5rem; line-height: 1.35; color: #0A0A0A; }
+  .article-body h4 { font-size: 1.0625rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #0A0A0A; }
+  .article-body ul, .article-body ol { margin: 0 0 1.5rem 1.5rem; line-height: 1.85; }
+  .article-body ul { list-style: disc; }
+  .article-body ol { list-style: decimal; }
+  .article-body li { margin-bottom: 0.5rem; }
+  .article-body blockquote { border-left: 3px solid #0A0A0A; padding: 0.5rem 1.25rem; color: #4a4a4a; font-style: italic; margin: 1.5rem 0; }
+  .article-body a { color: #0A0A0A; text-decoration: underline; text-underline-offset: 2px; }
+  .article-body a:hover { color: #50606f; }
+  .article-body img { display: block; max-width: 100%; height: auto; margin: 1.75rem auto; border-radius: 6px; }
+  .article-body strong { font-weight: 700; }
+  .article-body em { font-style: italic; }
+  .article-body .video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 1.75rem 0;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .article-body .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 </style>
 </head>
@@ -198,10 +229,114 @@ tailwind.config = {
     return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
+  function escapeText(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function readTime(body) {
-    const words = body.join(' ').split(/\s+/).length;
+    // body 可以是 string[]（旧字段）或 HTML string；后者剥标签后估算
+    const text = Array.isArray(body)
+      ? body.join(' ')
+      : String(body || '').replace(/<[^>]+>/g, ' ');
+    const words = text.split(/\s+/).filter(Boolean).length;
     const mins = Math.max(1, Math.round(words / 200));
     return { en: `${mins} min read`, cn: `约 ${mins} 分钟` };
+  }
+
+  // ===== 富文本 HTML 清洗 =====
+  // 后端写入由可信角色（HR/ADMIN）完成，但渲染端仍做严格白名单：
+  //  - 允许的标签：p / h2 / h3 / h4 / strong / em / u / br / hr /
+  //                ul / ol / li / blockquote / a / img / div / iframe
+  //  - 允许的属性：href（仅 http/https/mailto/tel）/ src（img/iframe）/
+  //                alt / title / class（仅在 div.video-embed 时）/
+  //                allowfullscreen / frameborder / loading / referrerpolicy
+  //  - iframe src 必须命中白名单前缀，否则整个 iframe 被丢弃
+  //  - <script>, on* 事件属性, javascript: URL 一律剔除
+  const ALLOWED_IFRAME_PREFIXES = [
+    'https://www.youtube.com/embed/',
+    'https://www.youtube-nocookie.com/embed/',
+    'https://player.bilibili.com/player.html',
+    'https://player.youku.com/embed/',
+    'https://v.qq.com/txp/iframe/player.html',
+    'https://open.douyin.com/player/'
+  ];
+  const ALLOWED_TAGS = new Set([
+    'P','H2','H3','H4','STRONG','EM','B','I','U','BR','HR',
+    'UL','OL','LI','BLOCKQUOTE','A','IMG','DIV','IFRAME','SPAN'
+  ]);
+  function isSafeUrl(url, schemes) {
+    if (typeof url !== 'string') return false;
+    try {
+      // 允许相对 URL（图片同域）+ 指定协议
+      if (/^\//.test(url) || /^\.\.?\//.test(url)) return true;
+      const u = new URL(url, location.origin);
+      return schemes.includes(u.protocol.replace(':', ''));
+    } catch { return false; }
+  }
+  function sanitizeHtml(html) {
+    if (!html) return '';
+    const tpl = document.createElement('template');
+    tpl.innerHTML = String(html);
+    walk(tpl.content);
+    return tpl.innerHTML;
+
+    function walk(root) {
+      const toRemove = [];
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+      while (walker.nextNode()) {
+        const el = walker.currentNode;
+        const tag = el.tagName;
+        if (!ALLOWED_TAGS.has(tag)) { toRemove.push(el); continue; }
+
+        // 全属性扫一遍：白名单之外一律删
+        const allowedAttrs = attrAllowlistFor(tag);
+        for (const attr of Array.from(el.attributes)) {
+          const name = attr.name.toLowerCase();
+          if (!allowedAttrs.has(name)) { el.removeAttribute(attr.name); continue; }
+          if (name === 'href') {
+            if (!isSafeUrl(attr.value, ['http','https','mailto','tel'])) {
+              el.removeAttribute('href');
+            } else {
+              // 外链统一加 noopener
+              el.setAttribute('rel', 'noopener noreferrer');
+              el.setAttribute('target', '_blank');
+            }
+          }
+          if (name === 'src' && tag === 'IMG') {
+            if (!isSafeUrl(attr.value, ['http','https'])) {
+              el.removeAttribute('src');
+            }
+          }
+          if (name === 'src' && tag === 'IFRAME') {
+            const src = attr.value;
+            if (!ALLOWED_IFRAME_PREFIXES.some(p => src.startsWith(p))) {
+              toRemove.push(el);
+              break;
+            }
+          }
+          if (name === 'class' && tag === 'DIV') {
+            // 仅保留 video-embed
+            if (attr.value.split(/\s+/).indexOf('video-embed') === -1) {
+              el.removeAttribute('class');
+            }
+          }
+        }
+      }
+      // 删除掉所有标记为非法的节点（保留其子节点的安全部分？这里直接整块剔除以最小化复杂度）
+      for (const el of toRemove) {
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }
+    }
+    function attrAllowlistFor(tag) {
+      switch (tag) {
+        case 'A':      return new Set(['href','title']);
+        case 'IMG':    return new Set(['src','alt','title','width','height']);
+        case 'IFRAME': return new Set(['src','allowfullscreen','frameborder','loading','referrerpolicy','width','height']);
+        case 'DIV':    return new Set(['class']);
+        default:       return new Set(['title']);
+      }
+    }
   }
 
   function setText(selector, en, cn) {
@@ -224,7 +359,9 @@ tailwind.config = {
 
     document.getElementById('hero-date').textContent = formatDate(article.date);
 
-    const rt = readTime(article.body.en);
+    // 阅读时长：优先用 HTML 正文（剥标签）；回退到段落数组
+    const enSrc = (article.bodyHtml && article.bodyHtml.en) || article.body.en;
+    const rt = readTime(enSrc);
     setText('#hero-read-time', rt.en, rt.cn);
 
     // Emoji banner
@@ -234,11 +371,20 @@ tailwind.config = {
       banner.classList.remove('hidden');
     }
 
-    // Body paragraphs
+    // Body：富文本 HTML 优先（包 <div class="lang-en/cn"> 让语言切换 CSS 仍生效）
+    // 任意一种语言只要有 HTML 就走 HTML，否则用兼容字段拼成 <p> 段落。
     const content = document.getElementById('article-content');
-    const enParas = article.body.en.map((p, i) => `<p class="lang-en">${p}</p>`).join('');
-    const cnParas = article.body.cn.map((p, i) => `<p class="lang-cn" style="font-family:'Noto Serif SC',serif;">${p}</p>`).join('');
-    content.innerHTML = enParas + cnParas;
+    const htmlEn = article.bodyHtml && article.bodyHtml.en;
+    const htmlCn = article.bodyHtml && article.bodyHtml.cn;
+    const enBlock = htmlEn
+      ? sanitizeHtml(htmlEn)
+      : (article.body.en || []).map(p => `<p>${escapeText(p)}</p>`).join('');
+    const cnBlock = htmlCn
+      ? sanitizeHtml(htmlCn)
+      : (article.body.cn || []).map(p => `<p style="font-family:'Noto Serif SC',serif;">${escapeText(p)}</p>`).join('');
+    content.innerHTML =
+      `<div class="lang-en">${enBlock}</div>` +
+      `<div class="lang-cn" style="font-family:'Noto Serif SC',serif;">${cnBlock}</div>`;
 
     // Prev / Next
     const idx = allArticles.findIndex(a => a.id === article.id);
