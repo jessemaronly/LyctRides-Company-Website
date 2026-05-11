@@ -497,7 +497,7 @@ tailwind.config = {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   // Load data
-  fetch('https://www.lyctai.com/api/public/careers')
+  fetch('https://www.lyctai.com/api/public/careers', { cache: 'no-store' })
     .then(r => r.json())
     .then(jobs => {
       allJobs = jobs;
