@@ -322,8 +322,8 @@ tailwind.config = {
         </div>
         <div class="flex flex-wrap gap-1.5 mb-4">${tagsHtml}</div>
         <p class="text-sm text-[#50606f] leading-relaxed">
-          <span class="lang-en">${job.description.en.split('\n\n')[0]}</span>
-          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${job.description.cn.split('\n\n')[0]}</span>
+          <span class="lang-en">${(job.description && job.description.en || '').split('\n\n')[0]}</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${(job.description && job.description.cn || '').split('\n\n')[0]}</span>
         </p>
       </div>
 
