@@ -53,6 +53,17 @@ tailwind.config = {
   .filter-chip { transition: all .2s ease; }
   .apply-form { transition: max-height .4s ease, opacity .3s ease; max-height: 0; opacity: 0; overflow: hidden; }
   .apply-form.open { max-height: 700px; opacity: 1; }
+  /* 岗位描述折叠：默认前 4 行可见 + 渐隐遮罩；展开后完整显示 */
+  .desc-wrap[data-collapsed="true"] .desc-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+  }
+  .desc-wrap[data-collapsed="false"] .desc-content { mask-image: none; -webkit-mask-image: none; }
   input[type="file"]::file-selector-button {
     background: #0A0A0A; color: white; border: none; padding: 6px 14px;
     border-radius: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
@@ -321,21 +332,31 @@ tailwind.config = {
           </button>
         </div>
         <div class="flex flex-wrap gap-1.5 mb-4">${tagsHtml}</div>
-        <div class="text-sm text-[#50606f] leading-relaxed space-y-2">
-          <div class="lang-en">${
-            (job.description && job.description.en || '')
-              .split(/\n\n+/)
-              .filter(Boolean)
-              .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
-              .join('')
-          }</div>
-          <div class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${
-            (job.description && job.description.cn || '')
-              .split(/\n\n+/)
-              .filter(Boolean)
-              .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
-              .join('')
-          }</div>
+        <div class="desc-wrap text-sm text-[#50606f] leading-relaxed" data-collapsed="true">
+          <div class="desc-content space-y-2">
+            <div class="lang-en">${
+              (job.description && job.description.en || '')
+                .split(/\n\n+/)
+                .filter(Boolean)
+                .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
+                .join('')
+            }</div>
+            <div class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${
+              (job.description && job.description.cn || '')
+                .split(/\n\n+/)
+                .filter(Boolean)
+                .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
+                .join('')
+            }</div>
+          </div>
+          <button type="button" class="desc-toggle mt-2 inline-flex items-center gap-1 text-xs font-mono tracking-[0.1em] uppercase text-[#0A0A0A] hover:opacity-70 transition-opacity">
+            <span class="desc-toggle-more">
+              <span class="lang-en">View Full ↓</span><span class="lang-cn">查看完整 ↓</span>
+            </span>
+            <span class="desc-toggle-less hidden">
+              <span class="lang-en">Show Less ↑</span><span class="lang-cn">收起 ↑</span>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -454,6 +475,18 @@ tailwind.config = {
       countEl.textContent = l === 'cn'
         ? `${filtered.length} 个开放职位`
         : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`;
+
+      // 岗位描述折叠/展开
+      list.querySelectorAll('.desc-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const wrap = btn.closest('.desc-wrap');
+          if (!wrap) return;
+          const collapsed = wrap.getAttribute('data-collapsed') === 'true';
+          wrap.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
+          btn.querySelectorAll('.desc-toggle-more').forEach(el => el.classList.toggle('hidden', collapsed));
+          btn.querySelectorAll('.desc-toggle-less').forEach(el => el.classList.toggle('hidden', !collapsed));
+        });
+      });
 
       // Re-bind toggle buttons
       list.querySelectorAll('.apply-toggle').forEach(btn => {
