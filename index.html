@@ -86,6 +86,49 @@
 }
 </script>
 
+<!-- WebSite schema: 让 Google 把 LyctRides 当成正经品牌名（不是拼错 lycored），
+     同时提供站内导航地图，加速 sitelinks 出现。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.lyctai.com/#website",
+  "url": "https://www.lyctai.com/",
+  "name": "LyctRides",
+  "alternateName": ["LyctRides 光年专车", "光年专车", "LycTrides", "Lyct Rides"],
+  "description": "Premium chauffeur service across mainland China and Hong Kong.",
+  "inLanguage": ["en", "zh-CN"],
+  "publisher": {
+    "@type": "Organization",
+    "name": "LyctRides",
+    "url": "https://www.lyctai.com/",
+    "logo": "https://www.lyctai.com/images/logo.svg"
+  }
+}
+</script>
+
+<!-- SiteNavigationElement: 主要导航 + 服务子页，明示给 Google 这些是站内
+     入口，sitelinks 候选集来自这里。每个 entry 自带描述帮助索引。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "SiteNavigationElement", "position": 1, "name": "About", "description": "About LyctRides — premium chauffeur service in Greater China", "url": "https://www.lyctai.com/#about" },
+    { "@type": "SiteNavigationElement", "position": 2, "name": "Services", "description": "All chauffeur services overview", "url": "https://www.lyctai.com/#services" },
+    { "@type": "SiteNavigationElement", "position": 3, "name": "Airport Transfer", "description": "CAN / HKG / SZX / PEK / PVG airport transfer chauffeur", "url": "https://www.lyctai.com/services/airport.html" },
+    { "@type": "SiteNavigationElement", "position": 4, "name": "Hourly Chauffeur", "description": "Hourly / daily executive chauffeur hire", "url": "https://www.lyctai.com/services/hourly.html" },
+    { "@type": "SiteNavigationElement", "position": 5, "name": "Intercity", "description": "GBA + Beijing-Tianjin + Shanghai-Hangzhou intercity transfers", "url": "https://www.lyctai.com/services/citytocity.html" },
+    { "@type": "SiteNavigationElement", "position": 6, "name": "Events", "description": "Multi-vehicle event ground logistics for trade shows and conferences", "url": "https://www.lyctai.com/services/events.html" },
+    { "@type": "SiteNavigationElement", "position": 7, "name": "Private Jet", "description": "Tarmac-to-destination private jet ground handover", "url": "https://www.lyctai.com/services/privatejet.html" },
+    { "@type": "SiteNavigationElement", "position": 8, "name": "Fleet", "description": "Premium vehicle fleet — Mercedes / BMW / Buick GL8 / Zeekr", "url": "https://www.lyctai.com/#fleet" },
+    { "@type": "SiteNavigationElement", "position": 9, "name": "Concierge", "description": "Concierge-level service standards", "url": "https://www.lyctai.com/#concierge" },
+    { "@type": "SiteNavigationElement", "position": 10, "name": "News", "description": "Company news, awards and event recaps", "url": "https://www.lyctai.com/news.html" },
+    { "@type": "SiteNavigationElement", "position": 11, "name": "Careers", "description": "Career opportunities at LyctRides", "url": "https://www.lyctai.com/careers.html" },
+    { "@type": "SiteNavigationElement", "position": 12, "name": "Contact", "description": "Get in touch via WhatsApp / WeChat / Email", "url": "https://www.lyctai.com/#contact" }
+  ]
+}
+</script>
+
 <script>
 // Run before render to avoid language flash
 (function(){
