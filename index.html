@@ -369,16 +369,27 @@
 <span class="lang-en">Contact</span><span class="lang-cn">联系</span>
 </a>
 </div>
-<div class="flex items-center gap-4">
-<button class="text-[#0A0A0A] dark:text-[#FAFAF7] font-headline font-bold text-[11px] tracking-[0.2em] cursor-pointer transition-all duration-300 hover:opacity-70" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+<!-- 右侧三件（lang / sign in / enquire）等权 + hairline 分隔 -->
+<div class="flex items-center md:gap-5 gap-3">
+<button class="text-[11px] font-light tracking-[0.32em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 cursor-pointer whitespace-nowrap" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
 <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
 </button>
-<a href="https://www.lyctrides.com/login" class="hidden md:inline-flex items-center text-[11px] font-bold tracking-[0.2em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-70 transition-all duration-300 pb-0.5 border-b border-[#0A0A0A]/40 hover:border-[#0A0A0A]">
+
+<!-- hairline divider -->
+<span class="hidden md:inline-block w-px h-3 bg-[#0A0A0A]/25 dark:bg-[#FAFAF7]/25" aria-hidden="true"></span>
+
+<a href="https://www.lyctrides.com/login" class="hidden md:inline-flex items-center text-[11px] font-light tracking-[0.32em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 whitespace-nowrap">
 <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
 </a>
-<a href="#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
+
+<!-- hairline divider -->
+<span class="hidden md:inline-block w-px h-3 bg-[#0A0A0A]/25 dark:bg-[#FAFAF7]/25" aria-hidden="true"></span>
+
+<a href="#contact" class="hidden md:inline-flex items-center gap-2 text-[11px] font-light tracking-[0.32em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 whitespace-nowrap">
 <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+<span class="material-symbols-outlined text-sm leading-none" aria-hidden="true">arrow_forward</span>
 </a>
+
 <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary" aria-label="Open menu">
 <span class="material-symbols-outlined text-2xl" id="mobile-menu-icon">menu</span>
 </button>
