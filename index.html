@@ -140,6 +140,9 @@
 })();
 </script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- preconnect 让浏览器尽早握手 + DNS / TCP / TLS，国内访问 Google Fonts 慢的话节省 400-800ms。 -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -214,8 +217,12 @@
 <style>
         html { scroll-behavior: smooth; scroll-padding-top: 90px; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-        body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; }
-        h1, h2, h3, .nav-brand { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
+        /* fallback 字体栈：Albert Sans 还没加载完时用系统无衬线 + 中文 fallback。
+           关键：'-apple-system' 在 macOS / iOS 上是 SF Pro（字形宽度跟 Albert Sans 接近），
+           视觉切换最不突兀。中文段优先 PingFang / 微软雅黑等 system 字体，
+           等 Noto Sans SC 来了再 swap，避免"等半天才像样"的体感。 */
+        body { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; }
+        h1, h2, h3, .nav-brand { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; font-weight: 700; }
         .glass-nav { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
         html[lang="en"] .lang-cn { display: none; }
         html[lang="cn"] .lang-en { display: none; }
@@ -369,29 +376,47 @@
 <span class="lang-en">Contact</span><span class="lang-cn">联系</span>
 </a>
 </div>
-<!-- 右侧三件（lang / sign in / enquire）等权 + hairline 分隔 -->
+<!-- 右侧三件（lang / sign in / enquire）等权 + hairline 分隔
+     字距从 0.32em 收紧到 0.2em，font-light → font-normal，跟正文字体可识别度对齐。
+     字体由 body 的 Albert Sans + system fallback 提供（即使 Google Fonts 没加载也清晰）。 -->
 <div class="flex items-center md:gap-5 gap-3">
-<button class="text-[11px] font-light tracking-[0.32em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 cursor-pointer whitespace-nowrap" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+<button class="text-[11px] font-normal tracking-[0.2em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 cursor-pointer whitespace-nowrap" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
 <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
 </button>
 
 <!-- hairline divider -->
 <span class="hidden md:inline-block w-px h-3 bg-[#0A0A0A]/25 dark:bg-[#FAFAF7]/25" aria-hidden="true"></span>
 
-<a href="https://www.lyctrides.com/login" class="hidden md:inline-flex items-center text-[11px] font-light tracking-[0.32em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 whitespace-nowrap">
+<a href="https://www.lyctrides.com/login" class="hidden md:inline-flex items-center text-[11px] font-normal tracking-[0.2em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 whitespace-nowrap">
 <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
 </a>
 
 <!-- hairline divider -->
 <span class="hidden md:inline-block w-px h-3 bg-[#0A0A0A]/25 dark:bg-[#FAFAF7]/25" aria-hidden="true"></span>
 
-<a href="#contact" class="hidden md:inline-flex items-center gap-2 text-[11px] font-light tracking-[0.32em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 whitespace-nowrap">
+<!-- Enquire 链接：箭头改用 inline SVG（替换 Material Symbols ligature），
+     根除"arrow_forward 字面显示"的 FOUC。
+     hover 时整组 opacity 60% + 箭头向右滑 4px（group-hover:translate-x-1），
+     符合"低调商务"风格，没有过度装饰。 -->
+<a href="#contact" class="group hidden md:inline-flex items-center gap-2 text-[11px] font-normal tracking-[0.2em] uppercase text-[#0A0A0A] dark:text-[#FAFAF7] hover:opacity-60 transition-opacity duration-300 whitespace-nowrap">
 <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
-<span class="material-symbols-outlined text-sm leading-none" aria-hidden="true">arrow_forward</span>
+<svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<line x1="5" y1="12" x2="19" y2="12"/>
+<polyline points="12 5 19 12 12 19"/>
+</svg>
 </a>
 
+<!-- mobile menu 按钮也换 SVG（移动端同样不受 Material Symbols 加载影响） -->
 <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-primary" aria-label="Open menu">
-<span class="material-symbols-outlined text-2xl" id="mobile-menu-icon">menu</span>
+<svg id="mobile-menu-icon-open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<line x1="3" y1="6" x2="21" y2="6"/>
+<line x1="3" y1="12" x2="21" y2="12"/>
+<line x1="3" y1="18" x2="21" y2="18"/>
+</svg>
+<svg id="mobile-menu-icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<line x1="6" y1="6" x2="18" y2="18"/>
+<line x1="6" y1="18" x2="18" y2="6"/>
+</svg>
 </button>
 </div>
 </div>
@@ -1673,14 +1698,16 @@ For administrators, drivers, suppliers, and corporate clients.
   </div>
 </div>
 <script>
-  // Mobile menu
+  // Mobile menu — open/close icon 已改成两个 SVG，靠 toggle hidden class 切换
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  const mobileMenuIconOpen = document.getElementById('mobile-menu-icon-open');
+  const mobileMenuIconClose = document.getElementById('mobile-menu-icon-close');
   function closeMobileMenu() {
     mobileMenu.classList.add('hidden');
     mobileMenu.classList.remove('flex');
-    mobileMenuIcon.textContent = 'menu';
+    mobileMenuIconOpen.classList.remove('hidden');
+    mobileMenuIconClose.classList.add('hidden');
     document.body.style.overflow = '';
   }
   if (mobileMenuBtn) {
@@ -1691,7 +1718,8 @@ For administrators, drivers, suppliers, and corporate clients.
       } else {
         mobileMenu.classList.remove('hidden');
         mobileMenu.classList.add('flex');
-        mobileMenuIcon.textContent = 'close';
+        mobileMenuIconOpen.classList.add('hidden');
+        mobileMenuIconClose.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
     });
