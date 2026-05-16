@@ -94,13 +94,19 @@ ssh lyctrides
 
 | 路径 | 大小 | 内容 | 谁服务 | 域名 |
 |---|---|---|---|---|
-| `/root/lyctai-website/` | 75M | git 仓库（jolly 分支 checkout） | — | （仅 deploy 源，nginx **不**直接 serve） |
-| `/var/www/lyctai-website/` | — | **nginx 实际 serve 的文件** | nginx `server_name lyctai.com` | **lyctai.com** |
-| `/var/www/lyctai-website.bak.<YYYYMMDD-HHMMSS>/` | — | 历史 rsync 部署备份（可清理） | — | — |
+| `/var/www/lyctai-website/` | ~36M | **git checkout + nginx 直 serve（合一）** | nginx `server_name lyctai.com` | **lyctai.com** |
 | `/root/lyctrides-platform/apps/web/` | — | Next.js 后台前端 | systemd: `lyctrides-web.service` → localhost:3000 | **lyctrides.com** |
-| `/root/lyctrides-platform/apps/api/` | — | NestJS API | systemd: `lyctrides-api.service` | `*/api/*` |
+| `/root/lyctrides-platform/apps/api/` | — | NestJS API | systemd: `lyctrides-api.service` → localhost:3001 | `*/api/*` |
 
-⚠️ **关键事实**：`/root/lyctai-website/` 跟 `/var/www/lyctai-website/` 是**两份独立文件**。`git pull` 只更新 `/root/`，**还需要 `rsync` 同步到 `/var/www/`** 才能上线。当前**没有任何自动同步**（无 cron、无 systemd timer、无 git hook）。
+✅ **Step 6 之后**：git 仓库本身就在 nginx 服务目录，无需 rsync。`git pull` 即上线。
+
+### nginx 安全屏蔽
+
+`/etc/nginx/conf.d/lyctai.conf` 已配置 deny 规则，禁止外网访问以下路径：
+- `.git/` 及任何 dotfile（`location ~ /\.`）
+- `*.md`（CLAUDE.md / INFRA.md / DESIGN-TOKENS.md）
+- `/scripts/`（含 deploy-website.sh）
+- `/preview-all.html`
 
 ### 关键 systemd 服务
 
@@ -135,7 +141,7 @@ systemctl status lyctrides-api      # NestJS API (localhost:3001)
 
 ## 5. 部署流程（真实管用的）
 
-### 改官网静态站（3 步必走）
+### 改官网静态站（一行 deploy）
 
 ```bash
 # ─── 本地 ───
@@ -147,26 +153,22 @@ git push origin claude/jolly-chatelet-049c03
 
 # ─── 服务器 ───
 ssh lyctrides
+/root/deploy-website.sh         # = cd /var/www/lyctai-website && git pull + 验证
 
-# ① 拉新代码到 /root/
-cd /root/lyctai-website
-git pull --ff-only origin claude/jolly-chatelet-049c03
-
-# ② 同步到 /var/www（nginx 实际 serve 的地方）
-cp -a /var/www/lyctai-website /var/www/lyctai-website.bak.$(date +%Y%m%d-%H%M%S)
-rsync -av --delete \
-  --exclude='.git' --exclude='.gitignore' \
-  --exclude='preview-all.html' --exclude='*.md' \
-  /root/lyctai-website/ /var/www/lyctai-website/
-
-# ③ 清 Cloudflare 边缘缓存
-# Cloudflare dashboard → 选 lyctai.com → Caching → Configuration → Purge Everything
-
-# 验证
-curl -s -A "Mozilla/5.0" "https://www.lyctai.com/?$(date +%s)" | grep '<title>'
+# 或裸命令版（不通过脚本）：
+# cd /var/www/lyctai-website && git pull --ff-only origin claude/jolly-chatelet-049c03
 ```
 
-**简化版**：可以把这一坨写成 `/root/deploy-website.sh`（参见 §6.D 一键脚本）。
+`deploy-website.sh` 会自动 curl 本地 + 线上 title 对比，**不一致时提示去 Cloudflare 清缓存**。Cloudflare 清缓存路径：dashboard → 选 lyctai.com → Caching → Configuration → Purge Everything。
+
+### 回滚（如果新版有问题）
+
+```bash
+ssh lyctrides
+cd /var/www/lyctai-website
+git log --oneline | head -5      # 看历史
+git reset --hard <good-commit>   # 回滚到之前 commit
+```
 
 ### 清 Cloudflare 边缘缓存（重要内容更新后）
 
