@@ -4,7 +4,7 @@
 >
 > **任何 Claude / 工程师在 LyctRides 项目里干活前，必须先读这一份。**
 >
-> 最后核对日期：2026-05-16（生产 commit `b2d7bd8`）
+> 最后核对日期：2026-05-16（生产分支 `main`，nginx 直 serve git checkout）
 
 ---
 
@@ -37,8 +37,8 @@
               │  路由按 hostname 分流：                       │
               │                                              │
               │  lyctai.com    → 静态文件                     │
-              │                  /root/lyctai-website/        │
-              │                  (nginx / cloudflared serve)  │
+              │                  /var/www/lyctai-website/     │
+              │                  (nginx direct serve git ckt) │
               │                                              │
               │  lyctrides.com → localhost:3000               │
               │                  systemd: lyctrides-web       │
@@ -56,19 +56,12 @@
 
 ## 2. 本地工作区（/Users/jz/WorkPlace/）
 
-| 路径 | 含义 | 状态 | 怎么用 |
-|---|---|---|---|
-| `lyctai-website-jolly/` | git worktree · 分支 `claude/jolly-chatelet-049c03` | ✅ **生产分支，所有官网改动都在这** | 日常工作目录 |
-| `lyctai-website-repo/` | git worktree · 分支 `main` | ⚠️ **已脱节、不再代表生产**。两个 worktree 共用一份 `.git`（在 repo 这边） | 别在这里改东西。可保留作为 main 历史 reference |
-| `lyctrides-platform/` | 独立 monorepo（admin + API + iOS） | ✅ 后台 / iOS APP 改动在这 | 跟 jolly 是**两个独立 GitHub repo**，不要混 |
+| 路径 | 含义 | 用途 |
+|---|---|---|
+| `lyctai-website-repo/` | git PRIMARY clone · 分支 `main` | 日常工作目录（含 `.git/` 真目录） |
+| `lyctrides-platform/` | 独立 monorepo（admin + API + iOS） | 后台 / API / iOS 项目，跟官网无关 |
 
-### git worktree 关系
-```
-lyctai-website-repo/.git/   ← 真实 git 数据库（PRIMARY clone）
-lyctai-website-jolly/.git    ← 只是一个 file，指向上面的 worktree 目录
-```
-
-⚠️ **不能直接 `rm -rf lyctai-website-repo/`** — 会同时干掉 jolly 的 git 历史。要清理见 §6。
+Step 7 后 `lyctai-website-jolly/` worktree 已移除，只保留一个 `lyctai-website-repo/`。可选改名为 `lyctai-website/` 更直观（命令：`cd ~/WorkPlace && mv lyctai-website-repo lyctai-website`）。
 
 ---
 
@@ -149,14 +142,14 @@ cd ~/WorkPlace/lyctai-website-jolly
 # ... 改代码 ...
 git add <具体文件>
 git commit -m "feat(xxx): ..."
-git push origin claude/jolly-chatelet-049c03
+git push origin main
 
 # ─── 服务器 ───
 ssh lyctrides
 /root/deploy-website.sh         # = cd /var/www/lyctai-website && git pull + 验证
 
 # 或裸命令版（不通过脚本）：
-# cd /var/www/lyctai-website && git pull --ff-only origin claude/jolly-chatelet-049c03
+# cd /var/www/lyctai-website && git pull --ff-only origin main
 ```
 
 `deploy-website.sh` 会自动 curl 本地 + 线上 title 对比，**不一致时提示去 Cloudflare 清缓存**。Cloudflare 清缓存路径：dashboard → 选 lyctai.com → Caching → Configuration → Purge Everything。
@@ -198,68 +191,31 @@ systemctl restart lyctrides-web   # Next.js 要重启才生效
 
 ## 6. 可以清理的东西
 
-### A. 本地可删（安全）
-
-| 路径 | 为何安全删 |
-|---|---|
-| `lyctai-website-jolly/preview-all.html` | 本地预览专用，部署到生产无害但是冗余 |
-| `lyctai-website-repo/.DS_Store` | macOS 噪音 |
-
-### B. 服务器 `/root/lyctai-website/` 可删（已 noindex，但生产存在显得脏）
+### A. 服务器 24h 观察期后清理
 
 ```bash
 ssh lyctrides
-cd /root/lyctai-website
+rm -rf /var/www/lyctai-website.bak.20260516-150330       # 5/16 第一次 rsync 备份
+rm -rf /var/www/lyctai-website.bak.20260516-150909       # 5/16 deploy.sh 备份
+rm -rf /var/www/lyctai-website.pre-swap-20260516-151842  # Step 6 swap 备份
+```
+
+### B. 服务器旧 mockup 文件（可删，已 noindex）
+
+```bash
+ssh lyctrides
+cd /var/www/lyctai-website
 rm -f article.html page-a.html page-b.html hero-preview-a.html hero-preview-b.html
+git add -u && git commit -m "chore: remove deprecated mockup files" && git push
 ```
 
-这些是早期 mockup / template 文件，新设计完全没引用到，robots.txt 也已 Disallow。
+### C. 本地 lyctai-website-repo / lyctai-website-jolly 收尾
 
-### C. 本地 `lyctai-website-repo/` 改名让你不再迷惑（**不删 .git**）
-
-```bash
-cd ~/WorkPlace
-mv lyctai-website-repo lyctai-git-store
-```
-
-之后 jolly worktree 仍能正常 git 操作（worktree 内部用绝对路径跟踪），看起来更干净 —— `lyctai-website-jolly/` 才是工作区，`lyctai-git-store/` 是元数据归档。
-
-### D. 等彻底 ready 后才做：把 main 升级为生产分支
-
-详见 §7。
+Step 7 后只保留一个工作目录，详见 §2 末尾。
 
 ---
 
-## 7. 长期规划：把 main 拉回生产线
-
-现状是历史包袱：分支名 `claude/jolly-chatelet-049c03` 是 Claude Code 随机生成的，不像生产分支应有的名字。
-
-**未来某天**（不是现在）想清理：
-
-```bash
-# 1) 备份当前 main
-ssh lyctrides "cd /root/lyctai-website && git tag backup-main-$(date +%Y%m%d)"
-
-# 2) 让 main = jolly 内容
-cd ~/WorkPlace/lyctai-website-jolly
-git push origin claude/jolly-chatelet-049c03:main --force-with-lease
-
-# 3) 服务器切到 main
-ssh lyctrides "cd /root/lyctai-website && git fetch && git checkout main && git pull --ff-only origin main"
-
-# 4) GitHub 设 default branch 回 main
-
-# 5) 删 jolly 分支
-git push origin --delete claude/jolly-chatelet-049c03
-```
-
-⚠️ 在做之前确认：
-- jolly 上的 commit 全在 main 之外
-- Cloudflare Tunnel 的部署目标分支配置（如果有自动 pull script，要同步改）
-
----
-
-## 8. 快速诊断手册（出问题时）
+## 7. 快速诊断手册（出问题时）
 
 | 症状 | 检查 |
 |---|---|

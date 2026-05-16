@@ -14,11 +14,12 @@
 
 | 改什么 | 怎么部署 |
 |---|---|
-| 官网静态站（本项目） | `git push origin claude/jolly-chatelet-049c03` → `ssh lyctrides && cd /root/lyctai-website && git pull` |
+| 官网静态站（本项目） | `git push origin main` → `ssh lyctrides && cd /root/lyctai-website && git pull` |
 | 后台 / API | 走 `~/WorkPlace/lyctrides-platform`（另一个 repo） |
 
-**生产分支** = `claude/jolly-chatelet-049c03`（不是 main，main 已脱节）
+**生产分支** = `main`
 **生产服务器** = Aliyun ECS `8.166.115.148`（SSH 别名 `lyctrides`）
+**生产部署目录** = `/var/www/lyctai-website/`（git checkout + nginx 直 serve 同一目录）
 **生产域名** = lyctai.com（前端） / lyctrides.com（后台）
 
 ---
