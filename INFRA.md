@@ -92,49 +92,81 @@ ssh lyctrides
 
 ### 关键目录
 
-| 路径 | 内容 | 服务它的进程 | 对应域名 |
-|---|---|---|---|
-| `/root/lyctai-website/` | 静态 HTML（jolly 分支 checkout） | nginx / cloudflared 直 serve | **lyctai.com** |
-| `/root/lyctrides-platform/apps/web/` | Next.js 后台前端 | systemd: `lyctrides-web.service` → localhost:3000 | **lyctrides.com** |
-| `/root/lyctrides-platform/apps/api/` | NestJS API | systemd: `lyctrides-api.service`（推测） | `lyctai.com/api/*` + `lyctrides.com/api/*` |
+| 路径 | 大小 | 内容 | 谁服务 | 域名 |
+|---|---|---|---|---|
+| `/root/lyctai-website/` | 75M | git 仓库（jolly 分支 checkout） | — | （仅 deploy 源，nginx **不**直接 serve） |
+| `/var/www/lyctai-website/` | — | **nginx 实际 serve 的文件** | nginx `server_name lyctai.com` | **lyctai.com** |
+| `/var/www/lyctai-website.bak.<YYYYMMDD-HHMMSS>/` | — | 历史 rsync 部署备份（可清理） | — | — |
+| `/root/lyctrides-platform/apps/web/` | — | Next.js 后台前端 | systemd: `lyctrides-web.service` → localhost:3000 | **lyctrides.com** |
+| `/root/lyctrides-platform/apps/api/` | — | NestJS API | systemd: `lyctrides-api.service` | `*/api/*` |
+
+⚠️ **关键事实**：`/root/lyctai-website/` 跟 `/var/www/lyctai-website/` 是**两份独立文件**。`git pull` 只更新 `/root/`，**还需要 `rsync` 同步到 `/var/www/`** 才能上线。当前**没有任何自动同步**（无 cron、无 systemd timer、无 git hook）。
 
 ### 关键 systemd 服务
 
 ```bash
-systemctl status cloudflared        # Tunnel 守护
+systemctl status cloudflared        # Cloudflare Tunnel 守护
+systemctl status nginx              # nginx 反代 + 静态 serve
 systemctl status lyctrides-web      # Next.js 后台前端 (localhost:3000)
-systemctl status lyctrides-api      # NestJS API （如启用）
+systemctl status lyctrides-api      # NestJS API (localhost:3001)
 ```
+
+### nginx 路由表
+
+| location | 实际行为 |
+|---|---|
+| `lyctai.com` / `www.lyctai.com` | `root /var/www/lyctai-website` 静态 serve |
+| `lyctrides.com` / `www.lyctrides.com` | `proxy_pass http://127.0.0.1:3001`（注：proxy 到 API 端口；实际 Next.js 是 :3000，但 nginx 经 :3001 转 — 当前可工作就保留观察） |
+| `*/api/*` | `proxy_pass http://127.0.0.1:3001` |
 
 ### Cloudflare Tunnel 配置
 
 - 名称：`lyctai-prod`
 - Tunnel ID：`cffed891-7950-4424-88bf-ae1c23e596ad`
 - Connector ID：`90d29212-57d4-4e21-a46c-27b2c5515903`
-- 管理：Cloudflare dashboard → Zero Trust → Networks → Tunnels → `lyctai-prod`
-  - 在那里改 hostname routing（lyctai.com / lyctrides.com / api 等怎么映射到本机 localhost 端口）
+- Public hostnames（已确认）：
+  - `lyctai.com/*` → `http://localhost:80`
+  - `www.lyctai.com/*` → `http://localhost:80`
+  - Catch-all: 404
+- **lyctrides.com 不在这个 Tunnel** —— 它走另外的方式接入（推测 Cloudflare DNS 直 proxy 到 ECS IP）
+- 管理：dashboard → Zero Trust → Networks → Tunnels → `lyctai-prod` → **Published application routes** tab
 
 ---
 
 ## 5. 部署流程（真实管用的）
 
-### 改官网静态站
+### 改官网静态站（3 步必走）
 
 ```bash
-# 本地
+# ─── 本地 ───
 cd ~/WorkPlace/lyctai-website-jolly
 # ... 改代码 ...
 git add <具体文件>
 git commit -m "feat(xxx): ..."
 git push origin claude/jolly-chatelet-049c03
 
-# 服务器
+# ─── 服务器 ───
 ssh lyctrides
+
+# ① 拉新代码到 /root/
 cd /root/lyctai-website
 git pull --ff-only origin claude/jolly-chatelet-049c03
 
-# 静态文件，nginx/cloudflared 自动 serve 新内容，零重启
+# ② 同步到 /var/www（nginx 实际 serve 的地方）
+cp -a /var/www/lyctai-website /var/www/lyctai-website.bak.$(date +%Y%m%d-%H%M%S)
+rsync -av --delete \
+  --exclude='.git' --exclude='.gitignore' \
+  --exclude='preview-all.html' --exclude='*.md' \
+  /root/lyctai-website/ /var/www/lyctai-website/
+
+# ③ 清 Cloudflare 边缘缓存
+# Cloudflare dashboard → 选 lyctai.com → Caching → Configuration → Purge Everything
+
+# 验证
+curl -s -A "Mozilla/5.0" "https://www.lyctai.com/?$(date +%s)" | grep '<title>'
 ```
+
+**简化版**：可以把这一坨写成 `/root/deploy-website.sh`（参见 §6.D 一键脚本）。
 
 ### 清 Cloudflare 边缘缓存（重要内容更新后）
 
