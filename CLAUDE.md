@@ -4,7 +4,7 @@
 
 完整的基础设施 / 部署架构 / 服务器路径 / 域名映射 / 清理建议在：
 
-**`/Users/jz/WorkPlace/lyctai-website-jolly/INFRA.md`** ← 单一可信源
+**`/Users/jz/WorkPlace/lyctai-website/INFRA.md`** ← 单一可信源
 
 下面是简版速查 + 项目特定开发约定。
 
@@ -14,7 +14,7 @@
 
 | 改什么 | 怎么部署 |
 |---|---|
-| 官网静态站（本项目） | `git push origin main` → `ssh lyctrides && cd /root/lyctai-website && git pull` |
+| 官网静态站（本项目） | `git push origin main` → `ssh lyctrides && /root/deploy-website.sh` |
 | 后台 / API | 走 `~/WorkPlace/lyctrides-platform`（另一个 repo） |
 
 **生产分支** = `main`
@@ -35,7 +35,7 @@
 
 ### 设计系统单一来源
 
-读 `/Users/jz/WorkPlace/lyctai-website-jolly/DESIGN-TOKENS.md` —— 所有 CSS class（`.ios-pill` / `.nav-glass-pill` / `.hero-signature` / `.nav-pill-active` 等）的权威定义在这里。新组件要跟随同一套 token。
+读 `/Users/jz/WorkPlace/lyctai-website/DESIGN-TOKENS.md` —— 所有 CSS class（`.ios-pill` / `.nav-glass-pill` / `.hero-signature` / `.nav-pill-active` 等）的权威定义在这里。新组件要跟随同一套 token。
 
 ### 双语机制
 
@@ -73,12 +73,10 @@ API 后端在 `~/WorkPlace/lyctrides-platform/apps/api`。
 
 ## 🚫 不要做的事
 
-- ❌ 跑 `lyctai-website-repo/deploy.sh` —— 已废
-- ❌ 在 `lyctai-website-repo/` 工作 —— 那是 main 分支，已脱节
-- ❌ `rm -rf lyctai-website-repo` —— 会同时干掉 jolly 的 git
-- ❌ 引入第三种主色
-- ❌ 使用「零担」物流术语（公司不做物流，零担指单次出行 = on-demand order）
+- ❌ 引入第三种主色（仅 `#0A0A0A` + `#FAFAF7`）
+- ❌ 使用「零担」物流术语（公司不做物流；零担 = on-demand order，单次出行）
 - ❌ 把品牌名写成 LYCT-RIDES / Lyctrides / Photon-Year（**只**写 LyctRides 驼峰）
+- ❌ 在生产服务器上手动改文件（永远 git push → deploy.sh，保 git 是单一可信源）
 
 ---
 

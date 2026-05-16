@@ -58,10 +58,10 @@
 
 | 路径 | 含义 | 用途 |
 |---|---|---|
-| `lyctai-website-repo/` | git PRIMARY clone · 分支 `main` | 日常工作目录（含 `.git/` 真目录） |
-| `lyctrides-platform/` | 独立 monorepo（admin + API + iOS） | 后台 / API / iOS 项目，跟官网无关 |
+| `lyctai-website/` | git clone · 分支 `main` | 官网工作目录（含 `.git/`） |
+| `lyctrides-platform/` | 独立 monorepo | 后台 / API / iOS 项目（跟官网无关） |
 
-Step 7 后 `lyctai-website-jolly/` worktree 已移除，只保留一个 `lyctai-website-repo/`。可选改名为 `lyctai-website/` 更直观（命令：`cd ~/WorkPlace && mv lyctai-website-repo lyctai-website`）。
+历史包袱 jolly worktree 已清理。Step 7 / 8 之后**只有 `main` 一个分支 + 一个工作目录**，本地 / 远程 / 服务器三处都对齐。
 
 ---
 
