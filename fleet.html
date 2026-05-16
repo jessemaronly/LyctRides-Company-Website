@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet | LyctRides 光年专车</title>
+<meta name="description" content="LyctRides vehicle fleet — Mercedes-Benz S-Class, E-Class, V-Class, ZEEKR 009, Buick GL8, Toyota Coaster. Premium chauffeur vehicles across Greater China."/>
+<link rel="canonical" href="https://www.lyctai.com/fleet.html"/>
+<link rel="alternate" hreflang="en" href="https://www.lyctai.com/fleet.html"/>
+<link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/fleet.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="LyctRides"/>
+<meta property="og:title" content="Fleet | LyctRides"/>
+<meta property="og:description" content="6 vehicle classes, 300+ cities, immaculate maintenance — LyctRides premium chauffeur fleet across Greater China."/>
+<meta property="og:url" content="https://www.lyctai.com/fleet.html"/>
+<meta property="og:image" content="https://www.lyctai.com/images/hero.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { primary: "#0A0A0A", surface: "#FAFAF7", secondary: "#50606f" },
+      fontFamily: { headline: ["Albert Sans"], body: ["Albert Sans"], mono: ["JetBrains Mono"] }
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; color: #0A0A0A; background: #FAFAF7; }
+  h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
+  html[lang="en"] .lang-cn { display: none; }
+  html[lang="cn"] .lang-en { display: none; }
+
+  /* ─────────────────────────────────────────────────────────────
+     iOS-inspired Design Tokens · 严格黑白 + Apple 质感
+     ────────────────────────────────────────────────────────────── */
+  :root {
+    --container-max: 1280px;
+    --section-pad-y: 56px;
+    --section-pad-y-lg: 88px;
+
+    --fs-display: clamp(2.25rem, 5vw, 4rem);
+    --fs-h1: clamp(1.75rem, 3.5vw, 2.625rem);
+    --fs-h2: clamp(1.25rem, 2vw, 1.5rem);
+    --fs-body-lg: 1.0625rem;
+    --fs-body: 1rem;
+    --fs-label: 0.6875rem;
+
+    --tracking-tight: -0.015em;
+    --tracking-label: 0.2em;
+    --lh-tight: 1.1;
+    --lh-body: 1.55;
+    --lh-loose: 1.65;
+
+    /* iOS radii */
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 18px;
+    --r-xl: 22px;
+    --r-pill: 999px;
+
+    /* iOS shadows */
+    --shadow-card: 0 1px 2px rgba(10,10,10,0.04), 0 6px 20px rgba(10,10,10,0.04);
+    --shadow-card-hover: 0 2px 6px rgba(10,10,10,0.06), 0 18px 50px rgba(10,10,10,0.10);
+    --shadow-card-press: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 4px rgba(10,10,10,0.04);
+    --shadow-glass: 0 1px 0 rgba(10,10,10,0.04);
+    --inner-highlight: inset 0 1px 0 rgba(255,255,255,0.7);
+
+    /* iOS spring easings */
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.36, 1);
+    --ease-spring-soft: cubic-bezier(0.25, 1.25, 0.5, 1);
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-fast: 200ms;
+    --dur-base: 380ms;
+    --dur-spring: 540ms;
+    --dur-slow: 720ms;
+  }
+
+  /* Layout primitives */
+  .section-pad { padding-top: var(--section-pad-y); padding-bottom: var(--section-pad-y); }
+  @media (min-width: 768px) { .section-pad { padding-top: var(--section-pad-y-lg); padding-bottom: var(--section-pad-y-lg); } }
+  .section-container { max-width: var(--container-max); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  @media (min-width: 768px) { .section-container { padding-left: 48px; padding-right: 48px; } }
+  .section-divider { border-top: 1px solid rgba(10,10,10,.06); }
+
+  /* Typography */
+  .eyebrow {
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: rgba(10,10,10,.55);
+    line-height: 1.4;
+  }
+  .section-head {
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--lh-tight);
+    color: #0A0A0A;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .section-head .lang-cn { font-family: 'Noto Serif SC', serif; font-weight: 500; letter-spacing: 0; line-height: 1.25; }
+  .section-intro {
+    font-size: var(--fs-body-lg);
+    font-weight: 300;
+    line-height: var(--lh-loose);
+    color: rgba(10,10,10,.7);
+    max-width: 680px;
+    text-wrap: pretty;
+  }
+
+  /* iOS-Card */
+  .ios-card {
+    background: #ffffff;
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(10,10,10,0.05);
+    box-shadow: var(--shadow-card), var(--inner-highlight);
+    transition: transform var(--dur-spring) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-out);
+    will-change: transform;
+  }
+  .ios-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
+    border-color: rgba(10,10,10,0.1);
+  }
+  .ios-card:active { transform: translateY(-1px); }
+
+  /* iOS-Pill */
+  .ios-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    background: linear-gradient(180deg, #1c1917 0%, #0A0A0A 100%);
+    color: #FAFAF7;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    padding: 13px 26px;
+    border-radius: var(--r-pill);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 16px rgba(10,10,10,0.18);
+    transition: transform var(--dur-fast) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios);
+    overflow: hidden;
+  }
+  .ios-pill:hover {
+    transform: scale(1.04);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 28px rgba(10,10,10,0.28);
+  }
+  .ios-pill:active { transform: scale(0.96); }
+  .ios-pill svg { transition: transform var(--dur-base) var(--ease-spring-soft); }
+  .ios-pill:hover svg { transform: translateX(4px); }
+
+  .ios-pill-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(10,10,10,0.05);
+    color: #0A0A0A;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    padding: 13px 26px;
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(10,10,10,0.08);
+    transition: transform var(--dur-fast) var(--ease-spring),
+                background var(--dur-fast) var(--ease-out);
+  }
+  .ios-pill-outline:hover { transform: scale(1.04); background: rgba(10,10,10,0.1); }
+  .ios-pill-outline:active { transform: scale(0.96); }
+
+  /* iOS glass nav */
+  .ios-glass {
+    background: rgba(250,250,247,0.65);
+    backdrop-filter: saturate(200%) blur(32px);
+    -webkit-backdrop-filter: saturate(200%) blur(32px);
+    box-shadow: 0 1px 0 rgba(10,10,10,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(10,10,10,0.05);
+  }
+  .ios-glass.scrolled {
+    background: rgba(250,250,247,0.85);
+    border-bottom-color: rgba(10,10,10,0.08);
+  }
+
+  /* iOS hero strip */
+  .ios-hero-strip {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,10,10,0.04) 0%, transparent 60%),
+      linear-gradient(180deg, #FAFAF7 0%, #f5f5f0 100%);
+    border-bottom: 1px solid rgba(10,10,10,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* iOS service tile */
+  .ios-tile {
+    background: #ffffff;
+    border-radius: var(--r-xl);
+    border: 1px solid rgba(10,10,10,0.04);
+    box-shadow: var(--shadow-card), var(--inner-highlight);
+    padding: 24px;
+    cursor: pointer;
+    transition: transform var(--dur-spring) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+  }
+  @media (min-width: 768px) { .ios-tile { padding: 28px; } }
+  .ios-tile:hover {
+    transform: translateY(-6px) scale(1.005);
+    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
+    border-color: rgba(10,10,10,0.1);
+  }
+  .ios-tile:active { transform: translateY(-2px); }
+  .ios-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform var(--dur-slow) var(--ease-ios);
+    pointer-events: none;
+    border-radius: var(--r-xl);
+  }
+  .ios-tile:hover::before { transform: translateX(100%); }
+
+  /* iOS eyebrow capsule */
+  .ios-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--r-pill);
+    background: rgba(10,10,10,0.04);
+    border: 1px solid rgba(10,10,10,0.06);
+    color: #0A0A0A;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .ios-eyebrow-dot {
+    width: 6px; height: 6px; border-radius: 999px; background: #0A0A0A;
+    box-shadow: 0 0 0 0 rgba(10,10,10,0.4);
+    animation: pulse-dot 2.4s var(--ease-out) infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(10,10,10,0.2); }
+    50% { box-shadow: 0 0 0 5px rgba(10,10,10,0); }
+  }
+
+  /* Stats row */
+  .stat-chip {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-chip .stat-num {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #0A0A0A;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-chip .stat-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: rgba(10,10,10,0.55);
+  }
+
+  /* Scroll-revealed fade-up */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-ios), transform 0.7s var(--ease-spring-soft);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal[data-delay="1"] { transition-delay: 60ms; }
+  .reveal[data-delay="2"] { transition-delay: 120ms; }
+  .reveal[data-delay="3"] { transition-delay: 180ms; }
+  .reveal[data-delay="4"] { transition-delay: 240ms; }
+  .reveal[data-delay="5"] { transition-delay: 300ms; }
+  .reveal[data-delay="6"] { transition-delay: 360ms; }
+
+  html { scroll-behavior: smooth; }
+
+  /* ─── LIQUID GLASS ─── */
+  .liquid-glass-dark {
+    background:
+      linear-gradient(135deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.45) 100%);
+    backdrop-filter: saturate(180%) blur(40px);
+    -webkit-backdrop-filter: saturate(180%) blur(40px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-xl);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(255,255,255,0.04),
+      0 12px 40px rgba(10,10,10,0.35);
+    position: relative;
+    overflow: hidden;
+    color: rgba(255,255,255,0.92);
+  }
+  .liquid-glass-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 30% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 20% at 50% 100%, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .liquid-glass-light {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.4) 100%);
+    backdrop-filter: saturate(200%) blur(30px);
+    -webkit-backdrop-filter: saturate(200%) blur(30px);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: var(--r-lg);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.8),
+      0 8px 24px rgba(10,10,10,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass-light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 30% at 30% 0%, rgba(255,255,255,0.5) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* ─── Nav Services Dropdown ─── */
+
+  /* ─── Floating Action Button ─── */
+
+  /* Ambient glow */
+  @keyframes ambient-shift { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .ambient-glow {
+    position: absolute;
+    inset: -200px;
+    background: conic-gradient(from 0deg at 50% 50%,
+      rgba(10,10,10,0.03) 0deg,
+      rgba(10,10,10,0) 90deg,
+      rgba(10,10,10,0.05) 180deg,
+      rgba(10,10,10,0) 270deg,
+      rgba(10,10,10,0.03) 360deg);
+    animation: ambient-shift 40s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Chauffeur image hero — 3-image cross-fade carousel */
+  .chauffeur-hero {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  @media (max-width: 767px) { .chauffeur-hero { height: 300px; } }
+  .chauffeur-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .chauffeur-hero-img.is-active { opacity: 1; }
+  /* Indicator dots */
+  .chauffeur-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .chauffeur-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(10,10,10,0.18);
+    transition: background 0.4s ease, transform 0.4s var(--ease-spring);
+  }
+  .chauffeur-dot.is-active { background: rgba(255,255,255,0.95); transform: scale(1.25); }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ─── FAB Group with QR popover · 替代旧 .fab-glass ─── */
+  .fab-group {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .fab-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px 14px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: white;
+    border-radius: var(--r-pill);
+    transition: transform var(--dur-spring) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios);
+    text-decoration: none;
+  }
+  .fab-pill svg { width: 16px; height: 16px; transition: transform var(--dur-base) var(--ease-spring-soft); }
+  .fab-pill:hover { transform: translateY(-2px) scale(1.04); }
+  .fab-pill:active { transform: scale(0.96); }
+  .fab-pill:hover svg { transform: translateX(3px); }
+
+  .fab-popover {
+    width: 260px;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.96);
+    transform-origin: bottom right;
+    transition: opacity var(--dur-base) var(--ease-ios),
+                transform var(--dur-spring) var(--ease-spring),
+                visibility var(--dur-base);
+    pointer-events: none;
+  }
+  .fab-group:hover .fab-popover,
+  .fab-group:focus-within .fab-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .fab-qr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .fab-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .fab-qr img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--r-md);
+    background: white;
+    padding: 4px;
+    display: block;
+    box-sizing: border-box;
+  }
+  .fab-qr-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    font-weight: 500;
+  }
+  .fab-contact-row {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fab-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color var(--dur-fast) var(--ease-ios);
+  }
+  .fab-contact-link:hover { color: white; }
+  .fab-contact-link svg { opacity: 0.6; flex-shrink: 0; }
+
+  /* ─── Nav dropdown · 白色液态玻璃（Blacklane 风）─── */
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top left;
+    width: 200px;
+    padding: 8px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f0 100%);
+    border: 1px solid rgba(10,10,10,0.28);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(10,10,10,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-base) var(--ease-ios),
+                transform var(--dur-spring) var(--ease-spring),
+                visibility var(--dur-base);
+    z-index: 60;
+  }
+  .nav-services-trigger { position: relative; }
+
+  /* nav-pill: 底色透明，hover / active 时玻璃 pill 高亮 */
+  .nav-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: #50606f;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: color var(--dur-fast) var(--ease-ios),
+                background var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-ios),
+                box-shadow var(--dur-base) var(--ease-ios);
+  }
+  .nav-pill:hover { color: #0A0A0A; background: rgba(10,10,10,0.04); }
+  .nav-pill-active {
+    color: #0A0A0A;
+    background: rgba(255,255,255,0.6);
+    border-color: rgba(10,10,10,0.08);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,10,10,0.04);
+  }
+  .nav-pill-active:hover {
+    background: rgba(255,255,255,0.78);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 4px 14px rgba(10,10,10,0.08);
+  }
+
+  .nav-services-trigger:hover .nav-dropdown,
+  .nav-services-trigger:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #0A0A0A;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    transition: background var(--dur-fast) var(--ease-ios);
+  }
+  .nav-dropdown-item:hover {
+    background: rgba(10,10,10,0.06);
+  }
+  .nav-dropdown-item svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-4px);
+    color: rgba(10,10,10,0.55);
+    transition: opacity var(--dur-fast) var(--ease-ios), transform var(--dur-fast) var(--ease-ios);
+  }
+  .nav-dropdown-item:hover svg {
+    opacity: 0.55;
+    transform: translateX(0);
+  }
+
+
+  /* ─── Unified hero strip height for sub-pages (excluding home) ─── */
+  .hero-fixed-h { min-height: 380px; display: flex; flex-direction: column; justify-content: center; }
+  @media (min-width: 768px) { .hero-fixed-h { min-height: 440px; } }
+
+</style>
+</head>
+<body>
+
+<!-- ─── iOS Glass Nav ─── -->
+<nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
+  <div class="flex justify-between items-center px-4 md:px-12 py-4 md:py-5 max-w-[1440px] mx-auto">
+    <a href="/" class="flex items-center">
+      <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
+    </a>
+    <div class="hidden md:flex items-center space-x-6 text-[11px] font-medium tracking-[0.18em] uppercase">
+      <a class="nav-pill" href="/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a class="nav-pill" href="/about.html"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+
+      <!-- Services with liquid-glass dropdown -->
+      <div class="nav-services-trigger">
+        <a class="text-[#50606f] hover:text-[#0A0A0A] transition-colors relative pb-1 inline-flex items-center gap-1.5" href="/services.html">
+          <span class="lang-en">Services</span><span class="lang-cn">服务</span>
+          <svg class="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/services.html#airport" class="nav-dropdown-item">
+            <span><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#hourly" class="nav-dropdown-item">
+            <span><span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn">时租与日租</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#cityrides" class="nav-dropdown-item">
+            <span><span class="lang-en">City Rides</span><span class="lang-cn">市内用车</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#citytocity" class="nav-dropdown-item">
+            <span><span class="lang-en">City-to-City</span><span class="lang-cn">城际通行</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#longterm" class="nav-dropdown-item">
+            <span><span class="lang-en">Long-term Charter</span><span class="lang-cn">长包车</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#events" class="nav-dropdown-item">
+            <span><span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#privatejet" class="nav-dropdown-item">
+            <span><span class="lang-en">Private Jet Booking</span><span class="lang-cn">公务机预订</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <a class="nav-pill nav-pill-active" href="/fleet.html"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a class="nav-pill" href="/enterprise.html"><span class="lang-en">Enterprise</span><span class="lang-cn">企业</span></a>
+      <a class="nav-pill" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a class="nav-pill" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a class="nav-pill" href="/contact.html"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <div class="flex items-center gap-3 md:gap-4">
+      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+        <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
+      </button>
+      <a href="https://www.lyctrides.com/login" class="hidden md:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity">
+        <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
+      </a>
+      <a href="/contact.html" class="hidden md:inline-flex ios-pill text-[11px]" style="padding: 10px 20px;">
+        <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu drawer -->
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden ios-glass shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+  <a href="/" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+  <a href="/about.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+  <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+  <a href="/fleet.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-primary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+  <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Enterprise</span><span class="lang-cn">企业</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+  <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+</div>
+
+<!-- ─── Section 1: Hero Strip ─── -->
+<section class="ios-hero-strip hero-fixed-h pt-20 md:pt-24 pb-10 md:pb-12">
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="section-container relative" style="z-index: 1;">
+    <p class="eyebrow mb-4 reveal">
+      <a href="/" class="hover:text-[#0A0A0A] transition-colors">
+        <span class="lang-en">Home</span><span class="lang-cn">首页</span>
+      </a>
+      <span class="mx-2 opacity-50">→</span>
+      <span class="text-[#0A0A0A]">
+        <span class="lang-en">Fleet</span><span class="lang-cn">车队</span>
+      </span>
+    </p>
+    <h1 class="section-head reveal" data-delay="1" style="font-size: clamp(2rem, 4.5vw, 3.25rem);">
+      <span class="lang-en">Vehicles &amp; Chauffeurs.</span>
+      <span class="lang-cn">车队与司机</span>
+    </h1>
+    <p class="text-[#0A0A0A]/65 text-base md:text-lg leading-relaxed mt-4 max-w-2xl font-light reveal" data-delay="2">
+      <span class="lang-en">Two halves of every journey — meticulously maintained, impeccably trained.</span>
+      <span class="lang-cn">旅程两翼——精心养护的车队，严格训练的司机。</span>
+    </p>
+    <div class="flex items-center gap-8 md:gap-10 mt-8 reveal" data-delay="3">
+      <div class="stat-chip">
+        <span class="stat-num">6</span>
+        <span class="stat-label"><span class="lang-en">Vehicle Types</span><span class="lang-cn">车型种类</span></span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num">200+ hrs</span>
+        <span class="stat-label"><span class="lang-en">Training</span><span class="lang-cn">培训时长</span></span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num" style="font-size: 1.1rem;">EHL</span>
+        <span class="stat-label"><span class="lang-en">Certified</span><span class="lang-cn">认证</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 2: Vehicle Lineup ─── -->
+<section class="section-pad section-divider" id="vehicles">
+  <div class="section-container">
+
+    <div class="flex items-center justify-between mb-8 reveal">
+      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">Our Fleet</span><span class="lang-cn">车型概览</span></span>
+      <span class="eyebrow hidden md:block"><span class="lang-en">6 vehicle classes</span><span class="lang-cn">6 款车型</span></span>
+    </div>
+
+    <div class="mb-10 reveal" data-delay="1">
+      <h2 class="section-head mb-2">
+        <span class="lang-en">Vehicles, impeccably maintained.</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">卓越车队阵容</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Mercedes-Benz S-Class -->
+      <a class="ios-tile group flex flex-col reveal" data-delay="1" href="#s-class" id="s-class">
+        <div class="overflow-hidden rounded-[var(--r-md)] mb-5" style="height: 180px; background: #f0ede8;">
+          <img src="/images/Mercedes-Benz%20S-class-1.png" alt="Mercedes-Benz S-Class" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Mercedes-Benz S-Class</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Flagship sedan. Rear massage seats, ambient fragrance.</span>
+          <span class="lang-cn">旗舰轿车，后排按摩座椅。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>4 PAX</span><span>·</span><span>4 LUGGAGE</span><span>·</span><span>550L</span>
+        </div>
+      </a>
+
+      <!-- Mercedes-Benz E-Class -->
+      <a class="ios-tile group flex flex-col reveal" data-delay="2" href="#e-class" id="e-class">
+        <div class="overflow-hidden rounded-[var(--r-md)] mb-5" style="height: 180px; background: #f0ede8;">
+          <img src="/images/Mercedes-Benz%20E-class-1.png" alt="Mercedes-Benz E-Class" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Mercedes-Benz E-Class</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Executive sedan. Premium audio + climate.</span>
+          <span class="lang-cn">行政级轿车，专业音响。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>4 PAX</span><span>·</span><span>3 LUGGAGE</span><span>·</span><span>470L</span>
+        </div>
+      </a>
+
+      <!-- Mercedes-Benz V-Class -->
+      <a class="ios-tile group flex flex-col reveal" data-delay="3" href="#v-class" id="v-class">
+        <div class="overflow-hidden rounded-[var(--r-md)] mb-5" style="height: 180px; background: #f0ede8;">
+          <img src="/images/Mercedes-Benz%20V-class-1.png" alt="Mercedes-Benz V-Class" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Mercedes-Benz V-Class</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Premium MPV. Reclining captains' seats.</span>
+          <span class="lang-cn">高端商务车，可平躺座椅。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>7 PAX</span><span>·</span><span>7 LUGGAGE</span><span>·</span><span>800L</span>
+        </div>
+      </a>
+
+      <!-- ZEEKR 009 -->
+      <a class="ios-tile group flex flex-col reveal" data-delay="4" href="#zeekr" id="zeekr">
+        <div class="overflow-hidden rounded-[var(--r-md)] mb-5" style="height: 180px; background: #f0ede8;">
+          <img src="/images/zeekr009.png" alt="ZEEKR 009" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">ZEEKR 009</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Electric luxury MPV. Silent cabin.</span>
+          <span class="lang-cn">新能源 MPV，静音舱。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>6 PAX</span><span>·</span><span>6 LUGGAGE</span><span>·</span><span>ELECTRIC</span>
+        </div>
+      </a>
+
+      <!-- Buick GL8 -->
+      <a class="ios-tile group flex flex-col reveal" data-delay="5" href="#gl8" id="gl8">
+        <div class="overflow-hidden rounded-[var(--r-md)] mb-5" style="height: 180px; background: #f0ede8;">
+          <img src="/images/Buick%20Gl8.png" alt="Buick GL8" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Buick GL8</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Trusted business MPV. Reliable everyday workhorse.</span>
+          <span class="lang-cn">可靠商务用车，日常首选。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>6 PAX</span><span>·</span><span>5 LUGGAGE</span><span>·</span><span>500L</span>
+        </div>
+      </a>
+
+      <!-- Toyota Coaster -->
+      <a class="ios-tile group flex flex-col reveal" data-delay="6" href="#coaster" id="coaster">
+        <div class="overflow-hidden rounded-[var(--r-md)] mb-5" style="height: 180px; background: #f0ede8;">
+          <img src="/images/Coaster.png" alt="Toyota Coaster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Toyota Coaster</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Group transport. Conference shuttles, fashion week convoys.</span>
+          <span class="lang-cn">团体出行，会议接驳。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>19–23 PAX</span><span>·</span><span>GROUP</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 3: Chauffeur Standards ─── -->
+<section class="section-pad section-divider bg-[#FAFAF7]" id="chauffeurs">
+  <div class="section-container">
+
+    <div class="flex items-center gap-3 mb-6 reveal">
+      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">The People</span><span class="lang-cn">专业司机</span></span>
+    </div>
+
+    <div class="mb-10 reveal" data-delay="1">
+      <h2 class="section-head mb-3">
+        <span class="lang-en">The people behind every journey.</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">每段旅程背后的专业力量</span>
+      </h2>
+      <p class="section-intro mt-4">
+        <span class="lang-en">200+ training hours, 30+ courses, EHL certification — every detail, your standard.</span>
+        <span class="lang-cn">200+ 培训时长，30+ 门课程，EHL 礼宾认证——每个细节，您的标准。</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+
+      <!-- Left: Chauffeur 3-image carousel -->
+      <div class="reveal" data-delay="2">
+        <div class="ios-card overflow-hidden" style="border-radius: var(--r-lg);">
+          <div class="chauffeur-hero" id="chauffeur-carousel">
+            <img src="/images/fleet-chauffeur-1.png" alt="LyctRides Chauffeur" class="chauffeur-hero-img is-active" />
+            <img src="/images/fleet-chauffeur-2.png" alt="LyctRides Chauffeur" class="chauffeur-hero-img" loading="lazy" />
+            <img src="/images/fleet-chauffeur-3.png" alt="LyctRides Chauffeur" class="chauffeur-hero-img" loading="lazy" />
+            <div class="chauffeur-dots" aria-hidden="true">
+              <span class="chauffeur-dot is-active"></span>
+              <span class="chauffeur-dot"></span>
+              <span class="chauffeur-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function(){
+          var imgs = document.querySelectorAll('#chauffeur-carousel .chauffeur-hero-img');
+          var dots = document.querySelectorAll('#chauffeur-carousel .chauffeur-dot');
+          if (imgs.length < 2) return;
+          var i = 0;
+          setInterval(function(){
+            imgs[i].classList.remove('is-active');
+            dots[i].classList.remove('is-active');
+            i = (i + 1) % imgs.length;
+            imgs[i].classList.add('is-active');
+            dots[i].classList.add('is-active');
+          }, 4500);
+        })();
+      </script>
+
+      <!-- Right: 4 standards -->
+      <div class="flex flex-col gap-4">
+
+        <div class="ios-card p-6 reveal" data-delay="2">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">01</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">200+ Hours of Training</span>
+                <span class="lang-cn">200+ 学时培训</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Bilingual chauffeurs complete 30+ courses — defensive driving, route planning, emergency protocol.</span>
+                <span class="lang-cn">双语司机完成 30+ 门课程，含防御性驾驶、路线规划与紧急处置。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 reveal" data-delay="3">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">02</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">EHL Etiquette Certified</span>
+                <span class="lang-cn">国际礼宾标准</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Ecole Hôtelière de Lausanne certified — world-class hospitality protocol for every greeting.</span>
+                <span class="lang-cn">通过洛桑酒店学院（EHL）认证，以国际礼宾标准迎接每一位宾客。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 reveal" data-delay="4">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">03</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">Uniform Discipline</span>
+                <span class="lang-cn">着装规范</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Black tailored suit, white gloves, polished oxfords — every engagement, without exception.</span>
+                <span class="lang-cn">黑色定制西装、白色手套、光亮皮鞋——每次服务，无一例外。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 reveal" data-delay="5">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">04</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">Quiet Cabin Standard</span>
+                <span class="lang-cn">静谧标准</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Phones silent, music optional, conversation only if invited. Your cabin, your silence.</span>
+                <span class="lang-cn">手机静音，音乐按需，仅在宾客主动交谈时回应。您的座舱，您的静谧。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 4: In-Car Standards ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+
+    <div class="max-w-3xl mb-10 md:mb-12 reveal">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">In-Car Standards</span><span class="lang-cn">车内标准</span></span>
+      </div>
+      <h2 class="section-head mb-3">
+        <span class="lang-en">Curated before every boarding.</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">每次上车前悉心备置</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="1">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">01</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Amenities Kit</span>
+          <span class="lang-cn">精选车内物资</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Still water, wet wipes, phone charger, reading light, fresh newspaper — replaced after every journey.</span>
+          <span class="lang-cn">矿泉水、湿纸巾、充电线、阅读灯、当日报刊——每次结束后更换。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="2">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">02</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Climate Pre-set</span>
+          <span class="lang-cn">温度预设</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Cabin temperature pre-adjusted to your profile. Privacy partition available on request.</span>
+          <span class="lang-cn">按照宾客偏好预调座舱温度，隔断隔屏按需启用。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="3">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">03</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Immaculate Upkeep</span>
+          <span class="lang-cn">专项保养</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Deep-cleaned before every assignment. Mechanical checks on a fixed schedule — zero surprises.</span>
+          <span class="lang-cn">每次派车前深度清洁，定期机械检查，确保万无一失。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="4">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">04</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Scent &amp; Fragrance</span>
+          <span class="lang-cn">环境香氛</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Subtle ambient fragrance in S-Class. Fragrance-free option available — simply request at booking.</span>
+          <span class="lang-cn">S 级配置淡雅环境香氛，如需无香版本可在预订时注明。</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 5: CTA Banner ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+    <div class="reveal flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 p-7 md:p-12 rounded-[var(--r-xl)] relative overflow-hidden"
+         style="background: linear-gradient(135deg, #1c1917 0%, #0A0A0A 100%); box-shadow: var(--shadow-card-hover);">
+      <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-40 pointer-events-none"
+           style="background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);"></div>
+      <div class="flex-1 relative">
+        <p class="eyebrow mb-3" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);">
+          <span class="lang-en">Ready when you are</span><span class="lang-cn">随时为您启程</span>
+        </p>
+        <h2 class="section-head text-white mb-2" style="font-size: clamp(1.5rem, 3vw, 2.25rem);">
+          <span class="lang-en">Book a vehicle.</span>
+          <span class="lang-cn">预订车辆</span>
+        </h2>
+        <p class="text-white/65 text-[15px] md:text-base leading-relaxed font-light max-w-xl">
+          <span class="lang-en">Single transfer or full corporate fleet programme — we respond within one business hour.</span>
+          <span class="lang-cn">单次接送或完整企业车队方案——我们一个工作小时内回复。</span>
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto md:min-w-[200px] relative">
+        <a href="/contact.html" class="ios-pill" style="background: linear-gradient(180deg, #FAFAF7 0%, #e7e5e4 100%); color: #0A0A0A; box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 4px 16px rgba(0,0,0,0.3);">
+          <span class="lang-en">Make an Enquiry</span><span class="lang-cn">立即咨询</span>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="tel:+8615822918415" class="ios-pill-outline" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: white;">
+          +86 158 2291 8415
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer class="w-full py-12 md:py-16 px-5 md:px-12 bg-[#0A0A0A] text-white mt-0">
+  <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <img src="/images/logo.svg" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
+      <p class="text-white/45 text-xs max-w-xs leading-relaxed">
+        <span class="lang-en">Executive chauffeur service across Greater China. Available 24/7.</span>
+        <span class="lang-cn">大中华区专业礼宾出行服务，全天候 24/7。</span>
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-x-8 gap-y-3 text-[11px] text-white/45 tracking-[0.15em] uppercase">
+      <a href="/" class="hover:text-white transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a href="/about.html" class="hover:text-white transition-colors"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+      <a href="/services.html" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a href="/fleet.html" class="text-white"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a href="/enterprise.html" class="hover:text-white transition-colors"><span class="lang-en">Enterprise</span><span class="lang-cn">企业</span></a>
+      <a href="/news.html" class="hover:text-white transition-colors"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a href="/careers.html" class="hover:text-white transition-colors"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a href="/contact.html" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <p class="text-white/25 text-[10px] tracking-[0.18em] uppercase">© 2026 LyctRides · <span style="letter-spacing: 0.35em;">光年出行</span></p>
+  </div>
+</footer>
+
+
+
+
+<!-- ─── Floating Action Button with QR popover · hover 浮现微信 + WhatsApp 二维码 ─── -->
+<div class="fab-group">
+  <!-- Popover · 液态玻璃卡片，含 2 个 QR + 电话邮箱 -->
+  <div class="fab-popover liquid-glass-dark">
+    <div class="fab-qr-grid">
+      <div class="fab-qr">
+        <img src="/images/wechat-qr.png" alt="WeChat QR code" loading="lazy">
+        <span class="fab-qr-label"><span class="lang-en">WeChat</span><span class="lang-cn">微信</span></span>
+      </div>
+      <div class="fab-qr">
+        <img src="/images/whatsapp-qr.png" alt="WhatsApp QR code" loading="lazy">
+        <span class="fab-qr-label">WhatsApp</span>
+      </div>
+    </div>
+    <div class="fab-contact-row">
+      <a href="tel:+8615822918415" class="fab-contact-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+86 158 2291 8415</span>
+      </a>
+      <a href="mailto:bd@lyctai.com" class="fab-contact-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>bd@lyctai.com</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- The pill (主按钮) -->
+  <a href="/contact.html" class="fab-pill liquid-glass-dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+  </a>
+</div>
+
+<script>
+  // 语言初始化（与首页共享 lyct-lang key）
+  (function(){
+    try {
+      var saved = localStorage.getItem('lyct-lang');
+      if (saved === 'en' || saved === 'cn') document.documentElement.lang = saved;
+      else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'cn';
+    } catch(_) {}
+  })();
+
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  /* ───────────────── iOS Animation Layer ───────────────── */
+
+  // 1. Nav glass scroll + FAB show/hide
+  (function(){
+    var nav = document.querySelector('.ios-glass');
+    function onScroll(){
+      var y = window.scrollY;
+      if (nav) {
+        if (y > 8) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // 2. Reveal on scroll — IntersectionObserver
+  (function(){
+    var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (prefersReduce || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -80px 0px',
+      threshold: 0.05
+    });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // 3. iOS-style tap feedback on tiles
+  (function(){
+    document.querySelectorAll('.ios-tile').forEach(function(tile){
+      tile.addEventListener('touchstart', function(){ tile.style.transform = 'translateY(-2px) scale(0.99)'; }, { passive: true });
+      tile.addEventListener('touchend', function(){ tile.style.transform = ''; }, { passive: true });
+      tile.addEventListener('touchcancel', function(){ tile.style.transform = ''; }, { passive: true });
+    });
+  })();
+
+  // 4. Mouse-tracked subtle tilt on first vehicle card (desktop only)
+  (function(){
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    var featured = document.querySelector('.ios-tile');
+    if (!featured) return;
+    featured.style.transformStyle = 'preserve-3d';
+    featured.addEventListener('mousemove', function(e){
+      var rect = featured.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      var tiltX = y * -3;
+      var tiltY = x * 3;
+      featured.style.transform = 'translateY(-6px) perspective(1000px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
+    });
+    featured.addEventListener('mouseleave', function(){
+      featured.style.transform = '';
+    });
+  })();
+</script>
+
+</body>
+</html>

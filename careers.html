@@ -20,114 +20,624 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        primary: "#0A0A0A",
-        surface: "#FAFAF7",
-        secondary: "#50606f"
-      },
-      fontFamily: {
-        headline: ["Albert Sans"],
-        body: ["Albert Sans"],
-        mono: ["JetBrains Mono"]
-      }
-    }
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { primary: "#0A0A0A", surface: "#FAFAF7", secondary: "#50606f" },
+      fontFamily: { headline: ["Albert Sans"], body: ["Albert Sans"], mono: ["JetBrains Mono"] }
+    } }
   }
-}
 </script>
 <style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-  body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; background: #FAFAF7; }
-  h1, h2, h3 { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
+  body { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; color: #0A0A0A; background: #FAFAF7; }
+  h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
   html[lang="en"] .lang-cn { display: none; }
   html[lang="cn"] .lang-en { display: none; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .fade-up { animation: fadeUp .6s ease-out both; }
-  .job-card { transition: border-color .2s ease; }
-  .filter-chip { transition: all .2s ease; }
-  .apply-form { transition: max-height .4s ease, opacity .3s ease; max-height: 0; opacity: 0; overflow: hidden; }
-  .apply-form.open { max-height: 700px; opacity: 1; }
-  /* 岗位描述折叠：默认前 4 行可见 + 渐隐遮罩；展开后完整显示 */
+
+  :root {
+    --container-max: 1280px;
+    --section-pad-y: 56px;
+    --section-pad-y-lg: 88px;
+    --fs-display: clamp(2.25rem, 5vw, 4rem);
+    --fs-h1: clamp(1.75rem, 3.5vw, 2.625rem);
+    --fs-h2: clamp(1.25rem, 2vw, 1.5rem);
+    --fs-body-lg: 1.0625rem;
+    --fs-body: 1rem;
+    --fs-label: 0.6875rem;
+    --tracking-tight: -0.015em;
+    --tracking-label: 0.2em;
+    --lh-tight: 1.1;
+    --lh-body: 1.55;
+    --lh-loose: 1.65;
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 18px;
+    --r-xl: 22px;
+    --r-pill: 999px;
+    --shadow-card: 0 1px 2px rgba(10,10,10,0.04), 0 6px 20px rgba(10,10,10,0.04);
+    --shadow-card-hover: 0 2px 6px rgba(10,10,10,0.06), 0 18px 50px rgba(10,10,10,0.10);
+    --shadow-card-press: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 4px rgba(10,10,10,0.04);
+    --shadow-glass: 0 1px 0 rgba(10,10,10,0.04);
+    --inner-highlight: inset 0 1px 0 rgba(255,255,255,0.7);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.36, 1);
+    --ease-spring-soft: cubic-bezier(0.25, 1.25, 0.5, 1);
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-fast: 200ms;
+    --dur-base: 380ms;
+    --dur-spring: 540ms;
+    --dur-slow: 720ms;
+  }
+
+  .section-pad { padding-top: var(--section-pad-y); padding-bottom: var(--section-pad-y); }
+  @media (min-width: 768px) { .section-pad { padding-top: var(--section-pad-y-lg); padding-bottom: var(--section-pad-y-lg); } }
+  .section-container { max-width: var(--container-max); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  @media (min-width: 768px) { .section-container { padding-left: 48px; padding-right: 48px; } }
+  .section-divider { border-top: 1px solid rgba(10,10,10,.06); }
+
+  .eyebrow {
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: rgba(10,10,10,.55);
+    line-height: 1.4;
+  }
+  .section-head {
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--lh-tight);
+    color: #0A0A0A;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .section-head .lang-cn { font-family: 'Noto Serif SC', serif; font-weight: 500; letter-spacing: 0; line-height: 1.25; }
+
+  .ios-card {
+    background: #ffffff;
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(10,10,10,0.05);
+    box-shadow: var(--shadow-card), var(--inner-highlight);
+    transition: transform var(--dur-spring) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-out);
+    will-change: transform;
+  }
+  .ios-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
+    border-color: rgba(10,10,10,0.1);
+  }
+  .ios-card:active { transform: translateY(-1px); }
+
+  /* job-card: no hover lift — it has an inline apply form, lift would be odd UX */
+  .job-card {
+    background: #ffffff;
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(10,10,10,0.05);
+    box-shadow: var(--shadow-card), var(--inner-highlight);
+    transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-ios);
+    overflow: hidden;
+  }
+  .job-card:hover {
+    border-color: rgba(10,10,10,0.12);
+    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
+  }
+
+  .ios-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    background: linear-gradient(180deg, #1c1917 0%, #0A0A0A 100%);
+    color: #FAFAF7;
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    padding: 13px 26px;
+    border-radius: var(--r-pill);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 16px rgba(10,10,10,0.18);
+    transition: transform var(--dur-fast) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios);
+    overflow: hidden;
+  }
+  .ios-pill:hover {
+    transform: scale(1.04);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 28px rgba(10,10,10,0.28);
+  }
+  .ios-pill:active { transform: scale(0.96); }
+
+  .ios-pill-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: linear-gradient(180deg, #1c1917 0%, #0A0A0A 100%);
+    color: #FAFAF7;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: var(--r-pill);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 3px 10px rgba(10,10,10,0.15);
+    transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios);
+    cursor: pointer;
+    border: none;
+  }
+  .ios-pill-sm:hover { transform: scale(1.03); box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 20px rgba(10,10,10,0.24); }
+  .ios-pill-sm:active { transform: scale(0.97); }
+
+  .ios-glass {
+    background: rgba(250,250,247,0.65);
+    backdrop-filter: saturate(200%) blur(32px);
+    -webkit-backdrop-filter: saturate(200%) blur(32px);
+    box-shadow: 0 1px 0 rgba(10,10,10,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(10,10,10,0.05);
+  }
+  .ios-glass.scrolled {
+    background: rgba(250,250,247,0.85);
+    border-bottom-color: rgba(10,10,10,0.08);
+  }
+
+  .ios-hero-strip {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,10,10,0.04) 0%, transparent 60%),
+      linear-gradient(180deg, #FAFAF7 0%, #f5f5f0 100%);
+    border-bottom: 1px solid rgba(10,10,10,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ios-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--r-pill);
+    background: rgba(10,10,10,0.04);
+    border: 1px solid rgba(10,10,10,0.06);
+    color: #0A0A0A;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .ios-eyebrow-dot {
+    width: 6px; height: 6px; border-radius: 999px; background: #0A0A0A;
+    box-shadow: 0 0 0 0 rgba(10,10,10,0.4);
+    animation: pulse-dot 2.4s var(--ease-out) infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(10,10,10,0.2); }
+    50% { box-shadow: 0 0 0 5px rgba(10,10,10,0); }
+  }
+
+  .stat-chip { display: inline-flex; flex-direction: column; gap: 2px; }
+  .stat-chip .stat-num {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #0A0A0A;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-chip .stat-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: rgba(10,10,10,0.55);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-ios), transform 0.7s var(--ease-spring-soft);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal[data-delay="1"] { transition-delay: 60ms; }
+  .reveal[data-delay="2"] { transition-delay: 120ms; }
+  .reveal[data-delay="3"] { transition-delay: 180ms; }
+
+  html { scroll-behavior: smooth; }
+
+  .liquid-glass-dark {
+    background: linear-gradient(135deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.45) 100%);
+    backdrop-filter: saturate(180%) blur(40px);
+    -webkit-backdrop-filter: saturate(180%) blur(40px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-xl);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04), 0 12px 40px rgba(10,10,10,0.35);
+    position: relative;
+    overflow: hidden;
+    color: rgba(255,255,255,0.92);
+  }
+  .liquid-glass-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 30% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 20% at 50% 100%, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  @keyframes ambient-shift { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .ambient-glow {
+    position: absolute; inset: -200px;
+    background: conic-gradient(from 0deg at 50% 50%,
+      rgba(10,10,10,0.03) 0deg, rgba(10,10,10,0) 90deg,
+      rgba(10,10,10,0.05) 180deg, rgba(10,10,10,0) 270deg,
+      rgba(10,10,10,0.03) 360deg);
+    animation: ambient-shift 40s linear infinite;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* Filter chip active state */
+  .filter-chip { cursor: pointer; transition: all var(--dur-fast) var(--ease-out); }
+  .filter-chip.chip-active { background: #0A0A0A; color: #FAFAF7; border-color: #0A0A0A; }
+
+  /* iOS form inputs */
+  .ios-input {
+    width: 100%;
+    background: rgba(10,10,10,0.04);
+    border: 1px solid rgba(10,10,10,0.1);
+    border-radius: var(--r-md);
+    padding: 11px 14px;
+    font-size: 14px;
+    color: #0A0A0A;
+    font-family: inherit;
+    transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+    outline: none;
+  }
+  .ios-input:focus {
+    border-color: rgba(10,10,10,0.35);
+    box-shadow: 0 0 0 3px rgba(10,10,10,0.06);
+  }
+  .ios-input::placeholder { color: rgba(10,10,10,0.3); }
+
+  /* Apply form collapse */
+  .apply-form { transition: max-height .4s var(--ease-ios), opacity .3s var(--ease-ios); max-height: 0; opacity: 0; overflow: hidden; }
+  .apply-form.open { max-height: 800px; opacity: 1; }
+
+  /* Job description collapse */
   .desc-wrap[data-collapsed="true"] .desc-content {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    position: relative;
     mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
   }
   .desc-wrap[data-collapsed="false"] .desc-content { mask-image: none; -webkit-mask-image: none; }
+
   input[type="file"]::file-selector-button {
     background: #0A0A0A; color: white; border: none; padding: 6px 14px;
     border-radius: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     cursor: pointer; margin-right: 10px; font-family: 'JetBrains Mono', monospace;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ─── FAB Group with QR popover · 替代旧 .fab-glass ─── */
+  .fab-group {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .fab-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px 14px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: white;
+    border-radius: var(--r-pill);
+    transition: transform var(--dur-spring) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios);
+    text-decoration: none;
+  }
+  .fab-pill svg { width: 16px; height: 16px; transition: transform var(--dur-base) var(--ease-spring-soft); }
+  .fab-pill:hover { transform: translateY(-2px) scale(1.04); }
+  .fab-pill:active { transform: scale(0.96); }
+  .fab-pill:hover svg { transform: translateX(3px); }
+
+  .fab-popover {
+    width: 260px;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.96);
+    transform-origin: bottom right;
+    transition: opacity var(--dur-base) var(--ease-ios),
+                transform var(--dur-spring) var(--ease-spring),
+                visibility var(--dur-base);
+    pointer-events: none;
+  }
+  .fab-group:hover .fab-popover,
+  .fab-group:focus-within .fab-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .fab-qr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .fab-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .fab-qr img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--r-md);
+    background: white;
+    padding: 4px;
+    display: block;
+    box-sizing: border-box;
+  }
+  .fab-qr-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    font-weight: 500;
+  }
+  .fab-contact-row {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fab-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color var(--dur-fast) var(--ease-ios);
+  }
+  .fab-contact-link:hover { color: white; }
+  .fab-contact-link svg { opacity: 0.6; flex-shrink: 0; }
+
+  /* ─── Nav dropdown · 白色液态玻璃（Blacklane 风）─── */
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top left;
+    width: 200px;
+    padding: 8px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f0 100%);
+    border: 1px solid rgba(10,10,10,0.28);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(10,10,10,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-base) var(--ease-ios),
+                transform var(--dur-spring) var(--ease-spring),
+                visibility var(--dur-base);
+    z-index: 60;
+  }
+  .nav-services-trigger { position: relative; }
+
+  /* nav-pill: 底色透明，hover / active 时玻璃 pill 高亮 */
+  .nav-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: #50606f;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: color var(--dur-fast) var(--ease-ios),
+                background var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-ios),
+                box-shadow var(--dur-base) var(--ease-ios);
+  }
+  .nav-pill:hover { color: #0A0A0A; background: rgba(10,10,10,0.04); }
+  .nav-pill-active {
+    color: #0A0A0A;
+    background: rgba(255,255,255,0.6);
+    border-color: rgba(10,10,10,0.08);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,10,10,0.04);
+  }
+  .nav-pill-active:hover {
+    background: rgba(255,255,255,0.78);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 4px 14px rgba(10,10,10,0.08);
+  }
+
+  .nav-services-trigger:hover .nav-dropdown,
+  .nav-services-trigger:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #0A0A0A;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    transition: background var(--dur-fast) var(--ease-ios);
+  }
+  .nav-dropdown-item:hover {
+    background: rgba(10,10,10,0.06);
+  }
+  .nav-dropdown-item svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-4px);
+    color: rgba(10,10,10,0.55);
+    transition: opacity var(--dur-fast) var(--ease-ios), transform var(--dur-fast) var(--ease-ios);
+  }
+  .nav-dropdown-item:hover svg {
+    opacity: 0.55;
+    transform: translateX(0);
+  }
+
+
+  /* ─── Unified hero strip height for sub-pages (excluding home) ─── */
+  .hero-fixed-h { min-height: 380px; display: flex; flex-direction: column; justify-content: center; }
+  @media (min-width: 768px) { .hero-fixed-h { min-height: 440px; } }
+
 </style>
 </head>
-<body class="text-[#0A0A0A]">
+<body>
 
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-[#FAFAF7]/90 backdrop-blur-xl border-b border-black/8 transition-all duration-300">
-  <div class="flex justify-between items-center px-4 md:px-12 py-4 max-w-[1440px] mx-auto">
+<!-- iOS Glass Nav -->
+<nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
+  <div class="flex justify-between items-center px-4 md:px-12 py-4 md:py-5 max-w-[1440px] mx-auto">
     <a href="/" class="flex items-center">
       <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
     </a>
-    <div class="hidden md:flex items-center space-x-7 font-headline font-semibold text-xs tracking-[0.15em] uppercase">
-      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#about"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
-      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#services"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
-      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#fleet"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
-      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#concierge"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
-      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
-      <a class="text-[#0A0A0A] font-bold relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#0A0A0A]" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
-      <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#contact"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    <div class="hidden md:flex items-center space-x-7 text-[11px] font-medium tracking-[0.18em] uppercase">
+      
+      <a class="nav-pill" href="/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a><a class="nav-pill" href="/about.html"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+
+      <div class="nav-services-trigger">
+        <a class="nav-pill gap-1.5" href="/services.html">
+          <span class="lang-en">Services</span><span class="lang-cn">服务</span>
+          <svg class="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/services.html#airport" class="nav-dropdown-item">
+            <span><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#hourly" class="nav-dropdown-item">
+            <span><span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn">时租与日租</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#cityrides" class="nav-dropdown-item">
+            <span><span class="lang-en">City Rides</span><span class="lang-cn">市内用车</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#citytocity" class="nav-dropdown-item">
+            <span><span class="lang-en">City-to-City</span><span class="lang-cn">城际通行</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#longterm" class="nav-dropdown-item">
+            <span><span class="lang-en">Long-term Charter</span><span class="lang-cn">长包车</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#events" class="nav-dropdown-item">
+            <span><span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#privatejet" class="nav-dropdown-item">
+            <span><span class="lang-en">Private Jet Booking</span><span class="lang-cn">公务机预订</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <a class="nav-pill" href="/fleet.html"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a class="nav-pill" href="/enterprise.html"><span class="lang-en">Enterprise</span><span class="lang-cn">企业</span></a>
+      <a class="nav-pill" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a class="nav-pill nav-pill-active" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a class="nav-pill" href="/contact.html"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>
-    <div class="flex items-center gap-4">
-      <button class="text-[#0A0A0A] font-bold text-[11px] tracking-[0.2em] cursor-pointer hover:opacity-60 transition-opacity" onclick="document.documentElement.lang = document.documentElement.lang === 'en' ? 'cn' : 'en'">
+    <div class="flex items-center gap-3 md:gap-4">
+      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
-      <a href="/#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
-        <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+      <a href="https://www.lyctrides.com/login" class="hidden md:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity">
+        <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-        <span class="material-symbols-outlined text-2xl">menu</span>
+      <a href="/contact.html" class="hidden md:inline-flex ios-pill text-[11px]" style="padding: 10px 20px;">
+        <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
 </nav>
 
 <!-- Mobile menu -->
-<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden bg-[#FAFAF7] border-b border-black/10 shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
-  <a href="/#about" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
-  <a href="/#services" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
-  <a href="/#fleet" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
-  <a href="/#concierge" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
-  <a href="/news.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
-  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-primary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
-  <a href="/#contact" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
-  <a href="/#contact" class="mt-3 block text-center bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-3 rounded-md"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden ios-glass shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+  <a href="/" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+  <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+  <a href="/fleet.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+  <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Enterprise</span><span class="lang-cn">企业</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-primary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+  <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
 </div>
 
-<!-- Hero -->
-<section class="bg-[#FAFAF7] pt-28 pb-12 px-5 md:px-24 border-b border-black/8">
-  <div class="max-w-7xl mx-auto">
-    <p class="font-mono text-[#0A0A0A]/40 text-[11px] tracking-[0.3em] uppercase mb-4">
-      <span class="lang-en">Home → Careers</span><span class="lang-cn">首页 → 招聘</span>
+<!-- Hero strip -->
+<section class="ios-hero-strip hero-fixed-h pt-20 md:pt-24 pb-10 md:pb-12">
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="section-container relative" style="z-index: 1;">
+    <p class="eyebrow mb-4 reveal">
+      <a href="/" class="hover:text-[#0A0A0A] transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <span class="mx-2 opacity-50">→</span>
+      <span class="text-[#0A0A0A]"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></span>
     </p>
-    <h1 class="text-[#0A0A0A] text-4xl md:text-5xl font-bold tracking-tight mb-4">
+    <h1 class="section-head reveal" data-delay="1" style="font-size: clamp(2rem, 4.5vw, 3.25rem);">
       <span class="lang-en">Careers at LyctRides</span>
       <span class="lang-cn">加入光年</span>
     </h1>
-    <p class="text-[#50606f] text-base max-w-xl leading-relaxed">
+    <p class="text-[#0A0A0A]/65 text-base md:text-lg leading-relaxed mt-4 max-w-2xl font-light reveal" data-delay="2">
       <span class="lang-en">Build a career delivering world-class service to the executives who move the world.</span>
-      <span class="lang-cn">加入我们，为驱动世界的企业领袖提供世界级礼宾出行服务。</span>
+      <span class="lang-cn">为推动世界运转的高管，提供世界级礼宾出行服务。</span>
     </p>
+    <div class="flex items-center gap-8 md:gap-10 mt-8 reveal" data-delay="3">
+      <div class="stat-chip">
+        <span class="stat-num">Open</span>
+        <span class="stat-label"><span class="lang-en">Roles</span><span class="lang-cn">职位</span></span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num">120+</span>
+        <span class="stat-label"><span class="lang-en">Team Size</span><span class="lang-cn">团队规模</span></span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num">Hybrid</span>
+        <span class="stat-label"><span class="lang-en">Work Style</span><span class="lang-cn">工作方式</span></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -135,23 +645,23 @@ tailwind.config = {
 <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[70vh]">
 
   <!-- Left: Culture Panel -->
-  <aside class="lg:w-[300px] flex-shrink-0 bg-[#0A0A0A] text-white px-7 md:px-10 py-12 lg:py-16 fade-up">
+  <aside class="lg:w-[320px] flex-shrink-0 bg-[#0A0A0A] text-white px-7 md:px-10 py-12 lg:py-16 reveal">
     <p class="font-mono text-white/35 text-[10px] tracking-[0.35em] uppercase mb-5">
       <span class="lang-en">Why LyctRides</span><span class="lang-cn">为什么选择光年</span>
     </p>
-    <h2 class="text-2xl md:text-3xl font-bold leading-tight mb-6">
+    <h2 class="text-2xl md:text-3xl font-semibold leading-tight mb-6 tracking-tight">
       <span class="lang-en">Serve the Best.<br>Be the Best.</span>
       <span class="lang-cn">服务最卓越的人。<br>成为最卓越的人。</span>
     </h2>
-    <p class="text-white/55 text-sm leading-relaxed mb-10">
+    <p class="text-white/55 text-sm leading-relaxed mb-10 font-light">
       <span class="lang-en">LyctRides is the trusted ground transportation partner for multinational corporations and Fortune 500 executives across Greater China. Every role here — from chauffeur to account management — demands and develops the highest professional standards.</span>
       <span class="lang-cn">光年是大中华区众多跨国企业和世界500强高管信赖的地面出行合作伙伴。在这里，每一个岗位——无论是司机还是客户经理——都要求并培养最高的职业标准。</span>
     </p>
 
     <!-- Stats grid -->
-    <div class="grid grid-cols-2 gap-px bg-white/8 rounded-lg overflow-hidden mb-10">
+    <div class="grid grid-cols-2 gap-px bg-white/8 rounded-[var(--r-lg)] overflow-hidden mb-10">
       <div class="bg-[#111] px-5 py-5">
-        <p class="font-mono text-white text-2xl font-bold mb-1">15+</p>
+        <p class="font-mono text-white text-2xl font-bold mb-1">8+</p>
         <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
           <span class="lang-en">Years</span><span class="lang-cn">年经验</span>
         </p>
@@ -180,27 +690,27 @@ tailwind.config = {
     <div class="space-y-5">
       <div class="flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <span class="material-symbols-outlined text-sm text-white/60">workspace_premium</span>
+          <svg style="width:14px;height:14px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <div>
           <p class="text-white text-sm font-semibold mb-1">
             <span class="lang-en">Excellence Culture</span><span class="lang-cn">卓越文化</span>
           </p>
-          <p class="text-white/45 text-xs leading-relaxed">
+          <p class="text-white/45 text-xs leading-relaxed font-light">
             <span class="lang-en">EHL-certified training, 200+ hours per chauffeur. Standards that actually mean something.</span>
-            <span class="lang-cn">EHL认证培训，每位司机逾200学时。这里的标准，货真价实。</span>
+            <span class="lang-cn">EHL 认证培训，每位司机逾 200 学时。标准，名实相符。</span>
           </p>
         </div>
       </div>
       <div class="flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <span class="material-symbols-outlined text-sm text-white/60">public</span>
+          <svg style="width:14px;height:14px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <div>
           <p class="text-white text-sm font-semibold mb-1">
             <span class="lang-en">Global Exposure</span><span class="lang-cn">国际视野</span>
           </p>
-          <p class="text-white/45 text-xs leading-relaxed">
+          <p class="text-white/45 text-xs leading-relaxed font-light">
             <span class="lang-en">Work with Fortune 500 executives and multinational clients across 300+ cities.</span>
             <span class="lang-cn">服务遍及300余城的世界500强高管与跨国企业客户。</span>
           </p>
@@ -208,13 +718,13 @@ tailwind.config = {
       </div>
       <div class="flex items-start gap-4">
         <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <span class="material-symbols-outlined text-sm text-white/60">trending_up</span>
+          <svg style="width:14px;height:14px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
         <div>
           <p class="text-white text-sm font-semibold mb-1">
             <span class="lang-en">Clear Career Path</span><span class="lang-cn">清晰成长路径</span>
           </p>
-          <p class="text-white/45 text-xs leading-relaxed">
+          <p class="text-white/45 text-xs leading-relaxed font-light">
             <span class="lang-en">Structured progression from junior to senior roles, with mentorship at every stage.</span>
             <span class="lang-cn">从初级到高级的结构化晋升通道，每个阶段均有导师陪伴成长。</span>
           </p>
@@ -227,23 +737,23 @@ tailwind.config = {
   <div class="flex-1 px-5 md:px-10 lg:px-12 py-12 lg:py-16">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
       <div>
-        <h2 class="text-xl font-bold">
+        <h2 class="text-xl font-semibold tracking-tight">
           <span class="lang-en">Open Positions</span><span class="lang-cn">招聘职位</span>
         </h2>
         <p id="job-count" class="font-mono text-[#50606f] text-[11px] mt-1"></p>
       </div>
       <!-- Dept filters -->
       <div id="dept-filters" class="flex flex-wrap gap-2">
-        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-[#0A0A0A] bg-[#0A0A0A] text-white" data-dept="all">
+        <button class="filter-chip ios-eyebrow chip-active" data-dept="all">
           <span class="lang-en">All</span><span class="lang-cn">全部</span>
         </button>
-        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-dept="chauffeur">
+        <button class="filter-chip ios-eyebrow" data-dept="chauffeur">
           <span class="lang-en">Chauffeur</span><span class="lang-cn">司机</span>
         </button>
-        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-dept="corporate">
+        <button class="filter-chip ios-eyebrow" data-dept="corporate">
           <span class="lang-en">Corporate</span><span class="lang-cn">企业</span>
         </button>
-        <button class="filter-chip font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border border-black/20 text-[#50606f] hover:border-[#0A0A0A] hover:text-[#0A0A0A] bg-white" data-dept="operations">
+        <button class="filter-chip ios-eyebrow" data-dept="operations">
           <span class="lang-en">Operations</span><span class="lang-cn">运营</span>
         </button>
       </div>
@@ -262,7 +772,7 @@ tailwind.config = {
 </div>
 
 <!-- Footer -->
-<footer class="w-full py-12 px-5 md:px-12 bg-[#0A0A0A] text-white">
+<footer class="w-full py-12 md:py-16 px-5 md:px-12 bg-[#0A0A0A] text-white mt-0">
   <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
     <div>
       <img src="/images/logo.svg" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
@@ -271,17 +781,99 @@ tailwind.config = {
         <span class="lang-cn">大中华区专业礼宾出行服务，全天候 24/7。</span>
       </p>
     </div>
-    <div class="flex flex-wrap gap-x-8 gap-y-3 text-xs text-white/45 font-mono tracking-widest uppercase">
+    <div class="flex flex-wrap gap-x-8 gap-y-3 text-[11px] text-white/45 tracking-[0.15em] uppercase">
       <a href="/" class="hover:text-white transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
-      <a href="/#services" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
-      <a href="/#fleet" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a href="/about.html" class="hover:text-white transition-colors"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+      <a href="/services.html" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a href="/fleet.html" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a href="/enterprise.html" class="hover:text-white transition-colors"><span class="lang-en">Enterprise</span><span class="lang-cn">企业</span></a>
       <a href="/news.html" class="hover:text-white transition-colors"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
       <a href="/careers.html" class="text-white"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
-      <a href="/#contact" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+      <a href="/contact.html" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>
-    <p class="text-white/25 text-[10px] font-mono">© 2025 LyctRides · 光年</p>
+    <p class="text-white/25 text-[10px] tracking-[0.18em] uppercase">© 2026 LyctRides · <span style="letter-spacing: 0.35em;">光年出行</span></p>
   </div>
 </footer>
+
+
+<!-- ─── Floating Action Button with QR popover · hover 浮现微信 + WhatsApp 二维码 ─── -->
+<div class="fab-group">
+  <!-- Popover · 液态玻璃卡片，含 2 个 QR + 电话邮箱 -->
+  <div class="fab-popover liquid-glass-dark">
+    <div class="fab-qr-grid">
+      <div class="fab-qr">
+        <img src="/images/wechat-qr.png" alt="WeChat QR code" loading="lazy">
+        <span class="fab-qr-label"><span class="lang-en">WeChat</span><span class="lang-cn">微信</span></span>
+      </div>
+      <div class="fab-qr">
+        <img src="/images/whatsapp-qr.png" alt="WhatsApp QR code" loading="lazy">
+        <span class="fab-qr-label">WhatsApp</span>
+      </div>
+    </div>
+    <div class="fab-contact-row">
+      <a href="tel:+8615822918415" class="fab-contact-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+86 158 2291 8415</span>
+      </a>
+      <a href="mailto:bd@lyctai.com" class="fab-contact-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>bd@lyctai.com</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- The pill (主按钮) -->
+  <a href="/contact.html" class="fab-pill liquid-glass-dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+  </a>
+</div>
+
+<!-- FAB -->
+
+
+<script>
+  // Lang init
+  (function(){
+    try {
+      var saved = localStorage.getItem('lyct-lang');
+      if (saved === 'en' || saved === 'cn') document.documentElement.lang = saved;
+      else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'cn';
+    } catch(_) {}
+  })();
+
+  // Mobile menu
+  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Nav scroll + FAB
+  (function(){
+    var nav = document.querySelector('.ios-glass');
+    function onScroll(){
+      var y = window.scrollY;
+      if (nav) { if (y > 8) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // IntersectionObserver reveal
+  (function(){
+    var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (prefersReduce || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 
 <script>
 (function () {
@@ -299,22 +891,22 @@ tailwind.config = {
 
   function renderJob(job) {
     const tagsHtml = job.tags.map(t =>
-      `<span class="inline-block font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 bg-[#f0ede8] text-[#50606f] rounded">
+      `<span class="inline-block font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#0A0A0A]/[0.04] border border-[#0A0A0A]/[0.06] text-[#50606f]">
         <span class="lang-en">${t.en}</span><span class="lang-cn">${t.cn}</span>
       </span>`
     ).join('');
 
     return `
-    <div class="job-card border border-black/10 rounded-lg overflow-hidden bg-white hover:border-black/30" data-dept="${job.department}" data-id="${job.id}">
+    <div class="job-card" data-dept="${job.department}" data-id="${job.id}">
       <div class="p-6">
         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
           <div>
-            <h3 class="font-bold text-base leading-snug mb-1">
+            <h3 class="font-semibold text-base leading-snug tracking-tight mb-1">
               <span class="lang-en">${job.title.en}</span><span class="lang-cn">${job.title.cn}</span>
             </h3>
             <div class="flex flex-wrap items-center gap-2 text-[#50606f] font-mono text-[11px]">
               <span class="flex items-center gap-1">
-                <span class="material-symbols-outlined text-[14px]">location_on</span>
+                <svg style="width:12px;height:12px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span class="lang-en">${job.location.en}</span><span class="lang-cn">${job.location.cn}</span>
               </span>
               <span class="text-black/20">·</span>
@@ -322,17 +914,17 @@ tailwind.config = {
             </div>
           </div>
           <button
-            class="apply-toggle flex-shrink-0 bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-md hover:bg-[#333] transition-colors"
+            class="apply-toggle flex-shrink-0 ios-pill-sm"
             data-job-id="${job.id}"
           >
-            <span class="lang-en apply-label-open">Apply →</span>
-            <span class="lang-cn apply-label-open">申请职位 →</span>
+            <span class="lang-en apply-label-open">Apply</span>
+            <span class="lang-cn apply-label-open">申请职位</span>
             <span class="lang-en apply-label-close hidden">Close ✕</span>
             <span class="lang-cn apply-label-close hidden">关闭 ✕</span>
           </button>
         </div>
         <div class="flex flex-wrap gap-1.5 mb-4">${tagsHtml}</div>
-        <div class="desc-wrap text-sm text-[#50606f] leading-relaxed" data-collapsed="true">
+        <div class="desc-wrap text-sm text-[#50606f] leading-relaxed font-light" data-collapsed="true">
           <div class="desc-content space-y-2">
             <div class="lang-en">${
               (job.description && job.description.en || '')
@@ -360,9 +952,9 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Netlify Apply Form -->
+      <!-- Apply Form -->
       <div class="apply-form" id="form-${job.id}">
-        <div class="border-t border-black/8 bg-[#FAFAF7] px-6 py-7">
+        <div class="border-t border-black/6 bg-[#FAFAF7]/80 px-6 py-7">
           <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#50606f] mb-5">
             <span class="lang-en">Application — ${job.title.en}</span>
             <span class="lang-cn">申请职位 — ${job.title.cn}</span>
@@ -370,7 +962,6 @@ tailwind.config = {
           <form
             name="job-application"
             method="POST"
-            data-netlify="true"
             enctype="multipart/form-data"
             class="space-y-4"
             onsubmit="handleSubmit(event, '${job.id}')"
@@ -384,17 +975,13 @@ tailwind.config = {
                 <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Full Name *</span><span class="lang-cn">姓名 *</span>
                 </label>
-                <input type="text" name="name" required
-                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors"
-                  placeholder=""/>
+                <input type="text" name="name" required class="ios-input" placeholder=""/>
               </div>
               <div>
                 <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Phone *</span><span class="lang-cn">电话 *</span>
                 </label>
-                <input type="tel" name="phone" required
-                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors"
-                  placeholder=""/>
+                <input type="tel" name="phone" required class="ios-input" placeholder=""/>
               </div>
             </div>
 
@@ -403,16 +990,13 @@ tailwind.config = {
                 <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Email *</span><span class="lang-cn">邮箱 *</span>
                 </label>
-                <input type="email" name="email" required
-                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors"
-                  placeholder=""/>
+                <input type="email" name="email" required class="ios-input" placeholder=""/>
               </div>
               <div>
                 <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Years of Experience</span><span class="lang-cn">工作年限</span>
                 </label>
-                <select name="experience"
-                  class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors text-[#50606f]">
+                <select name="experience" class="ios-input" style="color:#50606f">
                   <option value="" disabled selected></option>
                   <option value="0-1">0 – 1</option>
                   <option value="1-3">1 – 3</option>
@@ -427,27 +1011,23 @@ tailwind.config = {
               <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                 <span class="lang-en">Cover Message</span><span class="lang-cn">求职信息</span>
               </label>
-              <textarea name="message" rows="3"
-                class="w-full border border-black/15 rounded-md px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-[#0A0A0A] transition-colors resize-none"
-                placeholder=""></textarea>
+              <textarea name="message" rows="3" class="ios-input resize-none" placeholder=""></textarea>
             </div>
 
             <div>
               <label class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                 <span class="lang-en">Résumé / CV</span><span class="lang-cn">简历</span>
               </label>
-              <input type="file" name="resume" accept=".pdf,.doc,.docx"
-                class="w-full text-sm text-[#50606f] file:mr-3"/>
+              <input type="file" name="resume" accept=".pdf,.doc,.docx" class="w-full text-sm text-[#50606f] file:mr-3"/>
               <p class="text-[10px] text-[#50606f]/60 mt-1 font-mono">PDF / DOC / DOCX</p>
             </div>
 
             <div class="flex items-center justify-between pt-2">
-              <p id="success-${job.id}" class="hidden text-xs font-mono text-green-700">
+              <p id="success-${job.id}" class="hidden text-xs font-mono text-[#0A0A0A]">
                 <span class="lang-en">✓ Application submitted — we'll be in touch.</span>
                 <span class="lang-cn">✓ 申请已提交，我们将尽快联系您。</span>
               </p>
-              <button type="submit"
-                class="ml-auto bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-2.5 rounded-md hover:bg-[#333] transition-colors">
+              <button type="submit" class="ml-auto ios-pill-sm">
                 <span class="lang-en">Submit Application</span><span class="lang-cn">提交申请</span>
               </button>
             </div>
@@ -476,7 +1056,7 @@ tailwind.config = {
         ? `${filtered.length} 个开放职位`
         : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`;
 
-      // 岗位描述折叠/展开
+      // Job description collapse/expand
       list.querySelectorAll('.desc-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
           const wrap = btn.closest('.desc-wrap');
@@ -488,13 +1068,12 @@ tailwind.config = {
         });
       });
 
-      // Re-bind toggle buttons
+      // Apply toggle
       list.querySelectorAll('.apply-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
           const jobId = btn.dataset.jobId;
           const form = document.getElementById(`form-${jobId}`);
           const isOpen = form.classList.contains('open');
-          // Close all first
           document.querySelectorAll('.apply-form').forEach(f => f.classList.remove('open'));
           document.querySelectorAll('.apply-toggle').forEach(b => {
             b.querySelectorAll('.apply-label-open').forEach(el => el.classList.remove('hidden'));
@@ -519,12 +1098,7 @@ tailwind.config = {
     if (!btn) return;
     activeDept = btn.dataset.dept;
     document.querySelectorAll('.filter-chip').forEach(b => {
-      const active = b === btn;
-      b.classList.toggle('bg-[#0A0A0A]', active);
-      b.classList.toggle('text-white', active);
-      b.classList.toggle('border-[#0A0A0A]', active);
-      b.classList.toggle('text-[#50606f]', !active);
-      b.classList.toggle('bg-white', !active);
+      b.classList.toggle('chip-active', b === btn);
     });
     render(allJobs);
   });
@@ -532,7 +1106,6 @@ tailwind.config = {
   // Lang observer
   const observer = new MutationObserver(() => {
     applyLang();
-    // Update job count text
     const filtered = activeDept === 'all' ? allJobs : allJobs.filter(j => j.department === activeDept);
     const l = lang();
     document.getElementById('job-count').textContent = filtered.length > 0
@@ -541,24 +1114,26 @@ tailwind.config = {
   });
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
-  // Load data
-  fetch('https://www.lyctai.com/api/public/careers', { cache: 'no-store' })
-    .then(r => r.json())
-    .then(jobs => {
-      allJobs = jobs;
-      render(allJobs);
-    })
-    .catch(() => {
-      document.getElementById('job-list').innerHTML =
-        '<p class="text-center py-16 text-[#50606f] text-sm">Unable to load positions.</p>';
+  // Load data — try backend API first (live admin updates), fallback to static JSON (local dev / backend down)
+  (function loadJobs() {
+    const fetchJson = (url) => fetch(url, { cache: 'no-store' }).then(r => {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.json();
     });
+    fetchJson('/api/public/careers')
+      .catch(() => fetchJson('/data/careers.json'))
+      .then(jobs => { allJobs = jobs; render(allJobs); })
+      .catch(() => {
+        document.getElementById('job-list').innerHTML =
+          '<p class="text-center py-16 text-[#50606f] text-sm"><span class="lang-en">Unable to load positions.</span><span class="lang-cn">暂时无法加载职位</span></p>';
+      });
+  })();
 })();
 
 function handleSubmit(e, jobId) {
   e.preventDefault();
   const form = e.target;
   const fd = new FormData(form);
-  // 后端 DTO 字段：name / email / phone / position / experience? / message?
   const payload = {
     name: (fd.get('name') || '').toString().trim(),
     email: (fd.get('email') || '').toString().trim(),
@@ -567,7 +1142,7 @@ function handleSubmit(e, jobId) {
     experience: (fd.get('experience') || '').toString().trim() || undefined,
     message: (fd.get('message') || fd.get('cover_letter') || '').toString().trim() || undefined,
   };
-  fetch('https://www.lyctai.com/api/public/careers/apply', {
+  fetch('/api/public/careers/apply', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

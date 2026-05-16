@@ -6,6 +6,14 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# Block dev / preview / template artifacts from being indexed
+Disallow: /article.html
+Disallow: /page-a.html
+Disallow: /page-b.html
+Disallow: /hero-preview-a.html
+Disallow: /hero-preview-b.html
+Disallow: /preview-all.html
+
 # Block AI training crawlers we haven't licensed
 User-agent: GPTBot
 Disallow: /
