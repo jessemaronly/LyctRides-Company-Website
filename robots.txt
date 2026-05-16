@@ -35,4 +35,3 @@ Disallow: /
 
 # Sitemap
 Sitemap: https://www.lyctai.com/sitemap.xml
-Sitemap: https://www.lyctai.com/api/public/sitemap.xml
