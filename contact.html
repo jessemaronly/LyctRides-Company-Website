@@ -737,21 +737,21 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="ios-input-label"><span class="lang-en">Full Name</span><span class="lang-cn">姓名</span></label>
-              <input class="ios-input" type="text" name="name" placeholder="John Doe" required minlength="2" maxlength="100"/>
+              <input class="ios-input" type="text" name="name" placeholder="John Doe" data-ph-en="John Doe" data-ph-cn="张先生 / 李女士" required minlength="2" maxlength="100"/>
             </div>
             <div>
               <label class="ios-input-label"><span class="lang-en">Work Email</span><span class="lang-cn">企业邮箱</span></label>
-              <input class="ios-input" type="email" name="email" placeholder="john@company.com" required/>
+              <input class="ios-input" type="email" name="email" placeholder="john@company.com" data-ph-en="john@company.com" data-ph-cn="您的工作邮箱" required/>
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="ios-input-label"><span class="lang-en">Phone Number</span><span class="lang-cn">手机号码</span></label>
-              <input class="ios-input" type="tel" name="phone" placeholder="+86 138 0000 0000"/>
+              <input class="ios-input" type="tel" name="phone" placeholder="+86 138 0000 0000" data-ph-en="+86 138 0000 0000" data-ph-cn="+86 138 0000 0000"/>
             </div>
             <div>
               <label class="ios-input-label"><span class="lang-en">Company</span><span class="lang-cn">公司名称</span></label>
-              <input class="ios-input" type="text" name="company" placeholder="Acme Corp"/>
+              <input class="ios-input" type="text" name="company" placeholder="Acme Corp" data-ph-en="Acme Corp" data-ph-cn="贵公司名称"/>
             </div>
           </div>
           <div>
@@ -768,7 +768,7 @@
           </div>
           <div>
             <label class="ios-input-label"><span class="lang-en">Message</span><span class="lang-cn">补充说明</span></label>
-            <textarea class="ios-input" name="message" rows="4" placeholder="Travel dates, routes, group size…&#10;出行日期、路线、人数……" style="resize: vertical; min-height: 110px;"></textarea>
+            <textarea class="ios-input" name="message" rows="4" placeholder="Travel dates, routes, group size…" data-ph-en="Travel dates, routes, group size…" data-ph-cn="出行日期、路线、人数、特殊需求……" style="resize: vertical; min-height: 110px;"></textarea>
           </div>
           <button id="contact-submit" type="submit" class="ios-pill w-full" style="padding: 16px 28px; font-size: 0.75rem;">
             <span class="lang-en">Send Enquiry</span><span class="lang-cn">提交咨询</span>
@@ -1016,6 +1016,18 @@
       if (saved === 'en' || saved === 'zh-CN') document.documentElement.lang = saved;
       else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'zh-CN';
     } catch(_) {}
+  })();
+
+  // 双语 placeholder 同步：根据 <html lang> 切换 input/textarea 的 placeholder
+  (function(){
+    function syncPlaceholders(){
+      var isZh = (document.documentElement.lang || '').toLowerCase().startsWith('zh');
+      document.querySelectorAll('[data-ph-en][data-ph-cn]').forEach(function(el){
+        el.placeholder = isZh ? el.getAttribute('data-ph-cn') : el.getAttribute('data-ph-en');
+      });
+    }
+    syncPlaceholders();
+    new MutationObserver(syncPlaceholders).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   })();
 
   // Mobile menu toggle
