@@ -32,8 +32,8 @@
 <style>
   body { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; color: #0A0A0A; background: #FAFAF7; }
   h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
-  html[lang="en"] .lang-cn { display: none; }
-  html[lang="cn"] .lang-en { display: none; }
+  html:not([lang^="zh"]) .lang-cn { display: none; }
+  html[lang^="zh"] .lang-en { display: none; }
 
   /* ─────────────────────────────────────────────────────────────
      iOS-inspired Design Tokens · 严格黑白 + Apple 质感
@@ -696,7 +696,7 @@
       <a class="nav-pill" href="/contact.html"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>
     <div class="flex items-center gap-3 md:gap-4">
-      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
       <a href="https://www.lyctrides.com/login" class="hidden md:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity">
@@ -1013,7 +1013,7 @@
   // 语言初始化（与首页共享 lyct-lang key）
   (function(){
     try {
-      var saved = localStorage.getItem('lyct-lang');
+      var saved = (function(){var v=localStorage.getItem('lyct-lang');return v==='cn'?'zh-CN':v;})();
       if (saved === 'en' || saved === 'cn') document.documentElement.lang = saved;
       else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'cn';
     } catch(_) {}

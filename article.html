@@ -43,8 +43,8 @@ tailwind.config = {
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
   body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; background: #FAFAF7; }
   h1, h2, h3 { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
-  html[lang="en"] .lang-cn { display: none; }
-  html[lang="cn"] .lang-en { display: none; }
+  html:not([lang^="zh"]) .lang-cn { display: none; }
+  html[lang^="zh"] .lang-en { display: none; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   .fade-up { animation: fadeUp .6s ease-out both; }
   .article-body p { margin-bottom: 1.5rem; line-height: 1.85; color: #1a1a1a; }
@@ -106,7 +106,7 @@ tailwind.config = {
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#contact"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>
     <div class="flex items-center gap-4">
-      <button class="text-[#0A0A0A] font-bold text-[11px] tracking-[0.2em] cursor-pointer hover:opacity-60 transition-opacity" onclick="document.documentElement.lang = document.documentElement.lang === 'en' ? 'cn' : 'en'">
+      <button class="text-[#0A0A0A] font-bold text-[11px] tracking-[0.2em] cursor-pointer hover:opacity-60 transition-opacity" onclick="document.documentElement.lang=document.documentElement.lang==='en'?'zh-CN':'en'">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
       <a href="/#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">

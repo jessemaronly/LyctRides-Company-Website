@@ -9,8 +9,8 @@
 <style>
   body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; background: #FAFAF7; color: #0A0A0A; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
-  html[lang="en"] .lang-cn { display: none; }
-  html[lang="cn"] .lang-en { display: none; }
+  html:not([lang^="zh"]) .lang-cn { display: none; }
+  html[lang^="zh"] .lang-en { display: none; }
   /* Slow fade-in */
   @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
   .fade-up-1 { animation: fadeUp 1s ease-out .1s both; }

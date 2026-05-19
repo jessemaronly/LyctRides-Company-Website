@@ -7,7 +7,7 @@
 <script>
 // Run before render to avoid language flash
 (function(){
-  var saved = localStorage.getItem('lyct-lang');
+  var saved = (function(){var v=localStorage.getItem('lyct-lang');return v==='cn'?'zh-CN':v;})();
   if (saved) { document.documentElement.lang = saved; return; }
   if (navigator.language && navigator.language.toLowerCase().startsWith('zh')) {
     document.documentElement.lang = 'cn';
@@ -91,8 +91,8 @@
         body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; }
         h1, h2, h3, .nav-brand { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
         .glass-nav { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
-        html[lang="en"] .lang-cn { display: none; }
-        html[lang="cn"] .lang-en { display: none; }
+        html:not([lang^="zh"]) .lang-cn { display: none; }
+        html[lang^="zh"] .lang-en { display: none; }
         .text-balance { text-wrap: balance; }
         .tracking-ultra { letter-spacing: -0.04em; }
         /* Hero typography refinements */
@@ -203,7 +203,7 @@
 </a>
 </div>
 <div class="flex items-center gap-4">
-<button class="text-[#0A0A0A] dark:text-[#FAFAF7] font-headline font-bold text-[11px] tracking-[0.2em] cursor-pointer transition-all duration-300 hover:opacity-70" onclick="var l=document.documentElement.lang==='en'?'cn':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+<button class="text-[#0A0A0A] dark:text-[#FAFAF7] font-headline font-bold text-[11px] tracking-[0.2em] cursor-pointer transition-all duration-300 hover:opacity-70" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
 <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
 </button>
 <a href="#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
