@@ -1130,8 +1130,8 @@
   (function(){
     try {
       var saved = (function(){var v=localStorage.getItem('lyct-lang');return v==='cn'?'zh-CN':v;})();
-      if (saved === 'en' || saved === 'cn') document.documentElement.lang = saved;
-      else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'cn';
+      if (saved === 'en' || saved === 'zh-CN') document.documentElement.lang = saved;
+      else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'zh-CN';
     } catch(_) {}
   })();
 
