@@ -1086,12 +1086,17 @@
       msg.classList.add('hidden');
 
       var fd = new FormData(form);
+      var companyVal = (fd.get('company') || '').toString().trim();
+      var messageVal = (fd.get('message') || '').toString().trim();
+      // 后端 LeadDto 当前未接受 company 字段；把公司名拼到 message 顶部带过去
+      if (companyVal) {
+        messageVal = '[Company: ' + companyVal + ']' + (messageVal ? '\n\n' + messageVal : '');
+      }
       var payload = {
         name: (fd.get('name') || '').toString().trim(),
         email: (fd.get('email') || '').toString().trim(),
         phone: (fd.get('phone') || '').toString().trim() || undefined,
-        company: (fd.get('company') || '').toString().trim() || undefined,
-        message: (fd.get('message') || '').toString().trim() || undefined,
+        message: messageVal || undefined,
         serviceInterest: (fd.get('serviceInterest') || '').toString().trim() || undefined,
       };
 
