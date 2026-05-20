@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LyctRides · Trade-Show Brochure (DL Trifold) — Design Preview</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@200;300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@200;300;400;500;700&family=Noto+Serif+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --ink:#0A0A0A;
+  --paper:#FAFAF7;
+  --hair:rgba(10,10,10,0.10);
+  --hair-soft:rgba(10,10,10,0.06);
+  --mute:rgba(10,10,10,0.55);
+  --mute-2:rgba(10,10,10,0.45);
+  --r-pill:999px;
+  --r-card:18px;
+  --r-tile:14px;
+  --r-widget:24px;
+  --ease-ios:cubic-bezier(.32,.72,0,1);
+}
+html{background:#e8e8e3}
+body{
+  font-family:'Albert Sans','Noto Sans SC',system-ui,sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+html[lang="en"] .lang-cn{display:none}
+html[lang="cn"] .lang-en{display:none}
+
+/* ============ Top control bar ============ */
+.controls{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;
+  background:rgba(232,232,227,0.78);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(10,10,10,0.06);
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+}
+.controls .brand{font-weight:600}
+.controls .brand .dot{display:inline-block;width:6px;height:6px;border-radius:999px;background:var(--ink);margin:0 8px 2px;vertical-align:middle}
+.ctrl-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border-radius:999px;
+  background:rgba(255,255,255,0.65);
+  border:1px solid rgba(10,10,10,0.08);
+  font-size:11px;font-weight:500;letter-spacing:.18em;
+  color:var(--ink);cursor:pointer;
+  transition:background 200ms var(--ease-ios), transform 200ms;
+}
+.ctrl-pill:hover{background:rgba(255,255,255,0.95)}
+.ctrl-pill:active{transform:scale(.96)}
+.ctrl-pill.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ============ Page stage ============ */
+.stage{
+  display:flex;flex-direction:column;align-items:center;gap:40px;
+  padding:40px 24px 80px;
+}
+.spread-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(10,10,10,.5);
+  display:flex;align-items:center;gap:14px;
+}
+.spread-label::before,.spread-label::after{
+  content:"";display:inline-block;width:40px;height:1px;background:rgba(10,10,10,.18);
+}
+
+/* A spread = 3 panels side-by-side (the printed sheet), each panel = 99mm × 210mm DL */
+.spread{
+  display:flex;
+  background:var(--paper);
+  width:297mm;height:210mm;
+  box-shadow:0 1px 2px rgba(10,10,10,.06), 0 30px 80px rgba(10,10,10,.18);
+  position:relative;
+}
+.spread > .panel{
+  width:99mm;height:210mm;
+  position:relative;overflow:hidden;
+  padding:11mm 9mm;
+}
+.spread > .panel + .panel{
+  border-left:1px dashed rgba(10,10,10,.15);
+}
+
+/* ============ Typography ============ */
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5pt;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(10,10,10,.55);
+}
+.section-title{
+  font-family:'Albert Sans',sans-serif;
+  font-size:11pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+}
+.section-title-cn{
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:9.5pt;font-weight:500;letter-spacing:.42em;
+  color:rgba(10,10,10,.65);
+}
+.serif-en{font-family:'Crimson Pro',serif}
+.serif-cn{font-family:'Noto Serif SC',serif}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ============ iOS components ============ */
+.dyn-island{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--ink);color:var(--paper);
+  padding:5px 14px;border-radius:999px;
+  font-size:8.5pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+}
+.dyn-island .dot{width:5px;height:5px;border-radius:999px;background:var(--paper)}
+.pill-outline{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 12px;border:1px solid rgba(10,10,10,.2);border-radius:999px;
+  font-size:8pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink);background:transparent;
+}
+.pill-solid{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 18px;border-radius:999px;
+  background:var(--ink);color:var(--paper);
+  font-size:9pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+}
+.ios-group{
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(10,10,10,.08);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(10,10,10,.03), inset 0 1px 0 rgba(255,255,255,.7);
+}
+.ios-row{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;
+  border-bottom:1px solid rgba(10,10,10,.07);
+}
+.ios-row:last-child{border-bottom:none}
+.ios-row .ico{
+  width:22px;height:22px;flex-shrink:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:6px;
+  color:var(--ink);
+}
+.ios-row .ico svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+.ios-row .body{flex:1;min-width:0}
+.ios-row .body .en{font-size:8.5pt;font-weight:600;letter-spacing:.01em;line-height:1.3}
+.ios-row .body .cn{font-size:7.5pt;font-weight:400;letter-spacing:.08em;color:rgba(10,10,10,.6);margin-top:1px}
+.ios-row .meta{font-size:7pt;font-family:'JetBrains Mono',monospace;color:rgba(10,10,10,.45)}
+.ios-row .chev{color:rgba(10,10,10,.3);font-size:11pt;line-height:1}
+
+/* hero signature */
+.hero-signature{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Crimson Pro',serif;font-style:italic;
+  font-size:9pt;color:rgba(10,10,10,.65);
+}
+.hero-signature .rule{width:18px;height:1px;background:rgba(10,10,10,.28)}
+.hero-signature .cn{font-family:'Noto Serif SC',serif;font-style:normal;letter-spacing:.25em}
+
+/* ============ Helpers ============ */
+.h-rule{height:1px;background:rgba(10,10,10,.12)}
+.h-hair{height:1px;background:rgba(10,10,10,.07)}
+.dashed{
+  height:1px;
+  background-image:linear-gradient(to right,rgba(10,10,10,.35) 50%,transparent 50%);
+  background-size:5px 1px;background-repeat:repeat-x;
+}
+
+/* ============ Panel-specific ============ */
+
+/* P1 cover */
+.cover-slogan{
+  font-family:'Crimson Pro',serif;font-weight:300;
+  font-size:34pt;line-height:.95;letter-spacing:-.01em;
+}
+.cover-slogan em{font-style:italic;font-weight:400}
+.cover-slogan-cn{
+  font-family:'Noto Serif SC',serif;font-weight:400;
+  font-size:22pt;line-height:1.05;letter-spacing:.18em;
+}
+.cover-photo{
+  position:absolute;left:0;right:0;bottom:0;
+  height:48%;
+  background-image:url('../images/Mercedes-Benz V-class-1.jpg');
+  background-size:cover;background-position:center 30%;
+  filter:grayscale(1) contrast(1.18) brightness(.92);
+}
+.cover-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, var(--paper) 0%, rgba(250,250,247,.55) 22%, rgba(250,250,247,0) 50%, rgba(10,10,10,.18) 100%);
+}
+.cover-widget{
+  position:absolute;left:9mm;right:9mm;bottom:11mm;
+  background:rgba(250,250,247,.85);
+  backdrop-filter:saturate(180%) blur(10px);
+  border:1px solid rgba(10,10,10,.10);
+  border-radius:16px;
+  padding:9px 12px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink);
+  box-shadow:0 1px 2px rgba(10,10,10,.05);
+}
+
+/* P3 service grid */
+.svc-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+}
+.svc-tile{
+  position:relative;
+  aspect-ratio:1/.85;
+  border:1px solid rgba(10,10,10,.10);
+  border-radius:12px;
+  padding:8px 9px 9px;
+  background:rgba(255,255,255,.55);
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+}
+.svc-tile.flagship{border-color:rgba(10,10,10,.55);background:rgba(255,255,255,.85)}
+.svc-tile.brand{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.svc-tile .ico{width:22px;height:22px;color:currentColor}
+.svc-tile .ico svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.svc-tile .num{font-family:'JetBrains Mono',monospace;font-size:6.5pt;letter-spacing:.18em;color:rgba(10,10,10,.4)}
+.svc-tile.brand .num{color:rgba(250,250,247,.5)}
+.svc-tile .en{font-size:7.5pt;font-weight:700;letter-spacing:.01em;text-transform:uppercase;margin-top:auto;line-height:1.15}
+.svc-tile .cn{font-family:'Noto Sans SC',sans-serif;font-size:7pt;font-weight:500;letter-spacing:.12em;color:rgba(10,10,10,.6);margin-top:2px}
+.svc-tile.brand .cn{color:rgba(250,250,247,.7)}
+.svc-tile.flagship .flag{
+  position:absolute;top:6px;right:6px;
+  font-size:5.5pt;font-weight:700;letter-spacing:.15em;
+  color:var(--ink);
+  background:var(--paper);
+  border:1px solid rgba(10,10,10,.4);
+  padding:2px 5px;border-radius:999px;
+}
+.svc-tile.brand .always{
+  font-family:'Crimson Pro',serif;font-style:italic;font-size:9pt;line-height:1.05;font-weight:300;
+}
+.svc-tile.brand .always-cn{
+  font-family:'Noto Serif SC',serif;font-size:7.5pt;letter-spacing:.4em;color:rgba(250,250,247,.85);margin-top:3px;
+}
+
+/* P4 cross-border wallet */
+.wallet{
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(10,10,10,.10);
+  border-radius:18px;
+  padding:11px 12px;
+  box-shadow:0 1px 2px rgba(10,10,10,.04), inset 0 1px 0 rgba(255,255,255,.8);
+  position:relative;
+}
+.wallet .fromto{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.wallet .fromto .city{
+  font-family:'Crimson Pro',serif;font-weight:500;
+  font-size:12pt;letter-spacing:.04em;line-height:1.05;
+}
+.wallet .fromto .city .cn{
+  display:block;font-family:'Noto Sans SC',sans-serif;font-size:6.5pt;font-weight:400;letter-spacing:.18em;color:rgba(10,10,10,.55);margin-top:2px;
+}
+.wallet .fromto .arrow{
+  width:28px;height:28px;border-radius:999px;
+  border:1px solid rgba(10,10,10,.25);
+  display:flex;align-items:center;justify-content:center;
+}
+.wallet .fromto .arrow svg{width:14px;height:14px;stroke:var(--ink);stroke-width:1.5;fill:none}
+.wallet-map{
+  margin-top:10px;
+  border-radius:10px;
+  background:rgba(10,10,10,.02);
+  border:1px solid rgba(10,10,10,.08);
+  padding:8px;
+}
+.wallet-headline{
+  font-family:'Albert Sans',sans-serif;
+  font-size:9pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  margin-top:9px;
+}
+.wallet-headline-cn{
+  font-family:'Noto Serif SC',serif;font-size:8pt;font-weight:500;letter-spacing:.3em;color:rgba(10,10,10,.7);margin-top:2px;
+}
+
+/* P5 dispatch */
+.live-island{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--ink);color:var(--paper);
+  padding:5px 12px;border-radius:999px;
+  font-size:7.5pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  margin:0 auto;
+}
+.live-island .pulse{width:5px;height:5px;border-radius:999px;background:var(--paper);
+  animation:pulse 1.4s var(--ease-ios) infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.dispatch-card{
+  margin-top:-6px;
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(10,10,10,.10);
+  border-radius:18px;
+  padding:14px 12px 10px;
+  box-shadow:0 1px 2px rgba(10,10,10,.04), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.dispatch-row{
+  display:grid;grid-template-columns:14px 1fr auto;gap:8px;align-items:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:7pt;letter-spacing:.04em;
+  padding:4px 0;
+  border-bottom:1px solid rgba(10,10,10,.06);
+}
+.dispatch-row:last-child{border-bottom:none}
+.dispatch-row .ico{color:rgba(10,10,10,.6)}
+.dispatch-row .ico svg{width:11px;height:11px;stroke:currentColor;stroke-width:1.5;fill:none}
+.dispatch-row .right{color:rgba(10,10,10,.55)}
+.dispatch-row .ok{color:var(--ink);font-weight:500}
+.dispatch-bar{
+  display:inline-block;width:48px;height:5px;border-radius:999px;
+  background:rgba(10,10,10,.12);position:relative;vertical-align:middle;margin-right:4px;
+}
+.dispatch-bar::after{content:"";position:absolute;left:0;top:0;bottom:0;width:42%;background:var(--ink);border-radius:999px}
+
+/* P5 hero strip */
+.convoy{
+  display:grid;grid-template-columns:repeat(8,1fr);gap:3px;
+  height:18mm;margin-bottom:8px;
+}
+.convoy .car{
+  background:var(--ink);
+  border-radius:4px 4px 2px 2px;
+  position:relative;
+  opacity:.92;
+}
+.convoy .car::after{
+  content:"";position:absolute;left:18%;right:18%;top:30%;height:30%;
+  background:var(--paper);border-radius:2px;opacity:.4;
+}
+.convoy .car:nth-child(odd){transform:translateY(2px)}
+.convoy .car:nth-child(3n){opacity:.78}
+
+/* P4 hero strip — bridge silhouette via SVG */
+.bridge-strip{height:18mm;margin-bottom:8px;border-radius:8px;overflow:hidden;border:1px solid rgba(10,10,10,.08);background:var(--paper)}
+
+/* P6 contact list */
+.contact-cta{
+  display:block;
+  background:var(--ink);color:var(--paper);
+  border-radius:999px;
+  padding:13px 18px;
+  text-align:center;
+  font-size:9pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  position:relative;
+}
+.contact-cta .cn{display:block;margin-top:3px;font-family:'Noto Sans SC',sans-serif;font-size:7.5pt;font-weight:400;letter-spacing:.32em;color:rgba(250,250,247,.85)}
+
+/* QR placeholder */
+.qr{
+  width:22mm;height:22mm;
+  background-image:
+    linear-gradient(45deg,#0A0A0A 25%,transparent 25%,transparent 75%,#0A0A0A 75%),
+    linear-gradient(45deg,#0A0A0A 25%,transparent 25%,transparent 75%,#0A0A0A 75%);
+  background-size:3mm 3mm;
+  background-position:0 0, 1.5mm 1.5mm;
+  background-color:var(--paper);
+  border:1px solid rgba(10,10,10,.2);
+  border-radius:6px;
+  position:relative;
+}
+.qr::before,.qr::after{
+  content:"";position:absolute;width:6mm;height:6mm;
+  background:var(--paper);
+  border:2px solid var(--ink);border-radius:1.5mm;
+}
+.qr::before{top:1.5mm;left:1.5mm}
+.qr::after{top:1.5mm;right:1.5mm}
+
+/* fold marks (print) */
+.foldmark{position:absolute;top:0;bottom:0;width:1px;border-left:1px dashed rgba(10,10,10,.18);pointer-events:none}
+
+/* ============ Print ============ */
+@page{size:297mm 210mm;margin:0}
+@media print{
+  html{background:#fff}
+  body{margin:0}
+  .controls,.spread-label,.foot-note{display:none!important}
+  .stage{padding:0;gap:0}
+  .spread{box-shadow:none;page-break-after:always;width:297mm;height:210mm}
+  .spread > .panel + .panel{border-left:1px dashed rgba(10,10,10,.18)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ CONTROL BAR -->
+<div class="controls">
+  <div class="brand"><span class="lang-en">LyctRides</span><span class="lang-cn">光年专车</span><span class="dot"></span><span style="color:rgba(10,10,10,.5);font-weight:400">Trade-Show Brochure · v1</span></div>
+  <div style="display:flex;gap:10px">
+    <button class="ctrl-pill" id="lang-toggle">EN&nbsp;·&nbsp;中</button>
+    <button class="ctrl-pill solid" onclick="window.print()">Print A4</button>
+  </div>
+</div>
+
+<div class="stage">
+
+<!-- ============================================================
+     OUTSIDE SPREAD (printed on side A of the sheet)
+     Reading order when folded: cover = Panel-1 on the right
+     Panel layout left→right when sheet is flat:
+       [ P2  Inner Flap ] | [ P6  Back Cover ] | [ P1  Cover ]
+     This is the standard letter-fold layout where the right
+     panel folds over the middle, and the left flap tucks inside.
+============================================================ -->
+<div class="spread-label">Outside spread · 外 侧 · 297 × 210 mm</div>
+<div class="spread" id="spread-outside">
+
+  <!-- ========== P2 · Inner Flap (folds inside) ========== -->
+  <section class="panel" id="p2">
+    <div style="display:flex;flex-direction:column;height:100%;justify-content:space-between">
+      <!-- header -->
+      <div>
+        <div class="eyebrow">About&nbsp;·&nbsp;关&nbsp;于</div>
+        <h2 style="margin-top:8px;font-family:'Crimson Pro',serif;font-weight:400;font-size:17pt;line-height:1.1;letter-spacing:-.005em">
+          <span class="lang-en">Operations infrastructure<br>for your team's travel.</span>
+          <span class="lang-cn serif-cn" style="font-size:14pt;letter-spacing:.04em">为 企 业 差 旅 打 造 的<br>运 营 后 台</span>
+        </h2>
+        <p style="margin-top:8px;font-size:8pt;color:rgba(10,10,10,.6);line-height:1.55;letter-spacing:.01em">
+          <span class="lang-en">One contact. 300+ cities. Monthly consolidated billing. Purpose-built for finance, procurement and travel managers across Greater China.</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;letter-spacing:.06em">一个对接窗口 · 覆盖 300+ 城市 · 月度统一开票。专为外企财务、采购及差旅管理团队设计。</span>
+        </p>
+
+        <div class="ios-group" style="margin-top:14px">
+          <div class="ios-row">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <div class="body">
+              <div class="en lang-en">Multinational-Grade Compliance</div>
+              <div class="en lang-cn serif-cn" style="font-weight:500">外&nbsp;企&nbsp;级&nbsp;合&nbsp;规&nbsp;标&nbsp;准</div>
+              <div class="cn lang-en">Net 30 / 60 / 90 · 80+ billing fields · full audit log</div>
+              <div class="cn lang-cn">Net 30/60/90 · 80+ 计费字段 · 完整审计日志</div>
+            </div>
+            <span class="chev">›</span>
+          </div>
+          <div class="ios-row">
+            <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+            <div class="body">
+              <div class="en lang-en">Corporate Trust at Scale</div>
+              <div class="en lang-cn serif-cn" style="font-weight:500">大&nbsp;客&nbsp;户&nbsp;级&nbsp;服&nbsp;务&nbsp;背&nbsp;书</div>
+              <div class="cn lang-en">10K+ corporate clients · 1-hour SLA · named manager</div>
+              <div class="cn lang-cn">10K+ 企业客户 · 1 小时响应 · 专属命名客户经理</div>
+            </div>
+            <span class="chev">›</span>
+          </div>
+          <div class="ios-row">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2c3 3 5 6.5 5 10s-2 7-5 10c-3-3-5-6.5-5-10s2-7 5-10z"/></svg></span>
+            <div class="body">
+              <div class="en lang-en">Greater Bay Area Cross-Border</div>
+              <div class="en lang-cn serif-cn" style="font-weight:500">大&nbsp;湾&nbsp;区&nbsp;跨&nbsp;境&nbsp;运&nbsp;营&nbsp;能&nbsp;力</div>
+              <div class="cn lang-en">Dual-plate fleet · CN / Cantonese / EN · all crossings</div>
+              <div class="cn lang-cn">两地牌车队 · 国/粤/英三语 · 全口岸熟练</div>
+            </div>
+            <span class="chev">›</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- footer prompt -->
+      <div>
+        <div class="h-hair" style="margin-bottom:10px"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:7.5pt;letter-spacing:.2em;text-transform:uppercase;color:rgba(10,10,10,.55)">
+          <span class="lang-en">See full service matrix &nbsp;▶</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif">完整服务体系&nbsp;▶</span>
+          <span class="mono" style="letter-spacing:.18em">P. 03</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== P6 · Back Cover ========== -->
+  <section class="panel" id="p6">
+    <div style="display:flex;flex-direction:column;height:100%;gap:10px">
+      <!-- top dynamic island -->
+      <div style="display:flex;justify-content:center">
+        <span class="dyn-island">
+          <img src="../images/logo.svg" alt="" style="width:11px;height:11px;filter:invert(1) brightness(2)">
+          <span class="lang-en">LyctRides&nbsp;·&nbsp;光年</span>
+          <span class="lang-cn">光&nbsp;年&nbsp;专&nbsp;车</span>
+        </span>
+      </div>
+
+      <!-- lock-screen CTA -->
+      <div style="text-align:center;margin-top:6px">
+        <h1 style="font-family:'Crimson Pro',serif;font-weight:300;font-size:24pt;line-height:.98;letter-spacing:-.01em">
+          <span class="lang-en">Let's plan your<br><em style="font-weight:400">next journey.</em></span>
+          <span class="lang-cn serif-cn" style="font-size:17pt;font-weight:400;letter-spacing:.12em">开 启 您 的<br>专 属 出 行 定 制</span>
+        </h1>
+        <p style="margin-top:8px;font-family:'Crimson Pro',serif;font-style:italic;font-size:9pt;color:rgba(10,10,10,.6)">
+          <span class="lang-en">Elevate corporate travel. Quiet your event logistics. Cross the border without friction.</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-style:normal;font-size:8pt;letter-spacing:.08em">让 高 端 商 务 出 行 · 回 归 分 寸</span>
+        </p>
+      </div>
+
+      <!-- live availability pill -->
+      <div style="display:flex;justify-content:center">
+        <span class="pill-outline" style="font-size:7pt">
+          <span style="width:5px;height:5px;border-radius:999px;background:var(--ink);display:inline-block"></span>
+          <span class="lang-en">Bilingual&nbsp;·&nbsp;24/7&nbsp;·&nbsp;Reply in 1 hr</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif">双语&nbsp;·&nbsp;全天候&nbsp;·&nbsp;1小时响应</span>
+        </span>
+      </div>
+
+      <!-- settings-style contact list -->
+      <div class="ios-group" style="margin-top:4px">
+        <div class="ios-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 7l9 7 9-7"/></svg></span>
+          <div class="body"><div class="en">bd@lyctai.com</div><div class="cn lang-en">Email</div><div class="cn lang-cn">邮箱</div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="ios-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.12.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.28a2 2 0 0 1 2.11-.45c.9.35 1.84.6 2.8.72a2 2 0 0 1 1.73 2.02z"/></svg></span>
+          <div class="body"><div class="en">+86 158 2291 8415</div><div class="cn lang-en">WhatsApp · Phone</div><div class="cn lang-cn">WhatsApp · 电话</div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="ios-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="10" r="6"/><circle cx="16.5" cy="14.5" r="4.5"/><circle cx="7" cy="9" r=".7" fill="currentColor"/><circle cx="11" cy="9" r=".7" fill="currentColor"/></svg></span>
+          <div class="body"><div class="en">LyctRides</div><div class="cn lang-en">WeChat</div><div class="cn lang-cn">微信号</div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="ios-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 10v6"/><path d="M11 10v6"/><path d="M11 13l4-3v6"/><circle cx="7" cy="7.5" r=".6" fill="currentColor"/></svg></span>
+          <div class="body"><div class="en">/company/lyctrides</div><div class="cn lang-en">LinkedIn</div><div class="cn lang-cn">领英</div></div>
+          <span class="chev">›</span>
+        </div>
+        <div class="ios-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2c3 3 5 6.5 5 10s-2 7-5 10c-3-3-5-6.5-5-10s2-7 5-10z"/></svg></span>
+          <div class="body"><div class="en">lyctai.com</div><div class="cn lang-en">Website</div><div class="cn lang-cn">官网</div></div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <!-- primary CTA + QR -->
+      <div style="display:flex;gap:8px;align-items:stretch;margin-top:auto">
+        <a class="contact-cta" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+          <span class="lang-en">Open Corporate Account &nbsp;→</span>
+          <span class="lang-cn" style="display:inline">开&nbsp;通&nbsp;企&nbsp;业&nbsp;账&nbsp;户&nbsp;→</span>
+          <span class="cn"><span class="lang-en">in one business day</span><span class="lang-cn">一 个 工 作 日 即 开 通</span></span>
+        </a>
+        <div class="qr" title="QR · lyctai.com/enterprise"></div>
+      </div>
+
+      <div style="text-align:center;margin-top:6px">
+        <span class="hero-signature">
+          <span class="rule"></span>
+          <span class="lang-en">Always as Promised</span>
+          <span class="cn lang-cn">始 终 如 约</span>
+          <span class="rule"></span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== P1 · Cover ========== -->
+  <section class="panel" id="p1">
+    <!-- dynamic island top -->
+    <div style="display:flex;justify-content:center">
+      <span class="dyn-island" style="padding:6px 16px">
+        <img src="../images/logo.svg" alt="" style="width:12px;height:12px;filter:invert(1) brightness(2)">
+        <span style="font-size:9pt;letter-spacing:.22em">LyctRides</span>
+        <span style="opacity:.4">·</span>
+        <span style="font-family:'Noto Serif SC',serif;letter-spacing:.32em;font-size:8.5pt">光&nbsp;年</span>
+      </span>
+    </div>
+
+    <!-- slogan stack -->
+    <div style="margin-top:18mm;padding-left:2mm">
+      <div class="cover-slogan">
+        <span class="lang-en">
+          <em>Travel</em><br>
+          with Measure.<br>
+          <em>Service</em><br>
+          with Manner.
+        </span>
+        <span class="lang-cn cover-slogan-cn" style="display:block">
+          行 有 度<br>礼 有 节
+        </span>
+      </div>
+
+      <div style="margin-top:12px;display:flex;align-items:center;gap:8px">
+        <span style="width:18mm;height:1px;background:rgba(10,10,10,.25)"></span>
+        <span class="eyebrow" style="letter-spacing:.28em">
+          <span class="lang-en">Executive Ground · Greater China</span>
+          <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif">大 中 华 区 · 高 管 专 车</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- photo -->
+    <div class="cover-photo"></div>
+
+    <!-- bottom widget -->
+    <div class="cover-widget">
+      <span><span class="lang-en">Since 2018</span><span class="lang-cn">创于 2018</span></span>
+      <span style="width:1px;height:10px;background:rgba(10,10,10,.2)"></span>
+      <span><span class="lang-en">300+ Cities</span><span class="lang-cn">300+ 城市</span></span>
+      <span style="width:1px;height:10px;background:rgba(10,10,10,.2)"></span>
+      <span><span class="lang-en">24 / 7</span><span class="lang-cn">全天候</span></span>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     INSIDE SPREAD (printed on side B of the sheet)
+     Reading order when fully opened: P3 → P4 → P5
+============================================================ -->
+<div class="spread-label">Inside spread · 内 侧 · 297 × 210 mm</div>
+<div class="spread" id="spread-inside">
+
+  <!-- ========== P3 · Service Matrix ========== -->
+  <section class="panel" id="p3">
+    <div style="display:flex;flex-direction:column;height:100%">
+      <div class="eyebrow">Services&nbsp;·&nbsp;七&nbsp;大&nbsp;服&nbsp;务&nbsp;体&nbsp;系</div>
+      <h2 style="margin-top:6px;font-family:'Crimson Pro',serif;font-weight:400;font-size:15pt;line-height:1.1;letter-spacing:-.005em">
+        <span class="lang-en">Seven tiers.<br><em>One standard.</em></span>
+        <span class="lang-cn serif-cn" style="font-size:13pt;letter-spacing:.1em">七&nbsp;项&nbsp;服&nbsp;务&nbsp;类&nbsp;型<br>同 一 种 标 准</span>
+      </h2>
+      <p style="margin-top:6px;font-size:7.5pt;color:rgba(10,10,10,.6);line-height:1.5">
+        <span class="lang-en">From a single airport meet to a 100-vehicle convoy — one operations team, one billing entity, one standard.</span>
+        <span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;letter-spacing:.06em">从单程接机到百车调度——同一团队、同一发票、同一标准。</span>
+      </p>
+
+      <div class="svc-grid" style="margin-top:10px">
+        <!-- 01 Airport -->
+        <div class="svc-tile">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M22 16l-9-5V4a1 1 0 0 0-2 0v7L2 16v2l9-3v5l-2 1v1l3-.5 3 .5v-1l-2-1v-5l9 3v-2z"/></svg></span>
+            <span class="num">01</span>
+          </div>
+          <div>
+            <div class="en lang-en">Airport Transfer</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">机&nbsp;场&nbsp;接&nbsp;送</div>
+            <div class="cn lang-en">Flight sync · name-board greet</div>
+            <div class="cn lang-cn">实时航班 · 举牌接机</div>
+          </div>
+        </div>
+        <!-- 02 Hourly -->
+        <div class="svc-tile">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <span class="num">02</span>
+          </div>
+          <div>
+            <div class="en lang-en">Hourly Chauffeur</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">按&nbsp;时&nbsp;包&nbsp;车</div>
+            <div class="cn lang-en">Your route · your hours</div>
+            <div class="cn lang-cn">专属司机 · 自定路线</div>
+          </div>
+        </div>
+        <!-- 03 City -->
+        <div class="svc-tile">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
+            <span class="num">03</span>
+          </div>
+          <div>
+            <div class="en lang-en">City Rides</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">城&nbsp;内&nbsp;专&nbsp;车</div>
+            <div class="cn lang-en">Door-to-door · 300+ cities</div>
+            <div class="cn lang-cn">300+ 城市门到门</div>
+          </div>
+        </div>
+        <!-- 04 City-to-City Flagship -->
+        <div class="svc-tile flagship">
+          <span class="flag"><span class="lang-en">FLAGSHIP</span><span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif">拳头</span></span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 8h13l-3-3"/><path d="M21 16H8l3 3"/></svg></span>
+            <span class="num">04</span>
+          </div>
+          <div>
+            <div class="en lang-en">City-to-City</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">跨&nbsp;城&nbsp;专&nbsp;线</div>
+            <div class="cn lang-en">50+ routes · HK ↔ SZ cross-border</div>
+            <div class="cn lang-cn">含港深跨境直达</div>
+          </div>
+        </div>
+        <!-- 05 Long-term -->
+        <div class="svc-tile">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 3v4M16 3v4"/></svg></span>
+            <span class="num">05</span>
+          </div>
+          <div>
+            <div class="en lang-en">Long-Term Charter</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">年&nbsp;起&nbsp;约&nbsp;包&nbsp;车</div>
+            <div class="cn lang-en">Annual · billed monthly / Q</div>
+            <div class="cn lang-cn">年起约 · 月/季度结算</div>
+          </div>
+        </div>
+        <!-- 06 Events Flagship -->
+        <div class="svc-tile flagship">
+          <span class="flag"><span class="lang-en">FLAGSHIP</span><span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif">拳头</span></span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+            <span class="num">06</span>
+          </div>
+          <div>
+            <div class="en lang-en">Events &amp; MICE</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">会&nbsp;奖&nbsp;活&nbsp;动&nbsp;用&nbsp;车</div>
+            <div class="cn lang-en">Summits · fashion weeks · expos</div>
+            <div class="cn lang-cn">峰会 · 时装周 · 展会</div>
+          </div>
+        </div>
+        <!-- 07 Private jet -->
+        <div class="svc-tile">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M2 14l8-2 4-9 2 1-2 8 8 4-2 2-7-2-3 5h-2l1-5-6-1z"/></svg></span>
+            <span class="num">07</span>
+          </div>
+          <div>
+            <div class="en lang-en">Private Jet Ground</div>
+            <div class="en lang-cn serif-cn" style="font-weight:500">私&nbsp;人&nbsp;飞&nbsp;机&nbsp;地&nbsp;接</div>
+            <div class="cn lang-en">FBO · tarmac-side staging</div>
+            <div class="cn lang-cn">FBO 对接 · 廊桥旁待车</div>
+          </div>
+        </div>
+        <!-- 08 Brand seal -->
+        <div class="svc-tile brand">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="num">∞</span>
+            <span class="num" style="color:rgba(250,250,247,.4)">— —</span>
+          </div>
+          <div>
+            <div class="always lang-en"><em>Always as<br>Promised.</em></div>
+            <div class="always-cn lang-en" style="font-family:'Noto Serif SC',serif;font-size:7pt;letter-spacing:.38em;color:rgba(250,250,247,.7);margin-top:3px">始 终 如 约</div>
+            <div class="always lang-cn"><em>Always as Promised</em></div>
+            <div class="always-cn lang-cn">始 终 如 约</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center">
+        <span class="eyebrow" style="letter-spacing:.22em;font-size:7pt">◆ <span class="lang-en">Flagship — detail overleaf</span><span class="lang-cn" style="font-family:'Noto Sans SC',sans-serif">&nbsp;拳头产品&nbsp;·&nbsp;详见后页</span></span>
+        <span class="mono" style="font-size:7pt;letter-spacing:.18em;color:rgba(10,10,10,.4)">P. 04 / 05</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== P4 · Cross-Border ========== -->
+  <section class="panel" id="p4">
+    <div style="display:flex;flex-direction:column;height:100%">
+      <!-- header pill row -->
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span class="eyebrow">Product&nbsp;Ⅰ</span>
+        <span class="pill-outline">◆ <span class="lang-en">Flagship</span><span class="lang-cn">拳头产品</span></span>
+      </div>
+
+      <h2 style="margin-top:6px;font-family:'Crimson Pro',serif;font-weight:400;font-size:14pt;line-height:1.1;letter-spacing:-.005em">
+        <span class="lang-en">Cross-Border<br><em>Executive Shuttle.</em></span>
+        <span class="lang-cn serif-cn" style="font-size:13pt;letter-spacing:.1em">粤&nbsp;港&nbsp;澳<br>跨&nbsp;境&nbsp;专&nbsp;线</span>
+      </h2>
+
+      <!-- HERO STRIP — bridge SVG silhouette (B&W halftone style) -->
+      <div class="bridge-strip" style="margin-top:8px">
+        <svg viewBox="0 0 360 70" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+          <!-- sky tone -->
+          <rect width="360" height="70" fill="#FAFAF7"/>
+          <!-- distant skyline -->
+          <g fill="#0A0A0A" opacity=".25">
+            <rect x="0" y="38" width="14" height="14"/>
+            <rect x="16" y="34" width="8" height="18"/>
+            <rect x="26" y="40" width="6" height="12"/>
+            <rect x="34" y="32" width="10" height="20"/>
+            <rect x="46" y="36" width="6" height="16"/>
+            <rect x="320" y="34" width="10" height="18"/>
+            <rect x="332" y="38" width="6" height="14"/>
+            <rect x="340" y="32" width="14" height="20"/>
+          </g>
+          <!-- water dashes -->
+          <g stroke="#0A0A0A" stroke-width=".7" opacity=".25">
+            <line x1="0"  y1="58" x2="20" y2="58"/>
+            <line x1="28" y1="62" x2="60" y2="62"/>
+            <line x1="68" y1="59" x2="92" y2="59"/>
+            <line x1="100" y1="63" x2="130" y2="63"/>
+            <line x1="138" y1="60" x2="160" y2="60"/>
+            <line x1="170" y1="64" x2="200" y2="64"/>
+            <line x1="208" y1="59" x2="240" y2="59"/>
+            <line x1="248" y1="63" x2="278" y2="63"/>
+            <line x1="286" y1="60" x2="310" y2="60"/>
+            <line x1="320" y1="64" x2="356" y2="64"/>
+          </g>
+          <!-- bridge deck -->
+          <line x1="0" y1="52" x2="360" y2="52" stroke="#0A0A0A" stroke-width="1.1"/>
+          <!-- cable-stayed pylons -->
+          <g stroke="#0A0A0A" stroke-width="1.2" fill="none">
+            <!-- pylon 1 -->
+            <line x1="90" y1="52" x2="90" y2="18"/>
+            <line x1="90" y1="20" x2="60" y2="52"/>
+            <line x1="90" y1="24" x2="70" y2="52"/>
+            <line x1="90" y1="28" x2="80" y2="52"/>
+            <line x1="90" y1="20" x2="120" y2="52"/>
+            <line x1="90" y1="24" x2="110" y2="52"/>
+            <line x1="90" y1="28" x2="100" y2="52"/>
+            <!-- pylon 2 -->
+            <line x1="270" y1="52" x2="270" y2="18"/>
+            <line x1="270" y1="20" x2="240" y2="52"/>
+            <line x1="270" y1="24" x2="250" y2="52"/>
+            <line x1="270" y1="28" x2="260" y2="52"/>
+            <line x1="270" y1="20" x2="300" y2="52"/>
+            <line x1="270" y1="24" x2="290" y2="52"/>
+            <line x1="270" y1="28" x2="280" y2="52"/>
+          </g>
+          <!-- tiny car -->
+          <g transform="translate(180,48)">
+            <rect x="-7" y="-3" width="14" height="3.5" rx="1" fill="#0A0A0A"/>
+            <rect x="-5" y="-5" width="10" height="2.5" rx="1" fill="#0A0A0A"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- WALLET CARD -->
+      <div class="wallet" style="margin-top:4px">
+        <div class="fromto">
+          <div class="city" style="text-align:left">
+            <span class="lang-en">SHENZHEN</span><span class="lang-cn">深&nbsp;圳</span>
+            <span class="cn"><span class="lang-en">SZ &nbsp;·&nbsp; PRD</span><span class="lang-cn">皇 岗 / 深 圳 湾</span></span>
+          </div>
+          <div class="arrow">
+            <svg viewBox="0 0 24 24"><path d="M3 8h13l-3-3"/><path d="M21 16H8l3 3"/></svg>
+          </div>
+          <div class="city" style="text-align:right">
+            <span class="lang-en">HONG KONG</span><span class="lang-cn">香&nbsp;港</span>
+            <span class="cn"><span class="lang-en">HK &nbsp;·&nbsp; HZMB</span><span class="lang-cn">港 岛 / 九 龙</span></span>
+          </div>
+        </div>
+
+        <!-- map -->
+        <div class="wallet-map">
+          <svg viewBox="0 0 320 90" style="width:100%;height:auto;display:block" stroke="#0A0A0A" fill="none">
+            <!-- coastlines (suggestive) -->
+            <path d="M10,30 C30,28 60,40 90,38 C120,36 150,46 180,50 C210,54 240,46 270,52 C290,56 305,60 315,58" stroke-width=".7" opacity=".35"/>
+            <path d="M10,72 C40,74 80,70 120,76 C160,80 200,76 240,80 C270,82 295,78 315,80" stroke-width=".7" opacity=".35"/>
+
+            <!-- SZ label -->
+            <g font-family="JetBrains Mono" font-size="6.5" fill="#0A0A0A">
+              <text x="36" y="22" letter-spacing="1.2">SHENZHEN</text>
+              <text x="252" y="86" letter-spacing="1.2">HONG KONG</text>
+              <text x="294" y="22" letter-spacing="1.2">MACAU</text>
+            </g>
+
+            <!-- Huanggang (dashed line) -->
+            <line x1="70" y1="32" x2="70" y2="68" stroke-dasharray="3 2" stroke-width="1"/>
+            <circle cx="70" cy="32" r="2.5" fill="#0A0A0A"/>
+            <circle cx="70" cy="68" r="2.5" fill="#0A0A0A"/>
+            <text x="76" y="46" font-family="JetBrains Mono" font-size="5.5" fill="#0A0A0A" letter-spacing="1">皇岗 · HG</text>
+
+            <!-- SZ Bay (single line) -->
+            <line x1="140" y1="36" x2="160" y2="72" stroke-width="1"/>
+            <circle cx="140" cy="36" r="2.5" fill="#0A0A0A"/>
+            <circle cx="160" cy="72" r="2.5" fill="#0A0A0A"/>
+            <text x="148" y="58" font-family="JetBrains Mono" font-size="5.5" fill="#0A0A0A" letter-spacing="1">深圳湾 · SZB</text>
+
+            <!-- HZMB (double line) -->
+            <line x1="234" y1="38" x2="260" y2="76" stroke-width="1"/>
+            <line x1="237" y1="36" x2="263" y2="74" stroke-width="1"/>
+            <circle cx="234" cy="38" r="2.5" fill="#0A0A0A"/>
+            <circle cx="260" cy="76" r="2.5" fill="#0A0A0A"/>
+            <text x="244" y="62" font-family="JetBrains Mono" font-size="5.5" fill="#0A0A0A" letter-spacing="1">港珠澳 · HZMB</text>
+
+            <!-- MFM -->
+            <circle cx="294" cy="38" r="2" fill="#0A0A0A"/>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-size:6.5pt;font-family:'JetBrains Mono',monospace;color:rgba(10,10,10,.5);margin-top:2px;letter-spacing:.12em">
+            <span>— — — &nbsp; <span class="lang-en">dashed = vehicle ferry</span><span class="lang-cn">虚 线 · 摆 渡</span></span>
+            <span>=== &nbsp; HZMB</span>
+          </div>
+        </div>
+
+        <!-- dashed separator like boarding pass -->
+        <div class="dashed" style="margin:10px -12px"></div>
+
+        <!-- headline -->
+        <div class="wallet-headline lang-en">One car · one driver · end-to-end.</div>
+        <div class="wallet-headline lang-cn serif-cn" style="font-family:'Noto Serif SC',serif;text-transform:none;font-size:10pt;letter-spacing:.16em;font-weight:500">一 车 一 司 机 · 贯 穿 两 地</div>
+        <div class="wallet-headline-cn lang-en" style="font-family:'Albert Sans',sans-serif;text-transform:none;font-size:7.5pt;font-weight:400;letter-spacing:.04em;color:rgba(10,10,10,.6);margin-top:3px">No transfer at the border. Walk through customs at 皇岗 / 深圳湾 / HZMB — same chauffeur waits on the other side.</div>
+        <div class="wallet-headline-cn lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-size:7.5pt;letter-spacing:.06em;font-weight:400;color:rgba(10,10,10,.6);margin-top:3px">口岸不换车、不换司机。旅客按口岸规定下车走通道过关，同一司机驾同一辆车在另一侧接续。</div>
+
+        <!-- 3 bullets -->
+        <div style="margin-top:9px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="margin-top:3px;width:8px;height:8px;border-radius:999px;border:1.5px solid var(--ink);position:relative;flex-shrink:0">
+              <span style="position:absolute;left:-1px;top:-1px;width:5px;height:8px;background:var(--ink);border-radius:999px 0 0 999px"></span>
+            </span>
+            <div>
+              <div style="font-size:8pt;font-weight:600;letter-spacing:.04em" class="lang-en">Dual-Plate Compliant Fleet</div>
+              <div style="font-size:8pt;font-weight:500;letter-spacing:.18em" class="lang-cn serif-cn">两 地 牌 合 规 车 队</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.45;margin-top:1px" class="lang-en">Alphard / Vellfire / Mercedes V-Class — full permits, audit-ready for multinationals.</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.5;margin-top:1px;font-family:'Noto Sans SC',sans-serif;letter-spacing:.04em" class="lang-cn">埃尔法 / 威尔法 / 奔驰 V-Class，证件齐全，通过外企合规审查。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="margin-top:3px;width:8px;height:8px;border-radius:999px;border:1.5px solid var(--ink);position:relative;flex-shrink:0">
+              <span style="position:absolute;left:-1px;top:-1px;width:5px;height:8px;background:var(--ink);border-radius:999px 0 0 999px"></span>
+            </span>
+            <div>
+              <div style="font-size:8pt;font-weight:600;letter-spacing:.04em" class="lang-en">Bilingual Chauffeurs · EHL Certified</div>
+              <div style="font-size:8pt;font-weight:500;letter-spacing:.18em" class="lang-cn serif-cn">双 语 司 机 · 商 务 礼 仪</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.45;margin-top:1px" class="lang-en">Mandarin / Cantonese / English. Customs &amp; immigration protocol trained.</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.5;margin-top:1px;font-family:'Noto Sans SC',sans-serif;letter-spacing:.04em" class="lang-cn">国 / 粤 / 英三语 · EHL 礼宾认证 · 熟悉海关流程。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="margin-top:3px;width:8px;height:8px;border-radius:999px;border:1.5px solid var(--ink);position:relative;flex-shrink:0">
+              <span style="position:absolute;left:-1px;top:-1px;width:5px;height:8px;background:var(--ink);border-radius:999px 0 0 999px"></span>
+            </span>
+            <div>
+              <div style="font-size:8pt;font-weight:600;letter-spacing:.04em" class="lang-en">Customs-Optimized Routing</div>
+              <div style="font-size:8pt;font-weight:500;letter-spacing:.18em" class="lang-cn serif-cn">通 关 路 径 优 化 · 一 价 全 包</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.45;margin-top:1px" class="lang-en">Live policy &amp; queue tracking. Tolls, fuel, permits — all-inclusive.</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.5;margin-top:1px;font-family:'Noto Sans SC',sans-serif;letter-spacing:.04em" class="lang-cn">实时追踪通关政策与排队，高速 / 燃油 / 证件一价全包。</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+          <div>
+            <div class="mono" style="font-size:6.5pt;letter-spacing:.22em;color:rgba(10,10,10,.45)">CITY-TO-CITY · 跨城专线</div>
+            <div class="mono" style="font-size:6.5pt;letter-spacing:.22em;color:rgba(10,10,10,.45)">lyctai.com / citytocity</div>
+          </div>
+          <div class="qr" style="width:16mm;height:16mm" title="QR · book cross-border"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== P5 · AI Dispatch ========== -->
+  <section class="panel" id="p5">
+    <div style="display:flex;flex-direction:column;height:100%">
+      <!-- header pill row -->
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span class="eyebrow">Product&nbsp;Ⅱ</span>
+        <span class="pill-outline">◆ <span class="lang-en">Flagship</span><span class="lang-cn">拳头产品</span></span>
+      </div>
+
+      <h2 style="margin-top:6px;font-family:'Crimson Pro',serif;font-weight:400;font-size:14pt;line-height:1.1;letter-spacing:-.005em">
+        <span class="lang-en">AI-Powered<br><em>Event Transportation.</em></span>
+        <span class="lang-cn serif-cn" style="font-size:13pt;letter-spacing:.1em">会&nbsp;议&nbsp;赛&nbsp;事<br>调&nbsp;度&nbsp;大&nbsp;脑</span>
+      </h2>
+
+      <!-- HERO: convoy strip (stylized fleet from above) -->
+      <div style="margin-top:8px">
+        <div class="convoy">
+          <div class="car"></div><div class="car"></div><div class="car"></div><div class="car"></div>
+          <div class="car"></div><div class="car"></div><div class="car"></div><div class="car"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:6.5pt;font-family:'JetBrains Mono',monospace;color:rgba(10,10,10,.5);letter-spacing:.12em">
+          <span class="lang-en">100+ vehicle convoy · top-down</span>
+          <span class="lang-cn">100+ 车 · 俯瞰编队</span>
+          <span>FLEET / 01</span>
+        </div>
+      </div>
+
+      <!-- LIVE Dynamic Island -->
+      <div style="margin-top:10px;display:flex;justify-content:center">
+        <span class="live-island">
+          <span class="pulse"></span>
+          <span class="lang-en">LIVE&nbsp;·&nbsp;Real-Time Dispatch</span>
+          <span class="lang-cn">实&nbsp;时&nbsp;调&nbsp;度&nbsp;中</span>
+        </span>
+      </div>
+
+      <!-- Dispatch card with Live Activity rows -->
+      <div class="dispatch-card">
+        <div class="dispatch-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M22 16l-9-5V4a1 1 0 0 0-2 0v7L2 16v2l9-3v5l-2 1v1l3-.5 3 .5v-1l-2-1v-5l9 3v-2z"/></svg></span>
+          <span><b>CA1837</b>&nbsp;&nbsp;PEK→HKG&nbsp;&nbsp;<span style="color:rgba(10,10,10,.55)">ETA 14:55</span></span>
+          <span class="right ok"><span class="lang-en">✓ synced</span><span class="lang-cn">已同步</span></span>
+        </div>
+        <div class="dispatch-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M22 16l-9-5V4a1 1 0 0 0-2 0v7L2 16v2l9-3v5l-2 1v1l3-.5 3 .5v-1l-2-1v-5l9 3v-2z"/></svg></span>
+          <span><b>MU5102</b>&nbsp;&nbsp;<span style="color:rgba(10,10,10,.55)"><span class="lang-en">delayed 38min</span><span class="lang-cn">延误 38 分</span></span></span>
+          <span class="right ok"><span class="lang-en">→ re-routed</span><span class="lang-cn">→ 已改派</span></span>
+        </div>
+        <div class="dispatch-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 8h13l-3-3"/><path d="M21 16H8l3 3"/></svg></span>
+          <span><span class="lang-en">Convoy dispatch</span><span class="lang-cn">车队调度</span>&nbsp;&nbsp;<span class="dispatch-bar"></span><b>42 / 100</b></span>
+          <span class="right"><span class="lang-en">on the move</span><span class="lang-cn">运行中</span></span>
+        </div>
+        <div class="dispatch-row">
+          <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+          <span><span class="lang-en">Live map</span><span class="lang-cn">实时地图</span>&nbsp;&nbsp;<span style="color:rgba(10,10,10,.55)">17 cars in motion</span></span>
+          <span class="right">GMT+8</span>
+        </div>
+
+        <div class="dashed" style="margin:8px -2px"></div>
+
+        <!-- 3 bullets -->
+        <div style="margin-top:6px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="margin-top:3px;width:8px;height:8px;border-radius:999px;border:1.5px solid var(--ink);position:relative;flex-shrink:0">
+              <span style="position:absolute;left:-1px;top:-1px;width:5px;height:8px;background:var(--ink);border-radius:999px 0 0 999px"></span>
+            </span>
+            <div>
+              <div style="font-size:8pt;font-weight:600;letter-spacing:.04em" class="lang-en">Intelligent Flight &amp; Rail Sync</div>
+              <div style="font-size:8pt;font-weight:500;letter-spacing:.18em" class="lang-cn serif-cn">航 班 / 高 铁 智 能 追 踪</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.45;margin-top:1px" class="lang-en">Auto-sync delays, gate changes, re-routes. No late-night spreadsheet babysitting.</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.5;margin-top:1px;font-family:'Noto Sans SC',sans-serif;letter-spacing:.04em" class="lang-cn">航变 / 改道 / 换登机口实时同步，自动改派，告别手动排单。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="margin-top:3px;width:8px;height:8px;border-radius:999px;border:1.5px solid var(--ink);position:relative;flex-shrink:0">
+              <span style="position:absolute;left:-1px;top:-1px;width:5px;height:8px;background:var(--ink);border-radius:999px 0 0 999px"></span>
+            </span>
+            <div>
+              <div style="font-size:8pt;font-weight:600;letter-spacing:.04em" class="lang-en">Burst-Capacity Dispatch · 100+ vehicles</div>
+              <div style="font-size:8pt;font-weight:500;letter-spacing:.18em" class="lang-cn serif-cn">爆 发 式 大 运 力 保 障</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.45;margin-top:1px" class="lang-en">Central + on-site desk. Hundreds of trips coordinated under one visual command.</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.5;margin-top:1px;font-family:'Noto Sans SC',sans-serif;letter-spacing:.04em" class="lang-cn">中央 + 现场双调度台，百车可视化指挥，数百趟次一图掌控。</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="margin-top:3px;width:8px;height:8px;border-radius:999px;border:1.5px solid var(--ink);position:relative;flex-shrink:0">
+              <span style="position:absolute;left:-1px;top:-1px;width:5px;height:8px;background:var(--ink);border-radius:999px 0 0 999px"></span>
+            </span>
+            <div>
+              <div style="font-size:8pt;font-weight:600;letter-spacing:.04em" class="lang-en">Audit-Grade Reconciliation</div>
+              <div style="font-size:8pt;font-weight:500;letter-spacing:.18em" class="lang-cn serif-cn">外 企 级 透 明 财 务 对 账</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.45;margin-top:1px" class="lang-en">GPS trails · cost-centre tags · multi-currency · one-click export.</div>
+              <div style="font-size:7pt;color:rgba(10,10,10,.6);line-height:1.5;margin-top:1px;font-family:'Noto Sans SC',sans-serif;letter-spacing:.04em" class="lang-cn">GPS 轨迹 · 成本中心标签 · 多币种 · 一键导出。</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px">
+          <div>
+            <div class="mono" style="font-size:6.5pt;letter-spacing:.22em;color:rgba(10,10,10,.45)">EVENTS &amp; MICE · 会奖活动</div>
+            <div class="mono" style="font-size:6.5pt;letter-spacing:.22em;color:rgba(10,10,10,.45)">lyctai.com / events</div>
+          </div>
+          <div class="qr" style="width:16mm;height:16mm" title="QR · brief an event"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<p class="foot-note" style="max-width:297mm;margin:0 auto;padding:0 8px;font-size:11px;color:rgba(10,10,10,.5);line-height:1.6;letter-spacing:.02em">
+  <strong style="color:rgba(10,10,10,.7)">Print spec</strong> ·
+  DL trifold, 297 × 210mm landscape sheet, letter fold (3 panels of 99mm).
+  Outside spread prints on side A · inside spread on side B.
+  Stock: matte coated 157gsm, K-only ink (single black + paper highlight).
+  Bleed 3mm, safe area 7mm.  Folds: dashed vertical lines.
+  All photography rendered as B&amp;W halftone (175 lpi).
+  No third color anywhere — only <code style="font-family:'JetBrains Mono',monospace">#0A0A0A</code> ink + <code style="font-family:'JetBrains Mono',monospace">#FAFAF7</code> paper.
+</p>
+
+</div><!-- /.stage -->
+
+<script>
+// language toggle (mirrors site behavior using localStorage 'lyct-lang')
+(function(){
+  const saved = localStorage.getItem('lyct-lang') || 'en';
+  document.documentElement.lang = saved;
+  document.getElementById('lang-toggle').addEventListener('click', function(){
+    const next = document.documentElement.lang === 'en' ? 'cn' : 'en';
+    document.documentElement.lang = next;
+    localStorage.setItem('lyct-lang', next);
+  });
+})();
+</script>
+
+</body>
+</html>
