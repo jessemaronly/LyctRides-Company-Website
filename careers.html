@@ -1134,18 +1134,45 @@ function handleSubmit(e, jobId) {
   e.preventDefault();
   const form = e.target;
   const fd = new FormData(form);
-  const payload = {
-    name: (fd.get('name') || '').toString().trim(),
-    email: (fd.get('email') || '').toString().trim(),
-    phone: (fd.get('phone') || '').toString().trim(),
-    position: (fd.get('position') || jobId || '').toString().trim(),
-    experience: (fd.get('experience') || '').toString().trim() || undefined,
-    message: (fd.get('message') || fd.get('cover_letter') || '').toString().trim() || undefined,
-  };
+
+  // 把 cover_letter 字段名规整为 message（后端 DTO 字段名），并裁掉空值
+  // 避免 backend ValidationPipe 因为空字符串触发 minLength 报错。
+  const cover = fd.get('cover_letter');
+  if (cover && !fd.get('message')) {
+    fd.set('message', cover);
+  }
+  fd.delete('cover_letter');
+
+  // position 兜底：未填走当前职位 ID
+  if (!fd.get('position') && jobId) {
+    fd.set('position', jobId);
+  }
+
+  // 文本字段 trim 一下（后端也会做，但前端先清干净，避免空字符串触发校验报错）
+  ['name', 'email', 'phone', 'position', 'experience', 'message'].forEach((k) => {
+    const v = fd.get(k);
+    if (typeof v === 'string') {
+      const trimmed = v.trim();
+      if (trimmed) fd.set(k, trimmed); else fd.delete(k);
+    }
+  });
+
+  // 简历附件大小校验：企业微信群机器人 20MB 上限
+  const resume = fd.get('resume');
+  if (resume instanceof File && resume.size > 0) {
+    if (resume.size > 20 * 1024 * 1024) {
+      alert('简历文件超过 20MB，请压缩后重新上传 / Resume exceeds 20MB, please compress.');
+      return;
+    }
+  } else {
+    // 没传文件就别把空 File 字段发上去
+    fd.delete('resume');
+  }
+
+  // 注意：不要手动设 Content-Type — fetch 会自动加 multipart boundary
   fetch('/api/public/careers/apply', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
+    body: fd,
   })
     .then(res => {
       if (!res.ok) throw new Error('HTTP ' + res.status);
