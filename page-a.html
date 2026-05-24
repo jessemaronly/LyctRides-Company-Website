@@ -10,7 +10,7 @@
   var saved = (function(){var v=localStorage.getItem('lyct-lang');return v==='cn'?'zh-CN':v;})();
   if (saved) { document.documentElement.lang = saved; return; }
   if (navigator.language && navigator.language.toLowerCase().startsWith('zh')) {
-    document.documentElement.lang = 'cn';
+    document.documentElement.lang = 'zh-CN';
   }
 })();
 </script>
