@@ -886,7 +886,7 @@
   function applyLang() {
     const l = lang();
     document.querySelectorAll('.lang-en').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'cn' ? '' : 'none');
+    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'zh-CN' ? '' : 'none');
   }
 
   function renderJob(job) {
@@ -1052,7 +1052,7 @@
       noJobs.classList.add('hidden');
       list.innerHTML = filtered.map(renderJob).join('');
       const l = lang();
-      countEl.textContent = l === 'cn'
+      countEl.textContent = l === 'zh-CN'
         ? `${filtered.length} 个开放职位`
         : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`;
 
@@ -1109,7 +1109,7 @@
     const filtered = activeDept === 'all' ? allJobs : allJobs.filter(j => j.department === activeDept);
     const l = lang();
     document.getElementById('job-count').textContent = filtered.length > 0
-      ? (l === 'cn' ? `${filtered.length} 个开放职位` : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`)
+      ? (l === 'zh-CN' ? `${filtered.length} 个开放职位` : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`)
       : '';
   });
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });

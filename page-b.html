@@ -1273,7 +1273,7 @@
   document.querySelectorAll('.fleet-card').forEach(card => {
     card.addEventListener('click', () => {
       const gallery = card.dataset.gallery ? card.dataset.gallery.split('|') : [];
-      const isCn = document.documentElement.lang === 'cn';
+      const isCn = document.documentElement.lang === 'zh-CN';
       fleetModalTitle.textContent = card.dataset.model || '';
       fleetModalDesc.textContent = (isCn ? card.dataset.descCn : card.dataset.desc) || '';
       fleetModalCapacity.textContent = (isCn ? card.dataset.capacityCn : card.dataset.capacity) || '';

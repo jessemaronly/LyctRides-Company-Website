@@ -1125,13 +1125,13 @@
           var lang = document.documentElement.lang || 'en';
           var en = '✓ Enquiry received (' + (data.leadNo || '') + '). We will reply within 1 business hour.';
           var cn = '✓ 咨询已收到（' + (data.leadNo || '') + '）。我们将在 1 个工作小时内回复您。';
-          showMsg(lang === 'cn' ? cn : en, true);
+          showMsg(lang === 'zh-CN' ? cn : en, true);
           form.reset();
         })
         .catch(function() {
           var lang = document.documentElement.lang || 'en';
           showMsg(
-            lang === 'cn'
+            lang === 'zh-CN'
               ? '提交失败，请稍后重试或直接联系 bd@lyctai.com'
               : 'Submission failed. Please try again or email bd@lyctai.com.',
             false

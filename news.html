@@ -754,7 +754,7 @@
 
   function formatDate(dateStr) {
     const d = new Date(dateStr);
-    if (lang() === 'cn') {
+    if (lang() === 'zh-CN') {
       return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long' });
     }
     return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
@@ -836,7 +836,7 @@
     // Re-apply lang hiding after render
     const l = lang();
     document.querySelectorAll('.lang-en').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'cn' ? '' : 'none');
+    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'zh-CN' ? '' : 'none');
   }
 
   // Filter buttons
