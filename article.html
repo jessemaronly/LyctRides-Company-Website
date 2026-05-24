@@ -230,12 +230,12 @@ tailwind.config = {
   function applyLang() {
     const l = lang();
     document.querySelectorAll('.lang-en').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'cn' ? '' : 'none');
+    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'zh-CN' ? '' : 'none');
   }
 
   function formatDate(dateStr) {
     const d = new Date(dateStr);
-    if (lang() === 'cn') {
+    if (lang() === 'zh-CN') {
       return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
     }
     return d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -362,8 +362,8 @@ tailwind.config = {
 
   function renderArticle(article, allArticles) {
     // Page title
-    document.title = (lang() === 'cn' ? article.title.cn : article.title.en) + ' | LyctRides';
-    document.getElementById('page-desc').content = lang() === 'cn' ? article.summary.cn : article.summary.en;
+    document.title = (lang() === 'zh-CN' ? article.title.cn : article.title.en) + ' | LyctRides';
+    document.getElementById('page-desc').content = lang() === 'zh-CN' ? article.summary.cn : article.summary.en;
 
     // ===== SEO: 动态更新 og: / twitter: meta + canonical + JSON-LD =====
     var pageUrl = 'https://www.lyctai.com/article.html?id=' + encodeURIComponent(article.id || article.slug);
@@ -476,7 +476,7 @@ tailwind.config = {
       document.getElementById('hero-date').textContent = formatDate(article.date);
       const rt = readTime(article.body.en);
       setText('#hero-read-time', rt.en, rt.cn);
-      document.title = (lang() === 'cn' ? article.title.cn : article.title.en) + ' | LyctRides';
+      document.title = (lang() === 'zh-CN' ? article.title.cn : article.title.en) + ' | LyctRides';
     }
   });
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
