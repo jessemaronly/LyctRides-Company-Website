@@ -491,15 +491,43 @@ tailwind.config = {
   }
 
   // 拉单篇详情（含 body）+ 列表（用作"其他文章"侧栏）
-  Promise.all([
-    fetch('https://www.lyctai.com/api/public/news/' + encodeURIComponent(id), { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : Promise.reject(new Error('not found'))),
-    fetch('https://www.lyctai.com/api/public/news', { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : []),
-  ])
+  // 2026-06-06: 加 data/news.json fallback,本地预览 / API 故障时仍可渲染。
+  // 与 news.html 的双层 fallback 口径一致。
+  function fromStaticList(list, articleId) {
+    const arr = Array.isArray(list) ? list : (list && list.data) || [];
+    const found = arr.find(a => a.id === articleId);
+    return { article: found, list: arr };
+  }
+
+  const apiBase = (location.hostname === 'localhost' || location.hostname.startsWith('127.'))
+    ? null
+    : '/api/public/news'; // 同源 — 生产走 Cloudflare Tunnel,本地直接跳 fallback
+
+  const tryApi = apiBase
+    ? Promise.all([
+        fetch(apiBase + '/' + encodeURIComponent(id), { cache: 'no-store' })
+          .then(r => r.ok ? r.json() : Promise.reject(new Error('detail not found'))),
+        fetch(apiBase, { cache: 'no-store' })
+          .then(r => r.ok ? r.json() : [])
+          .then(d => Array.isArray(d) ? d : (d && d.data) || []),
+      ])
+    : Promise.reject(new Error('local preview'));
+
+  tryApi
     .then(([article, articles]) => {
       window.__currentArticle = article;
       renderArticle(article, articles);
+    })
+    .catch(() => {
+      // Fallback: 静态 data/news.json (相对路径,本地+生产都能跑)
+      return fetch('data/news.json', { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : Promise.reject(new Error('static missing')))
+        .then(list => {
+          const { article, list: arr } = fromStaticList(list, id);
+          if (!article) throw new Error('article not in static list');
+          window.__currentArticle = article;
+          renderArticle(article, arr);
+        });
     })
     .catch(() => {
       document.getElementById('article-content').classList.add('hidden');

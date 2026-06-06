@@ -205,7 +205,7 @@ rm -rf /var/www/lyctai-website.pre-swap-20260516-151842  # Step 6 swap 备份
 ```bash
 ssh lyctrides
 cd /var/www/lyctai-website
-rm -f article.html page-a.html page-b.html hero-preview-a.html hero-preview-b.html
+rm -f page-a.html page-b.html hero-preview-a.html hero-preview-b.html preview-all.html
 git add -u && git commit -m "chore: remove deprecated mockup files" && git push
 ```
 

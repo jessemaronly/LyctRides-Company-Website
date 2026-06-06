@@ -260,11 +260,23 @@
     to   { transform: translateX(-1.5%); }
   }
   @media (max-width: 767px) {
-    .hero-photo { width: 100%; opacity: 0.14; }
+    /* 2026-06-06 hero readability fix:
+     * 旧 opacity 0.14 + 中心 radial mask → 标题压在 ghost 照片中央,对比度不足。
+     * 改:opacity 0.36 + mask 中心透明 → 照片作为边缘氛围,标题落在干净米白背景上。
+     * 同时给底部更长的淡出,让正文不被照片"撞色"。 */
+    .hero-photo { width: 100%; opacity: 0.36; }
     .hero-photo img {
-      object-position: center;
-      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 80%);
-              mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 80%);
+      object-position: 30% center;
+      -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, transparent 25%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.85) 80%, transparent 100%);
+              mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, transparent 25%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.85) 80%, transparent 100%);
+    }
+    /* 标题落区的额外暖白叠加,确保 ink 文字 contrast ≥ 4.5:1 */
+    .hero-photo::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(250,250,247,0.78) 0%, rgba(250,250,247,0.55) 45%, rgba(250,250,247,0.2) 70%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
     }
   }
 
@@ -321,6 +333,8 @@
   }
 
   /* ─── FAB Group with QR popover · 替代旧 .fab-glass ─── */
+  /* 2026-06-06 FAB safe area */
+  body { padding-bottom: 88px; } /* fab-content-safe */
   .fab-group {
     position: fixed;
     right: 24px;

@@ -4,7 +4,7 @@
 >
 > **⚠️ 不要 fetch lyctai.com 生产域名 —— 那是旧设计。新设计只在 `claude/jolly-chatelet-049c03` 分支本地未发布。**
 
-工作路径：`/Users/jz/WorkPlace/lyctai-website-jolly/`
+工作路径：`/Users/jz/WorkPlace/lyctai-website/`
 
 ---
 
@@ -287,7 +287,7 @@ HTML 用法（中间一条短横线 + signature + 短横线）：
 
 ## 6. Logo
 
-文件：`/Users/jz/WorkPlace/lyctai-website-jolly/images/logo.svg`（圆形 L + LyctRides 文本）。后台用一份相同 SVG，不要再画新 logo。
+文件：`/Users/jz/WorkPlace/lyctai-website/images/logo.svg`（圆形 L + LyctRides 文本）。后台用一份相同 SVG，不要再画新 logo。
 
 ```html
 <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
@@ -299,10 +299,10 @@ HTML 用法（中间一条短横线 + signature + 短横线）：
 
 | 模式 | 文件 |
 |---|---|
-| 主 hero（满屏 + signature + metadata 一行） | `/Users/jz/WorkPlace/lyctai-website-jolly/index.html` line ~426–520 |
-| 子页 hero（紧凑 380/440px min-height） | `/Users/jz/WorkPlace/lyctai-website-jolly/about.html` line ~625–680 |
-| 玻璃 nav（含 dropdown + nav-pill-active） | `/Users/jz/WorkPlace/lyctai-website-jolly/index.html` line ~377–420 |
-| 表单（含 input / textarea / submit pill） | `/Users/jz/WorkPlace/lyctai-website-jolly/contact.html` line ~700–810 |
+| 主 hero（满屏 + signature + metadata 一行） | `/Users/jz/WorkPlace/lyctai-website/index.html` line ~426–520 |
+| 子页 hero（紧凑 380/440px min-height） | `/Users/jz/WorkPlace/lyctai-website/about.html` line ~625–680 |
+| 玻璃 nav（含 dropdown + nav-pill-active） | `/Users/jz/WorkPlace/lyctai-website/index.html` line ~377–420 |
+| 表单（含 input / textarea / submit pill） | `/Users/jz/WorkPlace/lyctai-website/contact.html` line ~700–810 |
 | FAB 浮标 + QR popover | 任何主页面底部 `<div class="fab-group">` |
 
 ---
