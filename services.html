@@ -412,11 +412,12 @@
 
   /* ─── FAB Group with QR popover · 替代旧 .fab-glass ─── */
   /* 2026-06-06 FAB safe area */
-  body { padding-bottom: 88px; } /* fab-content-safe */
+  body { padding-bottom: 104px; } /* fab-content-safe */
+  @media (min-width: 768px) { body { padding-bottom: 88px; } }
   .fab-group {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     z-index: 40;
     display: flex;
     flex-direction: column;
@@ -509,6 +510,12 @@
   }
   .fab-contact-link:hover { color: white; }
   .fab-contact-link svg { opacity: 0.6; flex-shrink: 0; }
+
+  @media (max-width: 767px) {
+    .fab-group { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+    .fab-pill { padding: 12px 16px; font-size: 12px; letter-spacing: 0.08em; }
+    .fab-popover { display: none; }
+  }
 
   /* ─── Nav dropdown · 白色液态玻璃（Blacklane 风）─── */
   .nav-dropdown {
@@ -612,7 +619,7 @@
     <a href="/" class="flex items-center">
       <img src="/images/logo.svg?v=4" alt="LyctRides" class="h-8 w-auto">
     </a>
-    <div class="hidden md:flex items-center space-x-7 text-[11px] font-medium tracking-[0.18em] uppercase">
+    <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-[11px] font-medium tracking-[0.16em] uppercase whitespace-nowrap">
       
       <a class="nav-pill" href="/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a><a class="nav-pill" href="/about.html"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
 
@@ -656,15 +663,16 @@
 
       <a class="nav-pill" href="/fleet.html"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
       <a class="nav-pill" href="/enterprise.html"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+      <a class="nav-pill" href="/lyctai.html"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
       <a class="nav-pill" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
       <a class="nav-pill" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
       <a class="nav-pill" href="/contact.html"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>
     <div class="flex items-center gap-3 md:gap-4">
-      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
-      <a href="https://www.lyctrides.com/login" class="hidden md:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.18em] uppercase hover:opacity-60 transition-opacity">
+      <a href="https://www.lyctrides.com/login" class="hidden lg:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap">
         <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
       </a>
       <a href="/contact.html" class="hidden md:inline-flex ios-pill text-[11px]" style="padding: 10px 20px;">
@@ -684,6 +692,7 @@
   <a href="/services.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-primary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
   <a href="/fleet.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+  <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
   <a href="/careers.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
@@ -1041,6 +1050,7 @@
       <a href="/services.html" class="text-white"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
       <a href="/fleet.html" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
       <a href="/enterprise.html" class="hover:text-white transition-colors"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+      <a href="/lyctai.html" class="hover:text-white transition-colors"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
       <a href="/news.html" class="hover:text-white transition-colors"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
       <a href="/careers.html" class="hover:text-white transition-colors"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
       <a href="/contact.html" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>

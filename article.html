@@ -96,17 +96,18 @@ tailwind.config = {
     <a href="/" class="flex items-center">
       <img src="/images/logo.svg?v=4" alt="LyctRides" class="h-8 w-auto">
     </a>
-    <div class="hidden md:flex items-center space-x-7 font-headline font-semibold text-xs tracking-[0.15em] uppercase">
+    <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-[11px] font-medium tracking-[0.16em] uppercase whitespace-nowrap">
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#about"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#services"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#fleet"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#concierge"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+      <a class="nav-pill" href="/lyctai.html"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
       <a class="text-[#0A0A0A] font-bold relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#0A0A0A]" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
       <a class="text-[#50606f] hover:text-[#0A0A0A] transition-all duration-200 relative pb-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#0A0A0A] after:transition-all hover:after:w-full" href="/#contact"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>
     <div class="flex items-center gap-4">
-      <button class="text-[#0A0A0A] font-bold text-[11px] tracking-[0.2em] cursor-pointer hover:opacity-60 transition-opacity" onclick="document.documentElement.lang=document.documentElement.lang==='en'?'zh-CN':'en'">
+      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap" onclick="document.documentElement.lang=document.documentElement.lang==='en'?'zh-CN':'en'">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
       <a href="/#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
@@ -125,6 +126,7 @@ tailwind.config = {
   <a href="/#services" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
   <a href="/#fleet" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
   <a href="/#concierge" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Concierge</span><span class="lang-cn">礼宾</span></a>
+  <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/news.html" class="block px-3 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-primary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
   <a href="/careers.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
   <a href="/#contact" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
@@ -214,6 +216,7 @@ tailwind.config = {
       <a href="/#services" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
       <a href="/#fleet" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
       <a href="/news.html" class="text-white"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a href="/lyctai.html" class="hover:text-white transition-colors"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
       <a href="/careers.html" class="hover:text-white transition-colors"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
       <a href="/#contact" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
     </div>

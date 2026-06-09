@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LyctAI | The Intelligence Layer Behind Every Promise — LyctRides 光年专车</title>
+<meta name="description" content="LyctAI is the intelligence layer inside LyctRides — a careful composition of language models, business rules and human checkpoints that turns messy reality into reliable executive ground transport."/>
+<link rel="canonical" href="https://www.lyctai.com/lyctai.html"/>
+<link rel="alternate" hreflang="en" href="https://www.lyctai.com/lyctai.html"/>
+<link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/lyctai.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="LyctRides"/>
+<meta property="og:title" content="LyctAI | The Intelligence Layer Behind Every Promise"/>
+<meta property="og:description" content="LyctAI · The operating system inside LyctRides. Domestic large models, business-rule grounded, human-in-the-loop."/>
+<meta property="og:url" content="https://www.lyctai.com/lyctai.html"/>
+<meta property="og:image" content="https://www.lyctai.com/images/hero.jpg?v=2"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { primary: "#0A0A0A", surface: "#FAFAF7", secondary: "#50606f" },
+      fontFamily: { headline: ["Albert Sans"], body: ["Albert Sans"], mono: ["JetBrains Mono"] }
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; color: #0A0A0A; background: #FAFAF7; }
+  h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
+  html:not([lang^="zh"]) .lang-cn { display: none; }
+  html[lang^="zh"] .lang-en { display: none; }
+
+  :root {
+    --container-max: 1280px;
+    --section-pad-y: 56px;
+    --section-pad-y-lg: 88px;
+
+    --fs-display: clamp(2.25rem, 5vw, 4rem);
+    --fs-h1: clamp(1.75rem, 3.5vw, 2.625rem);
+    --fs-h2: clamp(1.25rem, 2vw, 1.5rem);
+    --fs-body-lg: 1.0625rem;
+    --fs-body: 1rem;
+    --fs-label: 0.6875rem;
+
+    --tracking-tight: -0.015em;
+    --tracking-label: 0.2em;
+    --lh-tight: 1.1;
+    --lh-body: 1.55;
+    --lh-loose: 1.65;
+
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 18px;
+    --r-xl: 22px;
+    --r-pill: 999px;
+
+    --shadow-card: 0 1px 2px rgba(10,10,10,0.04), 0 6px 20px rgba(10,10,10,0.04);
+    --shadow-card-hover: 0 2px 6px rgba(10,10,10,0.06), 0 18px 50px rgba(10,10,10,0.10);
+    --shadow-card-press: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 4px rgba(10,10,10,0.04);
+    --shadow-glass: 0 1px 0 rgba(10,10,10,0.04);
+    --inner-highlight: inset 0 1px 0 rgba(255,255,255,0.7);
+
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.36, 1);
+    --ease-spring-soft: cubic-bezier(0.25, 1.25, 0.5, 1);
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-fast: 200ms;
+    --dur-base: 380ms;
+    --dur-spring: 540ms;
+    --dur-slow: 720ms;
+  }
+
+  .section-pad { padding-top: var(--section-pad-y); padding-bottom: var(--section-pad-y); }
+  @media (min-width: 768px) { .section-pad { padding-top: var(--section-pad-y-lg); padding-bottom: var(--section-pad-y-lg); } }
+  .section-container { max-width: var(--container-max); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+  @media (min-width: 768px) { .section-container { padding-left: 48px; padding-right: 48px; } }
+  .section-divider { border-top: 1px solid rgba(10,10,10,.06); }
+
+  .eyebrow { font-size: var(--fs-label); font-weight: 500; letter-spacing: var(--tracking-label); text-transform: uppercase; color: rgba(10,10,10,.55); line-height: 1.4; }
+  .section-head { font-size: var(--fs-h1); font-weight: 500; letter-spacing: var(--tracking-tight); line-height: var(--lh-tight); color: #0A0A0A; text-wrap: balance; margin: 0; }
+  .section-head .lang-cn { font-family: 'Noto Serif SC', serif; font-weight: 500; letter-spacing: 0; line-height: 1.25; }
+  .section-intro { font-size: var(--fs-body-lg); font-weight: 300; line-height: var(--lh-loose); color: rgba(10,10,10,.7); max-width: 680px; text-wrap: pretty; }
+
+  .ios-card { background: #ffffff; border-radius: var(--r-lg); border: 1px solid rgba(10,10,10,0.05); box-shadow: var(--shadow-card), var(--inner-highlight); transition: transform var(--dur-spring) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios), border-color var(--dur-base) var(--ease-out); will-change: transform; }
+  .ios-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover), var(--inner-highlight); border-color: rgba(10,10,10,0.1); }
+  .ios-card:active { transform: translateY(-1px); }
+
+  .ios-pill { display: inline-flex; align-items: center; justify-content: center; gap: 8px; position: relative; background: linear-gradient(180deg, #1c1917 0%, #0A0A0A 100%); color: #FAFAF7; font-size: var(--fs-label); font-weight: 500; letter-spacing: var(--tracking-label); text-transform: uppercase; padding: 13px 26px; border-radius: var(--r-pill); box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 16px rgba(10,10,10,0.18); transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios); overflow: hidden; }
+  .ios-pill:hover { transform: scale(1.04); box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 28px rgba(10,10,10,0.28); }
+  .ios-pill:active { transform: scale(0.96); }
+  .ios-pill svg { transition: transform var(--dur-base) var(--ease-spring-soft); }
+  .ios-pill:hover svg { transform: translateX(4px); }
+
+  .ios-pill-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(10,10,10,0.05); color: #0A0A0A; font-size: var(--fs-label); font-weight: 500; letter-spacing: var(--tracking-label); text-transform: uppercase; padding: 13px 26px; border-radius: var(--r-pill); border: 1px solid rgba(10,10,10,0.08); transition: transform var(--dur-fast) var(--ease-spring), background var(--dur-fast) var(--ease-out); }
+  .ios-pill-outline:hover { transform: scale(1.04); background: rgba(10,10,10,0.1); }
+  .ios-pill-outline:active { transform: scale(0.96); }
+
+  .ios-glass { background: rgba(250,250,247,0.65); backdrop-filter: saturate(200%) blur(32px); -webkit-backdrop-filter: saturate(200%) blur(32px); box-shadow: 0 1px 0 rgba(10,10,10,0.04), inset 0 1px 0 rgba(255,255,255,0.5); border-bottom: 1px solid rgba(10,10,10,0.05); }
+  .ios-glass.scrolled { background: rgba(250,250,247,0.85); border-bottom-color: rgba(10,10,10,0.08); }
+
+  .ios-hero-strip { background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,10,10,0.04) 0%, transparent 60%), linear-gradient(180deg, #FAFAF7 0%, #f5f5f0 100%); border-bottom: 1px solid rgba(10,10,10,0.05); position: relative; overflow: hidden; }
+
+  .ios-tile { background: #ffffff; border-radius: var(--r-xl); border: 1px solid rgba(10,10,10,0.04); box-shadow: var(--shadow-card), var(--inner-highlight); padding: 24px; transition: transform var(--dur-spring) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios), border-color var(--dur-base) var(--ease-out); position: relative; overflow: hidden; will-change: transform; }
+  @media (min-width: 768px) { .ios-tile { padding: 32px; } }
+  .ios-tile:hover { transform: translateY(-6px) scale(1.005); box-shadow: var(--shadow-card-hover), var(--inner-highlight); border-color: rgba(10,10,10,0.1); }
+  .ios-tile:active { transform: translateY(-2px); }
+  .ios-tile::before { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%); transform: translateX(-100%); transition: transform var(--dur-slow) var(--ease-ios); pointer-events: none; border-radius: var(--r-xl); }
+  .ios-tile:hover::before { transform: translateX(100%); }
+
+  .ios-tile-icon { width: 44px; height: 44px; border-radius: var(--r-md); background: rgba(10,10,10,0.05); display: inline-flex; align-items: center; justify-content: center; color: #0A0A0A; transition: background var(--dur-base) var(--ease-ios), color var(--dur-base) var(--ease-ios), transform var(--dur-spring) var(--ease-spring); }
+  .ios-tile:hover .ios-tile-icon { background: #0A0A0A; color: #ffffff; transform: scale(1.08) rotate(-4deg); }
+
+  .ios-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: var(--r-pill); background: rgba(10,10,10,0.04); border: 1px solid rgba(10,10,10,0.06); color: #0A0A0A; font-size: 10.5px; font-weight: 500; letter-spacing: var(--tracking-label); text-transform: uppercase; line-height: 1; }
+  .ios-eyebrow-dot { width: 6px; height: 6px; border-radius: 999px; background: #0A0A0A; box-shadow: 0 0 0 0 rgba(10,10,10,0.4); animation: pulse-dot 2.4s var(--ease-out) infinite; }
+  @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(10,10,10,0.2); } 50% { box-shadow: 0 0 0 5px rgba(10,10,10,0); } }
+
+  .stat-chip { display: inline-flex; flex-direction: column; gap: 2px; }
+  .stat-chip .stat-num { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; color: #0A0A0A; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat-chip .stat-label { font-size: 10.5px; font-weight: 500; letter-spacing: var(--tracking-label); text-transform: uppercase; color: rgba(10,10,10,0.55); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease-ios), transform 0.7s var(--ease-spring-soft); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal[data-delay="1"] { transition-delay: 60ms; }
+  .reveal[data-delay="2"] { transition-delay: 120ms; }
+  .reveal[data-delay="3"] { transition-delay: 180ms; }
+  .reveal[data-delay="4"] { transition-delay: 240ms; }
+  .reveal[data-delay="5"] { transition-delay: 300ms; }
+  .reveal[data-delay="6"] { transition-delay: 360ms; }
+
+  html { scroll-behavior: smooth; }
+
+  /* ─── Status chips · LIVE / ROADMAP ─── */
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    line-height: 1;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .status-chip-live {
+    background: #0A0A0A;
+    color: #FAFAF7;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .status-chip-live .status-dot {
+    width: 5px; height: 5px;
+    border-radius: 999px;
+    background: #FAFAF7;
+    box-shadow: 0 0 0 0 rgba(250,250,247,0.6);
+    animation: pulse-dot-live 2.2s var(--ease-out) infinite;
+  }
+  @keyframes pulse-dot-live {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(250,250,247,0.5); }
+    50% { box-shadow: 0 0 0 4px rgba(250,250,247,0); }
+  }
+  .status-chip-roadmap {
+    background: transparent;
+    color: rgba(10,10,10,0.55);
+    border: 1px solid rgba(10,10,10,0.15);
+  }
+
+  /* ─── Mono metric row inside capability cards ─── */
+  .capability-metric {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(10,10,10,0.03);
+    border-radius: var(--r-sm);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: rgba(10,10,10,0.7);
+    letter-spacing: 0.02em;
+  }
+  .capability-metric strong {
+    color: #0A0A0A;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ─── Tech foundation card with numbered label ─── */
+  .tech-card { background: #ffffff; border-radius: var(--r-lg); border: 1px solid rgba(10,10,10,0.05); padding: 28px; transition: transform var(--dur-spring) var(--ease-spring), border-color var(--dur-base) var(--ease-out); }
+  .tech-card:hover { transform: translateY(-2px); border-color: rgba(10,10,10,0.12); }
+  .tech-card .tech-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(10,10,10,0.25); display: block; margin-bottom: 16px; }
+  .tech-card .tech-title { font-size: 1.0625rem; font-weight: 600; tracking: -0.01em; margin-bottom: 8px; color: #0A0A0A; }
+  .tech-card .tech-body { font-size: 13.5px; line-height: 1.55; color: rgba(10,10,10,0.6); font-weight: 300; }
+
+  /* ─── Architecture diagram styling ─── */
+  .arch-diagram {
+    background: #ffffff;
+    border: 1px solid rgba(10,10,10,0.06);
+    border-radius: var(--r-xl);
+    padding: 40px 24px;
+    box-shadow: var(--shadow-card);
+  }
+  @media (min-width: 768px) { .arch-diagram { padding: 56px 48px; } }
+  .arch-diagram svg { width: 100%; height: auto; max-width: 880px; margin: 0 auto; display: block; }
+  .arch-label-en, .arch-label-cn { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+  .arch-sublabel { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; fill: rgba(10,10,10,0.55); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* iOS glass nav dropdown + nav-pill (same as services.html, simplified) */
+  .ios-glass-nav-fallback { /* placeholder */ }
+
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top left;
+    width: 200px;
+    padding: 8px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f0 100%);
+    border: 1px solid rgba(10,10,10,0.28);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(10,10,10,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-base) var(--ease-ios),
+                transform var(--dur-spring) var(--ease-spring),
+                visibility var(--dur-base);
+    z-index: 60;
+  }
+  .nav-services-trigger { position: relative; }
+
+  .nav-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: #50606f;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: color var(--dur-fast) var(--ease-ios),
+                background var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-ios),
+                box-shadow var(--dur-base) var(--ease-ios);
+  }
+  .nav-pill:hover { color: #0A0A0A; background: rgba(10,10,10,0.04); }
+  .nav-pill-active {
+    color: #0A0A0A;
+    background: rgba(255,255,255,0.6);
+    border-color: rgba(10,10,10,0.08);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,10,10,0.04);
+  }
+  .nav-pill-active:hover {
+    background: rgba(255,255,255,0.78);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 4px 14px rgba(10,10,10,0.08);
+  }
+
+  .nav-services-trigger:hover .nav-dropdown,
+  .nav-services-trigger:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: #0A0A0A;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    transition: background var(--dur-fast) var(--ease-ios);
+  }
+  .nav-dropdown-item:hover { background: rgba(10,10,10,0.06); }
+  .nav-dropdown-item svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0; transform: translateX(-4px); color: rgba(10,10,10,0.55); transition: opacity var(--dur-fast) var(--ease-ios), transform var(--dur-fast) var(--ease-ios); }
+  .nav-dropdown-item:hover svg { opacity: 0.55; transform: translateX(0); }
+
+  /* Liquid Glass · same as services.html for FAB */
+  .liquid-glass-dark { background: linear-gradient(135deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.45) 100%); backdrop-filter: saturate(180%) blur(40px); -webkit-backdrop-filter: saturate(180%) blur(40px); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--r-xl); box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04), 0 12px 40px rgba(10,10,10,0.35); position: relative; overflow: hidden; color: rgba(255,255,255,0.92); }
+  .liquid-glass-dark::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 30% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 20% at 50% 100%, rgba(255,255,255,0.05) 0%, transparent 70%); pointer-events: none; border-radius: inherit; }
+
+  /* Ambient glow */
+  @keyframes ambient-shift { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .ambient-glow { position: absolute; inset: -200px; background: conic-gradient(from 0deg at 50% 50%, rgba(10,10,10,0.03) 0deg, rgba(10,10,10,0) 90deg, rgba(10,10,10,0.05) 180deg, rgba(10,10,10,0) 270deg, rgba(10,10,10,0.03) 360deg); animation: ambient-shift 40s linear infinite; pointer-events: none; z-index: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* FAB · same as services.html */
+  body { padding-bottom: 104px; }
+  @media (min-width: 768px) { body { padding-bottom: 88px; } }
+  .fab-group { position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .fab-pill { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px 14px 18px; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: white; border-radius: var(--r-pill); transition: transform var(--dur-spring) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios); text-decoration: none; }
+  .fab-pill svg { width: 16px; height: 16px; transition: transform var(--dur-base) var(--ease-spring-soft); }
+  .fab-pill:hover { transform: translateY(-2px) scale(1.04); }
+  .fab-pill:active { transform: scale(0.96); }
+  .fab-pill:hover svg { transform: translateX(3px); }
+  .fab-popover { width: 260px; padding: 16px; opacity: 0; visibility: hidden; transform: translateY(8px) scale(0.96); transform-origin: bottom right; transition: opacity var(--dur-base) var(--ease-ios), transform var(--dur-spring) var(--ease-spring), visibility var(--dur-base); pointer-events: none; }
+  .fab-group:hover .fab-popover, .fab-group:focus-within .fab-popover { opacity: 1; visibility: visible; transform: translateY(0) scale(1); pointer-events: auto; }
+  .fab-qr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fab-qr { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .fab-qr img { width: 100%; aspect-ratio: 1; border-radius: var(--r-md); background: white; padding: 4px; display: block; box-sizing: border-box; }
+  .fab-qr-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.72); font-weight: 500; }
+  .fab-contact-row { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 8px; }
+  .fab-contact-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.85); text-decoration: none; letter-spacing: 0.04em; transition: color var(--dur-fast) var(--ease-ios); }
+  .fab-contact-link:hover { color: white; }
+  .fab-contact-link svg { opacity: 0.6; flex-shrink: 0; }
+  @media (max-width: 767px) { .fab-group { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); } .fab-pill { padding: 12px 16px; font-size: 12px; letter-spacing: 0.08em; } .fab-popover { display: none; } }
+
+  /* Hero signature */
+  .hero-signature { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(10,10,10,0.7); letter-spacing: 0.02em; }
+  .hero-signature .lang-cn { font-family: 'Noto Serif SC', serif; font-style: normal; font-weight: 500; letter-spacing: 0.25em; color: rgba(10,10,10,0.75); }
+
+  /* Display title for hero */
+  .lyctai-title { font-family: 'Albert Sans', sans-serif; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; font-size: clamp(2.25rem, 5vw, 3.75rem); color: #0A0A0A; }
+  .lyctai-title em { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; }
+  .lyctai-title .lang-cn { font-family: 'Noto Serif SC', serif; font-weight: 500; letter-spacing: 0.04em; line-height: 1.2; }
+
+  /* Hero brand mark */
+  .lyctai-brand { display: inline-flex; align-items: baseline; gap: 6px; font-family: 'Albert Sans', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 1.25rem; }
+  .lyctai-brand .ai { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; color: rgba(10,10,10,0.65); }
+
+  /* Hero strip min-height for sub-pages */
+  .hero-fixed-h { min-height: 380px; display: flex; flex-direction: column; justify-content: center; }
+  @media (min-width: 768px) { .hero-fixed-h { min-height: 440px; } }
+
+</style>
+</head>
+<body>
+
+<!-- ─── iOS Glass Nav ─── -->
+<nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
+  <div class="flex justify-between items-center px-4 md:px-12 py-4 md:py-5 max-w-[1440px] mx-auto">
+    <a href="/" class="flex items-center">
+      <img src="/images/logo.svg?v=4" alt="LyctRides" class="h-8 w-auto">
+    </a>
+    <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-[11px] font-medium tracking-[0.16em] uppercase whitespace-nowrap">
+      <a class="nav-pill" href="/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a class="nav-pill" href="/about.html"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+
+      <div class="nav-services-trigger">
+        <a class="nav-pill gap-1.5" href="/services.html">
+          <span class="lang-en">Services</span><span class="lang-cn">服务</span>
+          <svg class="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/services.html#airport" class="nav-dropdown-item"><span><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/services.html#hourly" class="nav-dropdown-item"><span><span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn">时租与日租</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/services.html#cityrides" class="nav-dropdown-item"><span><span class="lang-en">City Rides</span><span class="lang-cn">市内用车</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/services.html#citytocity" class="nav-dropdown-item"><span><span class="lang-en">City-to-City</span><span class="lang-cn">城际通行</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/services.html#longterm" class="nav-dropdown-item"><span><span class="lang-en">Long-term Charter</span><span class="lang-cn">长包车</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/services.html#events" class="nav-dropdown-item"><span><span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="/services.html#privatejet" class="nav-dropdown-item"><span><span class="lang-en">Private Jet Booking</span><span class="lang-cn">公务机预订</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <a class="nav-pill" href="/fleet.html"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a class="nav-pill" href="/enterprise.html"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+      <a class="nav-pill nav-pill-active" href="/lyctai.html"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
+      <a class="nav-pill" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a class="nav-pill" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a class="nav-pill" href="/contact.html"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <div class="flex items-center gap-3 md:gap-4">
+      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+        <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
+      </button>
+      <a href="https://www.lyctrides.com/login" class="hidden lg:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap">
+        <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
+      </a>
+      <a href="/contact.html" class="hidden md:inline-flex ios-pill text-[11px]" style="padding: 10px 20px;">
+        <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden ios-glass shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+  <a href="/" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+  <a href="/about.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+  <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+  <a href="/fleet.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+  <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+  <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-primary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+  <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+</div>
+
+<!-- ─── Hero ─── -->
+<section class="ios-hero-strip hero-fixed-h pt-20 md:pt-24 pb-10 md:pb-12">
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="section-container relative" style="z-index: 1;">
+    <p class="eyebrow mb-4 reveal">
+      <a href="/" class="hover:text-[#0A0A0A] transition-colors">
+        <span class="lang-en">Home</span><span class="lang-cn">首页</span>
+      </a>
+      <span class="mx-2 opacity-50">→</span>
+      <span class="text-[#0A0A0A]"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></span>
+    </p>
+
+    <h1 class="lyctai-title reveal" data-delay="1">
+      <span class="lang-en">The intelligence layer<br>behind every promise.</span>
+      <span class="lang-cn">每一次承诺背后的<br/>智能底层</span>
+    </h1>
+
+    <p class="text-[#0A0A0A]/65 text-base md:text-[17px] leading-[1.65] mt-5 max-w-2xl font-light reveal" data-delay="2">
+      <span class="lang-en">A careful composition of language models, business rules, and human checkpoints — turning the messiness of real-world ground travel into reliable executive transport.</span>
+      <span class="lang-cn">由大语言模型、业务规则与人工审核共同组成的智能层 —— 把真实出行场景的不确定，转化为可靠的高端商务出行。</span>
+    </p>
+
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mt-8 reveal" data-delay="3">
+      <div class="flex items-center gap-8 md:gap-12">
+        <div class="stat-chip">
+          <span class="stat-num">2</span>
+          <span class="stat-label"><span class="lang-en">Live Capabilities</span><span class="lang-cn">已上线能力</span></span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">22</span>
+          <span class="stat-label"><span class="lang-en">Structured Fields / Order</span><span class="lang-cn">每单结构化字段</span></span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num">100<span style="font-size: 1rem; font-weight: 500;">%</span></span>
+          <span class="stat-label"><span class="lang-en">Human-Confirmed</span><span class="lang-cn">人工确认守门</span></span>
+        </div>
+      </div>
+      <a href="/contact.html" class="ios-pill self-start md:self-auto">
+        <span class="lang-en">Talk to Us</span><span class="lang-cn">了解更多</span>
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 1: Why LyctAI Exists ─── -->
+<section class="section-pad">
+  <div class="section-container">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+      <div class="md:col-span-4 reveal">
+        <span class="ios-eyebrow mb-5">
+          <span class="lang-en">Why LyctAI</span>
+          <span class="lang-cn">为何存在</span>
+        </span>
+        <h2 class="section-head mt-4">
+          <span class="lang-en">Promises happen<br>in the details.</span>
+          <span class="lang-cn">承诺<br>在细节里发生</span>
+        </h2>
+      </div>
+      <div class="md:col-span-8 reveal" data-delay="1">
+        <p class="section-intro mb-5">
+          <span class="lang-en">A ground transport company does not fail at the headline. It fails at the missing flight number, the address typed into the wrong field, the WeChat message left half-parsed at 2 AM.</span>
+          <span class="lang-cn">一家地面出行公司不会在大方向上失败 —— 它通常败在没填的航班号、填错位置的地址、凌晨两点没人来得及整理的微信消息上。</span>
+        </p>
+        <p class="section-intro mb-5">
+          <span class="lang-en">LyctAI is how we industrialise the part that used to depend on individual diligence. Language models read what people actually wrote. Business rules turn that into the 22 fields an order requires. A human always confirms the final commitment.</span>
+          <span class="lang-cn">LyctAI 把过去依赖个人细心的环节工业化。大模型读取人们实际写下的文字，业务规则把它转化为订单所需的 22 个结构化字段，关键决策永远由人来完成最后一步确认。</span>
+        </p>
+        <p class="section-intro">
+          <span class="lang-en">It is not a chatbot. It is a discipline.</span>
+          <span class="lang-cn">这不是聊天机器人，这是一种工程纪律。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 2: Capabilities ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+    <div class="flex items-center justify-between mb-10 reveal">
+      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">Capabilities</span><span class="lang-cn">核心能力</span></span>
+      <span class="eyebrow hidden md:block">
+        <span class="lang-en">2 live · 4 on roadmap</span>
+        <span class="lang-cn">2 项已上线 · 4 项规划中</span>
+      </span>
+    </div>
+
+    <h2 class="section-head max-w-3xl mb-10 md:mb-12 reveal" data-delay="1">
+      <span class="lang-en">Six places where intelligence makes the promise more reliable.</span>
+      <span class="lang-cn">智能渗入六个环节，让承诺更可靠</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+
+      <!-- 1 · Order Intake AI (LIVE) -->
+      <div class="ios-tile flex flex-col justify-between min-h-[280px] md:min-h-[320px] reveal" data-delay="1">
+        <div class="space-y-5">
+          <div class="flex items-start justify-between gap-3">
+            <div class="ios-tile-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg>
+            </div>
+            <span class="status-chip status-chip-live"><span class="status-dot"></span>Live</span>
+          </div>
+          <h3 class="text-[1.25rem] md:text-[1.375rem] font-semibold tracking-tight text-[#0A0A0A]">
+            <span class="lang-en">Order Intake</span><span class="lang-cn">订单智能补录</span>
+          </h3>
+          <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-[14.5px]">
+            <span class="lang-en">Paste a WeChat dialogue, an email, or notes from a legacy system. LyctAI extracts the 22 fields a real order needs — passenger, phone, flight, pickup, dropoff, vehicle class — and flags whatever it could not confirm.</span>
+            <span class="lang-cn">把客户微信对话、邮件或旧系统备注直接粘进系统，LyctAI 解析出真实订单所需的 22 个字段 —— 乘客、电话、航班、上下车、车型 —— 并标出无法确认的字段供人工补全。</span>
+          </p>
+        </div>
+        <div class="capability-metric mt-6">
+          <strong>22</strong>
+          <span class="lang-en">structured fields</span>
+          <span class="lang-cn">个结构化字段</span>
+        </div>
+      </div>
+
+      <!-- 2 · Excel Migration AI (LIVE) -->
+      <div class="ios-tile flex flex-col justify-between min-h-[280px] md:min-h-[320px] reveal" data-delay="2">
+        <div class="space-y-5">
+          <div class="flex items-start justify-between gap-3">
+            <div class="ios-tile-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+            </div>
+            <span class="status-chip status-chip-live"><span class="status-dot"></span>Live</span>
+          </div>
+          <h3 class="text-[1.25rem] md:text-[1.375rem] font-semibold tracking-tight text-[#0A0A0A]">
+            <span class="lang-en">Excel Migration</span><span class="lang-cn">表格迁移助手</span>
+          </h3>
+          <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-[14.5px]">
+            <span class="lang-en">Drop in a workbook exported from a legacy platform. LyctAI identifies the sheet, header row, and column mapping; repairs malformed rows; and produces a clean batch ready for human approval before commit.</span>
+            <span class="lang-cn">把旧平台导出的 Excel 直接拖入系统，LyctAI 识别工作表、表头行、数据起始行与列映射，并修复行级脏数据；最终生成可审核的批量草案，由人确认后入库。</span>
+          </p>
+        </div>
+        <div class="capability-metric mt-6">
+          <strong>2-step</strong>
+          <span class="lang-en">mapping + row repair</span>
+          <span class="lang-cn">列映射 + 行修复</span>
+        </div>
+      </div>
+
+      <!-- 3 · Smart Dispatch (ROADMAP) -->
+      <div class="ios-tile flex flex-col justify-between min-h-[280px] md:min-h-[320px] reveal" data-delay="3">
+        <div class="space-y-5">
+          <div class="flex items-start justify-between gap-3">
+            <div class="ios-tile-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><line x1="9" y1="11" x2="7" y2="9"/><line x1="15" y1="11" x2="17" y2="9"/><line x1="9" y1="13" x2="7" y2="15"/><line x1="15" y1="13" x2="17" y2="15"/></svg>
+            </div>
+            <span class="status-chip status-chip-roadmap">Roadmap</span>
+          </div>
+          <h3 class="text-[1.25rem] md:text-[1.375rem] font-semibold tracking-tight text-[#0A0A0A]">
+            <span class="lang-en">Smart Dispatch</span><span class="lang-cn">智能调度</span>
+          </h3>
+          <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-[14.5px]">
+            <span class="lang-en">Given a confirmed order and live supplier inventory, LyctAI proposes a ranked shortlist of dispatch candidates — weighing historical on-time rate, route familiarity, vehicle class, and customer affinity. The dispatcher confirms the choice.</span>
+            <span class="lang-cn">订单确认后，LyctAI 基于历史准时率、路线熟练度、车型匹配、客户偏好等维度，提出供应商候选排序，由调度员确认最终选择。</span>
+          </p>
+        </div>
+        <div class="capability-metric mt-6">
+          <strong>7</strong>
+          <span class="lang-en">ranking dimensions</span>
+          <span class="lang-cn">个排序维度</span>
+        </div>
+      </div>
+
+      <!-- 4 · Customer Assistant (ROADMAP) -->
+      <div class="ios-tile flex flex-col justify-between min-h-[280px] md:min-h-[320px] reveal" data-delay="4">
+        <div class="space-y-5">
+          <div class="flex items-start justify-between gap-3">
+            <div class="ios-tile-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <span class="status-chip status-chip-roadmap">Roadmap</span>
+          </div>
+          <h3 class="text-[1.25rem] md:text-[1.375rem] font-semibold tracking-tight text-[#0A0A0A]">
+            <span class="lang-en">Customer Assistant</span><span class="lang-cn">客户对话助手</span>
+          </h3>
+          <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-[14.5px]">
+            <span class="lang-en">An assistant inside the enterprise portal that lets clients book, query past trips, ask about an invoice line, and request reports in natural language — bounded strictly to that client's own data.</span>
+            <span class="lang-cn">企业门户内置的智能助手，让客户用自然语言完成下单、订单查询、账单解释、运营报告生成 —— 严格限定在该企业自身数据范围内。</span>
+          </p>
+        </div>
+        <div class="capability-metric mt-6">
+          <strong>4</strong>
+          <span class="lang-en">conversation intents</span>
+          <span class="lang-cn">类对话意图</span>
+        </div>
+      </div>
+
+      <!-- 5 · Operational Insights (ROADMAP) -->
+      <div class="ios-tile flex flex-col justify-between min-h-[280px] md:min-h-[320px] reveal" data-delay="5">
+        <div class="space-y-5">
+          <div class="flex items-start justify-between gap-3">
+            <div class="ios-tile-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+            </div>
+            <span class="status-chip status-chip-roadmap">Roadmap</span>
+          </div>
+          <h3 class="text-[1.25rem] md:text-[1.375rem] font-semibold tracking-tight text-[#0A0A0A]">
+            <span class="lang-en">Operational Insights</span><span class="lang-cn">运营智能分析</span>
+          </h3>
+          <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-[14.5px]">
+            <span class="lang-en">A monthly briefing drafted by LyctAI for both operations and the enterprise client — top routes, on-time performance, cost-centre breakdown, anomalies — written in prose, not just charts.</span>
+            <span class="lang-cn">每月由 LyctAI 撰写的运营月报 —— 热门路线、准时表现、成本中心拆分、异常订单 —— 用叙述性语言而不只是图表呈现给运营与客户双方。</span>
+          </p>
+        </div>
+        <div class="capability-metric mt-6">
+          <strong>Monthly</strong>
+          <span class="lang-en">narrative report</span>
+          <span class="lang-cn">叙述式报告</span>
+        </div>
+      </div>
+
+      <!-- 6 · Driver Companion (ROADMAP) -->
+      <div class="ios-tile flex flex-col justify-between min-h-[280px] md:min-h-[320px] reveal" data-delay="6">
+        <div class="space-y-5">
+          <div class="flex items-start justify-between gap-3">
+            <div class="ios-tile-icon">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <span class="status-chip status-chip-roadmap">Roadmap</span>
+          </div>
+          <h3 class="text-[1.25rem] md:text-[1.375rem] font-semibold tracking-tight text-[#0A0A0A]">
+            <span class="lang-en">Driver Companion</span><span class="lang-cn">司机端助手</span>
+          </h3>
+          <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-[14.5px]">
+            <span class="lang-en">A short daily briefing on the driver's mobile — today's trips in plain language, pickup notes worth re-reading, address pitfalls in the local area, and a one-tap channel to flag exceptions back to dispatch.</span>
+            <span class="lang-cn">司机手机上的每日简报 —— 用自然语言总结当天行程、值得复读的接车备注、本地地址陷阱，以及一键上报异常给调度的通道。</span>
+          </p>
+        </div>
+        <div class="capability-metric mt-6">
+          <strong>Daily</strong>
+          <span class="lang-en">trip brief</span>
+          <span class="lang-cn">行程简报</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 3: Technology Foundation ─── -->
+<section class="section-pad section-divider bg-[#FAFAF7]">
+  <div class="section-container">
+
+    <div class="max-w-3xl mb-10 md:mb-12 reveal">
+      <span class="ios-eyebrow mb-4">
+        <span class="lang-en">Technology Foundation</span>
+        <span class="lang-cn">技术底层</span>
+      </span>
+      <h2 class="section-head mt-4 mb-3">
+        <span class="lang-en">Four layers, one discipline.</span>
+        <span class="lang-cn">四层架构，一种纪律</span>
+      </h2>
+      <p class="text-[#0A0A0A]/65 text-base md:text-[17px] leading-relaxed font-light">
+        <span class="lang-en">The intelligence is not in any single model — it is in the way we put models, rules, and humans in the right order.</span>
+        <span class="lang-cn">智能不在某一个模型里 —— 而在我们把模型、规则、人按正确的顺序组合起来的方式上。</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+
+      <div class="tech-card reveal" data-delay="1">
+        <span class="tech-num">01 · MODEL LAYER</span>
+        <h3 class="tech-title">
+          <span class="lang-en">Domestic Models First</span>
+          <span class="lang-cn">国产模型优先</span>
+        </h3>
+        <p class="tech-body">
+          <span class="lang-en">DeepSeek and Qwen via OpenAI-compatible APIs. Data stays within mainland infrastructure. Models are swappable per capability.</span>
+          <span class="lang-cn">通过 OpenAI 兼容协议接入 DeepSeek 与通义千问，数据在境内基础设施流转。每个能力可单独切换模型。</span>
+        </p>
+      </div>
+
+      <div class="tech-card reveal" data-delay="2">
+        <span class="tech-num">02 · GATEWAY LAYER</span>
+        <h3 class="tech-title">
+          <span class="lang-en">Unified AI Gateway</span>
+          <span class="lang-cn">统一 AI 网关</span>
+        </h3>
+        <p class="tech-body">
+          <span class="lang-en">A single internal gateway routes every AI call. It handles provider selection, timeout, fallback, and structured JSON parsing — so business code stays clean.</span>
+          <span class="lang-cn">所有 AI 调用走统一内部网关，统一处理路由、超时、降级与结构化 JSON 解析，业务代码保持简洁。</span>
+        </p>
+      </div>
+
+      <div class="tech-card reveal" data-delay="3">
+        <span class="tech-num">03 · BUSINESS LAYER</span>
+        <h3 class="tech-title">
+          <span class="lang-en">Grounded in Rules</span>
+          <span class="lang-cn">扎根于业务规则</span>
+        </h3>
+        <p class="tech-body">
+          <span class="lang-en">Output is normalised against the same DTO validators, RBAC checks, and state machine that govern manual orders. AI cannot bypass what humans cannot bypass.</span>
+          <span class="lang-cn">AI 输出统一经过订单 DTO 校验、RBAC 权限与状态机检查 —— 人工不能跳过的环节，AI 同样不能。</span>
+        </p>
+      </div>
+
+      <div class="tech-card reveal" data-delay="4">
+        <span class="tech-num">04 · SAFETY LAYER</span>
+        <h3 class="tech-title">
+          <span class="lang-en">Human Confirms, Always</span>
+          <span class="lang-cn">人工确认，永远</span>
+        </h3>
+        <p class="tech-body">
+          <span class="lang-en">No model output is ever written to the order, billing, or settlement database directly. A human always reviews and confirms before commit. Every call is logged.</span>
+          <span class="lang-cn">没有任何模型输出直接写入订单、计费、结算数据库。任何提交前都由人审核确认，每一次调用都进入审计日志。</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 4: Principles ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+    <div class="max-w-3xl mb-10 md:mb-12 reveal">
+      <span class="ios-eyebrow mb-4">
+        <span class="lang-en">Principles</span>
+        <span class="lang-cn">设计原则</span>
+      </span>
+      <h2 class="section-head mt-4 mb-3">
+        <span class="lang-en">What LyctAI will not do.</span>
+        <span class="lang-cn">LyctAI 不做什么</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="1">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">01</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">AI does not replace the promise.</span>
+          <span class="lang-cn">AI 不替代承诺</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">It makes the promise easier to keep — never weaker.</span>
+          <span class="lang-cn">它让承诺更易兑现，从不削弱承诺本身。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="2">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">02</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Human in the loop.</span>
+          <span class="lang-cn">人在决策环上</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Every consequential decision passes through a human before commit.</span>
+          <span class="lang-cn">每一个有后果的决策，最终由人确认。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="3">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">03</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Domestic models first.</span>
+          <span class="lang-cn">国产模型优先</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Data stays close to where business runs. Compliance is not an afterthought.</span>
+          <span class="lang-cn">数据贴近业务运行的地方，合规不是事后补救。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="4">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">04</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Explainable &amp; auditable.</span>
+          <span class="lang-cn">可解释 可审计</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Every AI call carries a version, an actor, and a record. We can show our work.</span>
+          <span class="lang-cn">每一次 AI 调用都带版本号、操作者与记录，可以追溯。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 5: Architecture ─── -->
+<section class="section-pad section-divider bg-[#FAFAF7]">
+  <div class="section-container">
+    <div class="max-w-3xl mb-10 md:mb-12 reveal">
+      <span class="ios-eyebrow mb-4">
+        <span class="lang-en">Architecture</span>
+        <span class="lang-cn">系统架构</span>
+      </span>
+      <h2 class="section-head mt-4 mb-3">
+        <span class="lang-en">One gateway, many capabilities.</span>
+        <span class="lang-cn">单一网关，多种能力</span>
+      </h2>
+    </div>
+
+    <div class="arch-diagram reveal" data-delay="1">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" aria-label="LyctAI architecture diagram">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+          </marker>
+        </defs>
+
+        <!-- Row 1 · Surfaces (Customer / CS / Sales / Driver) -->
+        <g>
+          <rect x="40" y="20" width="160" height="60" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+          <text x="120" y="48" class="arch-label-en" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Admin / Sales / CS</text>
+          <text x="120" y="66" class="arch-sublabel" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">INTERNAL SURFACE</text>
+
+          <rect x="240" y="20" width="160" height="60" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+          <text x="320" y="48" class="arch-label-en" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Enterprise Portal</text>
+          <text x="320" y="66" class="arch-sublabel" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">CLIENT SURFACE</text>
+
+          <rect x="440" y="20" width="160" height="60" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+          <text x="520" y="48" class="arch-label-en" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Supplier Portal</text>
+          <text x="520" y="66" class="arch-sublabel" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">PARTNER SURFACE</text>
+
+          <rect x="640" y="20" width="160" height="60" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+          <text x="720" y="48" class="arch-label-en" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Driver App</text>
+          <text x="720" y="66" class="arch-sublabel" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">FIELD SURFACE</text>
+        </g>
+
+        <!-- Connectors row 1 → row 2 -->
+        <line x1="120" y1="80" x2="120" y2="140" stroke="#0A0A0A" stroke-width="1" stroke-dasharray="3,4"/>
+        <line x1="320" y1="80" x2="320" y2="140" stroke="#0A0A0A" stroke-width="1" stroke-dasharray="3,4"/>
+        <line x1="520" y1="80" x2="520" y2="140" stroke="#0A0A0A" stroke-width="1" stroke-dasharray="3,4"/>
+        <line x1="720" y1="80" x2="720" y2="140" stroke="#0A0A0A" stroke-width="1" stroke-dasharray="3,4"/>
+
+        <!-- Row 2 · LyctAI Gateway -->
+        <rect x="40" y="140" width="760" height="80" rx="16" fill="#0A0A0A"/>
+        <text x="420" y="174" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="17" font-weight="600" fill="#FAFAF7" letter-spacing="-0.01em">LyctAI Gateway</text>
+        <text x="420" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="rgba(250,250,247,0.65)" letter-spacing="2">PROMPT REGISTRY · ROUTING · FALLBACK · AUDIT</text>
+
+        <!-- Connectors row 2 → row 3 -->
+        <line x1="200" y1="220" x2="200" y2="270" stroke="#0A0A0A" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="420" y1="220" x2="420" y2="270" stroke="#0A0A0A" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="640" y1="220" x2="640" y2="270" stroke="#0A0A0A" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- Row 3 · Backends -->
+        <rect x="100" y="270" width="200" height="70" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+        <text x="200" y="297" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Domestic LLMs</text>
+        <text x="200" y="315" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">DEEPSEEK · QWEN</text>
+        <text x="200" y="330" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="rgba(10,10,10,0.4)" letter-spacing="1.2">OPENAI-COMPATIBLE</text>
+
+        <rect x="320" y="270" width="200" height="70" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+        <text x="420" y="297" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Business Core</text>
+        <text x="420" y="315" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">ORDER · DISPATCH</text>
+        <text x="420" y="330" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="rgba(10,10,10,0.4)" letter-spacing="1.2">BILLING · SETTLEMENT</text>
+
+        <rect x="540" y="270" width="200" height="70" rx="12" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+        <text x="640" y="297" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" font-weight="500" fill="#0A0A0A">Safety &amp; Audit</text>
+        <text x="640" y="315" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(10,10,10,0.55)" letter-spacing="1.4">RBAC · DTO · LOG</text>
+        <text x="640" y="330" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="rgba(10,10,10,0.4)" letter-spacing="1.2">HUMAN CONFIRMS</text>
+      </svg>
+
+      <p class="text-center text-[12px] text-[#0A0A0A]/45 font-mono mt-6 tracking-[0.15em] uppercase">
+        <span class="lang-en">Surfaces · Gateway · Backends</span>
+        <span class="lang-cn">入口 · 网关 · 后端</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA Banner ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+    <div class="reveal flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 p-7 md:p-12 rounded-[var(--r-xl)] relative overflow-hidden"
+         style="background: linear-gradient(135deg, #1c1917 0%, #0A0A0A 100%); box-shadow: var(--shadow-card-hover);">
+      <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-40 pointer-events-none"
+           style="background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);"></div>
+      <div class="flex-1 relative">
+        <p class="eyebrow mb-3" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);">
+          <span class="lang-en">LyctAI · Always as Promised</span><span class="lang-cn">LyctAI · 始终如约</span>
+        </p>
+        <h2 class="section-head text-white mb-2" style="font-size: clamp(1.5rem, 3vw, 2.25rem);">
+          <span class="lang-en"><em style="font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400;">Always as Promised.</em> With intelligence.</span>
+          <span class="lang-cn">始 终 如 约 · 智 能 加 持</span>
+        </h2>
+        <p class="text-white/65 text-[15px] md:text-base leading-relaxed font-light max-w-xl">
+          <span class="lang-en">If you would like a closer look at how LyctAI works inside a real operation — speak to us.</span>
+          <span class="lang-cn">如果您希望深入了解 LyctAI 在真实运营中的运作方式，欢迎联系我们。</span>
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto md:min-w-[200px] relative">
+        <a href="/contact.html" class="ios-pill" style="background: linear-gradient(180deg, #FAFAF7 0%, #e7e5e4 100%); color: #0A0A0A; box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 4px 16px rgba(0,0,0,0.3);">
+          <span class="lang-en">Talk to Us</span><span class="lang-cn">立即咨询</span>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="tel:+8615822918415" class="ios-pill-outline" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: white;">
+          +86 158 2291 8415
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer class="w-full py-12 md:py-16 px-5 md:px-12 bg-[#0A0A0A] text-white mt-0">
+  <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <img src="/images/logo.svg?v=4" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
+      <p class="text-white/45 text-xs max-w-xs leading-relaxed">
+        <span class="lang-en">Executive chauffeur service across Greater China. Available 24/7.</span>
+        <span class="lang-cn">大中华区专业礼宾出行服务，全天候 24/7。</span>
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-x-8 gap-y-3 text-[11px] text-white/45 tracking-[0.15em] uppercase">
+      <a href="/" class="hover:text-white transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a href="/about.html" class="hover:text-white transition-colors"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
+      <a href="/services.html" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
+      <a href="/fleet.html" class="hover:text-white transition-colors"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+      <a href="/enterprise.html" class="hover:text-white transition-colors"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+      <a href="/lyctai.html" class="text-white"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
+      <a href="/news.html" class="hover:text-white transition-colors"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
+      <a href="/careers.html" class="hover:text-white transition-colors"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
+      <a href="/contact.html" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+    </div>
+    <p class="text-white/25 text-[10px] tracking-[0.18em] uppercase">© 2026 LyctRides · <span style="letter-spacing: 0.35em;">光年出行</span></p>
+  </div>
+</footer>
+
+<!-- ─── Floating Action Button ─── -->
+<div class="fab-group">
+  <div class="fab-popover liquid-glass-dark">
+    <div class="fab-qr-grid">
+      <div class="fab-qr">
+        <img src="/images/wechat-qr.png" alt="WeChat QR code" loading="lazy">
+        <span class="fab-qr-label"><span class="lang-en">WeChat</span><span class="lang-cn">微信</span></span>
+      </div>
+      <div class="fab-qr">
+        <img src="/images/whatsapp-qr.png" alt="WhatsApp QR code" loading="lazy">
+        <span class="fab-qr-label">WhatsApp</span>
+      </div>
+    </div>
+    <div class="fab-contact-row">
+      <a href="tel:+8615822918415" class="fab-contact-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+86 158 2291 8415</span>
+      </a>
+      <a href="mailto:bd@lyctai.com" class="fab-contact-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>bd@lyctai.com</span>
+      </a>
+    </div>
+  </div>
+
+  <a href="/contact.html" class="fab-pill liquid-glass-dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
+  </a>
+</div>
+
+<script>
+  // Language init (shared lyct-lang key)
+  (function(){
+    try {
+      var saved = (function(){var v=localStorage.getItem('lyct-lang');return v==='cn'?'zh-CN':v;})();
+      if (saved === 'en' || saved === 'zh-CN') document.documentElement.lang = saved;
+      else if ((navigator.language || '').toLowerCase().startsWith('zh')) document.documentElement.lang = 'zh-CN';
+    } catch(_) {}
+  })();
+
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Nav glass scroll behaviour
+  (function(){
+    var nav = document.querySelector('.ios-glass');
+    function onScroll(){
+      var y = window.scrollY;
+      if (nav) {
+        if (y > 8) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Reveal on scroll (IntersectionObserver)
+  (function(){
+    var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (prefersReduce || !('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -80px 0px',
+      threshold: 0.05
+    });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // iOS-style tap feedback on tiles
+  (function(){
+    document.querySelectorAll('.ios-tile').forEach(function(tile){
+      tile.addEventListener('touchstart', function(){ tile.style.transform = 'translateY(-2px) scale(0.99)'; }, { passive: true });
+      tile.addEventListener('touchend', function(){ tile.style.transform = ''; }, { passive: true });
+      tile.addEventListener('touchcancel', function(){ tile.style.transform = ''; }, { passive: true });
+    });
+  })();
+</script>
+
+</body>
+</html>
