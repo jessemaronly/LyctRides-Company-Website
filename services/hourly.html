@@ -413,11 +413,12 @@
 
   /* ─── FAB Group with QR popover · 替代旧 .fab-glass ─── */
   /* 2026-06-06 FAB safe area */
-  body { padding-bottom: 88px; } /* fab-content-safe */
+  body { padding-bottom: 104px; } /* fab-content-safe */
+  @media (min-width: 768px) { body { padding-bottom: 88px; } }
   .fab-group {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     z-index: 40;
     display: flex;
     flex-direction: column;
@@ -510,6 +511,12 @@
   }
   .fab-contact-link:hover { color: white; }
   .fab-contact-link svg { opacity: 0.6; flex-shrink: 0; }
+
+  @media (max-width: 767px) {
+    .fab-group { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+    .fab-pill { padding: 12px 16px; font-size: 12px; letter-spacing: 0.08em; }
+    .fab-popover { display: none; }
+  }
 
   /* ─── Nav dropdown · 白色液态玻璃（Blacklane 风）─── */
   .nav-dropdown {
@@ -756,6 +763,32 @@
         <span class="lang-en">Your chauffeur, your route, your hours.</span>
         <span class="lang-cn" style="font-style:normal;font-family:'Noto Serif SC',serif;font-weight:400;line-height:1.5;">您的司机、您的路线、您的时间。</span>
       </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="/contact.html" class="ios-pill">
+          <span class="lang-en">Arrange Hourly Hire</span><span class="lang-cn">预约时租包车</span>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#hourly-quick" class="ios-pill-outline">
+          <span class="lang-en">Check Fit</span><span class="lang-cn">快速了解</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hourly-quick" class="px-5 md:px-12 py-8 md:py-10 border-b border-[#0A0A0A]/10 bg-[#FAFAF7]">
+  <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 fade-2">
+    <div class="bg-white border border-[#0A0A0A]/8 rounded-md p-5 md:p-6">
+      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/40 mb-3"><span class="lang-en">Best for</span><span class="lang-cn">适合场景</span></p>
+      <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">Multi-stop meeting days, site visits, exhibitions, family itineraries, and VIP hosting.</span><span class="lang-cn">多场会议、现场考察、展会参观、家庭行程与 VIP 接待。</span></p>
+    </div>
+    <div class="bg-white border border-[#0A0A0A]/8 rounded-md p-5 md:p-6">
+      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/40 mb-3"><span class="lang-en">Time blocks</span><span class="lang-cn">常用时段</span></p>
+      <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">Half-day, full-day, ten-hour, and multi-day reservations with one assigned chauffeur.</span><span class="lang-cn">半日、全日、十小时与多日预订，固定一位司机随行。</span></p>
+    </div>
+    <div class="bg-white border border-[#0A0A0A]/8 rounded-md p-5 md:p-6">
+      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/40 mb-3"><span class="lang-en">What stays flexible</span><span class="lang-cn">灵活之处</span></p>
+      <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">Stops, route order, waiting, parking, and mid-day itinerary changes.</span><span class="lang-cn">停靠点、路线顺序、等候、停车与当天临时行程调整。</span></p>
     </div>
   </div>
 </section>
