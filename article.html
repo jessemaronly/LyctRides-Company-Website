@@ -18,7 +18,7 @@
 <!-- 文章详情的 JSON-LD 由 JS 在拉到 article 数据后注入到 #ld-article 里 -->
 <script id="ld-article" type="application/ld+json"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
 tailwind.config = {
@@ -87,6 +87,12 @@ tailwind.config = {
     border: 0;
   }
 </style>
+<style id="a11y-focus">/* keyboard focus rings · added 2026-06 */
+:where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
+.ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
+.ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
+footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+</style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="text-[#0A0A0A]">
 
@@ -113,7 +119,7 @@ tailwind.config = {
       <a href="/#contact" class="hidden md:inline-block bg-[#0A0A0A] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-md hover:bg-[#333] transition-all duration-300">
         <span class="lang-en">Enquire</span><span class="lang-cn">立即咨询</span>
       </a>
-      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
         <span class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
@@ -121,7 +127,7 @@ tailwind.config = {
 </nav>
 
 <!-- Mobile menu -->
-<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden bg-[#FAFAF7] border-b border-black/10 shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] bottom-0 z-50 hidden bg-[#FAFAF7] shadow-xl overflow-y-auto px-5 py-4 flex-col gap-1 md:hidden">
   <a href="/#about" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
   <a href="/#services" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
   <a href="/#fleet" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
