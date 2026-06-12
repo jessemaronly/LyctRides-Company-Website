@@ -19,7 +19,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:wght@700&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
 <script>
   tailwind.config = {
     theme: { extend: {
@@ -173,8 +173,8 @@
 
   .ios-glass {
     background: rgba(250,250,247,0.65);
-    backdrop-filter: saturate(200%) blur(32px);
-    -webkit-backdrop-filter: saturate(200%) blur(32px);
+    backdrop-filter: saturate(110%) blur(32px);
+    -webkit-backdrop-filter: saturate(110%) blur(32px);
     box-shadow: 0 1px 0 rgba(10,10,10,0.04), inset 0 1px 0 rgba(255,255,255,0.5);
     border-bottom: 1px solid rgba(10,10,10,0.05);
   }
@@ -310,8 +310,8 @@
   .liquid-glass-light {
     background:
       linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.4) 100%);
-    backdrop-filter: saturate(200%) blur(30px);
-    -webkit-backdrop-filter: saturate(200%) blur(30px);
+    backdrop-filter: saturate(110%) blur(30px);
+    -webkit-backdrop-filter: saturate(110%) blur(30px);
     border: 1px solid rgba(255,255,255,0.5);
     border-radius: var(--r-lg);
     box-shadow:
@@ -563,8 +563,8 @@
     color: #0A0A0A;
     background: rgba(255,255,255,0.6);
     border-color: rgba(10,10,10,0.08);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(110%) blur(20px);
+    -webkit-backdrop-filter: saturate(110%) blur(20px);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,10,10,0.04);
   }
   .nav-pill-active:hover {
@@ -614,6 +614,12 @@
   @media (min-width: 768px) { .hero-fixed-h { min-height: 440px; } }
 
 </style>
+<style id="a11y-focus">/* keyboard focus rings · added 2026-06 */
+:where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
+.ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
+.ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
+footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+</style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -679,7 +685,7 @@
       <a href="https://www.lyctrides.com/login" class="hidden lg:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap">
         <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -687,7 +693,7 @@
 </nav>
 
 <!-- Mobile menu -->
-<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] z-40 hidden ios-glass shadow-xl px-5 py-4 flex-col gap-1 md:hidden">
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] bottom-0 z-50 hidden bg-[#FAFAF7] shadow-xl overflow-y-auto px-5 py-4 flex-col gap-1 md:hidden">
   <a href="/" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
   <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
   <a href="/fleet.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
@@ -747,27 +753,27 @@
         <form id="contact-form" class="space-y-5" method="post" action="/api/public/leads" novalidate>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label class="ios-input-label"><span class="lang-en">Full Name</span><span class="lang-cn">姓名</span></label>
-              <input class="ios-input" type="text" name="name" placeholder="John Doe" data-ph-en="John Doe" data-ph-cn="张先生 / 李女士" required minlength="2" maxlength="100"/>
+              <label class="ios-input-label" for="cf-name"><span class="lang-en">Full Name</span><span class="lang-cn">姓名</span></label>
+              <input id="cf-name" class="ios-input" type="text" name="name" placeholder="John Doe" data-ph-en="John Doe" data-ph-cn="张先生 / 李女士" required minlength="2" maxlength="100"/>
             </div>
             <div>
-              <label class="ios-input-label"><span class="lang-en">Work Email</span><span class="lang-cn">企业邮箱</span></label>
-              <input class="ios-input" type="email" name="email" placeholder="john@company.com" data-ph-en="john@company.com" data-ph-cn="您的工作邮箱" required/>
+              <label class="ios-input-label" for="cf-email"><span class="lang-en">Work Email</span><span class="lang-cn">企业邮箱</span></label>
+              <input id="cf-email" class="ios-input" type="email" name="email" placeholder="john@company.com" data-ph-en="john@company.com" data-ph-cn="您的工作邮箱" required/>
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label class="ios-input-label"><span class="lang-en">Phone Number</span><span class="lang-cn">手机号码</span></label>
-              <input class="ios-input" type="tel" name="phone" placeholder="+86 138 0000 0000" data-ph-en="+86 138 0000 0000" data-ph-cn="+86 138 0000 0000"/>
+              <label class="ios-input-label" for="cf-phone"><span class="lang-en">Phone Number</span><span class="lang-cn">手机号码</span></label>
+              <input id="cf-phone" class="ios-input" type="tel" name="phone" placeholder="+86 138 0000 0000" data-ph-en="+86 138 0000 0000" data-ph-cn="+86 138 0000 0000"/>
             </div>
             <div>
-              <label class="ios-input-label"><span class="lang-en">Company</span><span class="lang-cn">公司名称</span></label>
-              <input class="ios-input" type="text" name="company" placeholder="Acme Corp" data-ph-en="Acme Corp" data-ph-cn="贵公司名称"/>
+              <label class="ios-input-label" for="cf-company"><span class="lang-en">Company</span><span class="lang-cn">公司名称</span></label>
+              <input id="cf-company" class="ios-input" type="text" name="company" placeholder="Acme Corp" data-ph-en="Acme Corp" data-ph-cn="贵公司名称"/>
             </div>
           </div>
           <div>
-            <label class="ios-input-label"><span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span></label>
-            <select class="ios-input" name="serviceInterest">
+            <label class="ios-input-label" for="cf-service"><span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span></label>
+            <select id="cf-service" class="ios-input" name="serviceInterest">
               <option value="Corporate Account / 企业账户">Corporate Account / 企业账户</option>
               <option value="One-time VIP Transfer / 单次 VIP 接送">One-time VIP Transfer / 单次 VIP 接送</option>
               <option value="Hourly & Daily Hire / 时租与日租">Hourly &amp; Daily Hire / 时租与日租</option>
@@ -778,8 +784,8 @@
             </select>
           </div>
           <div>
-            <label class="ios-input-label"><span class="lang-en">Message</span><span class="lang-cn">补充说明</span></label>
-            <textarea class="ios-input" name="message" rows="4" placeholder="Travel dates, routes, group size…" data-ph-en="Travel dates, routes, group size…" data-ph-cn="出行日期、路线、人数、特殊需求……" style="resize: vertical; min-height: 110px;"></textarea>
+            <label class="ios-input-label" for="cf-message"><span class="lang-en">Message</span><span class="lang-cn">补充说明</span></label>
+            <textarea id="cf-message" class="ios-input" name="message" rows="4" placeholder="Travel dates, routes, group size…" data-ph-en="Travel dates, routes, group size…" data-ph-cn="出行日期、路线、人数、特殊需求……" style="resize: vertical; min-height: 110px;"></textarea>
           </div>
           <button id="contact-submit" type="submit" class="ios-pill w-full" style="padding: 16px 28px; font-size: 0.75rem;">
             <span class="lang-en">Send Enquiry</span><span class="lang-cn">提交咨询</span>
@@ -925,7 +931,7 @@
           </summary>
           <div class="faq-body">
             <span class="lang-en">Yes. While our platform is optimised for corporate travel, individual travellers and families are equally welcome. Single airport transfers, on-demand bookings, and long-term charters are all available for personal use.</span>
-            <span class="lang-cn">当然。我们的平台虽主要面向企业差旅，但同样欢迎个人及家庭预订。机场接送、零单市内用车、长包车均可个人使用。</span>
+            <span class="lang-cn">当然。我们的平台虽主要面向企业差旅，但同样欢迎个人及家庭预订。机场接送、单次按需用车、长包车均可个人使用。</span>
           </div>
         </details>
 
@@ -939,7 +945,7 @@
           </summary>
           <div class="faq-body">
             <span class="lang-en">An on-demand booking is a one-off ride — single airport transfer, point-to-point city trip, or short-term booking, billed per trip with no commitment. A long-term charter is a contract of one year or more that assigns a dedicated driver and vehicle to you, typically billed monthly or quarterly. Ideal for executives with recurring daily needs.</span>
-            <span class="lang-cn">零单是单次按需出行，按趟预订无需承诺。长包车则是按月或按季度配备专属司机与车辆，适合有日常高频出行需求的高管群体。</span>
+            <span class="lang-cn">零单是单次按需出行——单次机场接送、市内点到点或短期预订，按趟计费、无需长期承诺。长包车则是一年起签的合约，为您配备专属司机与车辆，通常按月或按季度结算，适合有日常高频出行需求的高管群体。</span>
           </div>
         </details>
 
@@ -1045,8 +1051,9 @@
   // Mobile menu toggle
   document.getElementById('mobile-menu-btn').addEventListener('click', function(){
     var m = document.getElementById('mobile-menu');
-    m.classList.toggle('hidden');
+    var hidden = m.classList.toggle('hidden');
     m.classList.toggle('flex');
+    this.setAttribute('aria-expanded', String(!hidden));
   });
 
   // Nav glass on scroll
@@ -1110,6 +1117,10 @@
       e.preventDefault();
       if (btn.disabled) return;
       btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
+      btn.style.opacity = '0.6';
+      if (!btn.dataset.label) btn.dataset.label = btn.innerHTML;
+      btn.textContent = (document.documentElement.lang === 'zh-CN' ? '提交中…' : 'Sending…');
       msg.classList.add('hidden');
 
       var fd = new FormData(form);
@@ -1155,6 +1166,9 @@
         .finally(function() {
           msg.classList.remove('hidden');
           btn.disabled = false;
+          btn.removeAttribute('aria-busy');
+          btn.style.opacity = '';
+          if (btn.dataset.label) btn.innerHTML = btn.dataset.label;
         });
     });
   })();
