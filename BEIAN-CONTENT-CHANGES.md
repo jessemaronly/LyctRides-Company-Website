@@ -312,3 +312,49 @@ grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' 's/粤ICP
 # 公安联网备案号：每页 footer 的 BEIAN 块里有注释好的占位，取消注释并把 XXXXXXXX 换成正式号
 ```
 （macOS sed 用 `-i ''`；Linux 用 `-i`。如要改成共享组件，可后续抽 `beian-footer.js` 注入，但静态片段对备案审核更稳。）
+
+---
+
+## 复核修正 · round 3
+
+### 🟡 下架司机岗位（备案后可恢复）
+
+`careers.html` 移除 `data-dept="chauffeur"`（Driver/司机）筛选钮；`data/careers.json` 移除「高级司机 / Senior Driver」岗位。备案通过后想恢复，把下面这条对象加回 `data/careers.json` 数组、并把筛选钮加回 careers.html 即可：
+
+```json
+{
+  "id": "senior-chauffeur-shanghai",
+  "title": { "en": "Senior Driver — Shanghai", "cn": "高级司机 — 上海" },
+  "type": { "en": "Full-time", "cn": "全职" },
+  "location": { "en": "On-site · Shanghai", "cn": "上海驻场" },
+  "department": "chauffeur",
+  "tags": [
+    { "en": "VIP Service", "cn": "贵宾服务" },
+    { "en": "EHL Trained", "cn": "EHL认证" },
+    { "en": "Mandarin + English", "cn": "中英双语" }
+  ],
+  "description": {
+    "en": "We are looking for an experienced senior driver to join our Shanghai team. You will be responsible for providing world-class executive ground transportation to our corporate clients, adhering to LyctRides' EHL-certified service standards at all times.\n\nKey responsibilities include safe and punctual driving, impeccable personal presentation, proactive client communication, and vehicle maintenance to the highest standard. A minimum of 3 years of professional driver experience and a clean driving record are required.",
+    "cn": "我们正在寻找一位经验丰富的高级司机加入我们的上海团队。您将负责为企业客户提供世界级的高管地面出行服务，严格遵守光年的EHL认证服务标准。\n\n主要职责包括安全准时驾驶、无可挑剔的个人形象、主动的客户沟通以及保持车辆最高标准的状态。要求至少3年专业司机经验及良好驾驶记录。"
+  }
+}
+```
+
+筛选钮（加回 careers.html `#dept-filters` 内，All 之后）：
+```html
+<button class="filter-chip ios-eyebrow" data-dept="chauffeur">
+  <span class="lang-en">Driver</span><span class="lang-cn">司机</span>
+</button>
+```
+
+> ⚠️ **平台侧也要处理**：careers 页是「API 优先（`/api/public/careers`）+ 静态 JSON 兜底」。本次只改了官网仓库的静态兜底。**生产环境若 API 仍返回该岗位，前台依然会显示**——需在平台 repo 把该招聘下架/不发布。
+
+另把 `operations-coordinator` 描述里「管理司机排班 / managing driver schedules」软化为「与合作供应商对接调度排班 / managing dispatch schedules with partner suppliers」，与供应商履约口径一致。
+
+### 全站页脚 tagline（替代 Codex 的「统筹协调」）
+
+全站 18 页 + holding：
+- EN `Corporate ground transportation across Greater China. Available 24/7.` → `Corporate car service across Greater China. Available 24/7.`
+- CN `大中华区专业礼宾出行服务，全天候 24/7。` → `大中华区企业用车服务，全天候 24/7。`
+
+用合规已洗词「企业用车服务 / corporate car service」，去掉「礼宾出行服务」可能被读成自营运输的歧义。
