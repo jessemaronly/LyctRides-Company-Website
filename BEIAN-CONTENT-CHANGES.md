@@ -278,3 +278,37 @@
 - 全站页脚 ICP 备案占位组件（`<!-- BEIAN:start -->` … `<!-- BEIAN:end -->`，含 `粤ICP备XXXXXXXX号` + 公安备案号注释占位）
 
 > ⚠️ **隐私政策 / 用户协议正式生效前，建议经执业律师 / 法务终审。** 注册地址、ICP 号、公安备案号均为占位，下号 / 确认后替换。
+
+---
+
+## 复核修正 · round 2（Codex review 后）
+
+复核发现一审验证有两处盲区：(a) 只搜了 `our/own fleet` 没搜裸词 `fleet`；(b) `车队` grep 漏了字间距写法 `车 队`（如 `V I P 接 待 车 队`）。补修如下：
+
+| 文件:行(当前) | 改动 | 桶 |
+|---|---|---|
+| `data/news.json` | summary `Our newest fleet addition` → `The newest addition to our service line-up`（自有车队暗示） | 🔴 |
+| `news.html` | 筛选钮 `data-cat="Fleet"`+标签 `Fleet` → `Vehicles`（**并修复因 news.json 分类已改 Vehicles 导致的筛选失效**） | 🟡 |
+| `services/citytocity.html` `services/hourly.html` `services/airport.html` | `§ 04 · Fleet` 段标 → `Vehicles` | 🟡 |
+| `services/events.html` | `VIP guest fleet / VIP 接 待 车 队` → `VIP guest vehicles / VIP 接 待 车 辆`；`车 队 调 度` → `多 车 调 度` | 🟡 |
+| `index.html` | 注释 `<!-- Fleet Teaser -->` → `Vehicle Classes Teaser`（仅 grep 噪音） | — |
+
+**故意保留**：`data/news.json` 的 `"id": "zeekr-fleet-addition-2024"` 是文章 URL 的内部 slug（`article.html?id=…`），改它会断已有链接，按内部 key 例外保留（同 `senior-chauffeur-shanghai`）。
+
+## 复核修正 · 非红线一致性（与备案口径对齐）
+
+- **主体英文名**：privacy/terms/holding 的 `lang-en` 原误用我臆造的 `Lightyear (Guangzhou) Automobile Services Co., Ltd.` 且把中文名塞进了英文 span（混排）。已统一为官方英文名 **`LyctRides Car Service Co., Ltd.`**（`lang-en`）/ `光年（广州）汽车服务有限责任公司`（`lang-cn`）。
+- **公开联系邮箱**：新法律/备案页 `billing@` → **`bd@lyctai.com`**（与全站现有 18 页一致）。
+- **付款口径**：`contact.html` 去掉「微信支付/支付宝/国际信用卡」按次收款表述 → 仅「对公转账 + 集中月结开票 + Net-30/60；本站不提供按次在线车费支付」，与 terms.html 第 4 条一致。
+- **招聘 SEO**：`careers.html` meta keywords 去掉「driver jobs / premium driver hiring」公开招募口径 → 运营岗口径。
+
+## 备案号下号后如何统一替换（footer 全站多处）
+
+页脚 BEIAN 块是逐页静态片段（利于备案展示 + 无 JS 也能显示），不是单点。下号后全站统一替换用：
+
+```bash
+# ICP 号（把 X 换成正式号）
+grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' 's/粤ICP备XXXXXXXX号/粤ICP备12345678号/g'
+# 公安联网备案号：每页 footer 的 BEIAN 块里有注释好的占位，取消注释并把 XXXXXXXX 换成正式号
+```
+（macOS sed 用 `-i ''`；Linux 用 `-i`。如要改成共享组件，可后续抽 `beian-footer.js` 注入，但静态片段对备案审核更稳。）
