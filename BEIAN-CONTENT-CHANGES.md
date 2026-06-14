@@ -358,3 +358,26 @@ grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' 's/粤ICP
 - CN `大中华区专业礼宾出行服务，全天候 24/7。` → `大中华区企业用车服务，全天候 24/7。`
 
 用合规已洗词「企业用车服务 / corporate car service」，去掉「礼宾出行服务」可能被读成自营运输的歧义。
+
+---
+
+## 复核修正 · round 4（Codex review #2 — 司机所有权口径）
+
+下架司机岗位还不够：公开文案里仍有「招聘司机 / 自有司机培训 / 专属司机」口径，会被读成光年自有/自管司机队伍，跟「供应商履约」定位和红线冲突。本轮把所有"暗示光年雇佣/培训/拥有司机"的措辞改为**供应商派出 + 光年协调服务标准**口径。
+
+### 🔴 永久不恢复（自有/招聘/自训司机口径）
+| 文件 | 改动 |
+|---|---|
+| `careers.html` | meta 去掉 `hiring drivers (English-speaking)`；`from driver to account management` → `operations coordination`；`EHL 200+ hours per driver / 每位司机逾200学时` → 面向运营与供应商协同团队的服务标准培训 |
+| `data/news.json` | `Our EHL-certified training programme … every driver` / `每位司机完成逾200小时` → 由合作供应商派出的司机完成（光年协调标准）；`over thirty bilingual drivers` / `逾三十位双语司机` → 由合作供应商调派；`all drivers are certified` / `所有司机均持证` → 合作供应商派出的司机均持证；`every driver briefed` / `每一位司机训练有素` 及致谢句 → 供应商派出司机口径 |
+| `enterprise.html` | `Every LyctRides driver … / 所有 LyctRides 司机…` → 由合作供应商派出的司机按光年服务标准完成 |
+
+### 🟡 下号后可恢复（专属/dedicated driver 高端措辞）
+| 文件 | 改动 |
+|---|---|
+| `services/longterm.html` | meta/og/标题/正文的 `专属英语司机·Dedicated/Annual Dedicated Driver·固定司机` → 相对固定的（合作供应商指派）司机 / consistent supplier-assigned driver；`专属车辆` h3 → 固定车辆（与正文一致）；keyword `dedicated driver China` 软化 |
+| `services.html` `contact.html` | 长包车摘要/FAQ 的 `dedicated driver·Same driver / 配备固定司机·同一司机` → 由合作供应商指派相对固定的司机、尽量同一司机 |
+| `index.html` | hero alt `LyctRides driver` → a professional driver（仅 alt） |
+
+> 注（同 round 3）：careers 是 **API 优先 + 静态 JSON 兜底**。本轮只改官网静态文件；生产若平台 API 仍返回司机岗位/旧文案，前台仍会显示——需平台 repo 同步处理。
+> 保留（合规，无需改）：`专属客户经理 / Dedicated Account Manager`、`专属礼宾/行李协助/登机通道/两岸商旅专属服务`——这些是光年自有的**客服/礼宾**职能（服务部分），非司机/运输资源。
