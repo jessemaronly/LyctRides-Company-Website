@@ -368,7 +368,7 @@ grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' 's/粤ICP
 ### 🔴 永久不恢复（自有/招聘/自训司机口径）
 | 文件 | 改动 |
 |---|---|
-| `careers.html` | meta 去掉 `hiring drivers (English-speaking)`；`from driver to account management` → `operations coordination`；`EHL 200+ hours per driver / 每位司机逾200学时` → 面向运营与供应商协同团队的服务标准培训 |
+| `careers.html` | meta 去掉 `hiring drivers (English-speaking)`；`from driver to account management`（中英）→ `operations coordination` / `无论是司机→无论是运营协调`；`EHL 200+ hours per driver / 每位司机逾200学时` → 面向运营与供应商协同团队的服务标准培训 |
 | `data/news.json` | `Our EHL-certified training programme … every driver` / `每位司机完成逾200小时` → 由合作供应商派出的司机完成（光年协调标准）；`over thirty bilingual drivers` / `逾三十位双语司机` → 由合作供应商调派；`all drivers are certified` / `所有司机均持证` → 合作供应商派出的司机均持证；`every driver briefed` / `每一位司机训练有素` 及致谢句 → 供应商派出司机口径 |
 | `enterprise.html` | `Every LyctRides driver … / 所有 LyctRides 司机…` → 由合作供应商派出的司机按光年服务标准完成 |
 
