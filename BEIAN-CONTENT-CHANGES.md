@@ -309,8 +309,9 @@
 页脚 BEIAN 块是逐页静态片段（利于备案展示 + 无 JS 也能显示），不是单点。下号后全站统一替换用：
 
 ```bash
-# ICP 号（把 X 换成正式号）
-grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' 's/粤ICP备XXXXXXXX号/粤ICP备12345678号/g'
+# ICP 号（下号后把变量值改成正式编号，切勿留任何假数字）
+ICP_NO='粤ICP备<下号后正式编号>号'
+grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' "s/粤ICP备XXXXXXXX号/${ICP_NO}/g"
 # 公安联网备案号：每页 footer 的 BEIAN 块里有注释好的占位，取消注释并把 XXXXXXXX 换成正式号
 ```
 （macOS sed 用 `-i ''`；Linux 用 `-i`。如要改成共享组件，可后续抽 `beian-footer.js` 注入，但静态片段对备案审核更稳。）
@@ -319,9 +320,13 @@ grep -rl '粤ICP备XXXXXXXX号' --include='*.html' . | xargs sed -i '' 's/粤ICP
 
 ## 复核修正 · round 3
 
-### 🟡 下架司机岗位（备案后可恢复）
+### 🔴 当前不建议恢复（公开司机招聘 / 自有司机岗位口径）
 
-`careers.html` 移除 `data-dept="chauffeur"`（Driver/司机）筛选钮；`data/careers.json` 移除「高级司机 / Senior Driver」岗位。备案通过后想恢复，把下面这条对象加回 `data/careers.json` 数组、并把筛选钮加回 careers.html 即可：
+`careers.html` 移除 `data-dept="chauffeur"`（Driver/司机）筛选钮；`data/careers.json` 移除「高级司机 / Senior Driver」岗位。
+
+> ⚠️ **ICP 下号 ≠ 可以恢复公开司机招聘。** 未来如确需恢复司机相关岗位，须**先**经合规/法务确认招聘性质（自有雇佣 vs 供应商派遣）、相应资质/许可、是否需变更备案或平台审核，**再**作为「新的评审改动」处理（与文末「备案后恢复原则」一致）。
+
+下方仅为**存档原文**，便于届时核对，**不代表可直接加回**：
 
 ```json
 {
