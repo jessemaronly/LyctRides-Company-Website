@@ -4,3 +4,6 @@
 
 # Claude Code local session config
 .claude/
+
+# Isolated worktrees for in-progress feature branches
+.worktrees/
