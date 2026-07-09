@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://www.lyctai.com/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/"/>
@@ -13,106 +13,173 @@
   </url>
 
   <url>
-    <loc>https://www.lyctai.com/news.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://www.lyctai.com/services.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/coverage.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/coverage.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/coverage.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/coverage.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/vehicles.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/vehicles.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/vehicles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/vehicles.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/enterprise.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/enterprise.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/enterprise.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/enterprise.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/lyctai.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.lyctai.com/careers.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.lyctai.com/services/airport.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.lyctai.com/services/hourly.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.lyctai.com/services/citytocity.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.lyctai.com/services/events.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.lyctai.com/services/privatejet.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/lyctai.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/lyctai.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/lyctai.html"/>
   </url>
 
   <url>
     <loc>https://www.lyctai.com/about.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/about.html"/>
   </url>
+
   <url>
-    <loc>https://www.lyctai.com/services.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://www.lyctai.com/news.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/news.html"/>
   </url>
+
   <url>
-    <loc>https://www.lyctai.com/vehicles.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://www.lyctai.com/careers.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/careers.html"/>
   </url>
-  <url>
-    <loc>https://www.lyctai.com/coverage.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.lyctai.com/enterprise.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
   <url>
     <loc>https://www.lyctai.com/contact.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/contact.html"/>
   </url>
+
   <url>
-    <loc>https://www.lyctai.com/services/cityrides.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://www.lyctai.com/services/airport.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/airport.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/airport.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/airport.html"/>
   </url>
-  <url>
-    <loc>https://www.lyctai.com/services/longterm.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://www.lyctai.com/services/airport-rail.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/airport-rail.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/airport-rail.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/airport-rail.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/services/hourly.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/hourly.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/hourly.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/hourly.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/services/cityrides.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/cityrides.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/cityrides.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/cityrides.html"/>
   </url>
+
+  <url>
+    <loc>https://www.lyctai.com/services/citytocity.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/citytocity.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/citytocity.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/citytocity.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/services/longterm.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/longterm.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/longterm.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/longterm.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/services/events.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/events.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/events.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/events.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.lyctai.com/services/privatejet.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.lyctai.com/services/privatejet.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/services/privatejet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/services/privatejet.html"/>
+  </url>
+
 </urlset>
