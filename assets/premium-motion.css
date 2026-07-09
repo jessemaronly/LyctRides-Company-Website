@@ -1,0 +1,49 @@
+/* ============================================================
+   premium-motion.css · LyctRides 高级动效层
+   叠加在每页内联 <style> 之上 —— 全部为 net-new 选择器，不与既有
+   hover / reveal 系统冲突。仅黑白两色体系，克制，尊重 reduced-motion。
+   ============================================================ */
+:root{
+  --pm-ease:     cubic-bezier(0.32, 0.72, 0, 1);
+  --pm-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── 1 · 导航滚动收拢：每页每次下滑都能感到的高级信号 ───────────── */
+nav.ios-glass > div{ transition: padding-top .55s var(--pm-ease), padding-bottom .55s var(--pm-ease); }
+nav.ios-glass img{ transition: height .55s var(--pm-ease); }
+nav.ios-glass.scrolled{ box-shadow: 0 6px 28px -10px rgba(10,10,10,0.12), inset 0 1px 0 rgba(255,255,255,0.55); }
+nav.ios-glass.scrolled > div{ padding-top: .6rem; padding-bottom: .6rem; }
+@media (min-width:768px){ nav.ios-glass.scrolled > div{ padding-top: .72rem; padding-bottom: .72rem; } }
+nav.ios-glass.scrolled img{ height: 1.6rem; }
+
+/* ── 2 · 顶部滚动进度发丝线 ────────────────────────────────── */
+#pm-progress{
+  position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 60;
+  background: linear-gradient(90deg, rgba(10,10,10,0.20), #0A0A0A);
+  pointer-events: none; will-change: width;
+}
+
+/* ── 3 · 数字滚动：等宽数字防抖动 ───────────────────────────── */
+[data-count]{ font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* ── 4 · 标题下细线抽出（opt-in：.pm-rule）──────────────────── */
+.pm-rule{ position: relative; }
+.pm-rule::after{
+  content: ''; position: absolute; left: 0; bottom: -.7rem; height: 2px; width: 0;
+  background: #0A0A0A; transition: width 1.1s var(--pm-ease) .2s;
+}
+.pm-rule.pm-in::after{ width: 48px; }
+
+/* ── 5 · Reveal 加强（opt-in 叠加类，复用既有 .is-visible 触发）──── */
+/*  base .reveal 负责 opacity+位移；这里只追加 filter / 更大位移，不抢同一属性 */
+.reveal.reveal-blur{ filter: blur(12px); transition: opacity .8s var(--pm-ease), transform .8s var(--pm-ease), filter .9s var(--pm-ease); }
+.reveal.reveal-blur.is-visible{ filter: blur(0); }
+.reveal.reveal-far{ transform: translateY(48px); }
+
+/* ── reduced-motion：一切退回静态终态 ───────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  nav.ios-glass > div, nav.ios-glass img{ transition: none !important; }
+  #pm-progress{ display: none !important; }
+  .pm-rule::after{ width: 48px !important; transition: none !important; }
+  .reveal.reveal-blur{ filter: none !important; }
+}

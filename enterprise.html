@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Corporate Car Service & Bilingual Driver | LyctRides 企业门户</title>
-<meta name="description" content="LyctRides 企业门户——为跨国企业提供中国境内双语司机礼宾用车、集中结算、成本中心标签、专属客户经理。Corporate car service with bilingual / English-speaking drivers across Greater China: consolidated billing, cost-centre tags, dedicated account managers, multi-user roles, 300+ cities."/>
-<meta name="keywords" content="LyctRides, 企业差旅用车, 跨国企业用车, 双语司机企业服务, 英语司机商务用车, 集中开票, 公司用车, corporate car service China, bilingual driver China, English-speaking corporate driver, business travel China, multinational corporate transport, consolidated billing driver, cost-centre tags, dedicated account manager, executive transport Greater China, 商务差旅, 集团公司用车"/>
+<title>Corporate Chauffeur & Bilingual Driver | LyctRides 企业门户</title>
+<meta name="description" content="LyctRides 企业门户——为跨国企业提供中国境内双语管家礼宾用车、集中结算、成本中心标签、专属客户经理。Corporate car service with bilingual / English-speaking chauffeurs across Greater China: consolidated billing, cost-centre tags, dedicated account managers, multi-user roles, 300+ cities."/>
+<meta name="keywords" content="LyctRides, 企业差旅用车, 跨国企业用车, 双语司机企业服务, 英语司机商务用车, 集中开票, 公司用车, corporate chauffeur China, bilingual driver China, English-speaking corporate driver, business travel China, multinational corporate transport, consolidated billing driver, cost-centre tags, dedicated account manager, executive transport Greater China, 商务差旅, 集团公司用车"/>
 <link rel="canonical" href="https://www.lyctai.com/enterprise.html"/>
 <link rel="alternate" hreflang="en" href="https://www.lyctai.com/enterprise.html"/>
 <link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/enterprise.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="LyctRides"/>
-<meta property="og:title" content="Corporate Car Service · Bilingual Driver · 跨国企业中国用车 | LyctRides"/>
-<meta property="og:description" content="跨国企业中国境内礼宾用车——双语司机、集中结算、成本中心。Corporate car service with English-speaking drivers, consolidated billing, and account managers across Greater China."/>
+<meta property="og:title" content="Corporate Chauffeur · Bilingual Driver · 跨国企业中国用车 | LyctRides"/>
+<meta property="og:description" content="跨国企业中国境内礼宾用车——双语管家、集中结算、成本中心。Corporate car service with English-speaking chauffeurs, consolidated billing, and account managers across Greater China."/>
 <meta property="og:url" content="https://www.lyctai.com/enterprise.html"/>
 <meta property="og:image" content="https://www.lyctai.com/images/hero.jpg?v=2"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -400,8 +400,6 @@
 
   /* ─── FAB Group with QR popover · 替代旧 .fab-glass ─── */
   /* 2026-06-06 FAB safe area */
-  body { padding-bottom: 104px; } /* fab-content-safe */
-  @media (min-width: 768px) { body { padding-bottom: 88px; } }
   .fab-group {
     position: fixed;
     right: 20px;
@@ -604,6 +602,65 @@
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
+  <link rel="stylesheet" href="/assets/premium-motion.css">
+<style id="footer-cc">
+  /* ===== 多列页脚 ===== */
+  .footer-col-title { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:18px; }
+  .footer-col a { display:block; font-size:14px; color:rgba(255,255,255,.72); padding:7px 0; transition:color .2s; }
+  .footer-col a:hover { color:#fff; }
+  .footer-ic { position:relative; display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.75); transition:background-color .2s, color .2s, border-color .2s; cursor:pointer; }
+  .footer-ic:hover { background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.42); }
+  .footer-ic svg { width:18px; height:18px; }
+  .footer-ic-pop { position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%) translateY(-6px); opacity:0; visibility:hidden; transition:opacity .2s var(--ease-ios,ease), transform .2s var(--ease-ios,ease), visibility .2s; background:#161616; border:1px solid rgba(255,255,255,.18); border-radius:16px; padding:14px; box-shadow:0 30px 70px -18px rgba(0,0,0,.92); z-index:60; }
+  .footer-has-pop:hover .footer-ic-pop, .footer-has-pop:focus-within .footer-ic-pop { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+  .footer-ic-pop img { width:124px; height:124px; border-radius:8px; display:block; }
+  .footer-ic-pop span { display:block; margin-top:8px; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.55); text-align:center; }
+</style>
+<style id="nav-glass-cc">
+  .nav-glass-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(10,10,10,0.08);
+    border-radius: 999px;
+    backdrop-filter: saturate(110%) blur(20px);
+    -webkit-backdrop-filter: saturate(110%) blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,10,10,0.04);
+    transition: background var(--dur-base) var(--ease-ios),
+                transform var(--dur-fast) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios);
+    cursor: pointer;
+  }
+  .nav-glass-pill:hover {
+    background: rgba(255,255,255,0.78);
+    transform: scale(1.04);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 4px 14px rgba(10,10,10,0.08);
+  }
+  .nav-glass-pill:active { transform: scale(0.97); }
+</style>
+<style id="hero-img-cc">
+  .ios-hero-strip.hero-on-image { overflow:hidden; isolation:isolate; }
+  .hero-on-image .hero-bg-media { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; }
+  .hero-on-image .hero-bg-media::after { content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(10,10,10,.88) 0%, rgba(10,10,10,.70) 34%, rgba(10,10,10,.42) 60%, rgba(10,10,10,.16) 100%),
+      linear-gradient(180deg, rgba(10,10,10,.45) 0%, rgba(10,10,10,.10) 26%, rgba(10,10,10,.12) 62%, rgba(10,10,10,.58) 100%); }
+  .hero-on-image .ambient-glow { display:none; }
+  .hero-on-image .section-container { position:relative; z-index:2; }
+  .hero-on-image .eyebrow, .hero-on-image .eyebrow a, .hero-on-image .eyebrow span { color:rgba(250,250,247,.78) !important; }
+  .hero-on-image .section-head, .hero-on-image .section-head span { color:#FAFAF7 !important; text-shadow:0 1px 28px rgba(10,10,10,.45); }
+  .hero-on-image .section-container > p { color:rgba(250,250,247,.9) !important; text-shadow:0 1px 20px rgba(10,10,10,.4); }
+  .hero-on-image .stat-num { color:#FAFAF7 !important; }
+  .hero-on-image .stat-label, .hero-on-image .stat-label span { color:rgba(250,250,247,.7) !important; }
+  .hero-on-image .ios-pill { background:#FAFAF7 !important; color:#0A0A0A !important; }
+  .hero-on-image .ios-pill-outline { border-color:rgba(250,250,247,.5) !important; color:#FAFAF7 !important; }
+</style>
 </head>
 <body>
 
@@ -611,21 +668,22 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
   <div class="flex justify-between items-center px-4 md:px-12 py-4 md:py-5 max-w-[1440px] mx-auto">
     <a href="/" class="flex items-center">
-      <img src="/images/logo.svg?v=4" alt="LyctRides" class="h-8 w-auto">
+      <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
     </a>
-    <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-[11px] font-medium tracking-[0.16em] uppercase whitespace-nowrap">
-      <a class="nav-pill" href="/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
-      <a class="nav-pill" href="/about.html"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
-
-      <!-- Services with liquid-glass dropdown -->
+    <div class="hidden md:flex items-center space-x-3 lg:space-x-5 text-[13px] font-semibold tracking-[0.08em] whitespace-nowrap">
+      <!-- 出行服务 with liquid-glass dropdown -->
       <div class="nav-services-trigger">
-        <a class="text-[#50606f] hover:text-[#0A0A0A] transition-colors relative inline-flex items-center gap-1.5" href="/services.html">
-          <span class="lang-en">Services</span><span class="lang-cn">服务</span>
+        <a class="nav-pill gap-1.5" href="/services.html">
+          <span class="lang-en">Our Services</span><span class="lang-cn">出行服务</span>
           <svg class="w-3 h-3 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <div class="nav-dropdown">
           <a href="/services.html#airport" class="nav-dropdown-item">
             <span><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/services.html#airport-rail" class="nav-dropdown-item">
+            <span><span class="lang-en">Airport &amp; Rail Concierge</span><span class="lang-cn">机场·高铁礼宾</span></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
           <a href="/services.html#hourly" class="nav-dropdown-item">
@@ -655,23 +713,24 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         </div>
       </div>
 
-      <!-- Enterprise active -->
-      <a class="nav-pill nav-pill-active" href="/enterprise.html"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+      <a class="nav-pill" href="/vehicles.html">
+        <span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span>
+      </a>
       <a class="nav-pill" href="/lyctai.html"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
-      <a class="nav-pill" href="/news.html"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
-      <a class="nav-pill" href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
-      <a class="nav-pill" href="/contact.html"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+      <a class="nav-pill nav-pill-active" href="/enterprise.html">
+        <span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span>
+      </a>
+      <a class="nav-pill" href="/contact.html">
+        <span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span>
+      </a>
     </div>
     <div class="flex items-center gap-3 md:gap-4">
-      <button class="text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
+      <button class="nav-glass-pill" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
-      <a href="https://www.lyctrides.com/login" class="hidden lg:inline-block text-[#0A0A0A] text-[11px] font-medium tracking-[0.16em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap">
-        <span class="lang-en">Sign In</span><span class="lang-cn">登录</span>
-      </a>
-      <a href="https://www.lyctrides.com/login" class="hidden md:inline-flex ios-pill text-[11px]" style="padding: 10px 20px;">
-        <span class="lang-en">Open Account</span><span class="lang-cn">开通账户</span>
-        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <a href="https://www.lyctrides.com/login" class="hidden md:inline-flex items-center gap-2 nav-glass-pill">
+        <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
+        <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
       <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -681,20 +740,19 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </nav>
 
 <!-- Mobile menu drawer -->
+<!-- Mobile menu -->
 <div id="mobile-menu" class="fixed left-0 right-0 top-[62px] bottom-0 z-50 hidden bg-[#FAFAF7] shadow-xl overflow-y-auto px-5 py-4 flex-col gap-1 md:hidden">
-  <a href="/" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
-  <a href="/about.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
-  <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
-  <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-primary border-b border-black/8"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
+  <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Our Services</span><span class="lang-cn">出行服务</span></a>
+  <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
-  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
-  <a href="/careers.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
-  <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
-  <a href="https://www.lyctrides.com/login" class="mt-3 ios-pill"><span class="lang-en">Open Corporate Account</span><span class="lang-cn">开通企业账户</span></a>
+  <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
+  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
 </div>
 
 <!-- ─── Hero Strip ─── -->
-<section class="ios-hero-strip hero-fixed-h pt-20 md:pt-24 pb-10 md:pb-12">
+<section class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
+  <div class="hero-bg-media" style="background-image:url('/images/3-enterprise.jpg')" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="section-container relative" style="z-index: 1;">
     <p class="eyebrow mb-4 reveal">
@@ -1030,24 +1088,24 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </section>
 
 
-<!-- BILINGUAL · 强化双语司机企业 SEO -->
+<!-- BILINGUAL · 强化双语管家企业 SEO -->
 <section class="section-pad section-divider bg-[#FAFAF7]">
   <div class="section-container">
     <div class="max-w-3xl mb-10 reveal">
-      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">Bilingual Service</span><span class="lang-cn">双语司机服务</span></span>
+      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">Bilingual Service</span><span class="lang-cn">双语管家服务</span></span>
       <h2 class="section-head mt-4">
         <span class="lang-en">English-speaking drivers for every corporate journey.</span>
-        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">每一段企业行程，都有双语司机随行。</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">每一段企业行程，都有双语管家随行。</span>
       </h2>
       <p class="section-intro mt-4">
         <span class="lang-en">Drivers assigned through our partner suppliers complete communication training in English and Mandarin, coordinated to LyctRides service standards. Onboarding international guests, briefing visiting executives, handling itinerary changes mid-journey &mdash; the language barrier never enters the conversation.</span>
-        <span class="lang-cn">由合作供应商派出的司机均按光年服务标准完成中英双语沟通训练。接待外籍客户、向到访高管简报、行程中临时变更 &mdash; 语言障碍从未成为问题。</span>
+        <span class="lang-cn">我们的管家均按光年服务标准完成中英双语沟通训练。接待外籍客户、向到访高管简报、行程中临时变更 &mdash; 语言障碍从未成为问题。</span>
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 reveal" data-delay="1">
       <div class="ios-card p-7">
         <h3 class="text-lg font-semibold tracking-tight mb-3"><span class="lang-en">Inbound delegations</span><span class="lang-cn">入境团队</span></h3>
-        <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-sm"><span class="lang-en">Visiting foreign teams briefed in English from the airport on. Local context delivered without intermediaries.</span><span class="lang-cn">到访外籍团队自机场起即可获英语行程简报，本地背景由司机直接传递，无需中介。</span></p>
+        <p class="text-[#0A0A0A]/65 leading-relaxed font-light text-sm"><span class="lang-en">Visiting foreign teams briefed in English from the airport on. Local context delivered without intermediaries.</span><span class="lang-cn">到访外籍团队自机场起即可获英语行程简报，本地背景由管家直接传递，无需中介。</span></p>
       </div>
       <div class="ios-card p-7">
         <h3 class="text-lg font-semibold tracking-tight mb-3"><span class="lang-en">Expat executives</span><span class="lang-cn">在华外籍高管</span></h3>
@@ -1095,46 +1153,83 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </section>
 
 <!-- ─── Footer ─── -->
-<footer class="w-full py-12 md:py-16 px-5 md:px-12 bg-[#0A0A0A] text-white mt-0">
-  <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-    <div>
-      <img src="/images/logo.svg?v=4" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
-      <p class="text-white/45 text-xs max-w-xs leading-relaxed">
-        <span class="lang-en">Corporate car service across Greater China. Available 24/7.</span>
-        <span class="lang-cn">大中华区企业用车服务，全天候 24/7。</span>
-      </p>
+<footer class="w-full pt-14 md:pt-20 pb-24 md:pb-24 px-5 md:px-12 bg-[#0A0A0A] text-white">
+  <div class="max-w-[1440px] mx-auto">
+    <!-- Top: brand + 咨询二维码 -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 pb-12 border-b border-white/10">
+      <div class="max-w-sm">
+        <img src="/images/logo.svg" alt="LyctRides" class="h-7 w-auto mb-4 brightness-0 invert">
+        <p class="text-white/45 text-sm leading-relaxed">
+          <span class="lang-en">Premium corporate ground transportation and concierge across Greater China — punctual, quiet, proper.</span>
+          <span class="lang-cn">大中华区高端企业出行与礼宾服务 —— 准时、安静、得体。</span>
+        </p>
+      </div>
+      <div class="flex flex-col items-start lg:items-end gap-3">
+        <p class="text-[11px] tracking-[0.18em] uppercase text-white/40"><span class="lang-en">Get in Touch</span><span class="lang-cn">联系我们</span></p>
+        <div class="flex items-center gap-3">
+          <div class="footer-ic footer-has-pop" tabindex="0" role="button" aria-label="WeChat">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8.69 4C4.9 4 1.8 6.63 1.8 9.86c0 1.84 1.02 3.48 2.62 4.55l-.65 1.98 2.3-1.16c.82.16 1.48.33 2.3.33.2 0 .4 0 .6-.02a4.7 4.7 0 0 1-.2-1.36c0-2.85 2.75-5.13 6.05-5.13.22 0 .43.01.64.03C14.9 6.3 12.06 4 8.69 4Zm-2.9 3.05a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm4.9 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/><path d="M22.2 14.35c0-2.5-2.5-4.53-5.44-4.53-3.03 0-5.43 2.03-5.43 4.53s2.4 4.53 5.43 4.53c.63 0 1.27-.13 1.9-.3l1.75.97-.48-1.58c1.35-.9 2.27-2.02 2.27-3.62Zm-7.2-.85a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Zm3.5 0a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"/></svg>
+            <div class="footer-ic-pop"><img src="/images/wechat-qr.png" alt="WeChat QR code" loading="lazy"><span>微信 · WeChat</span></div>
+          </div>
+          <div class="footer-ic footer-has-pop" tabindex="0" role="button" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.16-1.35a9.9 9.9 0 0 0 4.88 1.25h.004c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.88 9.88 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.94 1.34-.5.05-.97.23-3.27-.68-2.76-1.09-4.52-3.9-4.66-4.08-.14-.18-1.12-1.49-1.12-2.84 0-1.35.7-2.02.96-2.29a1 1 0 0 1 .72-.34h.52c.17 0 .4-.06.62.47.24.58.8 2 .87 2.14.07.14.12.31.02.5-.1.18-.14.3-.28.46-.14.17-.3.37-.42.5-.14.14-.29.29-.12.57.17.28.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.41.28.14.44.12.6-.07.17-.2.7-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.88.9.28.14.46.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
+            <div class="footer-ic-pop"><img src="/images/whatsapp-qr.png" alt="WhatsApp QR code" loading="lazy"><span>WhatsApp</span></div>
+          </div>
+          <a href="tel:+8615822918415" class="footer-ic" aria-label="Phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+          <a href="mailto:bd@lyctai.com" class="footer-ic" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-wrap gap-x-8 gap-y-3 text-[11px] text-white/45 tracking-[0.15em] uppercase">
-      <a href="/" class="hover:text-white transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
-      <a href="/about.html" class="hover:text-white transition-colors"><span class="lang-en">About</span><span class="lang-cn">关于</span></a>
-      <a href="/services.html" class="hover:text-white transition-colors"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
-      <a href="/enterprise.html" class="text-white"><span class="lang-en">Enterprise</span><span class="lang-cn">企业门户</span></a>
-      <a href="/lyctai.html" class="hover:text-white transition-colors"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
-      <a href="/news.html" class="hover:text-white transition-colors"><span class="lang-en">News</span><span class="lang-cn">动态</span></a>
-      <a href="/careers.html" class="hover:text-white transition-colors"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></a>
-      <a href="/contact.html" class="hover:text-white transition-colors"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></a>
+
+    <!-- 4 列链接 -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 py-16">
+      <div class="footer-col">
+        <p class="footer-col-title"><span class="lang-en">Our Services</span><span class="lang-cn">出行服务</span></p>
+        <a href="/services.html#airport"><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></a>
+        <a href="/services.html#airport-rail"><span class="lang-en">Airport &amp; Rail Concierge</span><span class="lang-cn">机场·高铁礼宾</span></a>
+        <a href="/services.html#hourly"><span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn">时租与日租</span></a>
+        <a href="/services.html#citytocity"><span class="lang-en">City-to-City</span><span class="lang-cn">城际通行</span></a>
+        <a href="/services.html#longterm"><span class="lang-en">Long-term Charter</span><span class="lang-cn">长包车</span></a>
+        <a href="/services.html#events"><span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span></a>
+        <a href="/services.html#privatejet"><span class="lang-en">Private Jet</span><span class="lang-cn">公务机</span></a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title"><span class="lang-en">Company</span><span class="lang-cn">公司</span></p>
+        <a href="/about.html"><span class="lang-en">About Us</span><span class="lang-cn">关于我们</span></a>
+        <a href="/news.html"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
+        <a href="/careers.html"><span class="lang-en">Careers</span><span class="lang-cn">加入我们</span></a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title"><span class="lang-en">Fleet &amp; Coverage</span><span class="lang-cn">车队与覆盖</span></p>
+        <a href="/vehicles.html"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
+        <a href="/coverage.html"><span class="lang-en">Coverage</span><span class="lang-cn">服务覆盖</span></a>
+        <a href="/enterprise.html"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+        <a href="/lyctai.html"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title"><span class="lang-en">Contact</span><span class="lang-cn">联系</span></p>
+        <a href="/contact.html"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
+        <a href="/terms.html"><span class="lang-en">Terms of Service</span><span class="lang-cn">服务条款</span></a>
+        <a href="/privacy.html"><span class="lang-en">Privacy Policy</span><span class="lang-cn">隐私政策</span></a>
+        <a href="https://www.lyctrides.com/login"><span class="lang-en">Login</span><span class="lang-cn">登录</span></a>
+      </div>
     </div>
-    <p class="text-white/25 text-[10px] tracking-[0.18em] uppercase">© 2026 LyctRides · <span style="letter-spacing: 0.35em;">光年出行</span></p>
+
+    <!-- BEIAN:start · 合规栏 -->
+    <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
+      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
+        <span class="text-white/15">·</span>
+        <a href="https://beian.mps.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤公网安备44010602016366号</a>
+      </div>
+    </div>
+    <!-- BEIAN:end -->
   </div>
-  <!-- BEIAN:start · 备案信息 · 占位号下号后替换（全站多处，统一替换命令见 BEIAN-CONTENT-CHANGES.md） -->
-  <div class="max-w-[1440px] mx-auto mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-      <a href="/privacy.html" class="hover:text-white transition-colors"><span class="lang-en">Privacy Policy</span><span class="lang-cn">隐私政策</span></a>
-      <span class="text-white/15">·</span>
-      <a href="/terms.html" class="hover:text-white transition-colors"><span class="lang-en">User Agreement</span><span class="lang-cn">用户协议</span></a>
-    </div>
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-      <!-- ICP 备案号 -->
-      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
-      <!-- 公安备案号占位：下号后取消注释并填正式号 + 链接 http://www.beian.gov.cn/portal/registerSystemInfo
-      <span class="text-white/15">·</span>
-      <a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤公网安备 XXXXXXXX号</a>
-      -->
-      <span class="text-white/15">·</span>
-      <span>© 2026 光年（广州）汽车服务有限责任公司</span>
-    </div>
-  </div>
-  <!-- BEIAN:end -->
 </footer>
 
 
@@ -1248,5 +1343,6 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   })();
 </script>
 
+  <script defer src="/assets/premium-motion.js"></script>
 </body>
 </html>

@@ -3,20 +3,17 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Careers | LyctRides 招聘</title>
-<meta name="description" content="Join LyctRides — premium chauffeur service across Greater China. We're hiring corporate operations, dispatch coordination and customer-experience talent in Guangzhou, Shenzhen, Hong Kong."/>
-<meta name="keywords" content="LyctRides careers, corporate ground transport operations jobs China, bilingual operations roles Guangzhou, dispatch and account management careers, enterprise mobility careers"/>
-<meta name="robots" content="index, follow, max-image-preview:large"/>
-<link rel="canonical" href="https://www.lyctai.com/careers.html"/>
-<link rel="alternate" hreflang="en" href="https://www.lyctai.com/careers.html"/>
-<link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/careers.html"/>
-<link rel="alternate" hreflang="x-default" href="https://www.lyctai.com/careers.html"/>
+<title>Vehicle Collection · 车型臻选 · 商务车型矩阵 | LyctRides</title>
+<meta name="description" content="LyctRides 车型臻选——LyctRides 的商务车型矩阵：行政轿车、商务 MPV(别克 GL8 / 丰田埃尔法)、奔驰 V-Class、豪华轿车，按企业用车场景甄选匹配。Vehicle collection for corporate ground transportation across Greater China — sedans, MPV, V-Class, executive cars for every corporate scenario."/>
+<link rel="canonical" href="https://www.lyctai.com/vehicles.html"/>
+<link rel="alternate" hreflang="en" href="https://www.lyctai.com/vehicles.html"/>
+<link rel="alternate" hreflang="zh-CN" href="https://www.lyctai.com/vehicles.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="LyctRides"/>
-<meta property="og:title" content="Careers | LyctRides"/>
-<meta property="og:description" content="Join LyctRides — executive car and concierge service across Greater China. View open positions and apply today."/>
-<meta property="og:url" content="https://www.lyctai.com/careers.html"/>
-<meta property="og:image" content="https://www.lyctai.com/images/chauffeur.jpg"/>
+<meta property="og:title" content="Vehicle Collection · 车型臻选 | LyctRides"/>
+<meta property="og:description" content="Mercedes-Benz S/E/V-Class, ZEEKR 009, Buick GL8, and Toyota Coaster — LyctRides vehicle options across Greater China, each paired with a trained chauffeur."/>
+<meta property="og:url" content="https://www.lyctai.com/vehicles.html"/>
+<meta property="og:image" content="https://www.lyctai.com/images/hero.jpg?v=2"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -37,47 +34,65 @@
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
 
+  /* ─────────────────────────────────────────────────────────────
+     iOS-inspired Design Tokens · 严格黑白 + Apple 质感
+     - 大圆角 (cards 16-20px / pills full)
+     - 柔和阴影（单层、扩散、低 alpha — 苹果不堆阴影）
+     - 弹性 easing（轻微 overshoot 但不夸张）
+     - Liquid-style glass on nav / floating chrome
+     ────────────────────────────────────────────────────────────── */
   :root {
     --container-max: 1280px;
+    /* 密度调整：从 80/128 收紧到 56/88 — 内容更紧凑，焦点更集中 */
     --section-pad-y: 56px;
     --section-pad-y-lg: 88px;
+
     --fs-display: clamp(2.25rem, 5vw, 4rem);
     --fs-h1: clamp(1.75rem, 3.5vw, 2.625rem);
     --fs-h2: clamp(1.25rem, 2vw, 1.5rem);
     --fs-body-lg: 1.0625rem;
     --fs-body: 1rem;
     --fs-label: 0.6875rem;
+
     --tracking-tight: -0.015em;
     --tracking-label: 0.2em;
     --lh-tight: 1.1;
     --lh-body: 1.55;
     --lh-loose: 1.65;
+
+    /* iOS radii */
     --r-sm: 8px;
     --r-md: 12px;
     --r-lg: 18px;
     --r-xl: 22px;
     --r-pill: 999px;
+
+    /* iOS shadows — 多层（外阴影 + 内高光），仿 iOS / macOS 控件 */
     --shadow-card: 0 1px 2px rgba(10,10,10,0.04), 0 6px 20px rgba(10,10,10,0.04);
     --shadow-card-hover: 0 2px 6px rgba(10,10,10,0.06), 0 18px 50px rgba(10,10,10,0.10);
     --shadow-card-press: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 4px rgba(10,10,10,0.04);
     --shadow-glass: 0 1px 0 rgba(10,10,10,0.04);
     --inner-highlight: inset 0 1px 0 rgba(255,255,255,0.7);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.36, 1);
-    --ease-spring-soft: cubic-bezier(0.25, 1.25, 0.5, 1);
+
+    /* iOS spring easings — 多档，弹性差异化 */
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.36, 1);     /* 强弹性 — hover lift */
+    --ease-spring-soft: cubic-bezier(0.25, 1.25, 0.5, 1); /* 软弹性 — 内部元素 */
     --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
-    --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+    --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);           /* iOS 系统转场 */
     --dur-fast: 200ms;
     --dur-base: 380ms;
     --dur-spring: 540ms;
     --dur-slow: 720ms;
   }
 
+  /* Layout primitives */
   .section-pad { padding-top: var(--section-pad-y); padding-bottom: var(--section-pad-y); }
   @media (min-width: 768px) { .section-pad { padding-top: var(--section-pad-y-lg); padding-bottom: var(--section-pad-y-lg); } }
   .section-container { max-width: var(--container-max); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
   @media (min-width: 768px) { .section-container { padding-left: 48px; padding-right: 48px; } }
   .section-divider { border-top: 1px solid rgba(10,10,10,.06); }
 
+  /* Typography */
   .eyebrow {
     font-size: var(--fs-label);
     font-weight: 500;
@@ -96,7 +111,16 @@
     margin: 0;
   }
   .section-head .lang-cn { font-family: 'Noto Serif SC', serif; font-weight: 500; letter-spacing: 0; line-height: 1.25; }
+  .section-intro {
+    font-size: var(--fs-body-lg);
+    font-weight: 300;
+    line-height: var(--lh-loose);
+    color: rgba(10,10,10,.7);
+    max-width: 680px;
+    text-wrap: pretty;
+  }
 
+  /* iOS-Card · 大圆角 + 多层阴影 + 内高光 + spring hover */
   .ios-card {
     background: #ffffff;
     border-radius: var(--r-lg);
@@ -114,20 +138,7 @@
   }
   .ios-card:active { transform: translateY(-1px); }
 
-  /* job-card: no hover lift — it has an inline apply form, lift would be odd UX */
-  .job-card {
-    background: #ffffff;
-    border-radius: var(--r-lg);
-    border: 1px solid rgba(10,10,10,0.05);
-    box-shadow: var(--shadow-card), var(--inner-highlight);
-    transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-ios);
-    overflow: hidden;
-  }
-  .job-card:hover {
-    border-color: rgba(10,10,10,0.12);
-    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
-  }
-
+  /* iOS-Pill · 黑底白字药丸 + 强 spring + 内高光 + 渐变 underlay */
   .ios-pill {
     display: inline-flex;
     align-items: center;
@@ -152,28 +163,30 @@
     box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 28px rgba(10,10,10,0.28);
   }
   .ios-pill:active { transform: scale(0.96); }
+  .ios-pill svg { transition: transform var(--dur-base) var(--ease-spring-soft); }
+  .ios-pill:hover svg { transform: translateX(4px); }
 
-  .ios-pill-sm {
+  .ios-pill-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    background: linear-gradient(180deg, #1c1917 0%, #0A0A0A 100%);
-    color: #FAFAF7;
-    font-size: 10.5px;
+    gap: 8px;
+    background: rgba(10,10,10,0.05);
+    color: #0A0A0A;
+    font-size: var(--fs-label);
     font-weight: 500;
-    letter-spacing: 0.15em;
+    letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    padding: 9px 18px;
+    padding: 13px 26px;
     border-radius: var(--r-pill);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 3px 10px rgba(10,10,10,0.15);
-    transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-base) var(--ease-ios);
-    cursor: pointer;
-    border: none;
+    border: 1px solid rgba(10,10,10,0.08);
+    transition: transform var(--dur-fast) var(--ease-spring),
+                background var(--dur-fast) var(--ease-out);
   }
-  .ios-pill-sm:hover { transform: scale(1.03); box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 6px 20px rgba(10,10,10,0.24); }
-  .ios-pill-sm:active { transform: scale(0.97); }
+  .ios-pill-outline:hover { transform: scale(1.04); background: rgba(10,10,10,0.1); }
+  .ios-pill-outline:active { transform: scale(0.96); }
 
+  /* iOS glass nav — 加重 blur + 提升饱和度 + 顶部 1px 高光 */
   .ios-glass {
     background: rgba(250,250,247,0.65);
     backdrop-filter: saturate(110%) blur(32px);
@@ -186,6 +199,7 @@
     border-bottom-color: rgba(10,10,10,0.08);
   }
 
+  /* iOS hero strip — 顶部 vibrancy + 微 gradient */
   .ios-hero-strip {
     background:
       radial-gradient(ellipse 80% 60% at 50% 0%, rgba(10,10,10,0.04) 0%, transparent 60%),
@@ -195,6 +209,61 @@
     overflow: hidden;
   }
 
+  /* iOS service tile — 强 spring + 内高光 + icon 微动 */
+  .ios-tile {
+    background: #ffffff;
+    border-radius: var(--r-xl);
+    border: 1px solid rgba(10,10,10,0.04);
+    box-shadow: var(--shadow-card), var(--inner-highlight);
+    padding: 24px;
+    cursor: pointer;
+    transition: transform var(--dur-spring) var(--ease-spring),
+                box-shadow var(--dur-base) var(--ease-ios),
+                border-color var(--dur-base) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+  }
+  @media (min-width: 768px) { .ios-tile { padding: 32px; } }
+  .ios-tile:hover {
+    transform: translateY(-6px) scale(1.005);
+    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
+    border-color: rgba(10,10,10,0.1);
+  }
+  .ios-tile:active { transform: translateY(-2px); }
+  /* iOS shimmer effect on hover — 一道斜光扫过卡片表面 */
+  .ios-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform var(--dur-slow) var(--ease-ios);
+    pointer-events: none;
+    border-radius: var(--r-xl);
+  }
+  .ios-tile:hover::before { transform: translateX(100%); }
+
+  .ios-tile-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-md);
+    background: rgba(10,10,10,0.05);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A0A0A;
+    transition: background var(--dur-base) var(--ease-ios),
+                color var(--dur-base) var(--ease-ios),
+                transform var(--dur-spring) var(--ease-spring);
+  }
+  .ios-tile:hover .ios-tile-icon {
+    background: #0A0A0A;
+    color: #ffffff;
+    transform: scale(1.08) rotate(-4deg);
+  }
+
+  /* iOS eyebrow capsule */
   .ios-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -220,7 +289,12 @@
     50% { box-shadow: 0 0 0 5px rgba(10,10,10,0); }
   }
 
-  .stat-chip { display: inline-flex; flex-direction: column; gap: 2px; }
+  /* Stats row — 紧凑信任徽标条（替代大段留白） */
+  .stat-chip {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+  }
   .stat-chip .stat-num {
     font-size: 1.5rem;
     font-weight: 600;
@@ -237,93 +311,99 @@
     color: rgba(10,10,10,0.55);
   }
 
+  /* Scroll-revealed fade-up · 用 IntersectionObserver 触发 .is-visible */
   .reveal {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s var(--ease-ios), transform 0.7s var(--ease-spring-soft);
   }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  /* Stagger delays for grid cards */
   .reveal[data-delay="1"] { transition-delay: 60ms; }
   .reveal[data-delay="2"] { transition-delay: 120ms; }
   .reveal[data-delay="3"] { transition-delay: 180ms; }
+  .reveal[data-delay="4"] { transition-delay: 240ms; }
+  .reveal[data-delay="5"] { transition-delay: 300ms; }
 
+  /* Smooth scroll on whole page */
   html { scroll-behavior: smooth; }
 
+  /* ─────────────────────────────────────────────────────────────
+     LIQUID GLASS · iOS 26 / visionOS 风
+     ───────────────────────────────────────────────────────────── */
+
+  /* 暗色液态玻璃 — 适合在 hero photo / 暗背景 / dropdown 上 */
   .liquid-glass-dark {
-    background: linear-gradient(135deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.45) 100%);
+    background:
+      linear-gradient(135deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.45) 100%);
     backdrop-filter: saturate(180%) blur(40px);
     -webkit-backdrop-filter: saturate(180%) blur(40px);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: var(--r-xl);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04), 0 12px 40px rgba(10,10,10,0.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(255,255,255,0.04),
+      0 12px 40px rgba(10,10,10,0.35);
     position: relative;
     overflow: hidden;
     color: rgba(255,255,255,0.92);
   }
+  /* 折射光带：顶部一道半透明白色椭圆光，模拟玻璃边缘对环境的折射高光 */
   .liquid-glass-dark::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 30% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 20% at 50% 100%, rgba(255,255,255,0.05) 0%, transparent 70%);
+    background:
+      radial-gradient(ellipse 60% 30% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 20% at 50% 100%, rgba(255,255,255,0.05) 0%, transparent 70%);
     pointer-events: none;
     border-radius: inherit;
   }
 
+  /* 亮色液态玻璃 — 用在亮背景上方（hero stats 等场景） */
+  .liquid-glass-light {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.4) 100%);
+    backdrop-filter: saturate(110%) blur(30px);
+    -webkit-backdrop-filter: saturate(110%) blur(30px);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: var(--r-lg);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.8),
+      0 8px 24px rgba(10,10,10,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass-light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 30% at 30% 0%, rgba(255,255,255,0.5) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* ─── Nav Services Dropdown ─── */
+
+  /* ─── Floating Action Button (iOS Control Center 风) ─── */
+
+  /* Animated conic gradient under hero — 极慢的"环境光"效果 */
   @keyframes ambient-shift { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   .ambient-glow {
-    position: absolute; inset: -200px;
+    position: absolute;
+    inset: -200px;
     background: conic-gradient(from 0deg at 50% 50%,
-      rgba(10,10,10,0.03) 0deg, rgba(10,10,10,0) 90deg,
-      rgba(10,10,10,0.05) 180deg, rgba(10,10,10,0) 270deg,
+      rgba(10,10,10,0.03) 0deg,
+      rgba(10,10,10,0) 90deg,
+      rgba(10,10,10,0.05) 180deg,
+      rgba(10,10,10,0) 270deg,
       rgba(10,10,10,0.03) 360deg);
     animation: ambient-shift 40s linear infinite;
-    pointer-events: none; z-index: 0;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  /* Filter chip active state */
-  .filter-chip { cursor: pointer; transition: all var(--dur-fast) var(--ease-out); }
-  .filter-chip.chip-active { background: #0A0A0A; color: #FAFAF7; border-color: #0A0A0A; }
-
-  /* iOS form inputs */
-  .ios-input {
-    width: 100%;
-    background: rgba(10,10,10,0.04);
-    border: 1px solid rgba(10,10,10,0.1);
-    border-radius: var(--r-md);
-    padding: 11px 14px;
-    font-size: 14px;
-    color: #0A0A0A;
-    font-family: inherit;
-    transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
-    outline: none;
-  }
-  .ios-input:focus {
-    border-color: rgba(10,10,10,0.35);
-    box-shadow: 0 0 0 3px rgba(10,10,10,0.06);
-  }
-  .ios-input::placeholder { color: rgba(10,10,10,0.3); }
-
-  /* Apply form collapse */
-  .apply-form { transition: max-height .4s var(--ease-ios), opacity .3s var(--ease-ios); max-height: 0; opacity: 0; overflow: hidden; }
-  .apply-form.open { max-height: 800px; opacity: 1; }
-
-  /* Job description collapse */
-  .desc-wrap[data-collapsed="true"] .desc-content {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-  }
-  .desc-wrap[data-collapsed="false"] .desc-content { mask-image: none; -webkit-mask-image: none; }
-
-  input[type="file"]::file-selector-button {
-    background: #0A0A0A; color: white; border: none; padding: 6px 14px;
-    border-radius: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; margin-right: 10px; font-family: 'JetBrains Mono', monospace;
-  }
-
+  /* Reduce motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     .reveal { opacity: 1; transform: none; }
@@ -593,10 +673,26 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   .hero-on-image .ios-pill { background:#FAFAF7 !important; color:#0A0A0A !important; }
   .hero-on-image .ios-pill-outline { border-color:rgba(250,250,247,.5) !important; color:#FAFAF7 !important; }
 </style>
+<style id="veh-carousel-cc">
+  .veh-carousel { position:relative; border-radius:var(--r-md); overflow:hidden; background:#f0ede8; margin-bottom:20px; touch-action:pan-y; cursor:grab; }
+  .veh-carousel:active { cursor:grabbing; }
+  .veh-track { display:flex; height:100%; transition:transform .45s var(--ease-ios,cubic-bezier(.32,.72,0,1)); will-change:transform; }
+  .veh-track.dragging { transition:none; }
+  .veh-track img { flex:0 0 100%; width:100%; height:100%; object-fit:cover; user-select:none; -webkit-user-drag:none; pointer-events:none; }
+  .veh-nav { position:absolute; top:50%; transform:translateY(-50%); width:32px; height:32px; border-radius:999px; background:rgba(250,250,247,.9); border:1px solid rgba(10,10,10,.08); color:#0A0A0A; display:flex; align-items:center; justify-content:center; font-size:18px; line-height:1; padding-bottom:2px; cursor:pointer; opacity:0; transition:opacity .2s, transform .15s; z-index:3; box-shadow:0 2px 10px rgba(10,10,10,.14); }
+  .veh-nav:hover { transform:translateY(-50%) scale(1.08); }
+  .veh-carousel:hover .veh-nav { opacity:1; }
+  .veh-nav[disabled] { opacity:0 !important; pointer-events:none; }
+  .veh-prev { left:10px; } .veh-next { right:10px; }
+  .veh-dots { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:3; }
+  .veh-dots span { width:6px; height:6px; border-radius:999px; background:rgba(250,250,247,.5); box-shadow:0 1px 3px rgba(10,10,10,.3); transition:background .2s, width .2s; cursor:pointer; }
+  .veh-dots span.is-active { background:#FAFAF7; width:18px; }
+  @media (hover:none) { .veh-nav { display:none; } }
+</style>
 </head>
 <body>
 
-<!-- iOS Glass Nav -->
+<!-- ─── iOS Glass Nav ─── -->
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
   <div class="flex justify-between items-center px-4 md:px-12 py-4 md:py-5 max-w-[1440px] mx-auto">
     <a href="/" class="flex items-center">
@@ -645,7 +741,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         </div>
       </div>
 
-      <a class="nav-pill" href="/vehicles.html">
+      <a class="nav-pill nav-pill-active" href="/vehicles.html">
         <span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span>
       </a>
       <a class="nav-pill" href="/lyctai.html"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
@@ -671,6 +767,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   </div>
 </nav>
 
+<!-- Mobile menu drawer -->
 <!-- Mobile menu -->
 <div id="mobile-menu" class="fixed left-0 right-0 top-[62px] bottom-0 z-50 hidden bg-[#FAFAF7] shadow-xl overflow-y-auto px-5 py-4 flex-col gap-1 md:hidden">
   <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Our Services</span><span class="lang-cn">出行服务</span></a>
@@ -681,169 +778,436 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
 </div>
 
-<!-- Hero strip -->
+<!-- ─── Section 1: Hero Strip ─── -->
 <section class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
-  <div class="hero-bg-media" style="background-image:url('/images/8-careers.jpg')" aria-hidden="true"></div>
+  <div class="hero-bg-media" style="background-image:url('/images/2-vehicles.jpg')" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="section-container relative" style="z-index: 1;">
     <p class="eyebrow mb-4 reveal">
-      <a href="/" class="hover:text-[#0A0A0A] transition-colors"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+      <a href="/" class="hover:text-[#0A0A0A] transition-colors">
+        <span class="lang-en">Home</span><span class="lang-cn">首页</span>
+      </a>
       <span class="mx-2 opacity-50">→</span>
-      <span class="text-[#0A0A0A]"><span class="lang-en">Careers</span><span class="lang-cn">招聘</span></span>
+      <span class="text-[#0A0A0A]">
+        <span class="lang-en">Fleet</span><span class="lang-cn">车型</span>
+      </span>
     </p>
-    <h1 class="section-head reveal" data-delay="1" style="font-size: clamp(2rem, 4.5vw, 3.25rem);">
-      <span class="lang-en">Careers at LyctRides</span>
-      <span class="lang-cn">加入光年</span>
+    <h1 class="section-head reveal reveal-blur" data-delay="1" style="font-size: clamp(2rem, 4.5vw, 3.25rem);">
+      <span class="lang-en">Vehicles &amp; Chauffeurs.</span>
+      <span class="lang-cn">车型与管家</span>
     </h1>
     <p class="text-[#0A0A0A]/65 text-base md:text-lg leading-relaxed mt-4 max-w-2xl font-light reveal" data-delay="2">
-      <span class="lang-en">Build a career delivering exceptional service to the executives who move the world.</span>
-      <span class="lang-cn">为推动世界运转的高管，提供卓越的礼宾出行服务。</span>
+      <span class="lang-en">Two halves of every journey — meticulously maintained, impeccably trained.</span>
+      <span class="lang-cn">旅程两翼——精心养护的车型，严格训练的管家。</span>
     </p>
     <div class="flex items-center gap-8 md:gap-10 mt-8 reveal" data-delay="3">
       <div class="stat-chip">
-        <span class="stat-num">Open</span>
-        <span class="stat-label"><span class="lang-en">Roles</span><span class="lang-cn">职位</span></span>
+        <span class="stat-num" data-count>6</span>
+        <span class="stat-label"><span class="lang-en">Vehicle Types</span><span class="lang-cn">车型种类</span></span>
       </div>
       <div class="stat-chip">
-        <span class="stat-num">120+</span>
-        <span class="stat-label"><span class="lang-en">Team Size</span><span class="lang-cn">团队规模</span></span>
+        <span class="stat-num" data-count>200+ hrs</span>
+        <span class="stat-label"><span class="lang-en">Training</span><span class="lang-cn">培训时长</span></span>
       </div>
       <div class="stat-chip">
-        <span class="stat-num">Hybrid</span>
-        <span class="stat-label"><span class="lang-en">Work Style</span><span class="lang-cn">工作方式</span></span>
+        <span class="stat-num" style="font-size: 1.1rem;"><span class="lang-en">Bilingual</span><span class="lang-cn">双语</span></span>
+        <span class="stat-label"><span class="lang-en">Certified</span><span class="lang-cn">认证</span></span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Main Content: Split Layout -->
-<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[70vh]">
+<!-- ─── Section 2: Vehicle Lineup ─── -->
+<section class="section-pad section-divider" id="vehicles">
+  <div class="section-container">
 
-  <!-- Left: Culture Panel -->
-  <aside class="lg:w-[320px] flex-shrink-0 bg-[#0A0A0A] text-white px-7 md:px-10 py-12 lg:py-16 reveal">
-    <p class="font-mono text-white/35 text-[10px] tracking-[0.35em] uppercase mb-5">
-      <span class="lang-en">Why LyctRides</span><span class="lang-cn">为什么选择光年</span>
-    </p>
-    <h2 class="text-2xl md:text-3xl font-semibold leading-tight mb-6 tracking-tight">
-      <span class="lang-en">Serve the Best.<br>Be the Best.</span>
-      <span class="lang-cn">服务最卓越的人。<br>成为最卓越的人。</span>
-    </h2>
-    <p class="text-white/55 text-sm leading-relaxed mb-10 font-light">
-      <span class="lang-en">LyctRides is a trusted ground transportation partner for multinational corporations and senior executives across Greater China. Every role here — from operations coordination to account management — demands and develops the highest professional standards.</span>
-      <span class="lang-cn">光年是大中华区众多跨国企业与企业高管信赖的地面出行合作伙伴。在这里，每一个岗位——无论是运营协调还是客户经理——都要求并培养最高的职业标准。</span>
-    </p>
-
-    <!-- Stats grid -->
-    <div class="grid grid-cols-2 gap-px bg-white/8 rounded-[var(--r-lg)] overflow-hidden mb-10">
-      <div class="bg-[#111] px-5 py-5">
-        <p class="font-mono text-white text-2xl font-bold mb-1">8+</p>
-        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
-          <span class="lang-en">Years</span><span class="lang-cn">年经验</span>
-        </p>
-      </div>
-      <div class="bg-[#111] px-5 py-5">
-        <p class="font-mono text-white text-2xl font-bold mb-1">300+</p>
-        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
-          <span class="lang-en">Cities</span><span class="lang-cn">覆盖城市</span>
-        </p>
-      </div>
-      <div class="bg-[#111] px-5 py-5">
-        <p class="font-mono text-white text-2xl font-bold mb-1">10K+</p>
-        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
-          <span class="lang-en">Clients</span><span class="lang-cn">服务客户</span>
-        </p>
-      </div>
-      <div class="bg-[#111] px-5 py-5">
-        <p class="font-mono text-white text-2xl font-bold mb-1">120+</p>
-        <p class="text-white/45 text-[11px] tracking-wider uppercase font-mono">
-          <span class="lang-en">Team</span><span class="lang-cn">团队成员</span>
-        </p>
-      </div>
+    <div class="flex items-center justify-between mb-8 reveal">
+      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">Vehicle Collection</span><span class="lang-cn">车型臻选</span></span>
+      <span class="eyebrow hidden md:block"><span class="lang-en">6 vehicle classes</span><span class="lang-cn">6 款车型</span></span>
     </div>
 
-    <!-- Culture pillars -->
-    <div class="space-y-5">
-      <div class="flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <svg style="width:14px;height:14px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div>
-          <p class="text-white text-sm font-semibold mb-1">
-            <span class="lang-en">Excellence Culture</span><span class="lang-cn">卓越文化</span>
-          </p>
-          <p class="text-white/45 text-xs leading-relaxed font-light">
-            <span class="lang-en">Rigorous service-standards training for our operations and supplier-coordination teams. Standards that actually mean something.</span>
-            <span class="lang-cn">面向运营与供应商协同团队的严格服务标准培训。标准，名实相符。</span>
-          </p>
-        </div>
-      </div>
-      <div class="flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <svg style="width:14px;height:14px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <div>
-          <p class="text-white text-sm font-semibold mb-1">
-            <span class="lang-en">Global Exposure</span><span class="lang-cn">国际视野</span>
-          </p>
-          <p class="text-white/45 text-xs leading-relaxed font-light">
-            <span class="lang-en">Work with multinational clients and senior executives across 300+ cities.</span>
-            <span class="lang-cn">服务遍及300余城的跨国企业客户与企业高管。</span>
-          </p>
-        </div>
-      </div>
-      <div class="flex items-start gap-4">
-        <div class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <svg style="width:14px;height:14px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <div>
-          <p class="text-white text-sm font-semibold mb-1">
-            <span class="lang-en">Clear Career Path</span><span class="lang-cn">清晰成长路径</span>
-          </p>
-          <p class="text-white/45 text-xs leading-relaxed font-light">
-            <span class="lang-en">Structured progression from junior to senior roles, with mentorship at every stage.</span>
-            <span class="lang-cn">从初级到高级的结构化晋升通道，每个阶段均有导师陪伴成长。</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Right: Job Listings -->
-  <div class="flex-1 px-5 md:px-10 lg:px-12 py-12 lg:py-16">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-      <div>
-        <h2 class="text-xl font-semibold tracking-tight">
-          <span class="lang-en">Open Positions</span><span class="lang-cn">招聘职位</span>
-        </h2>
-        <p id="job-count" class="font-mono text-[#50606f] text-[11px] mt-1"></p>
-      </div>
-      <!-- Dept filters -->
-      <div id="dept-filters" class="flex flex-wrap gap-2">
-        <button class="filter-chip ios-eyebrow chip-active" data-dept="all">
-          <span class="lang-en">All</span><span class="lang-cn">全部</span>
-        </button>
-        <button class="filter-chip ios-eyebrow" data-dept="corporate">
-          <span class="lang-en">Corporate</span><span class="lang-cn">企业</span>
-        </button>
-        <button class="filter-chip ios-eyebrow" data-dept="operations">
-          <span class="lang-en">Operations</span><span class="lang-cn">运营</span>
-        </button>
-      </div>
+    <div class="mb-10 reveal" data-delay="1">
+      <h2 class="section-head mb-2 pm-rule">
+        <span class="lang-en">Vehicles, impeccably maintained.</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">臻选车型阵容</span>
+      </h2>
     </div>
 
-    <!-- Job list -->
-    <div id="job-list" class="space-y-4">
-      <!-- Populated by JS -->
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-    <p id="no-jobs" class="hidden text-center py-16 text-[#50606f] text-sm">
-      <span class="lang-en">No open positions in this department right now.</span>
-      <span class="lang-cn">该部门暂无招聘职位。</span>
-    </p>
+      <!-- Mercedes-Benz S-Class -->
+      <div class="ios-tile veh-card flex flex-col reveal" data-delay="1" id="s-class">
+        <div class="veh-carousel" style="height:180px;">
+          <div class="veh-track">
+            <img src="/images/Mercedes-Benz%20S-class-1.jpg" alt="Mercedes-Benz S-Class — 1" loading="lazy" />
+            <img src="/images/Mercedes-Benz%20S-class-2.jpg" alt="Mercedes-Benz S-Class — 2" loading="lazy" />
+            <img src="/images/Mercedes-Benz%20S-class-3.jpg" alt="Mercedes-Benz S-Class — 3" loading="lazy" />
+          </div>
+          <button type="button" class="veh-nav veh-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="veh-nav veh-next" aria-label="Next image">›</button>
+          <div class="veh-dots"><span class="is-active"></span><span></span><span></span></div>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Mercedes-Benz S-Class</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Flagship sedan. Rear massage seats, ambient fragrance.</span>
+          <span class="lang-cn">旗舰轿车，后排按摩座椅。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>4 PAX</span><span>·</span><span>4 LUGGAGE</span><span>·</span><span>550L</span>
+        </div>
+      </div>
+
+      <!-- Mercedes-Benz E-Class -->
+      <div class="ios-tile veh-card flex flex-col reveal" data-delay="2" id="e-class">
+        <div class="veh-carousel" style="height:180px;">
+          <div class="veh-track">
+            <img src="/images/Mercedes-Benz%20E-class-1.jpg" alt="Mercedes-Benz E-Class — 1" loading="lazy" />
+            <img src="/images/Mercedes-Benz%20E-class-2.jpg" alt="Mercedes-Benz E-Class — 2" loading="lazy" />
+            <img src="/images/Mercedes-Benz%20E-class-3.jpg" alt="Mercedes-Benz E-Class — 3" loading="lazy" />
+          </div>
+          <button type="button" class="veh-nav veh-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="veh-nav veh-next" aria-label="Next image">›</button>
+          <div class="veh-dots"><span class="is-active"></span><span></span><span></span></div>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Mercedes-Benz E-Class</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Executive sedan. Premium audio + climate.</span>
+          <span class="lang-cn">行政级轿车，专业音响。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>4 PAX</span><span>·</span><span>3 LUGGAGE</span><span>·</span><span>470L</span>
+        </div>
+      </div>
+
+      <!-- Mercedes-Benz V-Class -->
+      <div class="ios-tile veh-card flex flex-col reveal" data-delay="3" id="v-class">
+        <div class="veh-carousel" style="height:180px;">
+          <div class="veh-track">
+            <img src="/images/Mercedes-Benz%20V-class-1.jpg" alt="Mercedes-Benz V-Class — 1" loading="lazy" />
+            <img src="/images/Mercedes-Benz%20V-class-2.jpg" alt="Mercedes-Benz V-Class — 2" loading="lazy" />
+            <img src="/images/Mercedes-Benz%20V-class-3.jpg" alt="Mercedes-Benz V-Class — 3" loading="lazy" />
+          </div>
+          <button type="button" class="veh-nav veh-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="veh-nav veh-next" aria-label="Next image">›</button>
+          <div class="veh-dots"><span class="is-active"></span><span></span><span></span></div>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Mercedes-Benz V-Class</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Premium MPV. Reclining captains' seats.</span>
+          <span class="lang-cn">高端商务车，可平躺座椅。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>6 PAX</span><span>·</span><span>6 LUGGAGE</span><span>·</span><span>800L</span>
+        </div>
+      </div>
+
+      <!-- ZEEKR 009 -->
+      <div class="ios-tile veh-card flex flex-col reveal" data-delay="4" id="zeekr">
+        <div class="veh-carousel" style="height:180px;">
+          <div class="veh-track">
+            <img src="/images/zeekr009.jpg" alt="ZEEKR 009 — 1" loading="lazy" />
+            <img src="/images/Zeekr0093.jpg" alt="ZEEKR 009 — 2" loading="lazy" />
+            <img src="/images/Zekkr0092.jpg" alt="ZEEKR 009 — 3" loading="lazy" />
+          </div>
+          <button type="button" class="veh-nav veh-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="veh-nav veh-next" aria-label="Next image">›</button>
+          <div class="veh-dots"><span class="is-active"></span><span></span><span></span></div>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">ZEEKR 009</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Electric luxury MPV. Silent cabin.</span>
+          <span class="lang-cn">新能源 MPV，静音舱。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>6 PAX</span><span>·</span><span>6 LUGGAGE</span><span>·</span><span>ELECTRIC</span>
+        </div>
+      </div>
+
+      <!-- Buick GL8 -->
+      <div class="ios-tile veh-card flex flex-col reveal" data-delay="5" id="gl8">
+        <div class="veh-carousel" style="height:180px;">
+          <div class="veh-track">
+            <img src="/images/Buick%20Gl8.jpg" alt="Buick GL8 — 1" loading="lazy" style="object-position:10% center" />
+            <img src="/images/Buick%20GL8-2.jpg" alt="Buick GL8 — 2" loading="lazy" />
+            <img src="/images/Buick%20GL8-3.jpg" alt="Buick GL8 — 3" loading="lazy" />
+          </div>
+          <button type="button" class="veh-nav veh-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="veh-nav veh-next" aria-label="Next image">›</button>
+          <div class="veh-dots"><span class="is-active"></span><span></span><span></span></div>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Buick GL8</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Trusted business MPV. Reliable everyday workhorse.</span>
+          <span class="lang-cn">可靠商务用车，日常首选。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>6 PAX</span><span>·</span><span>5 LUGGAGE</span><span>·</span><span>500L</span>
+        </div>
+      </div>
+
+      <!-- Toyota Coaster -->
+      <div class="ios-tile veh-card flex flex-col reveal" data-delay="6" id="coaster">
+        <div class="veh-carousel" style="height:180px;">
+          <div class="veh-track">
+            <img src="/images/Coaster.jpg" alt="Toyota Coaster — 1" loading="lazy" />
+            <img src="/images/Coaster1.jpg" alt="Toyota Coaster — 2" loading="lazy" />
+            <img src="/images/Coaster2.jpg" alt="Toyota Coaster — 3" loading="lazy" />
+          </div>
+          <button type="button" class="veh-nav veh-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="veh-nav veh-next" aria-label="Next image">›</button>
+          <div class="veh-dots"><span class="is-active"></span><span></span><span></span></div>
+        </div>
+        <h3 class="text-lg md:text-xl font-semibold tracking-tight mb-2">Toyota Coaster</h3>
+        <p class="text-[#0A0A0A]/65 text-sm leading-relaxed font-light mb-4 flex-1">
+          <span class="lang-en">Group transport. Conference shuttles, fashion week convoys.</span>
+          <span class="lang-cn">团体出行，会议接驳。</span>
+        </p>
+        <div class="flex items-center gap-4 text-[11px] tracking-[0.1em] uppercase text-[#0A0A0A]/55 font-medium">
+          <span>19–23 PAX</span><span>·</span><span>GROUP</span>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+</section>
 
-<!-- Footer -->
+<!-- Chauffeur 跨淡入轮播样式（随车型页带回；当前 chrome 不含此 CSS，缺它会 3 图堆叠） -->
+<style>
+  .chauffeur-hero { position: relative; width: 100%; height: 480px; border-radius: var(--r-lg); overflow: hidden; }
+  @media (max-width: 767px) { .chauffeur-hero { height: 300px; } }
+  .chauffeur-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease-in-out; }
+  .chauffeur-hero-img.is-active { opacity: 1; }
+  .chauffeur-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 2; }
+  .chauffeur-dot { width: 7px; height: 7px; border-radius: 999px; background: rgba(255,255,255,0.5); border: 1px solid rgba(10,10,10,0.18); transition: background 0.4s ease, transform 0.4s ease; }
+  .chauffeur-dot.is-active { background: rgba(255,255,255,0.95); transform: scale(1.25); }
+</style>
+
+<!-- ─── Section 3: Chauffeur Standards ─── -->
+<section class="section-pad section-divider bg-[#FAFAF7]" id="chauffeurs">
+  <div class="section-container">
+
+    <div class="flex items-center gap-3 mb-6 reveal">
+      <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">The People</span><span class="lang-cn">专业管家</span></span>
+    </div>
+
+    <div class="mb-10 reveal" data-delay="1">
+      <h2 class="section-head mb-3">
+        <span class="lang-en">The people behind every journey.</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">每段旅程背后的专业力量</span>
+      </h2>
+      <p class="section-intro mt-4">
+        <span class="lang-en">Chauffeurs trained to the LyctRides service standard — every detail, your standard.</span>
+        <span class="lang-cn">每位管家按光年服务标准完成礼宾与双语训练——每个细节，您的标准。</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+
+      <!-- Left: Chauffeur 3-image carousel -->
+      <div class="reveal" data-delay="2">
+        <div class="ios-card overflow-hidden" style="border-radius: var(--r-lg);">
+          <div class="chauffeur-hero" id="chauffeur-carousel">
+            <img src="/images/fleet-chauffeur-1.jpg?v=2" alt="LyctRides Chauffeur" class="chauffeur-hero-img is-active" />
+            <img src="/images/fleet-chauffeur-2.jpg?v=2" alt="LyctRides Chauffeur" class="chauffeur-hero-img" loading="lazy" />
+            <img src="/images/fleet-chauffeur-3.jpg?v=2" alt="LyctRides Chauffeur" class="chauffeur-hero-img" loading="lazy" />
+            <div class="chauffeur-dots" aria-hidden="true">
+              <span class="chauffeur-dot is-active"></span>
+              <span class="chauffeur-dot"></span>
+              <span class="chauffeur-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function(){
+          var imgs = document.querySelectorAll('#chauffeur-carousel .chauffeur-hero-img');
+          var dots = document.querySelectorAll('#chauffeur-carousel .chauffeur-dot');
+          if (imgs.length < 2) return;
+          var i = 0;
+          setInterval(function(){
+            imgs[i].classList.remove('is-active');
+            dots[i].classList.remove('is-active');
+            i = (i + 1) % imgs.length;
+            imgs[i].classList.add('is-active');
+            dots[i].classList.add('is-active');
+          }, 4500);
+        })();
+      </script>
+
+      <!-- Right: 4 standards -->
+      <div class="flex flex-col gap-4">
+
+        <div class="ios-card p-6 reveal" data-delay="2">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">01</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">200+ Hours of Training</span>
+                <span class="lang-cn">200+ 学时培训</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Bilingual chauffeurs complete 30+ courses — defensive driving, route planning, emergency protocol.</span>
+                <span class="lang-cn">双语管家完成 30+ 门课程，含防御性驾驶、路线规划与紧急处置。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 reveal" data-delay="3">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">02</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">LyctRides Service Standard</span>
+                <span class="lang-cn">国际礼宾标准</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Trained to the LyctRides service standard — world-class hospitality protocol for every greeting.</span>
+                <span class="lang-cn">每位管家按光年服务标准培训，以国际礼宾水准迎接每一位宾客。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 reveal" data-delay="4">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">03</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">Uniform Discipline</span>
+                <span class="lang-cn">着装规范</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Black tailored suit, white gloves, polished oxfords — every engagement, without exception.</span>
+                <span class="lang-cn">黑色定制西装、白色手套、光亮皮鞋——每次服务，无一例外。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-card p-6 reveal" data-delay="5">
+          <div class="flex items-start gap-4">
+            <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 font-mono shrink-0 mt-1">04</span>
+            <div>
+              <h3 class="text-[1.0rem] font-semibold tracking-tight mb-1.5">
+                <span class="lang-en">Quiet Cabin Standard</span>
+                <span class="lang-cn">静谧标准</span>
+              </h3>
+              <p class="text-[#0A0A0A]/55 text-[13px] leading-[1.55] font-light">
+                <span class="lang-en">Phones silent, music optional, conversation only if invited. Your cabin, your silence.</span>
+                <span class="lang-cn">手机静音，音乐按需，仅在宾客主动交谈时回应。您的座舱，您的静谧。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 4: In-Car Standards ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+
+    <div class="max-w-3xl mb-10 md:mb-12 reveal">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="ios-eyebrow"><span class="ios-eyebrow-dot"></span><span class="lang-en">In-Car Standards</span><span class="lang-cn">车内标准</span></span>
+      </div>
+      <h2 class="section-head mb-3">
+        <span class="lang-en">Curated before every boarding.</span>
+        <span class="lang-cn" style="font-family:'Noto Serif SC',serif;">每次上车前悉心备置</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="1">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">01</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Amenities Kit</span>
+          <span class="lang-cn">精选车内物资</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Still water, wet wipes, phone charger, reading light, fresh newspaper — replaced after every journey.</span>
+          <span class="lang-cn">矿泉水、湿纸巾、充电线、阅读灯、当日报刊——每次结束后更换。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="2">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">02</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Climate Pre-set</span>
+          <span class="lang-cn">温度预设</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Cabin temperature pre-adjusted to your profile. Privacy partition available on request.</span>
+          <span class="lang-cn">按照宾客偏好预调座舱温度，隔断隔屏按需启用。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="3">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">03</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Immaculate Upkeep</span>
+          <span class="lang-cn">专项保养</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Deep-cleaned before every assignment. Mechanical checks on a fixed schedule — zero surprises.</span>
+          <span class="lang-cn">每次派车前深度清洁，定期机械检查，确保万无一失。</span>
+        </p>
+      </div>
+
+      <div class="ios-card p-6 md:p-7 reveal" data-delay="4">
+        <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-5 font-mono">04</span>
+        <h3 class="text-[1.0625rem] md:text-lg font-semibold tracking-tight mb-2.5">
+          <span class="lang-en">Scent &amp; Fragrance</span>
+          <span class="lang-cn">环境香氛</span>
+        </h3>
+        <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light">
+          <span class="lang-en">Subtle ambient fragrance in S-Class. Fragrance-free option available — simply request at booking.</span>
+          <span class="lang-cn">S 级配置淡雅环境香氛，如需无香版本可在预订时注明。</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 5: CTA Banner ─── -->
+<section class="section-pad section-divider">
+  <div class="section-container">
+    <div class="reveal flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 p-7 md:p-12 rounded-[var(--r-xl)] relative overflow-hidden"
+         style="background: linear-gradient(135deg, #1c1917 0%, #0A0A0A 100%); box-shadow: var(--shadow-card-hover);">
+      <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-40 pointer-events-none"
+           style="background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);"></div>
+      <div class="flex-1 relative">
+        <p class="eyebrow mb-3" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);">
+          <span class="lang-en">Ready when you are</span><span class="lang-cn">随时为您启程</span>
+        </p>
+        <h2 class="section-head text-white mb-2" style="font-size: clamp(1.5rem, 3vw, 2.25rem);">
+          <span class="lang-en">Book a vehicle.</span>
+          <span class="lang-cn">预订车辆</span>
+        </h2>
+        <p class="text-white/65 text-[15px] md:text-base leading-relaxed font-light max-w-xl">
+          <span class="lang-en">Single transfer or full corporate fleet programme — we respond within one business hour.</span>
+          <span class="lang-cn">单次接送或完整企业车型方案——我们一个工作小时内回复。</span>
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto md:min-w-[200px] relative">
+        <a href="/contact.html" class="ios-pill" style="background: linear-gradient(180deg, #FAFAF7 0%, #e7e5e4 100%); color: #0A0A0A; box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 4px 16px rgba(0,0,0,0.3);">
+          <span class="lang-en">Make an Enquiry</span><span class="lang-cn">立即咨询</span>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="tel:+8615822918415" class="ios-pill-outline" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: white;">
+          +86 158 2291 8415
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
 <footer class="w-full pt-14 md:pt-20 pb-24 md:pb-24 px-5 md:px-12 bg-[#0A0A0A] text-white">
   <div class="max-w-[1440px] mx-auto">
     <!-- Top: brand + 咨询二维码 -->
@@ -924,6 +1288,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </footer>
 
 
+
+
 <!-- ─── Floating Action Button with QR popover · hover 浮现微信 + WhatsApp 二维码 ─── -->
 <div class="fab-group">
   <!-- Popover · 液态玻璃卡片，含 2 个 QR + 电话邮箱 -->
@@ -957,11 +1323,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   </a>
 </div>
 
-<!-- FAB -->
-
-
 <script>
-  // Lang init
+  // 语言初始化（与首页共享 lyct-lang key）
   (function(){
     try {
       var saved = (function(){var v=localStorage.getItem('lyct-lang');return v==='cn'?'zh-CN':v;})();
@@ -970,23 +1333,30 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     } catch(_) {}
   })();
 
-  // Mobile menu
+  // Mobile menu toggle
   document.getElementById('mobile-menu-btn').addEventListener('click', function(){
     var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
   });
 
-  // Nav scroll + FAB
+  /* ───────────────── iOS Animation Layer ───────────────── */
+
+  // 1. Nav glass — 滚动超过 8px 时加重底色（iOS Safari/Settings 同款）
+  //    同时控制 FAB 显隐：滚过 hero 后才出现（350px 阈值），上滚回 hero 隐藏
   (function(){
     var nav = document.querySelector('.ios-glass');
     function onScroll(){
       var y = window.scrollY;
-      if (nav) { if (y > 8) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+      if (nav) {
+        if (y > 8) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
 
-  // IntersectionObserver reveal
+  // 2. Reveal on scroll — IntersectionObserver 触发 .is-visible
+  //    带 prefers-reduced-motion 兜底（系统设置开了"减少动效"就直接显示）
   (function(){
     var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var els = document.querySelectorAll('.reveal');
@@ -996,339 +1366,81 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     }
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target); // 只触发一次，省 CPU
+        }
       });
-    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
+    }, {
+      rootMargin: '0px 0px -80px 0px', // 元素进入视口下沿 80px 时触发
+      threshold: 0.05
+    });
     els.forEach(function(el){ io.observe(el); });
   })();
-</script>
 
-<script>
-(function () {
-  'use strict';
-
-  const lang = () => document.documentElement.lang || 'en';
-  let allJobs = [];
-  let activeDept = 'all';
-
-  function applyLang() {
-    const l = lang();
-    document.querySelectorAll('.lang-en').forEach(el => el.style.display = l === 'en' ? '' : 'none');
-    document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'zh-CN' ? '' : 'none');
-  }
-
-  function renderJob(job) {
-    const tagsHtml = job.tags.map(t =>
-      `<span class="inline-block font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#0A0A0A]/[0.04] border border-[#0A0A0A]/[0.06] text-[#50606f]">
-        <span class="lang-en">${t.en}</span><span class="lang-cn">${t.cn}</span>
-      </span>`
-    ).join('');
-
-    return `
-    <div class="job-card" data-dept="${job.department}" data-id="${job.id}">
-      <div class="p-6">
-        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-          <div>
-            <h3 class="font-semibold text-base leading-snug tracking-tight mb-1">
-              <span class="lang-en">${job.title.en}</span><span class="lang-cn">${job.title.cn}</span>
-            </h3>
-            <div class="flex flex-wrap items-center gap-2 text-[#50606f] font-mono text-[11px]">
-              <span class="flex items-center gap-1">
-                <svg style="width:12px;height:12px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span class="lang-en">${job.location.en}</span><span class="lang-cn">${job.location.cn}</span>
-              </span>
-              <span class="text-black/20">·</span>
-              <span class="lang-en">${job.type.en}</span><span class="lang-cn">${job.type.cn}</span>
-            </div>
-          </div>
-          <button
-            class="apply-toggle flex-shrink-0 ios-pill-sm"
-            data-job-id="${job.id}"
-          >
-            <span class="lang-en apply-label-open">Apply</span>
-            <span class="lang-cn apply-label-open">申请职位</span>
-            <span class="lang-en apply-label-close hidden">Close ✕</span>
-            <span class="lang-cn apply-label-close hidden">关闭 ✕</span>
-          </button>
-        </div>
-        <div class="flex flex-wrap gap-1.5 mb-4">${tagsHtml}</div>
-        <div class="desc-wrap text-sm text-[#50606f] leading-relaxed font-light" data-collapsed="true">
-          <div class="desc-content space-y-2">
-            <div class="lang-en">${
-              (job.description && job.description.en || '')
-                .split(/\n\n+/)
-                .filter(Boolean)
-                .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
-                .join('')
-            }</div>
-            <div class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${
-              (job.description && job.description.cn || '')
-                .split(/\n\n+/)
-                .filter(Boolean)
-                .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
-                .join('')
-            }</div>
-          </div>
-          <button type="button" class="desc-toggle mt-2 inline-flex items-center gap-1 text-xs font-mono tracking-[0.1em] uppercase text-[#0A0A0A] hover:opacity-70 transition-opacity">
-            <span class="desc-toggle-more">
-              <span class="lang-en">View Full ↓</span><span class="lang-cn">查看完整 ↓</span>
-            </span>
-            <span class="desc-toggle-less hidden">
-              <span class="lang-en">Show Less ↑</span><span class="lang-cn">收起 ↑</span>
-            </span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Apply Form -->
-      <div class="apply-form" id="form-${job.id}">
-        <div class="border-t border-black/6 bg-[#FAFAF7]/80 px-6 py-7">
-          <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#50606f] mb-5">
-            <span class="lang-en">Application — ${job.title.en}</span>
-            <span class="lang-cn">申请职位 — ${job.title.cn}</span>
-          </p>
-          <form
-            name="job-application"
-            method="POST"
-            enctype="multipart/form-data"
-            class="space-y-4"
-            onsubmit="handleSubmit(event, '${job.id}')"
-          >
-            <input type="hidden" name="form-name" value="job-application"/>
-            <input type="hidden" name="position" value="${job.title.en}"/>
-            <input type="hidden" name="position-id" value="${job.id}"/>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="f-name-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
-                  <span class="lang-en">Full Name *</span><span class="lang-cn">姓名 *</span>
-                </label>
-                <input id="f-name-${job.id}" type="text" name="name" required class="ios-input" placeholder=""/>
-              </div>
-              <div>
-                <label for="f-phone-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
-                  <span class="lang-en">Phone *</span><span class="lang-cn">电话 *</span>
-                </label>
-                <input id="f-phone-${job.id}" type="tel" name="phone" required class="ios-input" placeholder=""/>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="f-email-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
-                  <span class="lang-en">Email *</span><span class="lang-cn">邮箱 *</span>
-                </label>
-                <input id="f-email-${job.id}" type="email" name="email" required class="ios-input" placeholder=""/>
-              </div>
-              <div>
-                <label for="f-experience-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
-                  <span class="lang-en">Years of Experience</span><span class="lang-cn">工作年限</span>
-                </label>
-                <select id="f-experience-${job.id}" name="experience" class="ios-input" style="color:#50606f">
-                  <option value="" disabled selected></option>
-                  <option value="0-1">0 – 1</option>
-                  <option value="1-3">1 – 3</option>
-                  <option value="3-5">3 – 5</option>
-                  <option value="5-10">5 – 10</option>
-                  <option value="10+">10+</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="f-message-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
-                <span class="lang-en">Cover Message</span><span class="lang-cn">求职信息</span>
-              </label>
-              <textarea id="f-message-${job.id}" name="message" rows="3" class="ios-input resize-none" placeholder=""></textarea>
-            </div>
-
-            <div>
-              <label for="f-resume-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
-                <span class="lang-en">Résumé / CV</span><span class="lang-cn">简历</span>
-              </label>
-              <input id="f-resume-${job.id}" type="file" name="resume" accept=".pdf,.doc,.docx" class="w-full text-sm text-[#50606f] file:mr-3"/>
-              <p class="text-[10px] text-[#50606f]/60 mt-1 font-mono">PDF / DOC / DOCX</p>
-            </div>
-
-            <div class="flex items-center justify-between pt-2">
-              <p id="success-${job.id}" class="hidden text-xs font-mono text-[#0A0A0A]">
-                <span class="lang-en">✓ Application submitted — we'll be in touch.</span>
-                <span class="lang-cn">✓ 申请已提交，我们将尽快联系您。</span>
-              </p>
-              <p id="error-${job.id}" role="alert" class="hidden text-xs font-mono text-[#0A0A0A]/70"></p>
-              <button type="submit" class="ml-auto ios-pill-sm">
-                <span class="lang-en">Submit Application</span><span class="lang-cn">提交申请</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  function render(jobs) {
-    const list = document.getElementById('job-list');
-    const noJobs = document.getElementById('no-jobs');
-    const countEl = document.getElementById('job-count');
-
-    const filtered = activeDept === 'all' ? jobs : jobs.filter(j => j.department === activeDept);
-
-    if (filtered.length === 0) {
-      list.innerHTML = '';
-      noJobs.classList.remove('hidden');
-      countEl.textContent = '';
-    } else {
-      noJobs.classList.add('hidden');
-      list.innerHTML = filtered.map(renderJob).join('');
-      const l = lang();
-      countEl.textContent = l === 'zh-CN'
-        ? `${filtered.length} 个开放职位`
-        : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`;
-
-      // Job description collapse/expand
-      list.querySelectorAll('.desc-toggle').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const wrap = btn.closest('.desc-wrap');
-          if (!wrap) return;
-          const collapsed = wrap.getAttribute('data-collapsed') === 'true';
-          wrap.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
-          btn.querySelectorAll('.desc-toggle-more').forEach(el => el.classList.toggle('hidden', collapsed));
-          btn.querySelectorAll('.desc-toggle-less').forEach(el => el.classList.toggle('hidden', !collapsed));
-        });
-      });
-
-      // Apply toggle
-      list.querySelectorAll('.apply-toggle').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const jobId = btn.dataset.jobId;
-          const form = document.getElementById(`form-${jobId}`);
-          const isOpen = form.classList.contains('open');
-          document.querySelectorAll('.apply-form').forEach(f => f.classList.remove('open'));
-          document.querySelectorAll('.apply-toggle').forEach(b => {
-            b.querySelectorAll('.apply-label-open').forEach(el => el.classList.remove('hidden'));
-            b.querySelectorAll('.apply-label-close').forEach(el => el.classList.add('hidden'));
-          });
-          if (!isOpen) {
-            form.classList.add('open');
-            btn.querySelectorAll('.apply-label-open').forEach(el => el.classList.add('hidden'));
-            btn.querySelectorAll('.apply-label-close').forEach(el => el.classList.remove('hidden'));
-            setTimeout(() => form.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-          }
-        });
-      });
-    }
-
-    applyLang();
-  }
-
-  // Dept filter clicks
-  document.getElementById('dept-filters').addEventListener('click', e => {
-    const btn = e.target.closest('[data-dept]');
-    if (!btn) return;
-    activeDept = btn.dataset.dept;
-    document.querySelectorAll('.filter-chip').forEach(b => {
-      b.classList.toggle('chip-active', b === btn);
+  // 3. iOS-style tap feedback — 给所有 .ios-tile 在 touch 时加压感
+  //    （CSS 已有 :active 但 iOS Safari 移动端 :active 触发不稳定，JS 兜底）
+  (function(){
+    document.querySelectorAll('.ios-tile').forEach(function(tile){
+      tile.addEventListener('touchstart', function(){ tile.style.transform = 'translateY(-2px) scale(0.99)'; }, { passive: true });
+      tile.addEventListener('touchend', function(){ tile.style.transform = ''; }, { passive: true });
+      tile.addEventListener('touchcancel', function(){ tile.style.transform = ''; }, { passive: true });
     });
-    render(allJobs);
-  });
-
-  // Lang observer
-  const observer = new MutationObserver(() => {
-    applyLang();
-    const filtered = activeDept === 'all' ? allJobs : allJobs.filter(j => j.department === activeDept);
-    const l = lang();
-    document.getElementById('job-count').textContent = filtered.length > 0
-      ? (l === 'zh-CN' ? `${filtered.length} 个开放职位` : `${filtered.length} open position${filtered.length !== 1 ? 's' : ''}`)
-      : '';
-  });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
-
-  // Load data — try backend API first (live admin updates), fallback to static JSON (local dev / backend down)
-  (function loadJobs() {
-    const fetchJson = (url) => fetch(url, { cache: 'no-store' }).then(r => {
-      if (!r.ok) throw new Error('http ' + r.status);
-      return r.json();
-    });
-    fetchJson('/api/public/careers')
-      .catch(() => fetchJson('/data/careers.json'))
-      .then(jobs => { allJobs = jobs; render(allJobs); })
-      .catch(() => {
-        document.getElementById('job-list').innerHTML =
-          '<p class="text-center py-16 text-[#50606f] text-sm"><span class="lang-en">Unable to load positions.</span><span class="lang-cn">暂时无法加载职位</span></p>';
-      });
   })();
-})();
 
-function showCareerError(jobId, en, cn) {
-  const el = document.getElementById(`error-${jobId}`);
-  const success = document.getElementById(`success-${jobId}`);
-  if (success) success.classList.add('hidden');
-  if (!el) return;
-  el.textContent = '!  ' + ((document.documentElement.lang === 'zh-CN') ? cn : en);
-  el.classList.remove('hidden');
-}
-function handleSubmit(e, jobId) {
-  e.preventDefault();
-  const form = e.target;
-  const fd = new FormData(form);
-
-  // 把 cover_letter 字段名规整为 message（后端 DTO 字段名），并裁掉空值
-  // 避免 backend ValidationPipe 因为空字符串触发 minLength 报错。
-  const cover = fd.get('cover_letter');
-  if (cover && !fd.get('message')) {
-    fd.set('message', cover);
-  }
-  fd.delete('cover_letter');
-
-  // position 兜底：未填走当前职位 ID
-  if (!fd.get('position') && jobId) {
-    fd.set('position', jobId);
-  }
-
-  // 文本字段 trim 一下（后端也会做，但前端先清干净，避免空字符串触发校验报错）
-  ['name', 'email', 'phone', 'position', 'experience', 'message'].forEach((k) => {
-    const v = fd.get(k);
-    if (typeof v === 'string') {
-      const trimmed = v.trim();
-      if (trimmed) fd.set(k, trimmed); else fd.delete(k);
-    }
-  });
-
-  // 简历附件大小校验：企业微信群机器人 20MB 上限
-  const resume = fd.get('resume');
-  if (resume instanceof File && resume.size > 0) {
-    if (resume.size > 20 * 1024 * 1024) {
-      showCareerError(jobId, 'Resume exceeds 20MB — please compress and re-upload.', '简历文件超过 20MB，请压缩后重新上传。');
-      return;
-    }
-  } else {
-    // 没传文件就别把空 File 字段发上去
-    fd.delete('resume');
-  }
-
-  // 注意：不要手动设 Content-Type — fetch 会自动加 multipart boundary
-  fetch('/api/public/careers/apply', {
-    method: 'POST',
-    body: fd,
-  })
-    .then(res => {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json();
-    })
-    .then(() => {
-      form.reset();
-      const err = document.getElementById(`error-${jobId}`);
-      if (err) err.classList.add('hidden');
-      const success = document.getElementById(`success-${jobId}`);
-      if (success) {
-        success.classList.remove('hidden');
-        setTimeout(() => success.classList.add('hidden'), 6000);
-      }
-    })
-    .catch(() => showCareerError(jobId, 'Submission failed. Please try again or email bd@lyctai.com.', '提交失败，请稍后重试或直接联系 bd@lyctai.com。'));
-}
+  // 4. Mouse-tracked subtle tilt on Featured 卡片（仅桌面）— Vision Pro 类质感
+  (function(){
+    if (window.matchMedia('(pointer: coarse)').matches) return; // 触屏跳过
+    var featured = document.querySelector('a[href="#events"]');
+    if (!featured) return;
+    featured.style.transformStyle = 'preserve-3d';
+    featured.addEventListener('mousemove', function(e){
+      var rect = featured.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 ~ 0.5
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      var tiltX = y * -3; // 3deg max
+      var tiltY = x * 3;
+      featured.style.transform = 'translateY(-6px) perspective(1000px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
+    });
+    featured.addEventListener('mouseleave', function(){
+      featured.style.transform = '';
+    });
+  })();
 </script>
 
   <script defer src="/assets/premium-motion.js"></script>
+<script>
+  (function(){
+    document.querySelectorAll('.veh-carousel').forEach(function(car){
+      var track=car.querySelector('.veh-track');
+      var dots=car.querySelectorAll('.veh-dots span');
+      var prev=car.querySelector('.veh-prev'), next=car.querySelector('.veh-next');
+      var n=track.querySelectorAll('img').length, i=0;
+      function go(k){ i=Math.max(0,Math.min(n-1,k)); track.style.transform='translateX('+(-i*100)+'%)';
+        dots.forEach(function(d,x){ d.classList.toggle('is-active',x===i); });
+        if(prev) prev.disabled=(i===0); if(next) next.disabled=(i===n-1); }
+      go(0);
+      if(prev) prev.addEventListener('click',function(e){ e.preventDefault(); go(i-1); });
+      if(next) next.addEventListener('click',function(e){ e.preventDefault(); go(i+1); });
+      dots.forEach(function(d,x){ d.addEventListener('click',function(e){ e.preventDefault(); go(x); }); });
+      var startX=0,dx=0,dragging=false,w=0;
+      function finishDrag(allowAdvance){
+        if(!dragging)return;
+        dragging=false;
+        track.classList.remove('dragging');
+        if(allowAdvance&&Math.abs(dx)>w*0.15){ go(dx<0?i+1:i-1); } else { go(i); }
+        dx=0;
+      }
+      car.addEventListener('pointerdown',function(e){
+        if(e.target.closest('.veh-nav')||e.target.closest('.veh-dots')) return;
+        dragging=true; startX=e.clientX; dx=0; w=car.clientWidth||1; track.classList.add('dragging');
+        try{ car.setPointerCapture(e.pointerId); }catch(err){}
+      });
+      window.addEventListener('pointermove',function(e){ if(!dragging)return; dx=e.clientX-startX; track.style.transform='translateX(calc('+(-i*100)+'% + '+dx+'px))'; });
+      window.addEventListener('pointerup',function(){ finishDrag(true); });
+      car.addEventListener('pointercancel',function(){ finishDrag(false); });
+    });
+  })();
+</script>
 </body>
 </html>
