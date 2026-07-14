@@ -901,8 +901,9 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   }
   function coverOverlay(a) {
     const src = normImg(a.coverImageUrl);
+    const pos = a.coverPos || 'center';
     return src
-      ? `<img src="${src}" alt="" class="absolute inset-0 w-full h-full object-cover" style="object-position:center top" onerror="this.remove()">`
+      ? `<img src="${src}" alt="" class="absolute inset-0 w-full h-full object-cover" style="object-position:${pos}" onerror="this.remove()">`
       : '';
   }
 

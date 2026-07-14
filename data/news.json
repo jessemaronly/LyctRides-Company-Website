@@ -32,7 +32,8 @@
     "date": "2026-07-10",
     "featured": true,
     "emoji": "🛎️",
-    "coverImageUrl": "https://www.lyctai.com/images/news-airport-rail.jpg"
+    "coverImageUrl": "https://www.lyctai.com/images/news-airport-rail.jpg",
+    "coverPos": "center top"
   },
   {
     "id": "canton-fair-2026-spring",
@@ -66,7 +67,8 @@
     },
     "date": "2026-05-07",
     "featured": false,
-    "emoji": "🌐"
+    "emoji": "🌐",
+    "coverImageUrl": "https://www.lyctai.com/images/1-services.jpg"
   },
   {
     "id": "gba-expansion-2025",
@@ -100,7 +102,8 @@
     },
     "date": "2025-05-01",
     "featured": false,
-    "emoji": "🏙️"
+    "emoji": "🏙️",
+    "coverImageUrl": "https://www.lyctai.com/images/6-coverage.jpg"
   },
   {
     "id": "cbt-awards-2024",
@@ -134,7 +137,8 @@
     },
     "date": "2025-03-15",
     "featured": false,
-    "emoji": "🏆"
+    "emoji": "🏆",
+    "coverImageUrl": "https://www.lyctai.com/images/fleet-chauffeur-1.jpg"
   },
   {
     "id": "fortune500-partnership-2025",
@@ -168,7 +172,8 @@
     },
     "date": "2025-02-10",
     "featured": false,
-    "emoji": "🤝"
+    "emoji": "🤝",
+    "coverImageUrl": "https://www.lyctai.com/images/s-class.jpg"
   },
   {
     "id": "zeekr-fleet-addition-2024",
@@ -202,6 +207,7 @@
     },
     "date": "2024-12-05",
     "featured": false,
-    "emoji": "⚡"
+    "emoji": "⚡",
+    "coverImageUrl": "https://www.lyctai.com/images/zeekr009.jpg"
   }
 ]
