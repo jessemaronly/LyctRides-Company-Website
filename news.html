@@ -893,6 +893,19 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   let allArticles = [];
   let activeCategory = 'all';
 
+  // GitHub blob 链接 → raw 直链（兜住粘错的封面 URL）
+  function normImg(u) {
+    if (!u || typeof u !== 'string') return '';
+    const m = u.match(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/(.+)$/);
+    return m ? ('https://raw.githubusercontent.com/' + m[1] + '/' + m[2] + '/' + m[3]) : u;
+  }
+  function coverOverlay(a) {
+    const src = normImg(a.coverImageUrl);
+    return src
+      ? `<img src="${src}" alt="" class="absolute inset-0 w-full h-full object-cover" style="object-position:center top" onerror="this.remove()">`
+      : '';
+  }
+
   function formatDate(dateStr) {
     const d = new Date(dateStr);
     if (lang() === 'zh-CN') {
@@ -904,8 +917,9 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   function renderFeatured(a) {
     return `
       <a href="/article.html?id=${a.id}" class="ios-card md:col-span-2 overflow-hidden flex flex-col md:flex-row">
-        <div class="md:w-56 flex-shrink-0 bg-[#f0ede8] flex items-center justify-center text-5xl p-10">
+        <div class="md:w-56 flex-shrink-0 bg-[#f0ede8] flex items-center justify-center text-5xl p-10 relative overflow-hidden">
           ${a.emoji}
+          ${coverOverlay(a)}
         </div>
         <div class="p-8 md:p-10 flex flex-col justify-center">
           <p class="eyebrow mb-3 flex items-center gap-2">
@@ -932,9 +946,10 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   function renderCard(a) {
     return `
       <a href="/article.html?id=${a.id}" class="ios-card overflow-hidden flex flex-col">
-        <div class="h-36 bg-[#f0ede8] flex items-center justify-center text-4xl relative flex-shrink-0">
+        <div class="h-36 bg-[#f0ede8] flex items-center justify-center text-4xl relative flex-shrink-0 overflow-hidden">
           ${a.emoji}
-          <span class="absolute bottom-3 left-4 ios-eyebrow" style="font-size:9px;padding:4px 10px;">
+          ${coverOverlay(a)}
+          <span class="absolute bottom-3 left-4 ios-eyebrow" style="font-size:9px;padding:4px 10px;z-index:1;">
             <span class="lang-en">${a.category.en}</span><span class="lang-cn">${a.category.cn}</span>
           </span>
         </div>
@@ -996,19 +1011,31 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   const observer = new MutationObserver(() => render(allArticles));
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
-  // Load data — try backend API first (live admin updates), fallback to static JSON (local dev / backend down)
+  // Load data — merge backend API (live admin posts) with the pinned static baseline (data/news.json).
+  // The static baseline WINS on id conflict, so the curated core articles always render cleanly even if the
+  // CMS copy is stale; any API-only article (a future admin post) still appears. Newest first.
   (function loadNews() {
     const fetchJson = (url) => fetch(url, { cache: 'no-store' }).then(r => {
       if (!r.ok) throw new Error('http ' + r.status);
       return r.json();
     });
-    fetchJson('/api/public/news')
-      .catch(() => fetchJson('/data/news.json'))
-      .then(data => { allArticles = data; render(allArticles); })
-      .catch(() => {
-        document.getElementById('news-grid').innerHTML =
-          '<p class="col-span-2 text-center py-16 text-[#50606f]"><span class="lang-en">Unable to load articles.</span><span class="lang-cn">暂时无法加载内容</span></p>';
-      });
+    const asArray = (d) => Array.isArray(d) ? d : (d && Array.isArray(d.items) ? d.items : []);
+    const keyOf = (a) => a && (a.id || a.slug);
+    Promise.all([
+      fetchJson('/api/public/news').then(asArray).catch(() => []),
+      fetchJson('/data/news.json').then(asArray).catch(() => [])
+    ]).then(([api, base]) => {
+      const byId = {};
+      api.forEach(a => { const k = keyOf(a); if (k) byId[k] = a; });
+      base.forEach(a => { const k = keyOf(a); if (k) byId[k] = a; }); // baseline overrides API
+      const merged = Object.values(byId).sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+      if (!merged.length) throw new Error('empty');
+      allArticles = merged;
+      render(allArticles);
+    }).catch(() => {
+      document.getElementById('news-grid').innerHTML =
+        '<p class="col-span-2 text-center py-16 text-[#50606f]"><span class="lang-en">Unable to load articles.</span><span class="lang-cn">暂时无法加载内容</span></p>';
+    });
   })();
 })();
 </script>

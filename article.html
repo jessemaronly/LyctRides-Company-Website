@@ -79,6 +79,14 @@ tailwind.config = {
   .article-body img { display: block; max-width: 100%; height: auto; margin: 1.75rem auto; border-radius: 6px; }
   .article-body strong { font-weight: 700; }
   .article-body em { font-style: italic; }
+  /* Cover image banner (overrides emoji when article has coverImageUrl) */
+  #article-emoji.has-cover { padding-top: 2.5rem; padding-bottom: 2.5rem; background: #0A0A0A; }
+  #article-emoji .article-cover-img {
+    display: block; width: 100%; max-width: 760px; height: auto;
+    margin: 0 auto; border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+  }
   .article-body .video-embed {
     position: relative;
     width: 100%;
@@ -508,6 +516,14 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  // GitHub 网页版 blob 链接会返回 HTML 页面而非图片；自动改写成 raw 直链（兜住粘错的封面 URL）
+  function normalizeImageUrl(u) {
+    if (!u || typeof u !== 'string') return '';
+    var m = u.match(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/(.+)$/);
+    if (m) return 'https://raw.githubusercontent.com/' + m[1] + '/' + m[2] + '/' + m[3];
+    return u;
+  }
+
   function readTime(body) {
     // body 可以是 string[]（旧字段）或 HTML string；后者剥标签后估算
     const text = Array.isArray(body)
@@ -635,8 +651,9 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     setMeta('og-title', 'content', titleEn);
     setMeta('og-desc', 'content', descEn);
     setMeta('og-url', 'content', pageUrl);
-    if (article.coverImageUrl) {
-      setMeta('og-image', 'content', article.coverImageUrl);
+    var coverImg = normalizeImageUrl(article.coverImageUrl);
+    if (coverImg) {
+      setMeta('og-image', 'content', coverImg);
     }
     // NewsArticle 结构化数据 — 让 Google 能在 News / Discover 里收录
     var ld = {
@@ -649,8 +666,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       datePublished: article.date,
       dateModified: article.date,
       inLanguage: ['en', 'zh-CN'],
-      image: article.coverImageUrl
-        ? [article.coverImageUrl]
+      image: coverImg
+        ? [coverImg]
         : ['https://www.lyctai.com/images/hero.jpg?v=2'],
       author: { '@type': 'Organization', name: 'LyctRides', url: 'https://www.lyctai.com/' },
       publisher: {
@@ -679,11 +696,27 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     const rt = readTime(enSrc);
     setText('#hero-read-time', rt.en, rt.cn);
 
-    // Emoji banner
+    // Cover image (优先) 否则 Emoji banner
     const banner = document.getElementById('article-emoji');
-    if (article.emoji) {
-      banner.textContent = article.emoji;
+    const showEmojiBanner = () => {
+      banner.classList.remove('has-cover');
+      banner.textContent = article.emoji || '';
+      if (article.emoji) banner.classList.remove('hidden');
+      else banner.classList.add('hidden');
+    };
+    if (coverImg) {
+      const cover = document.createElement('img');
+      cover.className = 'article-cover-img';
+      cover.alt = (article.title && (article.title.en || article.title.cn)) || '';
+      cover.loading = 'eager';
+      cover.onerror = () => { banner.innerHTML = ''; showEmojiBanner(); };
+      cover.src = coverImg;
+      banner.innerHTML = '';
+      banner.appendChild(cover);
+      banner.classList.add('has-cover');
       banner.classList.remove('hidden');
+    } else {
+      showEmojiBanner();
     }
 
     // Body：富文本 HTML 优先（包 <div class="lang-en/cn"> 让语言切换 CSS 仍生效）
@@ -752,44 +785,36 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     return;
   }
 
-  // 拉单篇详情（含 body）+ 列表（用作"其他文章"侧栏）
-  // 2026-06-06: 加 data/news.json fallback,本地预览 / API 故障时仍可渲染。
-  // 与 news.html 的双层 fallback 口径一致。
-  function fromStaticList(list, articleId) {
-    const arr = Array.isArray(list) ? list : (list && list.data) || [];
-    const found = arr.find(a => a.id === articleId);
-    return { article: found, list: arr };
-  }
+  // 合并 静态基线(data/news.json) + 后台 API。基线在 id 冲突时优先（核心文章始终干净渲染），
+  // 后台独有文章（未来管理员发布）仍可解析。与 news.html 的合并口径一致。
+  const asList = (d) => Array.isArray(d) ? d : (d && (d.items || d.data)) || [];
+  const keyOf = (a) => a && (a.id || a.slug);
 
   const apiBase = (location.hostname === 'localhost' || location.hostname.startsWith('127.'))
     ? null
-    : '/api/public/news'; // 同源 — 生产走 Cloudflare Tunnel,本地直接跳 fallback
+    : '/api/public/news'; // 同源；本地预览直接只用静态基线
 
-  const tryApi = apiBase
-    ? Promise.all([
-        fetch(apiBase + '/' + encodeURIComponent(id), { cache: 'no-store' })
-          .then(r => r.ok ? r.json() : Promise.reject(new Error('detail not found'))),
-        fetch(apiBase, { cache: 'no-store' })
-          .then(r => r.ok ? r.json() : [])
-          .then(d => Array.isArray(d) ? d : (d && d.data) || []),
-      ])
-    : Promise.reject(new Error('local preview'));
+  const staticP = fetch('data/news.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : []).then(asList).catch(() => []);
+  const apiDetailP = apiBase
+    ? fetch(apiBase + '/' + encodeURIComponent(id), { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null).catch(() => null)
+    : Promise.resolve(null);
+  const apiListP = apiBase
+    ? fetch(apiBase, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).then(asList).catch(() => [])
+    : Promise.resolve([]);
 
-  tryApi
-    .then(([article, articles]) => {
+  Promise.all([staticP, apiDetailP, apiListP])
+    .then(([base, apiDetail, apiList]) => {
+      const byId = {};
+      apiList.forEach(a => { const k = keyOf(a); if (k) byId[k] = a; });
+      base.forEach(a => { const k = keyOf(a); if (k) byId[k] = a; }); // 基线覆盖 API
+      const list = Object.values(byId)
+        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+      const article = base.find(a => keyOf(a) === id) || apiDetail;
+      if (!article) throw new Error('not found');
       window.__currentArticle = article;
-      renderArticle(article, articles);
-    })
-    .catch(() => {
-      // Fallback: 静态 data/news.json (相对路径,本地+生产都能跑)
-      return fetch('data/news.json', { cache: 'no-store' })
-        .then(r => r.ok ? r.json() : Promise.reject(new Error('static missing')))
-        .then(list => {
-          const { article, list: arr } = fromStaticList(list, id);
-          if (!article) throw new Error('article not in static list');
-          window.__currentArticle = article;
-          renderArticle(article, arr);
-        });
+      renderArticle(article, list);
     })
     .catch(() => {
       document.getElementById('article-content').classList.add('hidden');

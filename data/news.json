@@ -1,9 +1,53 @@
 [
   {
+    "id": "airport-meet-greet-rail-cip-launch",
+    "category": {
+      "en": "Service Launch",
+      "cn": "服务上新"
+    },
+    "title": {
+      "en": "Now Available: Airport Meet & Greet and High-Speed Rail CIP Services",
+      "cn": "全新上线：机场 Meet & Greet 迎宾服务 · 高铁 CIP 贵宾礼遇"
+    },
+    "summary": {
+      "en": "LyctRides now offers two dedicated concierge services across Greater China — Airport Meet & Greet, with a name-board welcome, priority security channels, VIP lounge access and escort all the way to the aircraft door; and High-Speed Rail CIP, with platform greeting, a dedicated ticket gate, VIP waiting lounges and door-to-seat escort.",
+      "cn": "光年出行在大中华区新增两项专属礼宾服务——机场 Meet & Greet 迎宾服务（举牌迎接、专用安检通道、贵宾休息室、全程陪同至机舱口），以及高铁 CIP 贵宾服务（站台/检票口举牌迎接、贵宾候车室、专用检票通道、行李协助与陪同上车）。"
+    },
+    "body": {
+      "en": [
+        "LyctRides has launched two dedicated arrival-and-departure concierge services across Greater China: Airport Meet & Greet and High-Speed Rail CIP. For executives, VIP guests and visiting delegations, the moments before and after a journey — the terminal, the platform, the queue — matter as much as the ride itself. These services extend our chauffeur standard to the whole passage through the airport or rail station.",
+        "Airport Meet & Greet — a dedicated concierge waits name-board in hand at the arrivals gate, or at the check-in hall on departure, and accompanies the guest through the entire airport passage: priority security channels, VIP lounge access, luggage handling, a dedicated ramp shuttle where remote stands require it, assistance with check-in and boarding, and escort all the way to the aircraft door or out to the waiting car. Available for both arrivals and departures at major domestic and international airports across the mainland, Hong Kong and Macau.",
+        "High-Speed Rail CIP — at the station, a concierge greets the guest at the platform or ticket gate, guides them through a dedicated gate and into a VIP waiting lounge, handles luggage, and escorts them to their seat on departure, or off the platform straight to the waiting car on arrival. Covering major high-speed-rail hubs including Beijing South, Shanghai Hongqiao, Guangzhou South and Shenzhen North.",
+        "Both services are held to a single concierge standard. Each guest is met by a bilingual concierge briefed on the full itinerary; name, photo and contact reach the traveller before arrival by WeChat or WhatsApp; and the airport or rail experience is coordinated end-to-end with the LyctRides ground transfer, so the handover from platform to backseat is seamless.",
+        "Airport Meet & Greet and High-Speed Rail CIP are available now across Greater China by advance arrangement. To enquire or plan a route, contact us at bd@lyctai.com or through the LyctRides concierge desk: +86 158 2291 8415."
+      ],
+      "cn": [
+        "光年出行在大中华区推出两项专属的到离站礼宾服务：机场 Meet & Greet 迎宾服务，与高铁 CIP 贵宾服务。对于企业高管、贵宾与来访代表团而言，旅程前后的每一段——航站楼、站台、排队的间隙——与乘车本身同样重要。这两项服务，把我们的管家标准延伸到穿越机场与高铁站的全程。",
+        "机场 Meet & Greet 迎宾服务——专属礼宾管家在到达闸口举牌等候，出港时则在值机大厅迎接，全程陪同宾客穿越机场：专用安检通道、贵宾休息室、行李搬运，远机位时提供贵宾专用摆渡车，协助值机与登机，一路陪同至机舱口，或送至到达大厅的座驾。覆盖中国大陆、香港、澳门主要国内及国际机场，进港、出港均可安排。",
+        "高铁 CIP 贵宾服务——抵达车站，礼宾管家在站台或检票口举牌迎接，引导宾客经专用检票通道进入贵宾候车室，协助搬运行李；出发时陪同至座位，到站时引导出站、直达等候的座驾。覆盖北京南、上海虹桥、广州南、深圳北等主要高铁枢纽。",
+        "两项服务遵循同一套礼宾标准。每位宾客均由熟悉完整行程的双语管家迎接；管家姓名、照片与联系方式在抵达前经微信或 WhatsApp 送达；机场或高铁的体验与光年出行的地面接送全程打通，从站台到后座的交接无缝衔接。",
+        "机场 Meet & Greet 迎宾服务与高铁 CIP 贵宾服务现已在大中华区开放，需提前预约。咨询或规划行程，请联系 bd@lyctai.com，或通过光年出行礼宾专线 +86 158 2291 8415。"
+      ]
+    },
+    "date": "2026-07-10",
+    "featured": true,
+    "emoji": "🛎️",
+    "coverImageUrl": "https://www.lyctai.com/images/news-airport-rail.jpg"
+  },
+  {
     "id": "canton-fair-2026-spring",
-    "category": { "en": "Events", "cn": "活动保障" },
-    "title": { "en": "Mission Accomplished: LyctRides Delivers Ground Transport for the 139th Canton Fair", "cn": "圆满交付：光年完美保障第 139 届广交会海外采购商出行" },
-    "summary": { "en": "From mid-April through early May, our Guangzhou team handled airport-to-fair logistics for international buyers and exhibitors at the world's largest trade fair — every pickup on time, every chauffeur briefed, every itinerary held.", "cn": "4 月中至 5 月初，光年广州团队为第 139 届广交会海外采购商与参展商提供机场至会场的全程地面出行 — 每一程准时、管家训练有素、每一段行程稳如磐石。" },
+    "category": {
+      "en": "Events",
+      "cn": "活动保障"
+    },
+    "title": {
+      "en": "Mission Accomplished: LyctRides Delivers Ground Transport for the 139th Canton Fair",
+      "cn": "圆满交付：光年完美保障第 139 届广交会海外采购商出行"
+    },
+    "summary": {
+      "en": "From mid-April through early May, our Guangzhou team handled airport-to-fair logistics for international buyers and exhibitors at the world's largest trade fair — every pickup on time, every chauffeur briefed, every itinerary held.",
+      "cn": "4 月中至 5 月初，光年广州团队为第 139 届广交会海外采购商与参展商提供机场至会场的全程地面出行 — 每一程准时、管家训练有素、每一段行程稳如磐石。"
+    },
     "body": {
       "en": [
         "On May 5, the 139th China Import and Export Fair (Canton Fair) officially concluded at the Guangzhou Pazhou Complex after three back-to-back phases over three weeks. Across the entire run, LyctRides served as a primary ground transportation partner for select multinational delegations, Fortune-Global-500 buying offices, and several pavilion organisers — and we are proud to report not a single missed pickup.",
@@ -21,14 +65,23 @@
       ]
     },
     "date": "2026-05-07",
-    "featured": true,
+    "featured": false,
     "emoji": "🌐"
   },
   {
     "id": "gba-expansion-2025",
-    "category": { "en": "Company Update", "cn": "公司动态" },
-    "title": { "en": "LyctRides Expands to 10 New Cities Across the Greater Bay Area", "cn": "光年拓展至大湾区10座新城市" },
-    "summary": { "en": "Our network now spans over 300 cities across Mainland China, Hong Kong, Macau and Taiwan, bringing world-class ground transportation to more corporate travellers than ever before.", "cn": "我们的服务网络现已覆盖中国大陆、香港、澳门及台湾逾300座城市，为更多企业客户提供世界级地面出行服务。" },
+    "category": {
+      "en": "Company Update",
+      "cn": "公司动态"
+    },
+    "title": {
+      "en": "LyctRides Expands to 10 New Cities Across the Greater Bay Area",
+      "cn": "光年拓展至大湾区10座新城市"
+    },
+    "summary": {
+      "en": "Our network now spans over 300 cities across Mainland China, Hong Kong, Macau and Taiwan, bringing world-class ground transportation to more corporate travellers than ever before.",
+      "cn": "我们的服务网络现已覆盖中国大陆、香港、澳门及台湾逾300座城市，为更多企业客户提供世界级地面出行服务。"
+    },
     "body": {
       "en": [
         "LyctRides today announced the expansion of its premium ground transportation network to 10 additional cities across the Greater Bay Area, bringing its total coverage to over 300 cities across Greater China.",
@@ -51,9 +104,18 @@
   },
   {
     "id": "cbt-awards-2024",
-    "category": { "en": "Awards", "cn": "荣誉奖项" },
-    "title": { "en": "LyctRides Named Best Luxury Chauffeur Service — China Business Travel Awards 2024", "cn": "光年荣获2024中国商务出行最佳豪华商务用车服务奖" },
-    "summary": { "en": "Recognised for operational excellence and client satisfaction across our Greater China network, this award reflects the dedication of every team member.", "cn": "凭借卓越的运营水准与客户满意度，光年荣获该奖项，这是每位团队成员共同努力的结果。" },
+    "category": {
+      "en": "Awards",
+      "cn": "荣誉奖项"
+    },
+    "title": {
+      "en": "LyctRides Named Best Luxury Chauffeur Service — China Business Travel Awards 2024",
+      "cn": "光年荣获2024中国商务出行最佳豪华商务用车服务奖"
+    },
+    "summary": {
+      "en": "Recognised for operational excellence and client satisfaction across our Greater China network, this award reflects the dedication of every team member.",
+      "cn": "凭借卓越的运营水准与客户满意度，光年荣获该奖项，这是每位团队成员共同努力的结果。"
+    },
     "body": {
       "en": [
         "LyctRides has been named Best Luxury Chauffeur Service at the China Business Travel Awards 2024, one of the most prestigious recognitions in the corporate mobility industry.",
@@ -76,9 +138,18 @@
   },
   {
     "id": "fortune500-partnership-2025",
-    "category": { "en": "Partnership", "cn": "战略合作" },
-    "title": { "en": "New Multi-Year Agreement with Leading Fortune 500 Enterprise", "cn": "光年与世界500强企业签署多年战略合作协议" },
-    "summary": { "en": "A landmark multi-year agreement to provide executive ground transportation across 15 cities, covering over 2,000 annual journeys for C-suite and senior leadership.", "cn": "里程碑式合作协议，为其高管提供覆盖15个城市、逾2,000次年度行程的专属礼宾出行服务。" },
+    "category": {
+      "en": "Partnership",
+      "cn": "战略合作"
+    },
+    "title": {
+      "en": "New Multi-Year Agreement with Leading Fortune 500 Enterprise",
+      "cn": "光年与世界500强企业签署多年战略合作协议"
+    },
+    "summary": {
+      "en": "A landmark multi-year agreement to provide executive ground transportation across 15 cities, covering over 2,000 annual journeys for C-suite and senior leadership.",
+      "cn": "里程碑式合作协议，为其高管提供覆盖15个城市、逾2,000次年度行程的专属礼宾出行服务。"
+    },
     "body": {
       "en": [
         "LyctRides has entered into a multi-year strategic partnership with a leading Fortune 500 enterprise operating across Greater China, providing dedicated executive ground transportation services.",
@@ -101,9 +172,18 @@
   },
   {
     "id": "zeekr-fleet-addition-2024",
-    "category": { "en": "Vehicles", "cn": "车型资讯" },
-    "title": { "en": "Introducing the ZEEKR 009 — Zero-Emission Luxury for the Modern Executive", "cn": "全新加入：极氪009 — 面向现代高管的零排放豪华出行" },
-    "summary": { "en": "The newest addition to our service line-up brings sustainable luxury travel to corporate clients who demand the highest standards without compromise — including a 702 km range and ultra-quiet cabin.", "cn": "光年最新加入的车型，为追求卓越的企业客户带来可持续豪华出行体验，续航702公里，超静音座舱。" },
+    "category": {
+      "en": "Vehicles",
+      "cn": "车型资讯"
+    },
+    "title": {
+      "en": "Introducing the ZEEKR 009 — Zero-Emission Luxury for the Modern Executive",
+      "cn": "全新加入：极氪009 — 面向现代高管的零排放豪华出行"
+    },
+    "summary": {
+      "en": "The newest addition to our service line-up brings sustainable luxury travel to corporate clients who demand the highest standards without compromise — including a 702 km range and ultra-quiet cabin.",
+      "cn": "光年最新加入的车型，为追求卓越的企业客户带来可持续豪华出行体验，续航702公里，超静音座舱。"
+    },
     "body": {
       "en": [
         "LyctRides is pleased to announce the addition of the ZEEKR 009 to our premium service line-up, marking a significant step in our commitment to sustainable executive mobility.",
