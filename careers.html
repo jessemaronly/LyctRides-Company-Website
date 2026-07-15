@@ -1157,7 +1157,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
                 <span class="lang-en">Résumé / CV</span><span class="lang-cn">简历</span>
               </label>
               <input id="f-resume-${job.id}" type="file" name="resume" accept=".pdf,.doc,.docx" class="w-full text-sm text-[#50606f] file:mr-3"/>
-              <p class="text-[10px] text-[#50606f]/60 mt-1 font-mono">PDF / DOC / DOCX</p>
+              <p class="text-[10px] text-[#50606f]/60 mt-1 font-mono">PDF / DOC / DOCX · <span class="lang-en">10MB max</span><span class="lang-cn">上限 10MB</span></p>
             </div>
 
             <div class="flex items-center justify-between pt-2">
@@ -1304,11 +1304,13 @@ function handleSubmit(e, jobId) {
     }
   });
 
-  // 简历附件大小校验：企业微信群机器人 20MB 上限
+  // 简历附件大小校验：必须和后端 multer 上限一致（10MB，2026-05-23 安全收紧）。
+  // 之前前端写 20MB、后端 10MB → 10~20MB 的简历前端放行、后端 413，用户只看到"提交失败"。
+  const MAX_RESUME_BYTES = 10 * 1024 * 1024;
   const resume = fd.get('resume');
   if (resume instanceof File && resume.size > 0) {
-    if (resume.size > 20 * 1024 * 1024) {
-      showCareerError(jobId, 'Resume exceeds 20MB — please compress and re-upload.', '简历文件超过 20MB，请压缩后重新上传。');
+    if (resume.size > MAX_RESUME_BYTES) {
+      showCareerError(jobId, 'Resume exceeds 10MB — please compress and re-upload.', '简历文件超过 10MB，请压缩后重新上传。');
       return;
     }
   } else {
@@ -1322,7 +1324,11 @@ function handleSubmit(e, jobId) {
     body: fd,
   })
     .then(res => {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+      if (!res.ok) {
+        const err = new Error('HTTP ' + res.status);
+        err.status = res.status;
+        throw err;
+      }
       return res.json();
     })
     .then(() => {
@@ -1335,7 +1341,20 @@ function handleSubmit(e, jobId) {
         setTimeout(() => success.classList.add('hidden'), 6000);
       }
     })
-    .catch(() => showCareerError(jobId, 'Submission failed. Please try again or email bd@lyctai.com.', '提交失败，请稍后重试或直接联系 bd@lyctai.com。'));
+    .catch((err) => {
+      const st = err && err.status;
+      if (st === 413) {
+        // 后端 multer 拒了附件（>10MB）
+        showCareerError(jobId, 'Resume file is too large (10MB max) — please compress and re-upload.', '简历文件过大（上限 10MB），请压缩后重新上传。');
+      } else if (st === 429) {
+        // 限流：3 次 / 60 秒
+        showCareerError(jobId, 'Too many attempts — please wait a minute and try again.', '提交过于频繁，请等待 1 分钟后再试。');
+      } else if (st === 400) {
+        showCareerError(jobId, 'Please check your details — some fields are invalid.', '请检查填写内容，部分字段格式有误。');
+      } else {
+        showCareerError(jobId, 'Submission failed. Please try again or email bd@lyctai.com.', '提交失败，请稍后重试或直接联系 bd@lyctai.com。');
+      }
+    });
 }
 </script>
 
