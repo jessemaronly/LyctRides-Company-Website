@@ -1,5 +1,10 @@
 # LyctRides Company Website — Codex Instructions
 
+
+## 共享开发台账(所有 AI 强制,2026-07-15 用户铁律)
+
+开工前读 [`docs/dev-log/website.md`](docs/dev-log/website.md);修 bug 前必须先搜 [`docs/dev-log/bugs.md`](docs/dev-log/bugs.md)(同一个问题不许连续犯错);交付后同批提交内在台账顶部补一条。多 AI 记忆经 git 仓库共享,不走各家私有 memory。制度详情见平台仓 lyctrides-platform/docs/dev-log/README.md。
+
 ## 🗺️ 第一件事：读 INFRA.md
 
 完整的基础设施 / 部署架构 / 服务器路径 / 域名映射 / 清理建议在：
