@@ -732,7 +732,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     <a href="/" class="flex items-center">
       <img src="/images/logo.svg" alt="LyctRides" class="h-8 w-auto">
     </a>
-    <div class="hidden md:flex items-center space-x-3 lg:space-x-5 text-[13px] font-semibold tracking-[0.08em] whitespace-nowrap">
+    <div class="hidden lg:flex items-center space-x-3 lg:space-x-5 text-[13px] font-semibold tracking-[0.08em] whitespace-nowrap">
       <!-- 出行服务 with liquid-glass dropdown -->
       <div class="nav-services-trigger">
         <a class="nav-pill nav-pill-active gap-1.5" href="/services.html">
@@ -790,11 +790,11 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
       <button class="nav-glass-pill" onclick="var l=document.documentElement.lang==='en'?'zh-CN':'en';document.documentElement.lang=l;localStorage.setItem('lyct-lang',l)">
         <span class="lang-en">EN&nbsp;|&nbsp;中文</span><span class="lang-cn">中文&nbsp;|&nbsp;EN</span>
       </button>
-      <a href="https://www.lyctrides.com/login" class="hidden md:inline-flex items-center gap-2 nav-glass-pill">
+      <a href="https://www.lyctrides.com/login" class="hidden lg:inline-flex items-center gap-2 nav-glass-pill">
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -802,7 +802,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
 </nav>
 
 <!-- Mobile menu -->
-<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] bottom-0 z-50 hidden bg-[#FAFAF7] shadow-xl overflow-y-auto px-5 py-4 flex-col gap-1 md:hidden">
+<div id="mobile-menu" class="fixed left-0 right-0 top-[62px] bottom-0 z-50 hidden bg-[#FAFAF7] shadow-xl overflow-y-auto px-5 py-4 flex-col gap-1 lg:hidden" style="padding-bottom:calc(1rem + env(safe-area-inset-bottom, 0px));">
   <a href="/services.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Our Services</span><span class="lang-cn">出行服务</span></a>
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
@@ -1282,6 +1282,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
         <a href="/services.html#airport"><span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span></a>
         <a href="/services.html#airport-rail"><span class="lang-en">Airport &amp; Rail Concierge</span><span class="lang-cn">机场·高铁礼宾</span></a>
         <a href="/services.html#hourly"><span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn">时租与日租</span></a>
+        <a href="/services.html#cityrides"><span class="lang-en">City Rides</span><span class="lang-cn">市内用车</span></a>
         <a href="/services.html#citytocity"><span class="lang-en">City-to-City</span><span class="lang-cn">城际通行</span></a>
         <a href="/services.html#longterm"><span class="lang-en">Long-term Charter</span><span class="lang-cn">长包车</span></a>
         <a href="/services.html#events"><span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span></a>
