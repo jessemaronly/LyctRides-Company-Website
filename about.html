@@ -43,6 +43,9 @@
   h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
+  /* signature: Always as Promised 签名行，Crimson italic 跟主标呼应 */
+  .hero-signature { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(10,10,10,0.7); letter-spacing: 0.02em; }
+  .hero-signature .lang-cn { font-family: 'Noto Serif SC', serif; font-style: normal; font-weight: 500; letter-spacing: 0.25em; color: rgba(10,10,10,0.75); }
 
   :root {
     --container-max: 1280px;
@@ -605,7 +608,7 @@
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 <style id="footer-cc">
@@ -666,9 +669,10 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   .hero-on-image .ios-pill { background:#FAFAF7 !important; color:#0A0A0A !important; }
   .hero-on-image .ios-pill-outline { border-color:rgba(250,250,247,.5) !important; color:#FAFAF7 !important; }
 </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://www.lyctai.com/about.html","name":"About LyctRides · 关于光年出行","inLanguage":["en","zh-CN"],"mainEntity":{"@type":"Organization","@id":"https://www.lyctai.com/#business","name":"LyctRides","alternateName":"光年出行","legalName":"LyctRides Car Service Co., Ltd.","foundingDate":"2018-08-08","url":"https://www.lyctai.com/","logo":"https://www.lyctai.com/images/logo.svg","email":"bd@lyctai.com","telephone":"+86-158-2291-8415","description":"Premium corporate ground transportation and concierge coordinator across Greater China since 2018.","address":{"@type":"PostalAddress","streetAddress":"番禺区海景路2号","addressLocality":"Guangzhou","addressRegion":"Guangdong","postalCode":"510000","addressCountry":"CN"},"areaServed":[{"@type":"AdministrativeArea","name":"Mainland China"},{"@type":"AdministrativeArea","name":"Hong Kong"},{"@type":"AdministrativeArea","name":"Macau"},{"@type":"AdministrativeArea","name":"Taiwan"}],"sameAs":["https://www.linkedin.com/company/lyctrides","https://www.crunchbase.com/organization/lyctrides"]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://www.lyctai.com/about.html","name":"About LyctRides · 关于光年出行","inLanguage":["en","zh-CN"],"mainEntity":{"@type":"Organization","@id":"https://www.lyctai.com/#business","name":"LyctRides","alternateName":["光年出行","光年专车"],"legalName":"LyctRides Car Service Co., Ltd.","foundingDate":"2018-08-08","url":"https://www.lyctai.com/","logo":"https://www.lyctai.com/images/logo.svg","email":"bd@lyctai.com","telephone":"+86-158-2291-8415","description":"Premium corporate ground transportation and concierge coordinator across Greater China since 2018.","address":{"@type":"PostalAddress","streetAddress":"番禺区海景路2号","addressLocality":"Guangzhou","addressRegion":"Guangdong","postalCode":"510000","addressCountry":"CN"},"areaServed":[{"@type":"AdministrativeArea","name":"Mainland China"},{"@type":"AdministrativeArea","name":"Hong Kong"},{"@type":"AdministrativeArea","name":"Macau"},{"@type":"AdministrativeArea","name":"Taiwan"}],"sameAs":["https://www.linkedin.com/company/lyctrides","https://www.crunchbase.com/organization/lyctrides"]}}</script>
 </head>
 <body>
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 <!-- ─── iOS Glass Nav ─── -->
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
@@ -738,7 +742,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -751,12 +755,17 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 <!-- ─── Hero Strip ─── -->
-<section class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
+<section id="main" class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
   <div class="hero-bg-media" style="background-image:url('/images/9-about%20company.jpg')" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="section-container relative" style="z-index: 1;">
@@ -862,56 +871,56 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <span class="font-mono text-[10px] tracking-[0.35em] text-[#0A0A0A]/20 block mb-8">01</span>
         <div class="lang-en">
           <div class="text-[#0A0A0A] text-3xl font-bold mb-2 tracking-tight">Precision</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">精准</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">精准</div>
         </div>
         <div class="lang-cn">
           <div style="font-family:'Noto Sans SC',sans-serif;font-weight:300;" class="text-[#0A0A0A] text-4xl mb-2">精准</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">Precision</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">Precision</div>
         </div>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-en">Every arrival is on plan. Not one minute over. We treat your schedule as the non-negotiable it is.</p>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">每一次抵达都在计划之内。不多一分钟，不差一个细节。时间是高管最贵的资产，我们对此比任何人都清楚。</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-en">Every arrival is on plan. Not one minute over. We treat your schedule as the non-negotiable it is.</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">每一次抵达都在计划之内。不多一分钟，不差一个细节。时间是高管最贵的资产，我们对此比任何人都清楚。</p>
       </div>
 
       <div class="ios-card p-8 md:p-10 reveal" data-delay="2">
         <span class="font-mono text-[10px] tracking-[0.35em] text-[#0A0A0A]/20 block mb-8">02</span>
         <div class="lang-en">
           <div class="text-[#0A0A0A] text-3xl font-bold mb-2 tracking-tight">Stillness</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">静谧</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">静谧</div>
         </div>
         <div class="lang-cn">
           <div style="font-family:'Noto Sans SC',sans-serif;font-weight:300;" class="text-[#0A0A0A] text-4xl mb-2">静谧</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">Stillness</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">Stillness</div>
         </div>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-en">The finest service is imperceptible. Stillness is discipline that returns your focus to you.</p>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">最高端的服务让人感受不到它的存在。静谧不是冷漠，而是一种高度克制的专注——让乘客完全沉浸在自己的思绪中。</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-en">The finest service is imperceptible. Stillness is discipline that returns your focus to you.</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">最高端的服务让人感受不到它的存在。静谧不是冷漠，而是一种高度克制的专注——让乘客完全沉浸在自己的思绪中。</p>
       </div>
 
       <div class="ios-card p-8 md:p-10 reveal" data-delay="3">
         <span class="font-mono text-[10px] tracking-[0.35em] text-[#0A0A0A]/20 block mb-8">03</span>
         <div class="lang-en">
           <div class="text-[#0A0A0A] text-3xl font-bold mb-2 tracking-tight">Discretion</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">谨慎</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">谨慎</div>
         </div>
         <div class="lang-cn">
           <div style="font-family:'Noto Sans SC',sans-serif;font-weight:300;" class="text-[#0A0A0A] text-4xl mb-2">谨慎</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">Discretion</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">Discretion</div>
         </div>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-en">What happens in the car stays in the car. Itineraries, passengers, conversations — none of it leaves.</p>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">车内发生的一切，留在车内。我们服务的行程、人物与对话，从不对外披露。信任，是我们最重要的承诺。</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-en">What happens in the car stays in the car. Itineraries, passengers, conversations — none of it leaves.</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">车内发生的一切，留在车内。我们服务的行程、人物与对话，从不对外披露。信任，是我们最重要的承诺。</p>
       </div>
 
       <div class="ios-card p-8 md:p-10 reveal" data-delay="4">
         <span class="font-mono text-[10px] tracking-[0.35em] text-[#0A0A0A]/20 block mb-8">04</span>
         <div class="lang-en">
           <div class="text-[#0A0A0A] text-3xl font-bold mb-2 tracking-tight">Commitment</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">持守</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">持守</div>
         </div>
         <div class="lang-cn">
           <div style="font-family:'Noto Sans SC',sans-serif;font-weight:300;" class="text-[#0A0A0A] text-4xl mb-2">持守</div>
-          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-7">Commitment</div>
+          <div class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 mb-7">Commitment</div>
         </div>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-en">Always as promised. Not weather, distance, or hour changes that. When we confirm, we are already on the way.</p>
-        <p class="text-[#0A0A0A]/45 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">始终如约。不因天气、不因距离、不因深夜而打折扣。约定的那一刻，我们就已经在路上了。</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-en">Always as promised. Not weather, distance, or hour changes that. When we confirm, we are already on the way.</p>
+        <p class="text-[#0A0A0A]/60 text-sm leading-relaxed lang-cn" style="font-family:'Noto Sans SC',sans-serif;font-weight:300;">始终如约。不因天气、不因距离、不因深夜而打折扣。约定的那一刻，我们就已经在路上了。</p>
       </div>
 
     </div>
@@ -920,7 +929,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       <div class="flex items-center gap-4">
         <span class="text-[#0A0A0A] font-bold text-base tracking-tight lang-cn">始终如约</span>
         <span class="w-px h-4 bg-[#0A0A0A]/15 block"></span>
-        <span class="font-mono text-[11px] tracking-[0.12em] text-[#0A0A0A]/35 lang-en">Always as promised.</span>
+        <span class="font-mono text-[11px] tracking-[0.12em] text-[#0A0A0A]/55 lang-en">Always as promised.</span>
       </div>
       <span class="font-mono text-[11px] tracking-[0.25em] text-[#0A0A0A]/25 uppercase lang-cn">行有度 · 礼有节</span>
       <span class="font-mono text-[11px] tracking-[0.25em] text-[#0A0A0A]/25 uppercase lang-en">Travel with Measure · Service with Manner.</span>
@@ -938,7 +947,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <span class="lang-cn">大中华区 · 全域覆盖</span>
       </h2>
       <p class="section-intro mt-4">
-        <span class="lang-en">300+ cities across Mainland China, Hong Kong, Macau, and Taiwan — wherever your travel takes you, we have a vetted driver and vehicle ready.</span>
+        <span class="lang-en">300+ cities across Mainland China, Hong Kong, Macau, and Taiwan — wherever your travel takes you, we have a vetted chauffeur and vehicle ready.</span>
         <span class="lang-cn">300+ 城市覆盖中国大陆、香港、澳门、台湾——无论行程到哪，我们都有经过严格筛选的管家与车辆待命。</span>
       </p>
     </div>
@@ -968,7 +977,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-4 font-mono">02</span>
         <h3 class="text-base md:text-lg font-semibold tracking-tight mb-3"><span class="lang-en">Hong Kong</span><span class="lang-cn">香港</span></h3>
         <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light mb-4">
-          <span class="lang-en">Cross-border specialist. HKIA pickup with mainland onward connections. Bilingual drivers with HK driving credentials.</span>
+          <span class="lang-en">Cross-border specialist. HKIA pickup with mainland onward connections. Bilingual chauffeurs with HK driving credentials.</span>
           <span class="lang-cn">跨境专家。机场接机 + 大湾区联运。具备香港驾照的双语管家。</span>
         </p>
         <div class="flex flex-wrap gap-1.5">
@@ -984,7 +993,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <span class="text-[10px] tracking-[0.3em] text-[#0A0A0A]/25 block mb-4 font-mono">03</span>
         <h3 class="text-base md:text-lg font-semibold tracking-tight mb-3"><span class="lang-en">Macau</span><span class="lang-cn">澳门</span></h3>
         <p class="text-[#0A0A0A]/55 text-[13.5px] leading-[1.55] font-light mb-4">
-          <span class="lang-en">Macau International Airport, casino transfers, cross-bridge to Zhuhai. Bilingual drivers (EN / CN / PT).</span>
+          <span class="lang-en">Macau International Airport, casino transfers, cross-bridge to Zhuhai. Bilingual chauffeurs (EN / CN / PT).</span>
           <span class="lang-cn">澳门机场接送、酒店间转场、港珠澳大桥联运。中英葡三语管家。</span>
         </p>
         <div class="flex flex-wrap gap-1.5">
@@ -1013,7 +1022,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- Bottom summary line -->
     <div class="mt-10 reveal text-center">
-      <span class="ios-eyebrow"><span class="lang-en">+ Cross-border airport relay · 跨境联运</span><span class="lang-cn">跨境机场联运 · Cross-border relay</span></span>
+      <span class="ios-eyebrow"><span class="lang-en">+ Cross-border airport relay</span><span class="lang-cn">+ 跨境机场联运</span></span>
     </div>
   </div>
 </section>
@@ -1030,32 +1039,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <span class="font-mono text-[10px] tracking-[0.3em] text-[#0A0A0A]/30 block mb-3">2018</span>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-en">Founded</div>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-cn">创立</div>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-en">First ride from Guangzhou. Three Mercedes, one standard.</p>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-cn">广州开出第一程，三辆奔驰，一个标准。</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-en">First ride from Guangzhou. Three Mercedes, one standard.</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-cn">广州开出第一程，三辆奔驰，一个标准。</p>
       </div>
 
       <div class="timeline-item px-6 md:px-8 pb-8 md:pb-0 border-r border-[#0A0A0A]/10 reveal" data-delay="2">
         <span class="font-mono text-[10px] tracking-[0.3em] text-[#0A0A0A]/30 block mb-3">2020</span>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-en">50 Cities</div>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-cn">50 座城市</div>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-en">Expanded across the Pearl River Delta and Yangtze corridor.</p>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-cn">服务网络延伸至珠三角与长三角走廊。</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-en">Expanded across the Pearl River Delta and Yangtze corridor.</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-cn">服务网络延伸至珠三角与长三角走廊。</p>
       </div>
 
       <div class="timeline-item px-6 md:px-8 pb-8 md:pb-0 border-r border-[#0A0A0A]/10 reveal" data-delay="3">
         <span class="font-mono text-[10px] tracking-[0.3em] text-[#0A0A0A]/30 block mb-3">2023</span>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-en">Cross-border Launched</div>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-cn">跨境服务启动</div>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-en">Hong Kong, Macao, and Taiwan routes open. Greater China complete.</p>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-cn">香港、澳门、台湾线路开通，大中华区布局完成。</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-en">Hong Kong, Macau, and Taiwan routes open. Greater China complete.</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-cn">香港、澳门、台湾线路开通，大中华区布局完成。</p>
       </div>
 
       <div class="timeline-item px-6 md:px-8 pb-8 md:pb-0 reveal" data-delay="4">
         <span class="font-mono text-[10px] tracking-[0.3em] text-[#0A0A0A]/30 block mb-3">2026</span>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-en">300+ Cities</div>
         <div class="text-[#0A0A0A] font-semibold text-sm mb-1.5 lang-cn">300+ 座城市</div>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-en">10,000+ corporate clients. One standard, everywhere.</p>
-        <p class="text-[#0A0A0A]/45 text-xs leading-relaxed lang-cn">逾万家企业客户，同一标准，遍及全境。</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-en">10,000+ corporate clients. One standard, everywhere.</p>
+        <p class="text-[#0A0A0A]/60 text-xs leading-relaxed lang-cn">逾万家企业客户，同一标准，遍及全境。</p>
       </div>
 
     </div>
@@ -1065,6 +1074,14 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <!-- ─── CTA Banner ─── -->
 <section class="section-pad section-divider">
   <div class="section-container">
+    <p class="flex items-center justify-center gap-4 mb-10 reveal">
+      <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    <span class="hero-signature">
+      <span class="lang-en">Always as Promised</span>
+      <span class="lang-cn">始 终 如 约</span>
+    </span>
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    </p>
     <div class="reveal flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 p-7 md:p-12 rounded-[var(--r-xl)] relative overflow-hidden"
          style="background: linear-gradient(135deg, #1c1917 0%, #0A0A0A 100%); box-shadow: var(--shadow-card-hover);">
       <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-40 pointer-events-none"
@@ -1164,7 +1181,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -1220,9 +1237,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     } catch(_) {}
   })();
 
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
 
   (function(){
     var nav = document.querySelector('.ios-glass');

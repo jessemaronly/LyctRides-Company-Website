@@ -45,6 +45,9 @@
   h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
+  /* signature: Always as Promised 签名行，Crimson italic 跟主标呼应 */
+  .hero-signature { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(10,10,10,0.7); letter-spacing: 0.02em; }
+  .hero-signature .lang-cn { font-family: 'Noto Serif SC', serif; font-style: normal; font-weight: 500; letter-spacing: 0.25em; color: rgba(10,10,10,0.75); }
 
   :root {
     --container-max: 1280px;
@@ -291,6 +294,7 @@
 
   /* Filter chip active state */
   .filter-chip { cursor: pointer; transition: all var(--dur-fast) var(--ease-out); }
+  .filter-chip:not(.chip-active):hover { background: rgba(10,10,10,0.06); }
   .filter-chip.chip-active { background: #0A0A0A; color: #FAFAF7; border-color: #0A0A0A; }
 
   /* iOS form inputs */
@@ -541,7 +545,7 @@
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 <style id="footer-cc">
@@ -605,6 +609,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://www.lyctai.com/careers.html","name":"Careers at LyctRides · 加入光年出行","inLanguage":["en","zh-CN"],"description":"Career opportunities at LyctRides — chauffeur, concierge, operations and corporate roles across Greater China.","about":{"@type":"Organization","@id":"https://www.lyctai.com/#business","name":"LyctRides","url":"https://www.lyctai.com/","logo":"https://www.lyctai.com/images/logo.svg"}}</script>
 </head>
 <body>
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 <!-- iOS Glass Nav -->
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
@@ -674,7 +679,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -687,12 +692,17 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 <!-- Hero strip -->
-<section class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
+<section id="main" class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
   <div class="hero-bg-media" style="background-image:url('/images/8-careers.jpg')" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="section-container relative" style="z-index: 1;">
@@ -829,13 +839,13 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       </div>
       <!-- Dept filters -->
       <div id="dept-filters" class="flex flex-wrap gap-2">
-        <button class="filter-chip ios-eyebrow chip-active" data-dept="all">
+        <button class="filter-chip ios-eyebrow chip-active" data-dept="all" aria-pressed="true">
           <span class="lang-en">All</span><span class="lang-cn">全部</span>
         </button>
-        <button class="filter-chip ios-eyebrow" data-dept="corporate">
+        <button class="filter-chip ios-eyebrow" data-dept="corporate" aria-pressed="false">
           <span class="lang-en">Corporate</span><span class="lang-cn">企业</span>
         </button>
-        <button class="filter-chip ios-eyebrow" data-dept="operations">
+        <button class="filter-chip ios-eyebrow" data-dept="operations" aria-pressed="false">
           <span class="lang-en">Operations</span><span class="lang-cn">运营</span>
         </button>
       </div>
@@ -852,6 +862,18 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     </p>
   </div>
 </div>
+
+<!-- ─── Brand signature · Always as Promised ─── -->
+<section class="px-5 py-12 md:py-16">
+  <p class="flex items-center justify-center gap-4 reveal">
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    <span class="hero-signature">
+      <span class="lang-en">Always as Promised</span>
+      <span class="lang-cn">始 终 如 约</span>
+    </span>
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+  </p>
+</section>
 
 <!-- Footer -->
 <footer class="w-full pt-14 md:pt-20 pb-24 md:pb-24 px-5 md:px-12 bg-[#0A0A0A] text-white">
@@ -922,7 +944,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -981,9 +1003,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   })();
 
   // Mobile menu
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
 
   // Nav scroll + FAB
   (function(){
@@ -1161,7 +1206,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
             </div>
 
             <div class="flex items-center justify-between pt-2">
-              <p id="success-${job.id}" class="hidden text-xs font-mono text-[#0A0A0A]">
+              <p id="success-${job.id}" role="status" class="hidden text-xs font-mono text-[#0A0A0A]">
                 <span class="lang-en">✓ Application submitted — we'll be in touch.</span>
                 <span class="lang-cn">✓ 申请已提交，我们将尽快联系您。</span>
               </p>
@@ -1235,9 +1280,25 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   document.getElementById('dept-filters').addEventListener('click', e => {
     const btn = e.target.closest('[data-dept]');
     if (!btn) return;
+    // render() 会 innerHTML 重建列表；若有展开且已填写的申请表，先确认再切换
+    const openForm = document.querySelector('.apply-form.open form');
+    if (openForm) {
+      const dirty =
+        Array.from(openForm.querySelectorAll('input:not([type="hidden"]):not([type="file"]), textarea')).some(el => el.value && el.value.trim() !== '') ||
+        Array.from(openForm.querySelectorAll('input[type="file"]')).some(el => el.files && el.files.length > 0) ||
+        Array.from(openForm.querySelectorAll('select')).some(el => el.value && el.value !== '');
+      if (dirty) {
+        const tip = (document.documentElement.lang === 'zh-CN')
+          ? '切换筛选将清空正在填写的申请，继续？'
+          : 'Switching filters will clear your application in progress. Continue?';
+        if (!window.confirm(tip)) return;
+      }
+    }
     activeDept = btn.dataset.dept;
     document.querySelectorAll('.filter-chip').forEach(b => {
-      b.classList.toggle('chip-active', b === btn);
+      const active = b === btn;
+      b.classList.toggle('chip-active', active);
+      b.setAttribute('aria-pressed', String(active));
     });
     render(allJobs);
   });
@@ -1280,6 +1341,22 @@ function showCareerError(jobId, en, cn) {
 function handleSubmit(e, jobId) {
   e.preventDefault();
   const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn && submitBtn.disabled) return;
+  function restoreBtn() {
+    if (!submitBtn) return;
+    submitBtn.disabled = false;
+    submitBtn.removeAttribute('aria-busy');
+    submitBtn.style.opacity = '';
+    if (submitBtn.dataset.label) submitBtn.innerHTML = submitBtn.dataset.label;
+  }
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.setAttribute('aria-busy', 'true');
+    submitBtn.style.opacity = '0.6';
+    if (!submitBtn.dataset.label) submitBtn.dataset.label = submitBtn.innerHTML;
+    submitBtn.textContent = (document.documentElement.lang === 'zh-CN' ? '提交中…' : 'Submitting…');
+  }
   const fd = new FormData(form);
 
   // 把 cover_letter 字段名规整为 message（后端 DTO 字段名），并裁掉空值
@@ -1311,6 +1388,7 @@ function handleSubmit(e, jobId) {
   if (resume instanceof File && resume.size > 0) {
     if (resume.size > MAX_RESUME_BYTES) {
       showCareerError(jobId, 'Resume exceeds 10MB — please compress and re-upload.', '简历文件超过 10MB，请压缩后重新上传。');
+      restoreBtn();
       return;
     }
   } else {
@@ -1338,7 +1416,6 @@ function handleSubmit(e, jobId) {
       const success = document.getElementById(`success-${jobId}`);
       if (success) {
         success.classList.remove('hidden');
-        setTimeout(() => success.classList.add('hidden'), 6000);
       }
     })
     .catch((err) => {
@@ -1354,7 +1431,8 @@ function handleSubmit(e, jobId) {
       } else {
         showCareerError(jobId, 'Submission failed. Please try again or email bd@lyctai.com.', '提交失败，请稍后重试或直接联系 bd@lyctai.com。');
       }
-    });
+    })
+    .finally(restoreBtn);
 }
 </script>
 

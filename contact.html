@@ -43,6 +43,9 @@
   h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
+  /* signature: Always as Promised 签名行，Crimson italic 跟主标呼应 */
+  .hero-signature { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(10,10,10,0.7); letter-spacing: 0.02em; }
+  .hero-signature .lang-cn { font-family: 'Noto Serif SC', serif; font-style: normal; font-weight: 500; letter-spacing: 0.25em; color: rgba(10,10,10,0.75); }
 
   :root {
     --container-max: 1280px;
@@ -626,7 +629,7 @@
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","url":"https://www.lyctai.com/contact.html","mainEntity":{"@type":"Organization","name":"LyctRides","legalName":"LyctRides Car Service Co., Ltd.","url":"https://www.lyctai.com/","email":"bd@lyctai.com","telephone":"+86-158-2291-8415","address":{"@type":"PostalAddress","streetAddress":"番禺区海景路2号","addressLocality":"Guangzhou","addressRegion":"Guangdong","postalCode":"510000","addressCountry":"CN"},"areaServed":[{"@type":"AdministrativeArea","name":"Mainland China"},{"@type":"AdministrativeArea","name":"Hong Kong"},{"@type":"AdministrativeArea","name":"Macau"},{"@type":"AdministrativeArea","name":"Taiwan"}]}}</script>
@@ -690,6 +693,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 <!-- ─── iOS Glass Nav ─── -->
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
@@ -759,7 +763,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -772,12 +776,17 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 <!-- ─── Hero Strip ─── -->
-<section class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
+<section id="main" class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
   <div class="hero-bg-media" style="background-image:url('/images/4-contact.jpg')" aria-hidden="true"></div>
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="section-container relative" style="z-index: 1;">
@@ -847,13 +856,13 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           <div>
             <label class="ios-input-label" for="cf-service"><span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span></label>
             <select id="cf-service" class="ios-input" name="serviceInterest">
-              <option value="Corporate Account / 企业账户">Corporate Account / 企业账户</option>
-              <option value="One-time VIP Transfer / 单次 VIP 接送">One-time VIP Transfer / 单次 VIP 接送</option>
-              <option value="Hourly & Daily Hire / 时租与日租">Hourly &amp; Daily Hire / 时租与日租</option>
-              <option value="City-to-City / 城际通行">City-to-City / 城际通行</option>
-              <option value="Long-term Charter / 长包车">Long-term Charter / 长包车</option>
-              <option value="Event Operations / 活动出行">Event Operations / 活动出行</option>
-              <option value="Private Jet / 公务机">Private Jet / 公务机</option>
+              <option value="Corporate Account / 企业账户" data-opt-en="Corporate Account" data-opt-cn="企业账户">Corporate Account / 企业账户</option>
+              <option value="One-time VIP Transfer / 单次 VIP 接送" data-opt-en="One-time VIP Transfer" data-opt-cn="单次 VIP 接送">One-time VIP Transfer / 单次 VIP 接送</option>
+              <option value="Hourly & Daily Hire / 时租与日租" data-opt-en="Hourly &amp; Daily Hire" data-opt-cn="时租与日租">Hourly &amp; Daily Hire / 时租与日租</option>
+              <option value="City-to-City / 城际通行" data-opt-en="City-to-City" data-opt-cn="城际通行">City-to-City / 城际通行</option>
+              <option value="Long-term Charter / 长包车" data-opt-en="Long-term Charter" data-opt-cn="长包车">Long-term Charter / 长包车</option>
+              <option value="Event Operations / 活动出行" data-opt-en="Event Operations" data-opt-cn="活动出行">Event Operations / 活动出行</option>
+              <option value="Private Jet / 公务机" data-opt-en="Private Jet" data-opt-cn="公务机">Private Jet / 公务机</option>
             </select>
           </div>
           <div>
@@ -864,7 +873,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
             <span class="lang-en">Send Enquiry</span><span class="lang-cn">提交咨询</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
-          <p class="text-[11px] text-[#0A0A0A]/40 text-center leading-relaxed font-light">
+          <p class="text-[11px] text-[#0A0A0A]/60 text-center leading-relaxed font-light">
             <span class="lang-en">By submitting, you agree to our privacy policy. Response within 1 business hour.</span>
             <span class="lang-cn">提交即视为同意隐私政策。我们将在1个工作小时内与您联系。</span>
           </p>
@@ -1017,7 +1026,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
             </span>
           </summary>
           <div class="faq-body">
-            <span class="lang-en">A single booking is a one-off trip — single airport transfer, door-to-door city trip, or short-term booking, billed per trip with no commitment. A long-term charter is a contract of one year or more under which our partner supplier assigns a consistent driver and vehicle to you, typically billed monthly or quarterly. Ideal for executives with recurring daily needs.</span>
+            <span class="lang-en">A single booking is a one-off trip — single airport transfer, door-to-door city trip, or short-term booking, billed per trip with no commitment. A long-term charter is a contract of one year or more under which our partner supplier assigns a consistent chauffeur and vehicle to you, typically billed monthly or quarterly. Ideal for executives with recurring daily needs.</span>
             <span class="lang-cn">单次用车即单次预约出行——单次机场接送、市内门到门或短期预订，按趟计费、无需长期承诺。长包车则是一年起签的合约，为您指派相对固定的管家与车辆，通常按月或按季度结算，适合有日常高频出行需求的高管群体。</span>
           </div>
         </details>
@@ -1038,6 +1047,18 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       <span class="ios-eyebrow"><span class="lang-en">24/7 Dispatch</span><span class="lang-cn">全天候调度</span></span>
     </div>
   </div>
+</section>
+
+<!-- ─── Brand signature · Always as Promised ─── -->
+<section class="px-5 py-12 md:py-16">
+  <p class="flex items-center justify-center gap-4 reveal">
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    <span class="hero-signature">
+      <span class="lang-en">Always as Promised</span>
+      <span class="lang-cn">始 终 如 约</span>
+    </span>
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+  </p>
 </section>
 
 <!-- ─── Footer ─── -->
@@ -1109,7 +1130,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -1171,18 +1192,41 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       document.querySelectorAll('[data-ph-en][data-ph-cn]').forEach(function(el){
         el.placeholder = isZh ? el.getAttribute('data-ph-cn') : el.getAttribute('data-ph-en');
       });
+      // 服务意向下拉 option 文案随语言切换（value 保持混排不动，后端记录依赖）
+      document.querySelectorAll('option[data-opt-en][data-opt-cn]').forEach(function(el){
+        el.textContent = isZh ? el.getAttribute('data-opt-cn') : el.getAttribute('data-opt-en');
+      });
     }
     syncPlaceholders();
     new MutationObserver(syncPlaceholders).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   })();
 
-  // Mobile menu toggle
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var m = document.getElementById('mobile-menu');
-    var hidden = m.classList.toggle('hidden');
-    m.classList.toggle('flex');
-    this.setAttribute('aria-expanded', String(!hidden));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
 
   // Nav glass on scroll
   (function(){
@@ -1244,6 +1288,10 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       if (btn.disabled) return;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       btn.disabled = true;
       btn.setAttribute('aria-busy', 'true');
       btn.style.opacity = '0.6';
@@ -1272,6 +1320,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         body: JSON.stringify(payload),
       })
         .then(function(res) {
+          if (res.status === 400) { var err = new Error('HTTP 400'); err.status = 400; throw err; }
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
         })
@@ -1282,17 +1331,29 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           showMsg(lang === 'zh-CN' ? cn : en, true);
           form.reset();
         })
-        .catch(function() {
+        .catch(function(err) {
           var lang = document.documentElement.lang || 'en';
-          showMsg(
-            lang === 'zh-CN'
-              ? '提交失败，请稍后重试或直接联系 bd@lyctai.com'
-              : 'Submission failed. Please try again or email bd@lyctai.com.',
-            false
-          );
+          if (err && err.status === 400) {
+            showMsg(
+              lang === 'zh-CN'
+                ? '请检查必填项是否完整、邮箱格式是否正确，然后重试'
+                : 'Please check the required fields and your email format, then try again.',
+              false
+            );
+          } else {
+            showMsg(
+              lang === 'zh-CN'
+                ? '提交失败，请稍后重试或直接联系 bd@lyctai.com'
+                : 'Submission failed. Please try again or email bd@lyctai.com.',
+              false
+            );
+          }
         })
         .finally(function() {
           msg.classList.remove('hidden');
+          msg.setAttribute('tabindex', '-1');
+          msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          msg.focus({ preventScroll: true });
           btn.disabled = false;
           btn.removeAttribute('aria-busy');
           btn.style.opacity = '';

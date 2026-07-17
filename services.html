@@ -43,6 +43,9 @@
   h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
+  /* signature: Always as Promised 签名行，Crimson italic 跟主标呼应 */
+  .hero-signature { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(10,10,10,0.7); letter-spacing: 0.02em; }
+  .hero-signature .lang-cn { font-family: 'Noto Serif SC', serif; font-style: normal; font-weight: 500; letter-spacing: 0.25em; color: rgba(10,10,10,0.75); }
 
   /* ─────────────────────────────────────────────────────────────
      iOS-inspired Design Tokens · 严格黑白 + Apple 质感
@@ -622,7 +625,7 @@
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Services | LyctRides","serviceType":"Services","provider":{"@type":"Organization","name":"LyctRides","url":"https://www.lyctai.com/"},"areaServed":[{"@type":"AdministrativeArea","name":"Mainland China"},{"@type":"AdministrativeArea","name":"Hong Kong"},{"@type":"AdministrativeArea","name":"Macau"},{"@type":"AdministrativeArea","name":"Taiwan"}],"url":"https://www.lyctai.com/services.html"}</script>
@@ -686,6 +689,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 <!-- ─── iOS Glass Nav ─── -->
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
@@ -755,7 +759,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -768,12 +772,17 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 <!-- ─── Hero strip · 紧凑型：breadcrumb + 标题 + 短副标 + 信任徽标条 + CTA 一屏内呈现 ─── -->
-<section class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
+<section id="main" class="ios-hero-strip hero-fixed-h hero-on-image pt-20 md:pt-24 pb-10 md:pb-12">
   <div class="hero-bg-media" style="background-image:url('/images/1-services.jpg')" aria-hidden="true"></div>
   <!-- ambient glow · 极慢旋转的环境光（iOS 26 / visionOS 风） -->
   <div class="ambient-glow" aria-hidden="true"></div>
@@ -868,7 +877,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
             <span class="lang-en">Airport Transfers</span><span class="lang-cn">机场接送</span>
           </h3>
           <p class="text-[#0A0A0A]/65 leading-relaxed font-light">
-            <span class="lang-en">Real-time flight tracking ensures your driver is always there — even when flights are not. Name-board meet-and-greet at all major airports across China.</span>
+            <span class="lang-en">Real-time flight tracking ensures your chauffeur is always there — even when flights are not. Name-board meet-and-greet at all major airports across China.</span>
             <span class="lang-cn">实时追踪航班动态，无论延误与否，管家始终准时守候。覆盖中国各大国际机场，提供举牌接机服务。</span>
           </p>
         </div>
@@ -975,7 +984,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
               <span class="lang-en">Business &amp; Events</span><span class="lang-cn">商务与活动</span>
             </h3>
             <p class="text-[#0A0A0A]/65 leading-relaxed font-light">
-              <span class="lang-en">We manage ground transportation for some of China's most demanding events. Vehicle allocation, driver briefings, on-site coordination — all handled before you arrive.</span>
+              <span class="lang-en">We manage ground transportation for some of China's most demanding events. Vehicle allocation, chauffeur briefings, on-site coordination — all handled before you arrive.</span>
               <span class="lang-cn">我们承接中国大型商业活动的地面出行统筹——车辆调配、管家简报、现场协调，在您抵达前完成全部部署。</span>
             </p>
             <div class="flex flex-wrap gap-2 pt-1">
@@ -1033,7 +1042,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
             <span class="lang-en">Long-term Charter</span><span class="lang-cn">长包车</span>
           </h3>
           <p class="text-[#0A0A0A]/65 leading-relaxed font-light">
-            <span class="lang-en">Annual contracts and longer — a consistent supplier-assigned driver and vehicle, billed monthly or quarterly. The same driver, the same car, the same standard, where possible. For executives and families with recurring needs across China.</span>
+            <span class="lang-en">Annual contracts and longer — a consistent supplier-assigned chauffeur and vehicle, billed monthly or quarterly. The same chauffeur, the same car, the same standard, where possible. For executives and families with recurring needs across China.</span>
             <span class="lang-cn">年起约长期合约——为您配备相对固定的管家与车辆，按月或按季度结算。尽量同一管家、同一辆车、同一标准。适合在华高管及家庭长期出行。</span>
           </p>
         </div>
@@ -1112,7 +1121,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   var root = document.getElementById('advisor-card');
   if(!root) return;
   var state = {scenario:null, city:null, headcount:null};
-  function pill(it){ return '<button type="button" class="advisor-pill" data-value="'+it.id+'"><span class="lang-en">'+it.en+'</span><span class="lang-cn">'+it.zh+'</span></button>'; }
+  function pill(it){ return '<button type="button" class="advisor-pill" aria-pressed="false" data-value="'+it.id+'"><span class="lang-en">'+it.en+'</span><span class="lang-cn">'+it.zh+'</span></button>'; }
   root.querySelector('[data-group="scenario"]').innerHTML = ADV.scenarios.map(pill).join('');
   root.querySelector('[data-group="city"]').innerHTML = ADV.cities.map(pill).join('');
   root.querySelector('[data-group="headcount"]').innerHTML = ADV.headcounts.map(pill).join('');
@@ -1134,8 +1143,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     var key = group.getAttribute('data-group');
     group.addEventListener('click', function(e){
       var btn = e.target.closest('.advisor-pill'); if(!btn) return;
-      group.querySelectorAll('.advisor-pill').forEach(function(p){ p.classList.remove('is-active'); });
-      btn.classList.add('is-active'); state[key] = btn.getAttribute('data-value'); update();
+      group.querySelectorAll('.advisor-pill').forEach(function(p){ p.classList.remove('is-active'); p.setAttribute('aria-pressed','false'); });
+      btn.classList.add('is-active'); btn.setAttribute('aria-pressed','true'); state[key] = btn.getAttribute('data-value'); update();
     });
   });
 })();
@@ -1216,6 +1225,14 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <!-- ─── CTA Banner · 黑底大圆角 + 双按钮 · 紧凑高度 ─── -->
 <section class="section-pad section-divider">
   <div class="section-container">
+    <p class="flex items-center justify-center gap-4 mb-10 reveal">
+      <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    <span class="hero-signature">
+      <span class="lang-en">Always as Promised</span>
+      <span class="lang-cn">始 终 如 约</span>
+    </span>
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    </p>
     <div class="reveal flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 p-7 md:p-12 rounded-[var(--r-xl)] relative overflow-hidden"
          style="background: linear-gradient(135deg, #1c1917 0%, #0A0A0A 100%); box-shadow: var(--shadow-card-hover);">
       <!-- iOS 系背景光晕 -->
@@ -1316,7 +1333,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -1374,9 +1391,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   })();
 
   // Mobile menu toggle
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
 
   /* ───────────────── iOS Animation Layer ───────────────── */
 
@@ -1425,25 +1465,6 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       tile.addEventListener('touchstart', function(){ tile.style.transform = 'translateY(-2px) scale(0.99)'; }, { passive: true });
       tile.addEventListener('touchend', function(){ tile.style.transform = ''; }, { passive: true });
       tile.addEventListener('touchcancel', function(){ tile.style.transform = ''; }, { passive: true });
-    });
-  })();
-
-  // 4. Mouse-tracked subtle tilt on Featured 卡片（仅桌面）— Vision Pro 类质感
-  (function(){
-    if (window.matchMedia('(pointer: coarse)').matches) return; // 触屏跳过
-    var featured = document.querySelector('a[href="#events"]');
-    if (!featured) return;
-    featured.style.transformStyle = 'preserve-3d';
-    featured.addEventListener('mousemove', function(e){
-      var rect = featured.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 ~ 0.5
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      var tiltX = y * -3; // 3deg max
-      var tiltY = x * 3;
-      featured.style.transform = 'translateY(-6px) perspective(1000px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
-    });
-    featured.addEventListener('mouseleave', function(){
-      featured.style.transform = '';
     });
   })();
 </script>

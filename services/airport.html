@@ -44,6 +44,9 @@
   h1, h2, h3, h4 { font-family: 'Albert Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
+  /* signature: Always as Promised 签名行，Crimson italic 跟主标呼应 */
+  .hero-signature { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(10,10,10,0.7); letter-spacing: 0.02em; }
+  .hero-signature .lang-cn { font-family: 'Noto Serif SC', serif; font-style: normal; font-weight: 500; letter-spacing: 0.25em; color: rgba(10,10,10,0.75); }
 
   /* ─────────────────────────────────────────────────────────────
      iOS-inspired Design Tokens · 严格黑白 + Apple 质感
@@ -658,7 +661,7 @@
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"China Airport Transfer · 机场接送 · Bilingual Driver | LyctRides","serviceType":"China Airport Transfer","provider":{"@type":"Organization","name":"LyctRides","url":"https://www.lyctai.com/"},"areaServed":[{"@type":"AdministrativeArea","name":"Mainland China"},{"@type":"AdministrativeArea","name":"Hong Kong"},{"@type":"AdministrativeArea","name":"Macau"},{"@type":"AdministrativeArea","name":"Taiwan"}],"url":"https://www.lyctai.com/services/airport.html"}</script>
@@ -720,6 +723,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.lyctai.com/"},{"@type":"ListItem","position":2,"name":"Our Services","item":"https://www.lyctai.com/services.html"},{"@type":"ListItem","position":3,"name":"Airport Transfers","item":"https://www.lyctai.com/services/airport.html"}]}</script>
 </head>
 <body>
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 
 <!-- ─── iOS Glass Nav ─── -->
@@ -790,7 +794,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -803,16 +807,21 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 
 <!-- HERO (image background · breadcrumb 并入图内) -->
-<section class="svc-hero-on-image px-5 md:px-12 pt-24 md:pt-28 pb-16 md:pb-24 relative">
+<section id="main" class="svc-hero-on-image px-5 md:px-12 pt-24 md:pt-28 pb-16 md:pb-24 relative">
   <div class="hero-bg-media" style="background-image:url('/images/10-service%20general.jpg')" aria-hidden="true"></div>
   <div class="max-w-[1280px] mx-auto relative mb-6 md:mb-8" style="z-index:2">
-    <div class="flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 fade-1">
+    <div class="flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 fade-1">
       <a href="/index.html" class="ed-link hover:text-[#0A0A0A]"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
       <span>›</span>
       <a href="/services.html" class="ed-link hover:text-[#0A0A0A]"><span class="lang-en">Services</span><span class="lang-cn">服务</span></a>
@@ -822,7 +831,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   </div>
   <div class="max-w-[1280px] mx-auto grid md:grid-cols-12 gap-8 md:gap-16 relative" style="z-index:2">
     <div class="md:col-span-2 fade-1">
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/35">01 / Service</p>
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/55">01 / Service</p>
     </div>
     <div class="md:col-span-10 fade-2">
       <h1 class="font-serif font-normal text-[#0A0A0A] tracking-tight leading-[0.98] mb-8 md:mb-10" style="font-size:clamp(2.5rem, 7vw, 6rem); letter-spacing:-0.022em;">
@@ -849,16 +858,16 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <section id="airport-quick" class="px-5 md:px-12 py-8 md:py-10 border-b border-[#0A0A0A]/10 bg-[#FAFAF7]">
   <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 fade-2">
     <div class="bg-white border border-[#0A0A0A]/8 rounded-md p-5 md:p-6">
-      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/40 mb-3"><span class="lang-en">Best for</span><span class="lang-cn">适合场景</span></p>
+      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/60 mb-3"><span class="lang-en">Best for</span><span class="lang-cn">适合场景</span></p>
       <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">International arrivals, VIP guests, family landings, and late-night transfers.</span><span class="lang-cn">国际抵港、贵宾接待、家庭出行，以及夜间到达。</span></p>
     </div>
     <div class="bg-white border border-[#0A0A0A]/8 rounded-md p-5 md:p-6">
-      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/40 mb-3"><span class="lang-en">Lead time</span><span class="lang-cn">预约时间</span></p>
+      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/60 mb-3"><span class="lang-en">Lead time</span><span class="lang-cn">预约时间</span></p>
       <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">Same-day possible; share flight number, passenger name, terminal, and destination.</span><span class="lang-cn">可当天安排；请提供航班号、乘客姓名、航站楼与目的地。</span></p>
     </div>
     <div class="bg-white border border-[#0A0A0A]/8 rounded-md p-5 md:p-6">
-      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/40 mb-3"><span class="lang-en">What changes</span><span class="lang-cn">核心价值</span></p>
-      <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">Flight tracking, driver details before landing, and enough waiting time for customs.</span><span class="lang-cn">航班追踪、落地前推送管家信息，并预留充分通关等候时间。</span></p>
+      <p class="font-mono text-[10px] tracking-[0.28em] uppercase text-[#0A0A0A]/60 mb-3"><span class="lang-en">What changes</span><span class="lang-cn">核心价值</span></p>
+      <p class="text-[15px] leading-[1.65] text-[#0A0A0A]/75"><span class="lang-en">Flight tracking, chauffeur details before landing, and enough waiting time for customs.</span><span class="lang-cn">航班追踪、落地前推送管家信息，并预留充分通关等候时间。</span></p>
     </div>
   </div>
 </section>
@@ -867,7 +876,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <section class="px-5 md:px-12 py-20 md:py-28 border-b border-[#0A0A0A]/10">
   <div class="max-w-[1280px] mx-auto grid md:grid-cols-12 gap-8 md:gap-16">
     <div class="md:col-span-4 md:sticky md:top-32 md:self-start fade-1">
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-4">§ 02 · Inclusions</p>
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-4">§ 02 · Inclusions</p>
       <h2 class="font-serif font-normal text-[#0A0A0A] tracking-tight leading-[1.05]" style="font-size:clamp(2rem, 4vw, 3rem);">
         <span class="lang-en">What's <em class="italic">included.</em></span>
         <span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;">服务包含</span>
@@ -876,19 +885,19 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     <div class="md:col-span-8 fade-2">
       <ul class="divide-y divide-[#0A0A0A]/10">
         <li class="py-6 flex gap-5">
-          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/40 flex-shrink-0 pt-1 w-8">01</span>
+          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/60 flex-shrink-0 pt-1 w-8">01</span>
           <div>
             <h3 class="text-[17px] font-bold text-[#0A0A0A] mb-2 tracking-tight">
               <span class="lang-en">Real-time flight tracking</span><span class="lang-cn">实时航班追踪</span>
             </h3>
             <p class="text-[15px] leading-[1.7] text-[#0A0A0A]/65">
-              <span class="lang-en">Auto-adjust for delays, gate changes, and rerouting. The driver's ETA shifts as your flight does &mdash; no re-booking, no follow-up calls.</span>
+              <span class="lang-en">Auto-adjust for delays, gate changes, and rerouting. The chauffeur's ETA shifts as your flight does &mdash; no re-booking, no follow-up calls.</span>
               <span class="lang-cn">航班延误、换登机口、改道实时同步。管家的抵达时间随航班调整 &mdash; 无需重新预订或电话跟进。</span>
             </p>
           </div>
         </li>
         <li class="py-6 flex gap-5">
-          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/40 flex-shrink-0 pt-1 w-8">02</span>
+          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/60 flex-shrink-0 pt-1 w-8">02</span>
           <div>
             <h3 class="text-[17px] font-bold text-[#0A0A0A] mb-2 tracking-tight">
               <span class="lang-en">Name-board meet &amp; greet</span><span class="lang-cn">到达大厅举牌接机</span>
@@ -900,31 +909,31 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           </div>
         </li>
         <li class="py-6 flex gap-5">
-          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/40 flex-shrink-0 pt-1 w-8">03</span>
+          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/60 flex-shrink-0 pt-1 w-8">03</span>
           <div>
             <h3 class="text-[17px] font-bold text-[#0A0A0A] mb-2 tracking-tight">
               <span class="lang-en">Generous post-landing wait</span><span class="lang-cn">到港后充裕等候</span>
             </h3>
             <p class="text-[15px] leading-[1.7] text-[#0A0A0A]/65">
-              <span class="lang-en">Driver stays through immigration, baggage, and customs. No clock-watching, no surprise charges.</span>
+              <span class="lang-en">Chauffeur stays through immigration, baggage, and customs. No clock-watching, no surprise charges.</span>
               <span class="lang-cn">管家全程等候通关、提取行李、海关过检。不计较时间，不收意外费用。</span>
             </p>
           </div>
         </li>
         <li class="py-6 flex gap-5">
-          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/40 flex-shrink-0 pt-1 w-8">04</span>
+          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/60 flex-shrink-0 pt-1 w-8">04</span>
           <div>
             <h3 class="text-[17px] font-bold text-[#0A0A0A] mb-2 tracking-tight">
               <span class="lang-en">Pre-arrival WeChat / WhatsApp push</span><span class="lang-cn">抵港前微信 / WhatsApp 推送</span>
             </h3>
             <p class="text-[15px] leading-[1.7] text-[#0A0A0A]/65">
-              <span class="lang-en">Driver name, photo, and vehicle plate sent before you land. Find your ride in seconds at the curb.</span>
+              <span class="lang-en">Chauffeur name, photo, and vehicle plate sent before you land. Find your ride in seconds at the curb.</span>
               <span class="lang-cn">落地前收到管家姓名、头像、车牌信息，在到达大厅几秒内找到接车。</span>
             </p>
           </div>
         </li>
         <li class="py-6 flex gap-5">
-          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/40 flex-shrink-0 pt-1 w-8">05</span>
+          <span class="font-mono text-[12px] tracking-[0.2em] text-[#0A0A0A]/60 flex-shrink-0 pt-1 w-8">05</span>
           <div>
             <h3 class="text-[17px] font-bold text-[#0A0A0A] mb-2 tracking-tight">
               <span class="lang-en">In-cabin essentials</span><span class="lang-cn">车内常备</span>
@@ -945,7 +954,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <div class="max-w-[1280px] mx-auto">
     <div class="grid md:grid-cols-12 gap-8 mb-12 md:mb-16 fade-1">
       <div class="md:col-span-4">
-        <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-4">§ 03 · Process</p>
+        <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-4">§ 03 · Process</p>
       </div>
       <div class="md:col-span-8">
         <h2 class="font-serif font-normal text-[#0A0A0A] tracking-tight leading-[1.05]" style="font-size:clamp(2rem, 4vw, 3rem);">
@@ -956,7 +965,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 fade-2">
       <div class="bg-white border border-[#0A0A0A]/8 p-8 md:p-10 rounded-md">
-        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-6">Step 01</p>
+        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-6">Step 01</p>
         <h3 class="font-serif text-2xl md:text-[28px] font-normal mb-4 leading-tight" style="letter-spacing:-0.012em;">
           <span class="lang-en">Submit details.</span><span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;">提 交 信 息</span>
         </h3>
@@ -966,22 +975,22 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         </p>
       </div>
       <div class="bg-white border border-[#0A0A0A]/8 p-8 md:p-10 rounded-md">
-        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-6">Step 02</p>
+        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-6">Step 02</p>
         <h3 class="font-serif text-2xl md:text-[28px] font-normal mb-4 leading-tight" style="letter-spacing:-0.012em;">
           <span class="lang-en">We dispatch.</span><span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;">车 辆 调 度</span>
         </h3>
         <p class="text-[14px] leading-[1.7] text-[#0A0A0A]/65">
-          <span class="lang-en">Bilingual driver briefed with passenger context. Vehicle dispatched, name-board prepared.</span>
+          <span class="lang-en">Bilingual chauffeur briefed with passenger context. Vehicle dispatched, name-board prepared.</span>
           <span class="lang-cn">双语管家针对旅客信息进行简报，车辆调度，举牌准备完成。</span>
         </p>
       </div>
       <div class="bg-white border border-[#0A0A0A]/8 p-8 md:p-10 rounded-md">
-        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-6">Step 03</p>
+        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-6">Step 03</p>
         <h3 class="font-serif text-2xl md:text-[28px] font-normal mb-4 leading-tight" style="letter-spacing:-0.012em;">
           <span class="lang-en">Greet &amp; depart.</span><span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;">接 机 出 发</span>
         </h3>
         <p class="text-[14px] leading-[1.7] text-[#0A0A0A]/65">
-          <span class="lang-en">Greet at arrivals, luggage to vehicle, depart for destination. Pre-arrival driver info already on your phone.</span>
+          <span class="lang-en">Greet at arrivals, luggage to vehicle, depart for destination. Pre-arrival chauffeur info already on your phone.</span>
           <span class="lang-cn">到达大厅举牌接车，行李上车，直送目的地。管家信息抵港前已推送到您手机。</span>
         </p>
       </div>
@@ -993,45 +1002,45 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <section class="px-5 md:px-12 py-20 md:py-28 border-b border-[#0A0A0A]/10">
   <div class="max-w-[1280px] mx-auto grid md:grid-cols-12 gap-8 md:gap-16">
     <div class="md:col-span-6 fade-1">
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-5">§ 04 · Vehicles</p>
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-5">§ 04 · Vehicles</p>
       <h3 class="font-serif font-normal text-[#0A0A0A] tracking-tight leading-[1.1] mb-8" style="font-size:clamp(1.75rem, 3.5vw, 2.5rem);">
         <span class="lang-en">Vehicles.</span><span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;">车 型 选 择</span>
       </h3>
       <ul class="space-y-4">
         <li class="flex items-baseline justify-between gap-4 pb-3 border-b border-[#0A0A0A]/8">
           <span class="text-[15px] font-medium text-[#0A0A0A]">Mercedes-Benz E-Class</span>
-          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/45"><span class="lang-en">4 pax · 4 lugg</span><span class="lang-cn">4 客 · 4 行李</span></span>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/60"><span class="lang-en">4 pax · 4 lugg</span><span class="lang-cn">4 客 · 4 行李</span></span>
         </li>
         <li class="flex items-baseline justify-between gap-4 pb-3 border-b border-[#0A0A0A]/8">
           <span class="text-[15px] font-medium text-[#0A0A0A]">Mercedes-Benz S-Class</span>
-          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/45"><span class="lang-en">4 pax · 4 lugg</span><span class="lang-cn">4 客 · 4 行李</span></span>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/60"><span class="lang-en">4 pax · 4 lugg</span><span class="lang-cn">4 客 · 4 行李</span></span>
         </li>
         <li class="flex items-baseline justify-between gap-4 pb-3 border-b border-[#0A0A0A]/8">
           <span class="text-[15px] font-medium text-[#0A0A0A]">Mercedes-Benz V-Class</span>
-          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/45"><span class="lang-en">6 pax · 6 lugg</span><span class="lang-cn">6 客 · 6 行李</span></span>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/60"><span class="lang-en">6 pax · 6 lugg</span><span class="lang-cn">6 客 · 6 行李</span></span>
         </li>
         <li class="flex items-baseline justify-between gap-4 pb-3 border-b border-[#0A0A0A]/8">
-          <span class="text-[15px] font-medium text-[#0A0A0A]">ZEEKR 009 <span class="text-[10px] text-[#0A0A0A]/45 ml-1">EV</span></span>
-          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/45"><span class="lang-en">5 pax · 6 lugg</span><span class="lang-cn">5 客 · 6 行李</span></span>
+          <span class="text-[15px] font-medium text-[#0A0A0A]">ZEEKR 009 <span class="text-[10px] text-[#0A0A0A]/60 ml-1">EV</span></span>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/60"><span class="lang-en">5 pax · 6 lugg</span><span class="lang-cn">5 客 · 6 行李</span></span>
         </li>
         <li class="flex items-baseline justify-between gap-4 pb-3 border-b border-[#0A0A0A]/8">
           <span class="text-[15px] font-medium text-[#0A0A0A]">Buick GL8</span>
-          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/45"><span class="lang-en">6 pax · 4 lugg</span><span class="lang-cn">6 客 · 4 行李</span></span>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/60"><span class="lang-en">6 pax · 4 lugg</span><span class="lang-cn">6 客 · 4 行李</span></span>
         </li>
         <li class="flex items-baseline justify-between gap-4 ">
           <span class="text-[15px] font-medium text-[#0A0A0A]">Toyota Coaster</span>
-          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/45"><span class="lang-en">19–23 pax</span><span class="lang-cn">19–23 客</span></span>
+          <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-[#0A0A0A]/60"><span class="lang-en">19–23 pax</span><span class="lang-cn">19–23 客</span></span>
         </li>
       </ul>
     </div>
     <div class="md:col-span-6 fade-2">
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-5">§ 05 · Reach</p>
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-5">§ 05 · Reach</p>
       <h3 class="font-serif font-normal text-[#0A0A0A] tracking-tight leading-[1.1] mb-8" style="font-size:clamp(1.75rem, 3.5vw, 2.5rem);">
         <span class="lang-en">Coverage.</span><span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;">覆 盖 范 围</span>
       </h3>
       <div class="space-y-6">
         <div class="pb-5 border-b border-[#0A0A0A]/8">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mb-2">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mb-2">
             <span class="lang-en">Mainland China</span><span class="lang-cn">中 国 大 陆</span>
           </p>
           <p class="text-[15px] leading-[1.7] text-[#0A0A0A]/75">
@@ -1040,7 +1049,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           </p>
         </div>
         <div class="pb-5 border-b border-[#0A0A0A]/8">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mb-2">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mb-2">
             <span class="lang-en">Hong Kong &amp; Macau</span><span class="lang-cn">港 澳</span>
           </p>
           <p class="text-[15px] leading-[1.7] text-[#0A0A0A]/75">
@@ -1049,11 +1058,11 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           </p>
         </div>
         <div class="">
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mb-2">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mb-2">
             <span class="lang-en">Taiwan</span><span class="lang-cn">台 湾</span>
           </p>
           <p class="text-[15px] leading-[1.7] text-[#0A0A0A]/75">
-            <span class="lang-en">TPE · TSA · KHH &mdash; Mandarin / English drivers across major airports.</span>
+            <span class="lang-en">TPE · TSA · KHH &mdash; Mandarin / English chauffeurs across major airports.</span>
             <span class="lang-cn">台北桃园 · 台北松山 · 高雄 &mdash; 主要机场配备双语管家。</span>
           </p>
         </div>
@@ -1066,20 +1075,20 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <section class="px-5 md:px-12 py-24 md:py-32 border-b border-[#0A0A0A]/10">
   <div class="max-w-[1280px] mx-auto grid md:grid-cols-12 gap-8 md:gap-16 fade-1">
     <div class="md:col-span-3">
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-4">§ 06 · Example</p>
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40">
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-4">§ 06 · Example</p>
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60">
         <span class="lang-en">A recent case</span><span class="lang-cn">真 实 案 例</span>
       </p>
     </div>
     <div class="md:col-span-9">
       <blockquote class="border-l-2 border-[#0A0A0A]/25 pl-6 md:pl-8">
         <p class="lang-en font-serif italic text-[#0A0A0A]/85 leading-[1.55]" style="font-family:'Crimson Pro',serif;font-size:clamp(1.25rem, 2.4vw, 1.75rem);">
-          "An EU executive lands at PVG at 23:50 on a delayed flight. Tracking auto-updates the new ETA. The driver is at arrivals 12 minutes before deplaning, suitcase loaded by 00:18, hotel arrival at 00:41 &mdash; no calls, no follow-ups, no missed beats."
+          "An EU executive lands at PVG at 23:50 on a delayed flight. Tracking auto-updates the new ETA. The chauffeur is at arrivals 12 minutes before deplaning, suitcase loaded by 00:18, hotel arrival at 00:41 &mdash; no calls, no follow-ups, no missed beats."
         </p>
         <p class="lang-cn text-[#0A0A0A]/85 leading-[1.85]" style="font-family:'Noto Serif SC',serif;font-weight:400;font-size:clamp(1.125rem, 2vw, 1.5rem);">
           「一位欧洲高管延误后于浦东国际 23:50 抵港。系统自动同步新 ETA，管家在落地前 12 分钟已在到达大厅就位，00:18 行李上车，00:41 抵达酒店 &mdash; 无需电话、无需跟进、不漏一拍。」
         </p>
-        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mt-6">
+        <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mt-6">
           <span class="lang-en">— Shanghai Pudong, March 2026</span><span class="lang-cn">— 上海浦东 · 2026 年 3 月</span>
         </p>
       </blockquote>
@@ -1090,27 +1099,27 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <!-- OTHER SERVICES -->
 <section class="px-5 md:px-12 py-20 md:py-28 border-b border-[#0A0A0A]/10">
   <div class="max-w-[1280px] mx-auto">
-    <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-8 md:mb-10">
+    <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-8 md:mb-10">
       <span class="lang-en">Other Services</span><span class="lang-cn">其 他 服 务</span>
     </p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
       <a href="./hourly.html" class="group block p-5 md:p-6 bg-white border border-[#0A0A0A]/8 rounded-md hover:border-[#0A0A0A]/30 transition">
-        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-3">02</p>
+        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-3">02</p>
         <h4 class="font-serif text-xl font-normal text-[#0A0A0A] mb-1"><span class="lang-en">Hourly &amp; Daily Hire</span><span class="lang-cn" style="font-family:\'Noto Serif SC\',serif;font-weight:500;">时租与日租</span></h4>
         <span class="inline-flex items-center gap-1 mt-3 text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 group-hover:text-[#0A0A0A]"><span class="lang-en">View</span><span class="lang-cn">查看</span> →</span>
       </a>
       <a href="./citytocity.html" class="group block p-5 md:p-6 bg-white border border-[#0A0A0A]/8 rounded-md hover:border-[#0A0A0A]/30 transition">
-        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-3">03</p>
+        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-3">03</p>
         <h4 class="font-serif text-xl font-normal text-[#0A0A0A] mb-1"><span class="lang-en">City-to-City Rides</span><span class="lang-cn" style="font-family:\'Noto Serif SC\',serif;font-weight:500;">城际通行</span></h4>
         <span class="inline-flex items-center gap-1 mt-3 text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 group-hover:text-[#0A0A0A]"><span class="lang-en">View</span><span class="lang-cn">查看</span> →</span>
       </a>
       <a href="./events.html" class="group block p-5 md:p-6 bg-white border border-[#0A0A0A]/8 rounded-md hover:border-[#0A0A0A]/30 transition">
-        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-3">04</p>
+        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-3">04</p>
         <h4 class="font-serif text-xl font-normal text-[#0A0A0A] mb-1"><span class="lang-en">Business &amp; Events</span><span class="lang-cn" style="font-family:\'Noto Serif SC\',serif;font-weight:500;">商务与活动</span></h4>
         <span class="inline-flex items-center gap-1 mt-3 text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 group-hover:text-[#0A0A0A]"><span class="lang-en">View</span><span class="lang-cn">查看</span> →</span>
       </a>
       <a href="./privatejet.html" class="group block p-5 md:p-6 bg-white border border-[#0A0A0A]/8 rounded-md hover:border-[#0A0A0A]/30 transition">
-        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/35 mb-3">05</p>
+        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/55 mb-3">05</p>
         <h4 class="font-serif text-xl font-normal text-[#0A0A0A] mb-1"><span class="lang-en">Private Jet Booking</span><span class="lang-cn" style="font-family:\'Noto Serif SC\',serif;font-weight:500;">公务机预订</span></h4>
         <span class="inline-flex items-center gap-1 mt-3 text-[11px] tracking-[0.2em] uppercase text-[#0A0A0A]/55 group-hover:text-[#0A0A0A]"><span class="lang-en">View</span><span class="lang-cn">查看</span> →</span>
       </a>
@@ -1120,11 +1129,19 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
 <!-- CONTACT CTA · split layout · text left, 3 icons stacked right · WhatsApp/WeChat/Mail · hover QR -->
 <section id="contact" class="px-5 md:px-12 py-24 md:py-32">
+  <p class="flex items-center justify-center gap-4 mb-12 md:mb-16 max-w-[1280px] mx-auto">
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+    <span class="hero-signature">
+      <span class="lang-en">Always as Promised</span>
+      <span class="lang-cn">始 终 如 约</span>
+    </span>
+    <span class="w-10 h-px bg-[#0A0A0A]/25"></span>
+  </p>
   <div class="max-w-[1280px] mx-auto grid md:grid-cols-12 gap-10 md:gap-16 items-center">
 
     <!-- LEFT · heading + lead -->
     <div class="md:col-span-7">
-      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/40 mb-5">§ 07 · Contact</p>
+      <p class="font-mono text-[10px] tracking-[0.35em] uppercase text-[#0A0A0A]/60 mb-5">§ 07 · Contact</p>
       <h2 class="font-serif font-normal text-[#0A0A0A] tracking-tight leading-[1] mb-7" style="font-size:clamp(2.5rem, 5.5vw, 4.5rem);">
         <span class="lang-en">Begin a journey<br/><em class="italic">that arrives.</em></span>
         <span class="lang-cn" style="font-family:'Noto Serif SC',serif;font-weight:500;line-height:1.18;">开 启 一 程<br/><em class="not-italic" style="color:#50606f">真 正 抵 达 的 出 行</em></span>
@@ -1150,7 +1167,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           </div>
         </div>
         <div>
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mb-1">WhatsApp</p>
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mb-1">WhatsApp</p>
           <p class="text-[14px] font-medium text-[#0A0A0A]">
             <span class="lang-en">LyctRides Business</span><span class="lang-cn">扫码对话</span>
           </p>
@@ -1169,7 +1186,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           </div>
         </div>
         <div>
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mb-1">WeChat</p>
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mb-1">WeChat</p>
           <p class="text-[14px] font-medium text-[#0A0A0A]">
             <span class="lang-en">LyctRides &middot; Guangzhou</span><span class="lang-cn">扫码添加礼宾</span>
           </p>
@@ -1182,7 +1199,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.691 2.28 24 3.434 24 5.457"/></svg>
         </span>
         <div>
-          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/45 mb-1">Email</p>
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-[#0A0A0A]/60 mb-1">Email</p>
           <p class="text-[14px] font-medium text-[#0A0A0A]">bd@lyctai.com</p>
         </div>
       </a>
@@ -1263,7 +1280,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -1321,9 +1338,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   })();
 
   // Mobile menu toggle
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
 
   /* ───────────────── iOS Animation Layer ───────────────── */
 
@@ -1372,25 +1412,6 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
       tile.addEventListener('touchstart', function(){ tile.style.transform = 'translateY(-2px) scale(0.99)'; }, { passive: true });
       tile.addEventListener('touchend', function(){ tile.style.transform = ''; }, { passive: true });
       tile.addEventListener('touchcancel', function(){ tile.style.transform = ''; }, { passive: true });
-    });
-  })();
-
-  // 4. Mouse-tracked subtle tilt on Featured 卡片（仅桌面）— Vision Pro 类质感
-  (function(){
-    if (window.matchMedia('(pointer: coarse)').matches) return; // 触屏跳过
-    var featured = document.querySelector('a[href="#events"]');
-    if (!featured) return;
-    featured.style.transformStyle = 'preserve-3d';
-    featured.addEventListener('mousemove', function(e){
-      var rect = featured.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 ~ 0.5
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      var tiltX = y * -3; // 3deg max
-      var tiltY = x * 3;
-      featured.style.transform = 'translateY(-6px) perspective(1000px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg)';
-    });
-    featured.addEventListener('mouseleave', function(){
-      featured.style.transform = '';
     });
   })();
 </script>

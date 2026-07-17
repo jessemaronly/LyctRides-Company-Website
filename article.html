@@ -28,7 +28,6 @@
 <script id="ld-article" type="application/ld+json"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
 tailwind.config = {
   darkMode: "class",
@@ -49,13 +48,13 @@ tailwind.config = {
 }
 </script>
 <style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
   body { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; background: #FAFAF7; }
   h1, h2, h3 { font-family: 'Albert Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
   html:not([lang^="zh"]) .lang-cn { display: none; }
   html[lang^="zh"] .lang-en { display: none; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
   .fade-up { animation: fadeUp .6s ease-out both; }
+  @media (prefers-reduced-motion: reduce){ .fade-up{animation:none} *{animation-duration:.01ms!important;transition-duration:.01ms!important} }
   .article-body p { margin-bottom: 1.5rem; line-height: 1.85; color: #1a1a1a; }
   .article-body > .lang-en > p:first-child,
   .article-body > .lang-cn > p:first-child {
@@ -108,7 +107,7 @@ tailwind.config = {
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 <style id="footer-cc">
@@ -257,6 +256,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </style>
 </head>
 <body class="text-[#0A0A0A]">
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 <!-- Navigation -->
 <nav class="fixed top-0 w-full z-50 ios-glass transition-all duration-500">
@@ -326,7 +326,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -339,8 +339,13 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 <!-- Article Hero -->
@@ -348,7 +353,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%); background-size: 48px 48px;"></div>
   <div class="max-w-3xl mx-auto relative">
     <a href="/news.html" class="inline-flex items-center gap-2 font-mono text-white/40 text-[11px] tracking-[0.2em] uppercase mb-8 hover:text-white/70 transition-colors">
-      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
       <span class="lang-en">Back to News</span><span class="lang-cn">返回动态</span>
     </a>
     <p id="hero-category" class="font-mono text-white/40 text-[10px] tracking-[0.3em] uppercase mb-4 flex items-center gap-2">
@@ -372,7 +377,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 <div id="article-emoji" class="w-full bg-[#111] py-16 flex items-center justify-center text-7xl hidden"></div>
 
 <!-- Article Body -->
-<main class="max-w-3xl mx-auto px-5 md:px-0 py-14">
+<main id="main" class="max-w-3xl mx-auto px-5 md:px-0 py-14">
   <div id="article-content" class="article-body text-base">
     <!-- Populated by JS -->
   </div>
@@ -392,7 +397,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <nav id="article-nav" class="hidden border-t border-black/10 mt-14 pt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
     <a id="nav-prev" href="#" class="group flex flex-col gap-2 p-5 rounded-lg border border-black/8 hover:border-[#0A0A0A] transition-colors">
       <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-[#50606f] flex items-center gap-2">
-        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
         <span class="lang-en">Previous</span><span class="lang-cn">上一篇</span>
       </span>
       <span id="nav-prev-title" class="font-bold text-sm leading-snug text-[#0A0A0A] group-hover:underline">
@@ -402,7 +407,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     <a id="nav-next" href="#" class="group flex flex-col gap-2 p-5 rounded-lg border border-black/8 hover:border-[#0A0A0A] transition-colors md:text-right">
       <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-[#50606f] flex items-center gap-2 md:justify-end">
         <span class="lang-en">Next</span><span class="lang-cn">下一篇</span>
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </span>
       <span id="nav-next-title" class="font-bold text-sm leading-snug text-[#0A0A0A] group-hover:underline">
         <span class="lang-en"></span><span class="lang-cn"></span>
@@ -480,7 +485,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -726,10 +731,10 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     const htmlCn = article.bodyHtml && article.bodyHtml.cn;
     const enBlock = htmlEn
       ? sanitizeHtml(htmlEn)
-      : (article.body.en || []).map(p => `<p>${escapeText(p)}</p>`).join('');
+      : ((article.body && article.body.en) || []).map(p => `<p>${escapeText(p)}</p>`).join('');
     const cnBlock = htmlCn
       ? sanitizeHtml(htmlCn)
-      : (article.body.cn || []).map(p => `<p style="font-family:'Noto Serif SC',serif;">${escapeText(p)}</p>`).join('');
+      : ((article.body && article.body.cn) || []).map(p => `<p style="font-family:'Noto Serif SC',serif;">${escapeText(p)}</p>`).join('');
     content.innerHTML =
       `<div class="lang-en">${enBlock}</div>` +
       `<div class="lang-cn" style="font-family:'Noto Serif SC',serif;">${cnBlock}</div>`;
@@ -769,7 +774,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     const article = window.__currentArticle;
     if (article) {
       document.getElementById('hero-date').textContent = formatDate(article.date);
-      const rt = readTime(article.body.en);
+      const rt = readTime((article.bodyHtml && article.bodyHtml.en) || (article.body && article.body.en) || '');
       setText('#hero-read-time', rt.en, rt.cn);
       document.title = (lang() === 'zh-CN' ? article.title.cn : article.title.en) + ' | LyctRides';
     }
@@ -825,9 +830,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
   <script defer src="/assets/premium-motion.js"></script>
 <script>
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
   (function(){var nav=document.querySelector('.ios-glass');function s(){if(nav){if(window.scrollY>8)nav.classList.add('scrolled');else nav.classList.remove('scrolled');}}window.addEventListener('scroll',s,{passive:true});s();})();
 </script>
 </body>

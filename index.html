@@ -36,7 +36,7 @@
   "@type": ["LocalBusiness", "Organization"],
   "@id": "https://www.lyctai.com/#business",
   "name": "LyctRides",
-  "alternateName": ["光年出行", "光年出行"],
+  "alternateName": ["光年出行", "光年专车"],
   "legalName": "LyctRides Car Service Co., Ltd.",
   "slogan": "Travel with Measure · Service with Manner · 行有度 · 礼有节",
   "description": "Premium corporate car and cross-border transfer service across Greater China — airport transfers, Hong Kong / Macau cross-border, long-term charter for expats, English-speaking drivers, corporate travel.",
@@ -599,11 +599,12 @@
 :where(a,button,summary,input,select,textarea,[tabindex="0"]):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
 .ios-pill:focus-visible,.ios-pill-outline:focus-visible,.nav-glass-pill:focus-visible,.nav-pill:focus-visible{outline-offset:3px;border-radius:999px}
 .ios-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
-footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
+footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible,.hero-full :focus-visible,#foundation :focus-visible{outline-color:#FAFAF7}
 </style><noscript><style>.reveal,.fade-up,.fade-1,.fade-2{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="/assets/premium-motion.css">
 </head>
 <body>
+<a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
 
 <style>
   /* ===== 全屏电影感 Hero（Blacklane/Chabé 风） ===== */
@@ -617,7 +618,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   .hero-full-inner { position:relative; z-index:2; width:100%; }
   .hero-rise { opacity:0; animation:hero-rise-in 1.1s cubic-bezier(.16,1,.3,1) both; }
   @keyframes hero-rise-in { from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:none;} }
-  .hero-eyebrow-light { display:inline-flex; align-items:center; gap:.7rem; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:none; color:#C6A45C; }
+  .hero-eyebrow-light { display:inline-flex; align-items:center; gap:.7rem; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:none; color:#C6A45C; text-shadow:0 1px 14px rgba(10,10,10,.5), 0 0 2px rgba(10,10,10,.35); }
   .hero-eyebrow-light::before { content:''; width:30px; height:1px; background:rgba(198,164,92,.65); }
   .hero-title-en-light { font-family:'Crimson Pro',serif; font-style:italic; font-weight:600; font-size:clamp(1.9rem,4vw,3.1rem); line-height:1.16; letter-spacing:-.01em; color:#FAFAF7; display:block; }
   .hero-title-cn-light { font-family:'Noto Serif SC',serif; font-weight:600; font-size:clamp(1.7rem,3.6vw,2.8rem); line-height:1.24; letter-spacing:.16em; color:#FAFAF7; display:block; }
@@ -730,7 +731,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="9.6" r="3"/><path d="M6.4 18.3a6 6 0 0 1 11.2 0"/></svg>
         <span class="lang-en">Sign in</span><span class="lang-cn">登录</span>
       </a>
-      <button id="mobile-menu-btn" aria-expanded="false" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Open menu">
+      <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 flex items-center justify-center text-[#0A0A0A]" aria-label="Menu / 菜单">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
@@ -743,12 +744,17 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
   <a href="/vehicles.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Fleet &amp; Chauffeur</span><span class="lang-cn">车队与管家</span></a>
   <a href="/lyctai.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">LyctAI</span><span class="lang-cn">LyctAI</span></a>
   <a href="/enterprise.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Corporate Services</span><span class="lang-cn">企业服务</span></a>
+  <a href="/coverage.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Coverage</span><span class="lang-cn">覆盖城市</span></a>
+  <a href="/news.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">News</span><span class="lang-cn">公司动态</span></a>
   <a href="/contact.html" class="block px-3 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-secondary border-b border-black/8"><span class="lang-en">Contact Us</span><span class="lang-cn">联系我们</span></a>
-  <a href="/contact.html" class="mt-3 ios-pill"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+  <div class="mt-3 flex gap-2">
+    <a href="/contact.html" class="ios-pill flex-1"><span class="lang-en">Enquire Now</span><span class="lang-cn">立即咨询</span></a>
+    <a href="https://www.lyctrides.com/login" class="nav-glass-pill flex-1 justify-center"><span class="lang-en">Sign in</span><span class="lang-cn">登录</span></a>
+  </div>
 </div>
 
 <!-- ─── HERO · 全屏电影感（实拍压深色遮罩 + Crimson 斜体 slogan + Fleet & Chauffeur 双翼） ─── -->
-<section class="hero-full">
+<section id="main" class="hero-full">
   <div class="hero-full-media" aria-hidden="true">
     <img src="images/hero.jpg" alt="" loading="eager"/>
   </div>
@@ -768,7 +774,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
         <span class="lang-en">LyctAI-driven, premium chauffeur service across Greater China.</span>
         <span class="lang-cn">LyctAI 智能护航，礼遇每一程出行。</span>
       </p>
-      <p class="hero-rise" style="margin-top:18px; font-family:'Crimson Pro',serif; font-style:italic; font-weight:600; font-size:clamp(1.1rem,1.7vw,1.4rem); line-height:1.3; letter-spacing:.01em; color:#C6A45C; animation-delay:.6s;">
+      <p class="hero-rise" style="margin-top:18px; font-family:'Crimson Pro',serif; font-style:italic; font-weight:600; font-size:clamp(1.1rem,1.7vw,1.4rem); line-height:1.3; letter-spacing:.01em; color:#C6A45C; text-shadow:0 1px 14px rgba(10,10,10,.5), 0 0 2px rgba(10,10,10,.35); animation-delay:.6s;">
         <span class="lang-en">Always as Promised.</span>
         <span class="lang-cn" style="font-family:'Noto Serif SC',serif; font-style:normal; letter-spacing:.08em;">始终如约。</span>
       </p>
@@ -1006,7 +1012,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 </style>
 
 <!-- ─── 4 Values · 深色珉色 Foundation band ─── -->
-<section class="section-pad" style="background:linear-gradient(180deg,#121211 0%,#0A0A0A 100%); position:relative; overflow:hidden; overflow:clip;">
+<section id="foundation" class="section-pad" style="background:linear-gradient(180deg,#121211 0%,#0A0A0A 100%); position:relative; overflow:hidden; overflow:clip;">
   <!-- 背景图层 · 管家迎宾实拍，整体亮出；左侧压深给文字让位，右侧亮 -->
   <div aria-hidden="true" style="position:absolute; inset:0; background-image:url('images/foundation-bg.jpg'); background-size:cover; background-position:72% center; opacity:1; filter:brightness(1.32) saturate(1.06);"></div>
   <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,10,10,.9) 0%, rgba(10,10,10,.84) 30%, rgba(10,10,10,.5) 52%, rgba(10,10,10,.08) 74%, rgba(10,10,10,.02) 100%);"></div>
@@ -1263,7 +1269,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
 
     <!-- BEIAN:start · 合规栏 -->
     <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-3 gap-x-6 text-white/35 text-[10px] tracking-[0.12em]">
-      <p class="text-white/30">© 2026 光年（广州）汽车服务有限责任公司</p>
+      <p class="text-white/30"><span class="lang-en">© 2026 LyctRides Car Service Co., Ltd.</span><span class="lang-cn">© 2026 光年（广州）汽车服务有限责任公司</span></p>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" class="hover:text-white transition-colors">粤ICP备2026084775号</a>
         <span class="text-white/15">·</span>
@@ -1319,9 +1325,32 @@ footer :focus-visible,.liquid-glass-dark :focus-visible{outline-color:#FAFAF7}
     } catch(_) {}
   })();
 
-  document.getElementById('mobile-menu-btn').addEventListener('click', function(){
-    var _h=document.getElementById('mobile-menu').classList.toggle('hidden');this.setAttribute('aria-expanded',String(!_h));
-  });
+  // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var nav = document.querySelector('nav');
+    function openMenu(){
+      menu.style.top = (nav ? nav.offsetHeight : 62) + 'px';
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      menu.style.top = '';
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function(){
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { closeMenu(); btn.focus(); }
+    });
+  })();
 
   // Nav glass scroll + FAB toggle
   (function(){

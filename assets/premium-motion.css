@@ -8,6 +8,13 @@
   --pm-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ── 0 · 锚点跳转避开固定导航（全站统一 88px 上留白）────────────── */
+html{ scroll-padding-top: 88px; }
+
+/* ── 0b · Skip link：默认移出视口，键盘聚焦浮现于左上 ────────────── */
+.skip-link{ position:absolute; left:-9999px; top:0; z-index:100; background:#0A0A0A; color:#FAFAF7; padding:12px 20px; font-size:13px; font-weight:600; text-decoration:none; border-radius:0 0 12px 0; }
+.skip-link:focus-visible{ left:0; outline:2px solid #FAFAF7; outline-offset:2px; }
+
 /* ── 1 · 导航滚动收拢：每页每次下滑都能感到的高级信号 ───────────── */
 nav.ios-glass > div{ transition: padding-top .55s var(--pm-ease), padding-bottom .55s var(--pm-ease); }
 nav.ios-glass img{ transition: height .55s var(--pm-ease); }

@@ -27,10 +27,10 @@
 --color-surface:    #FAFAF7;   /* 暖白：页面背景 */
 --color-secondary:  #50606f;   /* 次要：导航文字、placeholder */
 
-/* 透明度变体 */
+/* 透明度变体（2026-07-17 对比度决策：/35 /40 /45 三档统一提亮，方案 B）*/
 text-[#0A0A0A]/65   /* 正文 */
-text-[#0A0A0A]/55   /* 副标 / eyebrow */
-text-[#0A0A0A]/45   /* 标签 / mono 小字 */
+text-[#0A0A0A]/60   /* 信息标签 / mono 小字（原 /40 /45 档并入）*/
+text-[#0A0A0A]/55   /* 副标 / eyebrow / 装饰序号（原 /35 档并入）*/
 border-[#0A0A0A]/8  /* 浅边 */
 ```
 
