@@ -2,6 +2,9 @@
 
 > 新条目加在最上面。格式:`## 日期 | 类型 | commit/动作 | 一句话`,记录 AI 署名。
 
+## 2026-07-17 | 修复批 | 工作区未提交 | Claude 二审 10 bug + 高价值建议批次
+Claude(Opus 4.8)五维度审查确认项施工:article 第三处 bodyHtml 裸 || 与 prev/next slug 键对齐、careers/news 脏数据守卫+try/catch、全站导航断点 md→lg(22 页含汉堡/登录/移动菜单)、页脚补 CityRides(22 页)、coverage 顶导误高亮、contact/careers 输入框 16px+44px、轮播多指 pointerId+reduced-motion 不自动播、privacy/terms 删 Material Symbols 死外链、移动菜单 safe-area、面包屑两款统一(services/coverage)、sitemap 补 privacy/terms、首页 hreflang 对齐 sitemap、foundation-bg.jpg PNG 伪装转正 1.85MB→277KB+hero preload。记录:Kimi
+
 ## 2026-07-17 | 修复批 | 工作区未提交 | E1 返工 + G1 对比度批次
 airport-rail.html lang-en 正文补漏 2 处 driver→chauffeur(grep -i 全文件 0 残留);G1 小标签对比度统一提亮:14 页 305 处 text-[#0A0A0A] /35→/55、/40 /45→/60(净增核验 86→391,恰 305),DESIGN-TOKENS.md 透明度档同步并注明 2026-07-17 决策。记录:Kimi
 
