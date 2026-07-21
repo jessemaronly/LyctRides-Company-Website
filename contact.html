@@ -1330,6 +1330,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
           var en = 'Enquiry received' + (data.leadNo ? ' (' + data.leadNo + ')' : '') + '. We will reply within 1 business hour.';
           var cn = '咨询已收到' + (data.leadNo ? '（' + data.leadNo + '）' : '') + '。我们将在 1 个工作小时内回复您。';
           showMsg(lang === 'zh-CN' ? cn : en, true);
+          // 只在后端确认收到线索后上报——提交失败会走 catch，不会误计转化
+          if (window.LyctTracking) window.LyctTracking.reportLeadForm(data);
           form.reset();
         })
         .catch(function(err) {
@@ -1363,6 +1365,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     });
   })();
 </script>
+
+  <script defer src="/assets/lyct-events.js"></script>
 
   <script defer src="/assets/premium-motion.js"></script>
 </body>
