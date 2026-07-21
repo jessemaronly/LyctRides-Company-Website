@@ -22,6 +22,21 @@
 **生产部署目录** = `/var/www/lyctai-website/`（git checkout + nginx 直 serve 同一目录）
 **生产域名** = lyctai.com（前端） / lyctrides.com（后台）
 
+### ⚠️ 改 `assets/` 下的 CSS/JS 时注意缓存
+
+nginx 对静态资源分两档缓存（2026-07-21 起）：
+
+| 资源 | 策略 | 含义 |
+|---|---|---|
+| 图片 / 字体 | `30d + immutable` | 浏览器 30 天内**不回源、不询问** |
+| **CSS / JS** | `1h + must-revalidate` | 靠 ETag 回源校验，最迟 1 小时拿到新版 |
+| HTML | 不缓存 | 部署即生效 |
+
+- **改 `assets/premium-motion.css|js` → 部署后老用户最迟 1 小时更新**，通常不用管
+- **要立刻生效**（如线上正在出可见 bug）：把页面里的 `?v=YYYYMMDD` 版本号改掉。换 URL 是唯一能立刻突破客户端缓存的手段
+- **换图片/字体时不要复用同名文件**（它们是 `immutable`，同名新图老用户 30 天看不到），改文件名或加版本号
+- 教训来源：skip-link 白条事故——当时 css 是 `immutable` 且 URL 无版本号，导致一批 CSS 修复对回访用户长期不生效，且症状直到样式"漏出来"才被发现
+
 ---
 
 ## 🛠️ 项目开发约定
