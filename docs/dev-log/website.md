@@ -19,10 +19,16 @@ www.lyctai.com/contact.html 开头的页面」——跟的是**浏览联系页**
 **不调 gtag**(设计如此,防止 label 未配就误报)。要在 Google Ads → 目标 → 转化 →
 创建转化操作 → 网站 → 手动添加代码,拿 `send_to: 'AW-18319511179/xxxx'` 里斜杠后那串填入。
 
-**验证**:13 项 Node DOM stub 测试全过(label 空不调 gtag / 填后 send_to 正确 /
-无 leadNo 不崩 / 普通链接不误报 / gtag 缺失(广告拦截插件)静默降级不影响表单提交)。
+**验证**:`node scripts/test-lyct-events.js` 13 项全过(label 空不调 gtag / 填后
+send_to 正确 / 无 leadNo 不崩 / 普通链接不误报 / gtag 缺失(广告拦截插件)静默降级
+不影响表单提交)。测试随 PR 提交进仓库,可复跑。
 ⚠️ 未做浏览器端到端验证(Python 3.14 http.server 起不来);合并前建议真机点一次表单看
 Google Ads 转化后台。
+
+**审查后返工**:独立 review(sonnet,只读)无 BLOCKER。据其意见改两处——
+(1) 脚本原名 `conversion-tracking.js` 会被 uBlock/AdGuard 按路径关键词整体屏蔽,
+连降级逻辑都跑不到,改名 `assets/lyct-events.js`(品牌前缀+中性词,避开通用规则);
+(2) 测试原本只在 /tmp 跑完即弃,补提交为 `scripts/test-lyct-events.js`。
 
 **已排除、别再查**:官网语言检测是好的(全站 12 页默认 lang="en" + navigator.language
 检测,实测 en-US 浏览器清 localStorage 后渲染英文;曾误判"英文流量落中文页",根因是自己
