@@ -36,7 +36,17 @@ function makeEnv() {
 
 const run = (src, win, doc) => new Function('window', 'document', src)(win, doc);
 const link = (href) => ({ closest: () => ({ getAttribute: () => href }) });
-const withLabel = (key, val) => SRC.replace(`${key}: ''`, `${key}: '${val}'`);
+
+/*
+ * 这两个 helper 必须匹配「任意当前值」而不是只匹配空字符串——否则等 LABELS 被填上
+ * 生产 label 之后，替换会静默失败，测试就会拿真实 label 去跑，断言全部变红。
+ * 测试结果必须与 LABELS 的实际配置解耦。
+ */
+const setLabel = (src, key, val) =>
+  src.replace(new RegExp(`(${key}:\\s*)'[^']*'`), `$1'${val}'`);
+const clearLabels = (src) =>
+  ['leadForm', 'phone', 'email'].reduce((acc, k) => setLabel(acc, k, ''), src);
+const withLabel = (key, val) => setLabel(clearLabels(SRC), key, val);
 
 let pass = 0;
 let fail = 0;
@@ -53,7 +63,7 @@ const check = (name, cond) => {
 console.log('\n[1] LABELS 为空（合并后的初始状态）— 绝不能调 gtag');
 {
   const { win, doc } = makeEnv();
-  run(SRC, win, doc);
+  run(clearLabels(SRC), win, doc); // 显式清空，不依赖 SRC 当前是否已配 label
   win.LyctTracking.reportLeadForm({ leadNo: 'L-2026-001' });
   check('dataLayer 记录了 lyct_leadForm', win.dataLayer.some((e) => e.event === 'lyct_leadForm'));
   check('未调用 gtag（label 未配就上报=误报）', win.gtagCalls.length === 0);
@@ -89,7 +99,7 @@ console.log('\n[3] 后端未返回 leadNo — 不能崩');
 console.log('\n[4] tel: / mailto: 点击委托');
 {
   const { win, doc } = makeEnv();
-  run(withLabel('phone', 'PHONE1').replace("email: ''", "email: 'MAIL1'"), win, doc);
+  run(setLabel(withLabel('phone', 'PHONE1'), 'email', 'MAIL1'), win, doc);
   doc._fire('click', link('tel:+8615822918415'));
   doc._fire('click', link('mailto:bd@lyctai.com'));
   doc._fire('click', link('/services.html'));

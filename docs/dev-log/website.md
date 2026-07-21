@@ -9,11 +9,11 @@ www.lyctai.com/contact.html 开头的页面」——跟的是**浏览联系页**
 显示 1 次转化、实际零询盘;另一个 `Lead form - Submit` 恒为 0(从没配过 lead form)。
 等于账户**没有任何真实转化跟踪**,加预算=盲投。
 
-**改动**:新增 `assets/conversion-tracking.js`(复用 head 里已装的 gtag AW-18319511179,
+**改动**:新增 `assets/lyct-events.js`(复用 head 里已装的 gtag AW-18319511179,
 不重复加载);contact.html 表单 fetch 成功回调里调 `LyctTracking.reportLeadForm(data)`,
 **放在 .catch 之前**——提交失败走 catch 不会误计;leadNo 作 transaction_id 去重。
-全站 tel:/mailto: 点击用 document 事件委托上报。22 个页面在 premium-motion.js 引用旁
-挂了 script(每页 1 次,无重复)。
+全站 tel:/mailto: 点击用 document 事件委托上报。21 个页面在 premium-motion.js 引用旁
+挂了 script(每页 1 次,无重复;index-standalone.html 是他人未跟踪 WIP,已排除)。
 
 ⚠️ **conversion label 待填**:`LABELS` 三个键当前为空字符串,此时只 push dataLayer、
 **不调 gtag**(设计如此,防止 label 未配就误报)。要在 Google Ads → 目标 → 转化 →
