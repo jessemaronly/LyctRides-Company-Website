@@ -14,18 +14,20 @@
   var ADS_ID = 'AW-18319511179';
 
   /*
-   * ⚠️ 待填：在 Google Ads 里为每个动作建转化操作后，把 label 填进来。
-   *   路径：Google Ads → 目标 → 转化 → 创建转化操作 → 网站 → 「手动添加代码」
-   *   建好后 Google 给出的代码里有 send_to: 'AW-18319511179/AbCdEfGhIjK'
-   *   把斜杠后面那串填到下面对应的位置。
+   * Google Ads 转化操作的 label（send_to 里斜杠后面那串）。
+   *   新增时：Google Ads → 目标 → 转化 → 创建转化操作 → 网站 →「手动（添加代码）」
+   *   ⚠️ 务必选「手动」而不是「自动」——自动模式会让 Google 自己猜转化条件，
+   *   账户原来那个"跟踪访问 contact.html 页面"的假转化就是这么来的。
+   *   建好后在「查看事件代码段」里取 send_to: 'AW-18319511179/xxxx' 的 xxxx。
    *
    * label 为空时：该动作只 push 到 dataLayer（便于日后接 GA4/GTM），不调 gtag，
    * 不会产生错误，也不会误报转化。
    */
   var LABELS = {
-    leadForm: '',   // 联系表单提交成功（最重要，优先配这个）
-    phone: '',      // 点击电话号码
-    email: '',      // 点击邮箱地址
+    // 「Contact Form Submit」· 2026-07-21 建 · 类别=提交潜在客户表单 · 计数=仅一次
+    leadForm: 'wXdTCKHogdQcEIudtp9E',
+    phone: '',      // 点击电话号码 —— 待建转化操作后填
+    email: '',      // 点击邮箱地址 —— 待建转化操作后填
   };
 
   function hasGtag() {

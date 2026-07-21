@@ -2,6 +2,21 @@
 
 > 新条目加在最上面。格式:`## 日期 | 类型 | commit/动作 | 一句话`,记录 AI 署名。
 
+## 2026-07-21 | 埋点 | 分支 feat/conversion-label | 填入 Contact Form Submit 的 conversion label,转化正式开始上报
+
+Google Ads 里新建转化操作 **Contact Form Submit**(Claude 代操作):
+类别=提交潜在客户表单 / 创建方式=**手动(添加代码)** / 计数=**仅一次** / 价值=固定 1 USD /
+点击型时间窗 90 天 / 归因=以数据为依据。
+⚠️ 创建方式必须选「手动」——选「自动」就是让 Google 自己猜转化条件,账户原来那个
+"跟踪访问 contact.html 页面"的假转化正是这么来的。
+
+label `wXdTCKHogdQcEIudtp9E` 已填入 `assets/lyct-events.js` 的 LABELS.leadForm
+(逐字符比对过 Google 给的 send_to)。至此表单提交会真实上报到 Google Ads。
+phone / email 两个 label 仍为空(未建对应转化操作),按设计只 push dataLayer 不调 gtag。
+
+`node scripts/test-lyct-events.js` → 13/13(填入真实 label 后仍全绿,印证上一轮
+CodeRabbit 提的解耦修复有效)。记录:Claude(Opus 4.8)
+
 ## 2026-07-21 | 埋点 | 分支 feat/conversion-tracking | 真转化跟踪:表单提交成功 + tel/mailto 点击
 
 **根因**:Google Ads 账户唯一的转化动作 `Submit lead form` 实际定义为「访问了以
