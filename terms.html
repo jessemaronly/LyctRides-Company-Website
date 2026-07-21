@@ -45,7 +45,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   :where(a,button,summary,input):focus-visible{outline:2px solid #0A0A0A;outline-offset:2px;border-radius:4px}
   footer :focus-visible,.hero-on-image :focus-visible,.svc-hero-on-image :focus-visible,#article-hero :focus-visible{outline-color:#FAFAF7}
 </style>
-  <link rel="stylesheet" href="/assets/premium-motion.css">
+  <link rel="stylesheet" href="/assets/premium-motion.css?v=20260721">
 <style id="footer-cc">
   /* ===== 多列页脚 ===== */
   .footer-col-title { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:18px; }
@@ -190,6 +190,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   .nav-pill { cursor:pointer; }
   .nav-pill:hover { box-shadow:inset 0 0 0 1px rgba(10,10,10,.22); }
 </style>
+<style>.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:#0A0A0A;color:#FAFAF7;padding:12px 20px;font-size:13px;font-weight:600;text-decoration:none;border-radius:0 0 12px 0}.skip-link:focus-visible{left:0;outline:2px solid #FAFAF7;outline-offset:2px}</style>
 </head>
 <body class="text-[#0A0A0A]">
 <a href="#main" class="skip-link"><span class="lang-en">Skip to content</span><span class="lang-cn">跳到正文</span></a>
@@ -434,7 +435,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
 
   <script defer src="/assets/lyct-events.js"></script>
 
-  <script defer src="/assets/premium-motion.js"></script>
+  <script defer src="/assets/premium-motion.js?v=20260721"></script>
 <script>
   // Mobile menu toggle（统一：动态 top 贴合收拢导航、flex 布局、背景锁滚、Esc 关闭并还焦）
   (function(){
