@@ -32,6 +32,18 @@ warn() { echo -e "${YELLOW}!${NC} $1"; }
 # ─── ① git pull ───
 log "git pull $REPO ($BRANCH)"
 cd "$REPO"
+
+# 护栏：必须在 main、工作区必须干净（保 git 是单一可信源，防手改文件被 pull 冲掉/污染部署）
+if [ "$(git branch --show-current)" != "$BRANCH" ]; then
+  echo "✗ 拒绝部署：当前分支 $(git branch --show-current)，应为 $BRANCH" >&2
+  exit 1
+fi
+if [ -n "$(git status --porcelain)" ]; then
+  echo "✗ 拒绝部署：工作区有未提交改动（生产服务器不允许手改文件）" >&2
+  git status --short >&2
+  exit 1
+fi
+
 OLD=$(git rev-parse --short HEAD)
 git pull --ff-only origin "$BRANCH"
 NEW=$(git rev-parse --short HEAD)

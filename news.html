@@ -941,6 +941,13 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
   let allArticles = [];
   let activeCategory = 'all';
 
+  // HTML 转义：所有来自 API/JSON 的字段进 innerHTML 前必须过这里（防存储型 XSS）
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
+
   // GitHub blob 链接 → raw 直链（兜住粘错的封面 URL）
   function normImg(u) {
     if (!u || typeof u !== 'string') return '';
@@ -951,7 +958,7 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     const src = normImg(a.coverImageUrl);
     const pos = a.coverPos || 'center';
     return src
-      ? `<img src="${src}" alt="" class="absolute inset-0 w-full h-full object-cover" style="object-position:${pos}" onerror="this.remove()">`
+      ? `<img src="${esc(src)}" alt="" class="absolute inset-0 w-full h-full object-cover" style="object-position:${esc(pos)}" onerror="this.remove()">`
       : '';
   }
 
@@ -969,21 +976,21 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     const title = a.title || {};
     const sum = a.summary || {};
     return `
-      <a href="/article.html?id=${a.id}" class="ios-card md:col-span-2 overflow-hidden flex flex-col md:flex-row">
+      <a href="/article.html?id=${esc(encodeURIComponent(a.id || ''))}" class="ios-card md:col-span-2 overflow-hidden flex flex-col md:flex-row">
         <div class="md:w-56 flex-shrink-0 bg-[#f0ede8] flex items-center justify-center text-5xl p-10 relative overflow-hidden">
-          ${a.emoji || ''}
+          ${esc(a.emoji)}
           ${coverOverlay(a)}
         </div>
         <div class="p-8 md:p-10 flex flex-col justify-center">
           <p class="eyebrow mb-3 flex items-center gap-2">
             <span class="inline-block w-5 h-px bg-[#0A0A0A]/20"></span>
-            <span class="lang-en">${cat.en || ''}</span><span class="lang-cn">${cat.cn || ''}</span>
+            <span class="lang-en">${esc(cat.en)}</span><span class="lang-cn">${esc(cat.cn)}</span>
           </p>
           <h2 class="text-[#0A0A0A] text-xl md:text-2xl font-semibold leading-snug tracking-tight mb-4">
-            <span class="lang-en">${title.en || ''}</span><span class="lang-cn">${title.cn || ''}</span>
+            <span class="lang-en">${esc(title.en)}</span><span class="lang-cn">${esc(title.cn)}</span>
           </h2>
           <p class="text-[#50606f] text-sm leading-relaxed mb-6 font-light">
-            <span class="lang-en">${sum.en || ''}</span><span class="lang-cn">${sum.cn || ''}</span>
+            <span class="lang-en">${esc(sum.en)}</span><span class="lang-cn">${esc(sum.cn)}</span>
           </p>
           <div class="flex items-center justify-between">
             <span class="font-mono text-[#50606f] text-[11px]">${formatDate(a.date)}</span>
@@ -1001,20 +1008,20 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     const title = a.title || {};
     const sum = a.summary || {};
     return `
-      <a href="/article.html?id=${a.id}" class="ios-card overflow-hidden flex flex-col">
+      <a href="/article.html?id=${esc(encodeURIComponent(a.id || ''))}" class="ios-card overflow-hidden flex flex-col">
         <div class="h-36 bg-[#f0ede8] flex items-center justify-center text-4xl relative flex-shrink-0 overflow-hidden">
-          ${a.emoji || ''}
+          ${esc(a.emoji)}
           ${coverOverlay(a)}
           <span class="absolute bottom-3 left-4 ios-eyebrow" style="font-size:9px;padding:4px 10px;z-index:1;">
-            <span class="lang-en">${cat.en || ''}</span><span class="lang-cn">${cat.cn || ''}</span>
+            <span class="lang-en">${esc(cat.en)}</span><span class="lang-cn">${esc(cat.cn)}</span>
           </span>
         </div>
         <div class="p-6 flex flex-col flex-1">
           <h3 class="text-[#0A0A0A] font-semibold text-base leading-snug tracking-tight mb-3">
-            <span class="lang-en">${title.en || ''}</span><span class="lang-cn">${title.cn || ''}</span>
+            <span class="lang-en">${esc(title.en)}</span><span class="lang-cn">${esc(title.cn)}</span>
           </h3>
           <p class="text-[#50606f] text-sm leading-relaxed mb-5 line-clamp-2 font-light flex-1">
-            <span class="lang-en">${sum.en || ''}</span><span class="lang-cn">${sum.cn || ''}</span>
+            <span class="lang-en">${esc(sum.en)}</span><span class="lang-cn">${esc(sum.cn)}</span>
           </p>
           <div class="flex items-center justify-between">
             <span class="font-mono text-[#50606f] text-[11px]">${formatDate(a.date)}</span>

@@ -1076,37 +1076,45 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     document.querySelectorAll('.lang-cn').forEach(el => el.style.display = l === 'zh-CN' ? '' : 'none');
   }
 
+  // HTML 转义：所有来自 API/JSON 的字段进 innerHTML 前必须过这里（防存储型 XSS）
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
+
   function renderJob(job) {
     // 脏数据守卫：title/location/type/tags 任一缺失只影响该卡片字段，不炸掉整份列表
+    const jobId = esc(job.id);
     const title = job.title || {};
     const loc = job.location || {};
     const jtype = job.type || {};
     const tagsHtml = (Array.isArray(job.tags) ? job.tags : []).filter(t => t && typeof t === 'object').map(t =>
       `<span class="inline-block font-mono text-[10px] tracking-[0.1em] uppercase px-2.5 py-1 rounded-full bg-[#0A0A0A]/[0.04] border border-[#0A0A0A]/[0.06] text-[#50606f]">
-        <span class="lang-en">${t.en || ''}</span><span class="lang-cn">${t.cn || ''}</span>
+        <span class="lang-en">${esc(t.en)}</span><span class="lang-cn">${esc(t.cn)}</span>
       </span>`
     ).join('');
 
     return `
-    <div class="job-card" data-dept="${job.department || ''}" data-id="${job.id}">
+    <div class="job-card" data-dept="${esc(job.department)}" data-id="${jobId}">
       <div class="p-6">
         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
           <div>
             <h3 class="font-semibold text-base leading-snug tracking-tight mb-1">
-              <span class="lang-en">${title.en || ''}</span><span class="lang-cn">${title.cn || ''}</span>
+              <span class="lang-en">${esc(title.en)}</span><span class="lang-cn">${esc(title.cn)}</span>
             </h3>
             <div class="flex flex-wrap items-center gap-2 text-[#50606f] font-mono text-[11px]">
               <span class="flex items-center gap-1">
                 <svg style="width:12px;height:12px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span class="lang-en">${loc.en || ''}</span><span class="lang-cn">${loc.cn || ''}</span>
+                <span class="lang-en">${esc(loc.en)}</span><span class="lang-cn">${esc(loc.cn)}</span>
               </span>
               <span class="text-black/20">·</span>
-              <span class="lang-en">${jtype.en || ''}</span><span class="lang-cn">${jtype.cn || ''}</span>
+              <span class="lang-en">${esc(jtype.en)}</span><span class="lang-cn">${esc(jtype.cn)}</span>
             </div>
           </div>
           <button
             class="apply-toggle flex-shrink-0 ios-pill-sm"
-            data-job-id="${job.id}"
+            data-job-id="${jobId}"
           >
             <span class="lang-en apply-label-open">Apply</span>
             <span class="lang-cn apply-label-open">申请职位</span>
@@ -1121,14 +1129,14 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
               (job.description && job.description.en || '')
                 .split(/\n\n+/)
                 .filter(Boolean)
-                .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
+                .map(p => `<p>${esc(p).replace(/\n/g, '<br/>')}</p>`)
                 .join('')
             }</div>
             <div class="lang-cn" style="font-family:'Noto Sans SC',sans-serif;">${
               (job.description && job.description.cn || '')
                 .split(/\n\n+/)
                 .filter(Boolean)
-                .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
+                .map(p => `<p>${esc(p).replace(/\n/g, '<br/>')}</p>`)
                 .join('')
             }</div>
           </div>
@@ -1144,50 +1152,51 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
       </div>
 
       <!-- Apply Form -->
-      <div class="apply-form" id="form-${job.id}">
+      <div class="apply-form" id="form-${jobId}">
         <div class="border-t border-black/6 bg-[#FAFAF7]/80 px-6 py-7">
           <p class="font-mono text-[11px] tracking-[0.2em] uppercase text-[#50606f] mb-5">
-            <span class="lang-en">Application — ${title.en || ''}</span>
-            <span class="lang-cn">申请职位 — ${title.cn || ''}</span>
+            <span class="lang-en">Application — ${esc(title.en)}</span>
+            <span class="lang-cn">申请职位 — ${esc(title.cn)}</span>
           </p>
           <form
             name="job-application"
             method="POST"
             enctype="multipart/form-data"
             class="space-y-4"
-            onsubmit="handleSubmit(event, '${job.id}')"
+            data-job-id="${jobId}"
+            onsubmit="handleSubmit(event, this.dataset.jobId)"
           >
             <input type="hidden" name="form-name" value="job-application"/>
-            <input type="hidden" name="position" value="${title.en || ''}"/>
-            <input type="hidden" name="position-id" value="${job.id}"/>
+            <input type="hidden" name="position" value="${esc(title.en)}"/>
+            <input type="hidden" name="position-id" value="${jobId}"/>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="f-name-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                <label for="f-name-${jobId}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Full Name *</span><span class="lang-cn">姓名 *</span>
                 </label>
-                <input id="f-name-${job.id}" type="text" name="name" required class="ios-input" placeholder=""/>
+                <input id="f-name-${jobId}" type="text" name="name" required class="ios-input" placeholder=""/>
               </div>
               <div>
-                <label for="f-phone-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                <label for="f-phone-${jobId}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Phone *</span><span class="lang-cn">电话 *</span>
                 </label>
-                <input id="f-phone-${job.id}" type="tel" name="phone" required class="ios-input" placeholder=""/>
+                <input id="f-phone-${jobId}" type="tel" name="phone" required class="ios-input" placeholder=""/>
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="f-email-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                <label for="f-email-${jobId}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Email *</span><span class="lang-cn">邮箱 *</span>
                 </label>
-                <input id="f-email-${job.id}" type="email" name="email" required class="ios-input" placeholder=""/>
+                <input id="f-email-${jobId}" type="email" name="email" required class="ios-input" placeholder=""/>
               </div>
               <div>
-                <label for="f-experience-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+                <label for="f-experience-${jobId}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                   <span class="lang-en">Years of Experience</span><span class="lang-cn">工作年限</span>
                 </label>
-                <select id="f-experience-${job.id}" name="experience" class="ios-input" style="color:#50606f">
+                <select id="f-experience-${jobId}" name="experience" class="ios-input" style="color:#50606f">
                   <option value="" disabled selected></option>
                   <option value="0-1">0 – 1</option>
                   <option value="1-3">1 – 3</option>
@@ -1199,26 +1208,26 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
             </div>
 
             <div>
-              <label for="f-message-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+              <label for="f-message-${jobId}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                 <span class="lang-en">Cover Message</span><span class="lang-cn">求职信息</span>
               </label>
-              <textarea id="f-message-${job.id}" name="message" rows="3" class="ios-input resize-none" placeholder=""></textarea>
+              <textarea id="f-message-${jobId}" name="message" rows="3" class="ios-input resize-none" placeholder=""></textarea>
             </div>
 
             <div>
-              <label for="f-resume-${job.id}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
+              <label for="f-resume-${jobId}" class="block font-mono text-[10px] tracking-[0.15em] uppercase text-[#50606f] mb-1.5">
                 <span class="lang-en">Résumé / CV</span><span class="lang-cn">简历</span>
               </label>
-              <input id="f-resume-${job.id}" type="file" name="resume" accept=".pdf,.doc,.docx" class="w-full text-sm text-[#50606f] file:mr-3"/>
+              <input id="f-resume-${jobId}" type="file" name="resume" accept=".pdf,.doc,.docx" class="w-full text-sm text-[#50606f] file:mr-3"/>
               <p class="text-[10px] text-[#50606f]/60 mt-1 font-mono">PDF / DOC / DOCX · <span class="lang-en">10MB max</span><span class="lang-cn">上限 10MB</span></p>
             </div>
 
             <div class="flex items-center justify-between pt-2">
-              <p id="success-${job.id}" role="status" class="hidden text-xs font-mono text-[#0A0A0A]">
+              <p id="success-${jobId}" role="status" class="hidden text-xs font-mono text-[#0A0A0A]">
                 <span class="lang-en">✓ Application submitted — we'll be in touch.</span>
                 <span class="lang-cn">✓ 申请已提交，我们将尽快联系您。</span>
               </p>
-              <p id="error-${job.id}" role="alert" class="hidden text-xs font-mono text-[#0A0A0A]/70"></p>
+              <p id="error-${jobId}" role="alert" class="hidden text-xs font-mono text-[#0A0A0A]/70"></p>
               <button type="submit" class="ml-auto ios-pill-sm">
                 <span class="lang-en">Submit Application</span><span class="lang-cn">提交申请</span>
               </button>
