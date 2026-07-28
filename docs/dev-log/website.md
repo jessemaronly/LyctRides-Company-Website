@@ -2,6 +2,13 @@
 
 > 新条目加在最上面。格式:`## 日期 | 类型 | commit/动作 | 一句话`,记录 AI 署名。
 
+## 2026-07-28 | Google Ads | 后台暂停 Campaign #1 | 零真实询盘，停止付费投放
+
+Google Ads 账户 `704-561-4847` 的唯一广告系列 `Campaign #1` 已由“已启用”改为
+“已暂停”，后台复核账号总日预算为 `US$0.00/天`。停投前数据（2026-07-13 至 07-27）：
+展示 2,277、点击 41、费用 US$50.10；Google 显示的 2 次转化受旧“访问 contact 页面”
+假转化污染，业务侧确认无真实询盘。历史数据、Google tag 与真实表单埋点保留。记录:Codex
+
 ## 2026-07-21 | 埋点 | 分支 feat/conversion-label | 填入 Contact Form Submit 的 conversion label,转化正式开始上报
 
 Google Ads 里新建转化操作 **Contact Form Submit**(Claude 代操作):
