@@ -857,7 +857,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
           </div>
           <div>
             <label class="ios-input-label" for="cf-service"><span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span></label>
-            <select id="cf-service" class="ios-input" name="serviceInterest">
+            <select id="cf-service" class="ios-input" name="serviceInterest" required>
+              <option value="" disabled selected data-opt-en="Please select" data-opt-cn="请选择">Please select / 请选择</option>
               <option value="Corporate Account / 企业账户" data-opt-en="Corporate Account" data-opt-cn="企业账户">Corporate Account / 企业账户</option>
               <option value="One-time VIP Transfer / 单次 VIP 接送" data-opt-en="One-time VIP Transfer" data-opt-cn="单次 VIP 接送">One-time VIP Transfer / 单次 VIP 接送</option>
               <option value="Hourly & Daily Hire / 时租与日租" data-opt-en="Hourly &amp; Daily Hire" data-opt-cn="时租与日租">Hourly &amp; Daily Hire / 时租与日租</option>
@@ -870,6 +871,11 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
           <div>
             <label class="ios-input-label" for="cf-message"><span class="lang-en">Message</span><span class="lang-cn">补充说明</span></label>
             <textarea id="cf-message" class="ios-input" name="message" rows="4" placeholder="Travel dates, routes, group size…" data-ph-en="Travel dates, routes, group size…" data-ph-cn="出行日期、路线、人数、特殊需求……" style="resize: vertical; min-height: 110px;"></textarea>
+          </div>
+          <!-- 反垃圾：蜜罐字段，真人看不到也不会填；机器人自动填表会填上 -->
+          <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+            <label for="cf-hp">Leave this field empty</label>
+            <input id="cf-hp" type="text" name="hpField" tabindex="-1" autocomplete="new-password"/>
           </div>
           <button id="contact-submit" type="submit" class="ios-pill w-full" style="padding: 16px 28px; font-size: 0.75rem;">
             <span class="lang-en">Send Enquiry</span><span class="lang-cn">提交咨询</span>
@@ -1277,6 +1283,30 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     var btn = document.getElementById('contact-submit');
     var msg = document.getElementById('contact-form-msg');
     if (!form) return;
+    // 反垃圾：页面加载即领取 token（后端校验签名 + 领取后至少 3 秒才能提交）
+    var TOKEN_API = '/api/public/leads/form-token';
+    var MIN_FILL_MS = 3500; // 比后端 3s 多留余量
+    var tokenReq = null, tokenAt = 0;
+    function fetchToken() {
+      // 复用进行中的请求，避免重复领取
+      if (!tokenReq) {
+        tokenReq = fetch(TOKEN_API, { cache: 'no-store' })
+          .then(function(res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+          .then(function(data) { tokenAt = Date.now(); return data.token; });
+        tokenReq.catch(function() { tokenReq = null; });
+      }
+      return tokenReq;
+    }
+    function ensureToken() {
+      var p = fetchToken();
+      // 领取太晚（如加载时请求失败、提交前才补领）→ 等够时间再发，避免真人被当成秒提交
+      return p.then(function(t) {
+        var wait = MIN_FILL_MS - (Date.now() - tokenAt);
+        return wait > 0 ? new Promise(function(r) { setTimeout(function() { r(t); }, wait); }) : t;
+      });
+    }
+    // 用户开始填表时才领取，爬虫/只浏览的访客不消耗接口
+    form.addEventListener('focusin', function() { fetchToken().catch(function() {}); }, { once: true });
 
     function showMsg(text, ok) {
       // 2026-06-06 brand fix: 去 Tailwind 绿/红,改 brand token 黑白 + 状态符号
@@ -1293,6 +1323,15 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
       if (btn.disabled) return;
       if (!form.checkValidity()) {
         form.reportValidity();
+        return;
+      }
+      // 反垃圾：蜜罐被填 → 假装成功，不发请求，不给机器人反馈信号（后端同样校验）
+      var hp = form.querySelector('[name="hpField"]');
+      if (hp && hp.value) {
+        var l = document.documentElement.lang || 'en';
+        showMsg(l === 'zh-CN' ? '咨询已收到。我们将在 1 个工作小时内回复您。' : 'Enquiry received. We will reply within 1 business hour.', true);
+        msg.classList.remove('hidden');
+        form.reset();
         return;
       }
       btn.disabled = true;
@@ -1315,14 +1354,21 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
         phone: (fd.get('phone') || '').toString().trim() || undefined,
         message: messageVal || undefined,
         serviceInterest: (fd.get('serviceInterest') || '').toString().trim() || undefined,
+        hpField: (fd.get('hpField') || '').toString(),
       };
 
-      fetch(API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
+      ensureToken()
+        .then(function(token) {
+          payload.formToken = token;
+          return fetch(API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        })
         .then(function(res) {
+          // 400 可能是 token 过期（页面开太久）→ 作废，下次提交重新领取
+          if (res.status === 400) tokenReq = null;
           if (res.status === 400) { var err = new Error('HTTP 400'); err.status = 400; throw err; }
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
@@ -1341,8 +1387,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
           if (err && err.status === 400) {
             showMsg(
               lang === 'zh-CN'
-                ? '请检查必填项是否完整、邮箱格式是否正确，然后重试'
-                : 'Please check the required fields and your email format, then try again.',
+                ? '提交未成功：请检查必填项与邮箱格式后重试；若仍失败请刷新页面'
+                : 'Not submitted: please check the required fields and email format, then retry. If it still fails, refresh the page.',
               false
             );
           } else {
