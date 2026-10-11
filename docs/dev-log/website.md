@@ -2,6 +2,14 @@
 
 > 新条目加在最上面。格式:`## 日期 | 类型 | commit/动作 | 一句话`,记录 AI 署名。
 
+## 2026-10-11 | 安全 | 分支 fix/contact-form-antispam | 联系表单反垃圾（订阅轰炸 spam）
+
+企微线索群每天收到姓名/邮箱不符、留言为「请订阅」模板的假线索（订阅轰炸，邮箱主人是受害者，不要回信）。
+`contact.html`：服务意向加「请选择」空项并设必填；加隐藏蜜罐字段 `hpField`；首次聚焦表单时 GET
+`/api/public/leads/form-token`，提交带 `formToken`，领取不足 3.5s 时先等待再发。服务端校验在平台仓
+`fix/website-lead-antispam`。**必须先部署平台 API 再部署本站**，否则表单提交全部 400。
+本地 Playwright（mock API）验证：未选意向无法提交、快速填写的真人等待后正常提交且带 token、蜜罐被填不发请求。记录:Claude
+
 ## 2026-07-28 | Google Ads | 后台暂停 Campaign #1 | 零真实询盘，停止付费投放
 
 Google Ads 账户 `704-561-4847` 的唯一广告系列 `Campaign #1` 已由“已启用”改为
