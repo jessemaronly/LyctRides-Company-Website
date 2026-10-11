@@ -857,7 +857,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
           </div>
           <div>
             <label class="ios-input-label" for="cf-service"><span class="lang-en">Service Interest</span><span class="lang-cn">服务意向</span></label>
-            <select id="cf-service" class="ios-input" name="serviceInterest">
+            <select id="cf-service" class="ios-input" name="serviceInterest" required>
+              <option value="" disabled selected data-opt-en="Please select" data-opt-cn="请选择">Please select / 请选择</option>
               <option value="Corporate Account / 企业账户" data-opt-en="Corporate Account" data-opt-cn="企业账户">Corporate Account / 企业账户</option>
               <option value="One-time VIP Transfer / 单次 VIP 接送" data-opt-en="One-time VIP Transfer" data-opt-cn="单次 VIP 接送">One-time VIP Transfer / 单次 VIP 接送</option>
               <option value="Hourly & Daily Hire / 时租与日租" data-opt-en="Hourly &amp; Daily Hire" data-opt-cn="时租与日租">Hourly &amp; Daily Hire / 时租与日租</option>
@@ -870,6 +871,11 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
           <div>
             <label class="ios-input-label" for="cf-message"><span class="lang-en">Message</span><span class="lang-cn">补充说明</span></label>
             <textarea id="cf-message" class="ios-input" name="message" rows="4" placeholder="Travel dates, routes, group size…" data-ph-en="Travel dates, routes, group size…" data-ph-cn="出行日期、路线、人数、特殊需求……" style="resize: vertical; min-height: 110px;"></textarea>
+          </div>
+          <!-- 反垃圾：蜜罐字段，真人看不到也不会填；机器人自动填表会填上 -->
+          <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+            <label for="cf-website">Website</label>
+            <input id="cf-website" type="text" name="website" tabindex="-1" autocomplete="off"/>
           </div>
           <button id="contact-submit" type="submit" class="ios-pill w-full" style="padding: 16px 28px; font-size: 0.75rem;">
             <span class="lang-en">Send Enquiry</span><span class="lang-cn">提交咨询</span>
@@ -1277,6 +1283,8 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
     var btn = document.getElementById('contact-submit');
     var msg = document.getElementById('contact-form-msg');
     if (!form) return;
+    // 反垃圾：记录页面就绪时间，过快提交视为机器人
+    var formReadyAt = Date.now();
 
     function showMsg(text, ok) {
       // 2026-06-06 brand fix: 去 Tailwind 绿/红,改 brand token 黑白 + 状态符号
@@ -1293,6 +1301,15 @@ footer :focus-visible,.liquid-glass-dark :focus-visible,.hero-on-image :focus-vi
       if (btn.disabled) return;
       if (!form.checkValidity()) {
         form.reportValidity();
+        return;
+      }
+      // 反垃圾：蜜罐被填 或 3 秒内提交 → 假装成功，不发请求，不给机器人反馈信号
+      var hp = form.querySelector('[name="website"]');
+      if ((hp && hp.value) || Date.now() - formReadyAt < 3000) {
+        var l = document.documentElement.lang || 'en';
+        showMsg(l === 'zh-CN' ? '咨询已收到。我们将在 1 个工作小时内回复您。' : 'Enquiry received. We will reply within 1 business hour.', true);
+        msg.classList.remove('hidden');
+        form.reset();
         return;
       }
       btn.disabled = true;
