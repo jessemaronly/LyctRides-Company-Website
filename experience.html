@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>LyctRides Experience</title>
+<meta name="description" content="LyctRides — explore the fleet in 3D, follow a pickup end to end, and watch LyctAI dispatch in real time."/>
+<meta name="robots" content="noindex"/>
+<meta name="theme-color" content="#07080b"/>
+<link rel="icon" type="image/png" href="/images/favicon-32.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/experience/experience.css?v=20261030"/>
+<script>
+  try { var l = localStorage.getItem('lyct-lang'); if (l === 'cn' || l === 'en') document.documentElement.lang = l; } catch (e) {}
+</script>
+<script type="importmap">
+{ "imports": {
+  "three": "/assets/vendor/three-0.170.0/three.module.min.js",
+  "three/addons/": "/assets/vendor/three-0.170.0/addons/"
+} }
+</script>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true"><div><div class="ring" style="margin:0 auto"></div><p>LYCTRIDES</p></div></div>
+
+<nav class="xnav">
+  <a href="/" aria-label="LyctRides home"><img src="/images/logo.svg" alt="LyctRides"/></a>
+  <div class="xnav-r">
+    <button class="pill" id="lang-btn" type="button"><span class="lang-en">中文</span><span class="lang-cn">EN</span></button>
+    <a class="pill hide-m" href="/vehicles.html"><span class="lang-en">Fleet</span><span class="lang-cn">车队</span></a>
+    <a class="pill cta" href="/contact.html"><span class="lang-en">Book a ride</span><span class="lang-cn">立即预约</span></a>
+  </div>
+</nav>
+
+<main>
+<!-- ============ 主舞台：3D 车辆 ============ -->
+<section id="stage">
+  <div class="stage-sticky">
+    <canvas id="car-canvas" aria-label="Interactive 3D vehicle"></canvas>
+    <div class="stage-vignette"></div>
+    <div id="hotspots"></div>
+
+    <div class="hud" id="hud">
+      <div class="hud-row" id="paint-row">
+        <span class="hud-label"><span class="lang-en">Paint</span><span class="lang-cn">车漆</span></span>
+        <span class="paint-name" id="paint-name"></span>
+      </div>
+      <div class="hud-row" id="ambient-row" style="display:none">
+        <span class="hud-label"><span class="lang-en">Ambient</span><span class="lang-cn">氛围灯</span></span>
+      </div>
+      <div class="hud-row">
+        <button class="toggle" id="day-btn" type="button">☀ <span class="lang-en">Day</span><span class="lang-cn">日间</span></button>
+        <button class="toggle" id="night-btn" type="button">☾ <span class="lang-en">Night</span><span class="lang-cn">夜间</span></button>
+        <span class="chap-dots" id="chap-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      </div>
+    </div>
+    <div class="scroll-cue" id="scroll-cue"><span class="lang-en">SCROLL · DRAG TO ROTATE</span><span class="lang-cn">向下滚动 · 拖拽旋转</span><i></i></div>
+  </div>
+
+  <div class="chapters">
+    <div class="chapter ch-hero">
+      <div class="ch-text rv">
+        <div class="eyebrow">LyctRides · <span class="lang-en">Chauffeur Service</span><span class="lang-cn">光年专车</span></div>
+        <h1 class="h-display" style="margin-top:18px">
+          <span class="lang-en">Always as<br/><em class="gold-text">Promised.</em></span>
+          <span class="lang-cn">始终<span class="gold-text">如约</span></span>
+        </h1>
+        <div class="tagline"><span class="lang-en">GREATER CHINA · 300+ CITIES · 24/7</span><span class="lang-cn">大中华区 · 300+ 城市 · 全天候</span></div>
+      </div>
+    </div>
+
+    <div class="chapter ch-side">
+      <div class="ch-text rv">
+        <div class="eyebrow ice"><span class="lang-en">01 · The cabin</span><span class="lang-cn">01 · 座舱</span></div>
+        <h2 class="h-1" style="margin-top:14px"><span class="lang-en">Silence, by design.</span><span class="lang-cn">静谧，是设计出来的</span></h2>
+        <p class="lead"><span class="lang-en">Tap the glowing points to look inside.</span><span class="lang-cn">点击车身上的光点，看看车里有什么。</span></p>
+      </div>
+    </div>
+
+    <div class="chapter ch-night">
+      <div class="ch-text rv">
+        <div class="eyebrow"><span class="lang-en">02 · After dark</span><span class="lang-cn">02 · 夜间</span></div>
+        <h2 class="h-1" style="margin-top:14px"><span class="lang-en">Red-eye flight?<br/>We're already there.</span><span class="lang-cn">红眼航班？<br/>我们已在等候</span></h2>
+        <p class="lead"><span class="lang-en">Pick the ambient light you'd like waiting for you.</span><span class="lang-cn">选一种您喜欢的车内氛围灯。</span></p>
+      </div>
+    </div>
+
+    <div class="chapter ch-fleet" id="fleet">
+      <div class="panel" id="matcher">
+        <div class="eyebrow"><span class="lang-en">03 · Fleet matcher</span><span class="lang-cn">03 · 车型匹配</span></div>
+        <h3><span class="lang-en">Who's riding?</span><span class="lang-cn">这次有几位出行？</span></h3>
+        <div class="chips" id="scenarios"></div>
+        <div class="slider">
+          <div class="slider-top"><span><span class="lang-en">Guests</span><span class="lang-cn">乘客</span></span><b id="pax-v">1</b></div>
+          <input type="range" id="pax" min="1" max="60" value="1" aria-label="Guests"/>
+        </div>
+        <div class="slider">
+          <div class="slider-top"><span><span class="lang-en">Luggage</span><span class="lang-cn">行李</span></span><b id="bag-v">1</b></div>
+          <input type="range" id="bag" min="0" max="40" value="1" aria-label="Luggage"/>
+        </div>
+        <div class="result">
+          <div class="result-label"><span class="lang-en">We recommend</span><span class="lang-cn">推荐配置</span></div>
+          <div class="result-name" id="rec-name"></div>
+          <div class="fleet-units" id="units"></div>
+          <div class="bars">
+            <div><div class="bar-t"><span class="lang-en">Seats used</span><span class="lang-cn">座位占用</span><span id="seat-pct"></span></div><div class="bar"><i id="seat-bar"></i></div></div>
+            <div><div class="bar-t"><span class="lang-en">Luggage space</span><span class="lang-cn">行李空间</span><span id="bag-pct"></span></div><div class="bar ice"><i id="bag-bar"></i></div></div>
+          </div>
+          <a class="pill cta" href="/contact.html"><span class="lang-en">Request this fleet →</span><span class="lang-cn">按此配置询价 →</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 接机全程：滚动驱动 ============ -->
+<section id="journey" aria-label="Pickup journey">
+  <div class="j-sticky">
+    <div class="j-intro">
+      <div class="eyebrow ice"><span class="lang-en">04 · One pickup, fully visible</span><span class="lang-cn">04 · 一次接机，全程可见</span></div>
+      <h2 class="h-1" style="margin-top:14px"><span class="lang-en">From landing<br/>to your door.</span><span class="lang-cn">从落地<br/>到门口</span></h2>
+      <p class="lead" style="margin-top:14px"><span class="lang-en">Keep scrolling — watch a real airport pickup unfold.</span><span class="lang-cn">继续滚动，看一次接机如何发生。</span></p>
+      <ol class="j-steps" id="j-steps">
+        <li class="j-step"><span class="n">01</span><div><b><span class="lang-en">Flight tracked</span><span class="lang-cn">航班追踪</span></b><p><span class="lang-en">We follow your flight live — delays move your pickup automatically.</span><span class="lang-cn">实时跟踪航班，延误自动顺延接机时间。</span></p></div></li>
+        <li class="j-step"><span class="n">02</span><div><b><span class="lang-en">Chauffeur early</span><span class="lang-cn">提前到场</span></b><p><span class="lang-en">Your chauffeur is at the terminal 30 minutes before landing.</span><span class="lang-cn">司机在落地前 30 分钟抵达航站楼。</span></p></div></li>
+        <li class="j-step"><span class="n">03</span><div><b><span class="lang-en">Meet &amp; greet</span><span class="lang-cn">举牌接机</span></b><p><span class="lang-en">Name sign at arrivals, luggage handled.</span><span class="lang-cn">到达口举牌迎候，行李全程代劳。</span></p></div></li>
+        <li class="j-step"><span class="n">04</span><div><b><span class="lang-en">On the road</span><span class="lang-cn">安心在途</span></b><p><span class="lang-en">Route shared live with your assistant or host.</span><span class="lang-cn">行程实时共享给您的助理或接待方。</span></p></div></li>
+        <li class="j-step"><span class="n">05</span><div><b><span class="lang-en">Arrived</span><span class="lang-cn">准时抵达</span></b><p><span class="lang-en">Door to door, as promised.</span><span class="lang-cn">门到门，如约而至。</span></p></div></li>
+      </ol>
+    </div>
+    <div class="j-map">
+      <svg viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-18)">
+            <path d="M40 0H0V40" fill="none" stroke="rgba(140,170,220,0.07)" stroke-width="1"/>
+          </pattern>
+          <linearGradient id="routeG" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#62d8ff"/><stop offset="1" stop-color="#ffc978"/></linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <radialGradient id="pinG"><stop offset="0" stop-color="#ffc978" stop-opacity=".5"/><stop offset="1" stop-color="#ffc978" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="1000" height="640" fill="url(#grid)"/>
+        <path d="M380,-20 C430,170 300,320 360,470 S330,620 310,680" fill="none" stroke="rgba(70,140,255,0.22)" stroke-width="30" stroke-linecap="round"/>
+        <text x="300" y="250" fill="rgba(110,170,255,0.45)" font-family="JetBrains Mono" font-size="11" letter-spacing="3" transform="rotate(-70 300 250)">HUANGPU</text>
+        <ellipse cx="420" cy="350" rx="300" ry="210" fill="none" stroke="rgba(140,170,220,0.12)" stroke-width="3"/>
+        <path d="M0,520 C260,500 520,420 1000,300" fill="none" stroke="rgba(140,170,220,0.10)" stroke-width="3"/>
+        <path d="M640,0 C620,200 700,420 660,640" fill="none" stroke="rgba(140,170,220,0.08)" stroke-width="2"/>
+        <!-- 机场 -->
+        <g transform="translate(820 150)">
+          <rect x="-70" y="-26" width="140" height="10" rx="5" transform="rotate(-28)" fill="rgba(98,216,255,0.16)"/>
+          <rect x="-60" y="2" width="120" height="8" rx="4" transform="rotate(-28)" fill="rgba(98,216,255,0.12)"/>
+          <text x="-120" y="-30" fill="#62d8ff" font-family="JetBrains Mono" font-size="13" letter-spacing="2">PVG T2</text>
+        </g>
+        <!-- 司机出发点 & 目的地 -->
+        <circle cx="560" cy="330" r="5" fill="rgba(255,255,255,0.35)"/>
+        <g transform="translate(190 470)">
+          <circle r="34" fill="url(#pinG)" id="dest-glow" opacity="0.4"/>
+          <circle r="6" fill="#ffc978"/>
+          <text x="-40" y="36" fill="rgba(255,231,190,0.9)" font-family="JetBrains Mono" font-size="13" letter-spacing="2">THE BUND</text>
+        </g>
+        <!-- 路线 -->
+        <path id="r-depot" d="M560,330 C640,300 760,240 820,175" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-dasharray="4 6"/>
+        <path id="r-depot-on" d="M560,330 C640,300 760,240 820,175" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+        <path id="r-main" d="M820,175 C760,300 600,300 520,360 S300,470 190,470" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"/>
+        <path id="r-main-on" d="M820,175 C760,300 600,300 520,360 S300,470 190,470" fill="none" stroke="url(#routeG)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+        <path id="r-plane" d="M1080,-60 Q960,30 836,150" fill="none" stroke="rgba(98,216,255,0.35)" stroke-width="1.5" stroke-dasharray="2 6"/>
+        <!-- 飞机 -->
+        <g id="plane"><path d="M0,-11 L3,-3 L12,2 L12,5 L3,2 L2,9 L5,11 L5,13 L0,11.5 L-5,13 L-5,11 L-2,9 L-3,2 L-12,5 L-12,2 L-3,-3 Z" fill="#e6fbff" filter="url(#glow)"/></g>
+        <!-- 车 -->
+        <g id="jcar"><circle r="16" fill="rgba(255,201,120,0.18)"/><rect x="-9" y="-5" width="18" height="10" rx="4" fill="#ffd08a" filter="url(#glow)"/></g>
+        <!-- 举牌 -->
+        <g id="sign" transform="translate(860 205)" opacity="0">
+          <rect x="-4" y="-4" width="118" height="34" rx="8" fill="#fff"/>
+          <text x="10" y="18" fill="#0a0a0a" font-family="Albert Sans" font-weight="600" font-size="13">MR. ZHANG ✓</text>
+        </g>
+      </svg>
+      <div class="j-status">
+        <div class="j-card"><span class="live">LIVE</span><b id="j-time">13:20</b></div>
+        <div class="j-card" style="text-align:right"><span id="j-label"></span><b id="j-eta">—</b></div>
+      </div>
+      <div class="j-toast" id="j-toast"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LyctAI 调度 ============ -->
+<section class="sec" id="dispatch">
+  <div class="sec-head">
+    <div class="eyebrow ice rv"><span class="lang-en">05 · LyctAI dispatch</span><span class="lang-cn">05 · LyctAI 智能调度</span></div>
+    <h2 class="h-1 rv"><span class="lang-en">The city, <span class="ice-text">orchestrated.</span></span><span class="lang-cn">整座城市，<span class="ice-text">一手调度</span></span></h2>
+    <p class="lead rv"><span class="lang-en">Click anywhere on the map to place an order. Then try rush hour, or a delayed flight.</span><span class="lang-cn">在地图上任意点击下单，再试试"高峰模式"和"航班延误"。</span></p>
+  </div>
+  <div class="wrap d-grid rv">
+    <div class="d-map">
+      <canvas id="d-canvas" aria-label="Dispatch simulation"></canvas>
+      <div class="d-clock" id="d-clock">08:30</div>
+      <div class="d-hint"><span class="lang-en">● CLICK TO ORDER · SIMULATION</span><span class="lang-cn">● 点击下单 · 模拟演示</span></div>
+    </div>
+    <div class="d-side">
+      <div class="kpis">
+        <div class="kpi"><span><span class="lang-en">On trip</span><span class="lang-cn">服务中</span></span><b class="gold" id="k-active">0</b></div>
+        <div class="kpi"><span><span class="lang-en">Fleet</span><span class="lang-cn">在线车辆</span></span><b id="k-fleet">0</b></div>
+        <div class="kpi"><span><span class="lang-en">Avg pickup ETA (min)</span><span class="lang-cn">平均接驾（分钟）</span></span><b class="ice" id="k-eta">—</b></div>
+        <div class="kpi"><span><span class="lang-en">Completed</span><span class="lang-cn">已完成</span></span><b id="k-done">0</b></div>
+      </div>
+      <div class="d-actions">
+        <button class="d-btn" id="rush-btn" type="button"><span><span class="lang-en">Rush hour</span><span class="lang-cn">高峰模式</span><small><span class="lang-en">4× demand, auto-rebalancing</span><span class="lang-cn">订单 ×4，运力自动再平衡</span></small></span><span class="ic">⚡</span></button>
+        <button class="d-btn" id="delay-btn" type="button"><span><span class="lang-en">Delay a flight</span><span class="lang-cn">模拟航班延误</span><small><span class="lang-en">Pickup retimed, car reassigned</span><span class="lang-cn">接机自动顺延，车辆就近改派</span></small></span><span class="ic">✈</span></button>
+      </div>
+      <ul class="d-log" id="d-log" aria-live="polite"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 覆盖网络地球 ============ -->
+<section class="sec" id="coverage">
+  <div class="wrap g-grid">
+    <div class="g-wrap rv">
+      <canvas id="g-canvas" aria-label="Service coverage globe"></canvas>
+      <div class="g-legend"><span><i style="background:#ffc978"></i><span class="lang-en">Domestic network</span><span class="lang-cn">境内网络</span></span><span><i style="background:#62d8ff"></i><span class="lang-en">Inbound guests</span><span class="lang-cn">入境宾客</span></span></div>
+    </div>
+    <div>
+      <div class="eyebrow rv"><span class="lang-en">06 · Coverage</span><span class="lang-cn">06 · 服务覆盖</span></div>
+      <h2 class="h-1 rv" style="margin-top:14px"><span class="lang-en">One contact.<br/>All of Greater China.</span><span class="lang-cn">一个对接窗口<br/>覆盖大中华区</span></h2>
+      <div class="stat-row rv">
+        <div><b class="gold-text">300+</b><span class="lang-en">cities</span><span class="lang-cn">城市</span></div>
+        <div><b class="gold-text">4</b><span class="lang-en">regions</span><span class="lang-cn">大区域</span></div>
+        <div><b class="gold-text">24/7</b><span class="lang-en">concierge</span><span class="lang-cn">礼宾服务</span></div>
+      </div>
+      <p class="lead rv" style="margin-top:24px"><span class="lang-en">Drag the globe, or pick a city:</span><span class="lang-cn">拖动地球，或选择一个城市：</span></p>
+      <div class="city-list rv" id="city-list" style="margin-top:12px"></div>
+      <div class="city-card rv" id="city-card"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="eyebrow rv">LyctRides</div>
+  <h2 class="h-display rv" style="margin-top:18px"><span class="lang-en">Your next ride, <em class="gold-text">as promised.</em></span><span class="lang-cn">下一程，<span class="gold-text">如约而至</span></span></h2>
+  <div class="row rv">
+    <a class="pill cta" href="/contact.html"><span class="lang-en">Book a ride</span><span class="lang-cn">立即预约</span></a>
+    <a class="pill" href="/enterprise.html"><span class="lang-en">Enterprise travel</span><span class="lang-cn">企业出行</span></a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <span>© 2026 LyctRides</span>
+  <span><span class="lang-en">3D models are stylized illustrations. Dispatch view is a simulation.</span><span class="lang-cn">3D 车型为示意建模，调度画面为模拟演示。</span></span>
+</footer>
+
+<script type="module" src="/assets/experience/main.js?v=20261030"></script>
+</body>
+</html>

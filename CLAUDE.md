@@ -46,7 +46,7 @@ nginx 对静态资源分两档缓存（2026-07-21 起）：
 - 纯静态站：HTML + Tailwind CDN + vanilla JS（无构建步骤）
 - 本地预览：`python3 -m http.server 8787`
 - 字体栈：Albert Sans · JetBrains Mono · Noto Sans SC · Noto Serif SC · Crimson Pro
-- 颜色：仅 `#0A0A0A`（黑） + `#FAFAF7`（暖白）。无第三色
+- 颜色：基础色 `#0A0A0A`（黑） + `#FAFAF7`（暖白）；2026-10 起放开强调色——香槟金 `#FFC978`（品牌/豪华）+ 冰蓝 `#62D8FF`（数据/AI），3D / 可视化场景可按需用色（见 `experience.html` / `assets/experience/experience.css`）
 
 ### 设计系统单一来源
 
@@ -88,7 +88,6 @@ API 后端在 `~/WorkPlace/lyctrides-platform/apps/api`。
 
 ## 🚫 不要做的事
 
-- ❌ 引入第三种主色（仅 `#0A0A0A` + `#FAFAF7`）
 - ❌ 使用「零担」物流术语（公司不做物流；零担 = on-demand order，单次出行）
 - ❌ 把品牌名写成 LYCT-RIDES / Lyctrides / Photon-Year（**只**写 LyctRides 驼峰）
 - ❌ 在生产服务器上手动改文件（永远 git push → deploy.sh，保 git 是单一可信源）
